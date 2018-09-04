@@ -1,0 +1,42 @@
+// Login page
+
+.login-page {
+    .form-group { margin-bottom: 20px; }
+    .login-form-wrap { margin-bottom: 20px; }
+    #registerForm,
+    #guestForm {
+        button.btn.btn-default.btn-block {
+            background-color: #00b7d3;
+            border-radius: 0;
+            border: none;
+            box-shadow: none;
+            color: #fff;
+            &:hover,
+            &:focus {
+                background-color: lighten(@button-light-blue, 10%);
+            }
+        }
+    }
+    @media (min-width: @screen-sm-min) {
+        .divide {
+            &:before {
+                content: " ";
+                border-left: 1px solid #bcbec0;
+                position: absolute;
+                right: -20%;
+                top: 40px;
+                bottom: 10px;
+                display: block; 
+            }
+        }
+    }
+}
+
+/* terms and conditions link */
+
+.termsAndConditionsLink {
+    pointer-events: none;
+    &.active {
+        pointer-events: initial;
+    }
+}

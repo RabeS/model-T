@@ -1,0 +1,9 @@
+#Impex to invoke Cronjob to update StockLevels to accommodationOfferings.
+
+$accommodationServices=WIFI->10,GYM_ACCESS->10,ENGLISH_BREAKFAST->10,LINEN->10,PARKING->10,PILLOWS->10
+
+UPDATE UpdateStockLevelsToAccommodationOfferingCronJob; code[unique = true]; serviceProductsStockLevels[map-delimiter=,]; batchSize
+; updateStockLevelsToAccommodationOfferingNBCronJob ; $accommodationServices ; 5000
+
+UPDATE GeocodeAddressesCronJob[batchmode = true]; itemType(code)[unique = true]; active
+; GeocodeAddressesCronJob ; false

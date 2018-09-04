@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:w="client">
+    <grid style="padding-top:30px; padding-bottom:20px; border-right: 0px #CCC;">
+        <columns style="background-color: #F0F0F0;">
+            <column width="200px;"/>
+            <column/>
+        </columns>
+        <rows>
+            <row>
+                <label style="font-weight: bold;" value="${c:l('create.bundletemplate.id')}" />
+                <label value="${widgetModel.newBundleTemplate.id}" />
+            </row>
+            <row if="${widgetModel.mapping.travelRoute != null}">
+                <label style="font-weight: bold;" value="${c:l('create.bundletemplate.travelroute')}" />
+                <label value="${widgetModel.mapping.travelRoute.code} - ${widgetModel.mapping.travelRoute.name}" />
+            </row>
+            <row if="${widgetModel.mapping.travelSector != null}">
+                <label style="font-weight: bold;" value="${c:l('create.bundletemplate.travelsector')}" />
+                <label value="${widgetModel.mapping.travelSector.code} - ${widgetModel.mapping.travelSector.name}" />
+            </row>
+            <row if="${widgetModel.mapping.transportOffering != null}">
+                <label style="font-weight: bold;" value="${c:l('create.bundletemplate.transportoffering')}" />
+                <label value="${widgetModel.mapping.transportOffering.travelProvider.code}${widgetModel.mapping.transportOffering.number} - ${widgetModel.mapping.transportOffering.departureTime}" />
+            </row>
+            <row>
+                <label style="font-weight: bold;" value="${c:l('create.bundletemplate.ignorerules')}" />
+                <label value="${widgetModel.newBundleTemplate.ignoreRules}" />
+            </row>
+            <row>
+                <label style="font-weight: bold;" value="${c:l('create.bundletemplate.cabinclass')}" />
+                <label value="${widgetModel.mapping.cabinClass.code} - ${widgetModel.mapping.cabinClass.name}" />
+            </row>
+            <row>
+                <label style="font-weight: bold;" value="${c:l('create.bundletemplate.bundletype')}" />
+                <label value="${widgetModel.bundleTypeName}" />
+            </row>
+            <row>
+                <label style="font-weight: bold;" value="${c:l('create.bundletemplate.fareproducts')}" />
+                <listbox nonselectableTags="*" width="200px" rows="3">
+                    <listitem forEach="${widgetModel.fareBundleTemplate.products}" focus="false">
+                        <listcell>
+                            <label value= "${each.code}" />
+                        </listcell>
+                    </listitem>
+                </listbox>
+            </row>
+            <row>
+                <label style="font-weight: bold;" value="${c:l('create.bundletemplate.ancillaryproducts')}" />
+                <listbox nonselectableTags="*" width="200px" rows="3">
+                    <listitem forEach="${widgetModel.ancillaryBundleTemplate.products}" focus="false">
+                        <listcell>
+                            <label value= "${each.code}" />
+                        </listcell>
+                    </listitem>
+                </listbox>
+            </row>
+        </rows>
+    </grid>
+
+</zk>

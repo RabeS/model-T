@@ -1,0 +1,46 @@
+.fare-table-inner-wrap {
+	@media (max-width: @screen-xs-max) {
+		.minusMargin;
+		.alert { margin-bottom: 20px; }
+	}
+    .nav {
+        &.nav-tabs { margin: 0 auto; }
+    }
+    .with-icon { padding-left: 50px; }
+    
+    .form-inline {
+        background-color: @brand-blue;
+        @media (min-width: @screen-sm-min) {
+            padding: 10px 60px;
+            .form-control { width: 250px; }
+        }
+        @media (max-width: @screen-xs-max) {
+            padding: 20px;
+            label { float: left; }
+            select {
+                float: right;
+                width: 75%;
+            }
+        }
+    }
+    .tab-wrapper {
+    	padding-bottom: 0;
+    	.tab-content {
+	        button  {
+	            margin-top: 10px;
+	            margin-bottom: 10px;
+	        }
+	        > .tab-pane {
+	            &.active { background-color: #add5dd; }
+	            ul { margin-bottom: 0; }
+	        }
+	    }
+	}
+    .flight-option {
+        .travel-details {
+            .heading {
+                word-break: break-word;
+            }
+        }
+    }
+}

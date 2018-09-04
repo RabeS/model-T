@@ -1,0 +1,55 @@
+.ui-tooltip {
+    padding: 5px;
+    max-width: none;
+    width: 280px;
+    z-index: 9999;
+    @media only screen and (min-width: @screen-sm-min) {
+        width: 280px;
+    }
+    .popover-content {
+        border: 1px solid @button-light-blue;
+        background-color: @light-grey;
+        color: @brand-blue;
+        padding: 10px;
+    }
+    &.bottom > .arrow {
+        left: 50%;
+        margin-left: -11px;
+        border-top-width: 0;
+        border-bottom-color: #c5c5c5;
+        top: -11px;
+        &:after {
+            content: " ";
+            top: 1px;
+            margin-left: -10px;
+            border-top-width: 0;
+            border-bottom-color: #fff;
+        }
+    }
+    > .arrow, > .arrow:after {
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+    }
+    > .arrow {
+        border-width: 11px;
+        &:after {
+            border-width: 10px;
+            content: "";
+        }
+    }
+}
+
+.info-tooltip {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    background: url("@{theme-images-url}/icon-info-trans.png") no-repeat scroll 0 0;
+    text-indent: -999999px;
+    overflow: hidden;
+    position: relative;
+    top: 5px;
+}

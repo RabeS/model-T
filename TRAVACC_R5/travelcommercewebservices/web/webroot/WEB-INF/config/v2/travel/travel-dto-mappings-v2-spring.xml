@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  [y] hybris Platform
+
+  Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+  This software is the confidential and proprietary information of SAP
+  ("Confidential Information"). You shall not disclose such Confidential
+  Information and shall use it only in accordance with the terms of the
+  license agreement you entered into with SAP.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="seatMapWsConverter" class="de.hybris.platform.travelcommercewebservices.mapping.converters.SeatMapWsConverter"/>
+    <bean id="itinerariesWsConverter" class="de.hybris.platform.travelcommercewebservices.mapping.converters.ItinerariesWsConverter"/>
+    <bean id="offerGroupsWsConverter" class="de.hybris.platform.travelcommercewebservices.mapping.converters.OfferGroupsWsConverter"/>
+    <bean id="salesApplicationWsConverter" class="de.hybris.platform.travelcommercewebservices.mapping.converters.SalesApplicationWsConverter"/>
+    <bean id="transportOfferingWsConverter" class="de.hybris.platform.travelcommercewebservices.mapping.converters.TransportOfferingWsConverter" />
+    <bean id="pricedItineraryDataWsConverter" class="de.hybris.platform.travelcommercewebservices.mapping.converters.PricedItineraryDataWsConverter"/>
+    <bean id="travelBundleTemplateWsConverter" class="de.hybris.platform.travelcommercewebservices.mapping.converters.TravelBundleTemplateWsConverter"/>
+    <bean id="originDestinationOptionWsConverter" class="de.hybris.platform.travelcommercewebservices.mapping.converters.OriginDestinationOptionWsConverter"/>
+    <bean id="originDestinationOfferInfoConverter" class="de.hybris.platform.travelcommercewebservices.mapping.converters.OriginDestinationOfferInfoWsConverter"/>
+    <bean id="TravellerInfoWsConverter" class="de.hybris.platform.travelcommercewebservices.mapping.converters.TravellerInfoWsConverter"/>
+
+    <bean id="addBundleToCartFieldMapper" parent="fieldMapper">
+        <property name="sourceClass" value="de.hybris.travelcommercewebservicescommons.dto.cart.AddBundleToCartRequestWsDTO" />
+        <property name="destClass" value="de.hybris.platform.commercefacades.travel.AddBundleToCartRequestData" />
+        <property name="fieldMapping">
+            <map>
+                <entry key="addBundleToCart" value="addBundleToCartData"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="paymentTransactionEntryFieldMapper" parent="fieldMapper">
+        <property name="sourceClass" value="de.hybris.platform.commercefacades.travel.order.PaymentTransactionData" />
+        <property name="destClass" value="de.hybris.travelcommercewebservicescommons.dto.payment.PaymentTransactionWsDTO" />
+        <property name="fieldMapping">
+            <map>
+                <entry key="paymentTransactionEntryData" value="paymentTransactionEntry"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="segmentInfoFieldMapper" parent="fieldMapper">
+        <property name="sourceClass" value="de.hybris.platform.commercefacades.travel.reservation.data.ReservationPricingInfoData" />
+        <property name="destClass" value=" de.hybris.travelcommercewebservicescommons.dto.reservation.ReservationPricingInfoWsSTO" />
+        <property name="fieldMapping">
+            <map>
+                <entry key="segmentInfoDatas" value="segmentInfo"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="loginFieldMapper" parent="fieldMapper">
+        <property name="sourceClass"
+                value="de.hybris.platform.travelcommercewebservices.oauth.data.AuthenticationResponseData" />
+        <property name="destClass"
+                value="de.hybris.travelcommercewebservicescommons.dto.oauth.OauthConfirmationWsDTO" />
+    </bean>
+
+</beans>

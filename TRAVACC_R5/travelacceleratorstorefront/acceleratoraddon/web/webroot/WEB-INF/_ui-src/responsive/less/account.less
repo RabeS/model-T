@@ -1,0 +1,333 @@
+.account-section {
+    margin-bottom: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    @media (min-width: @screen-sm) {
+        width: 100%;
+    }
+    @media (min-width: @screen-md) {
+        width: @screen-md;
+    }
+    @media (min-width: @screen-lg) {
+        width: @screen-lg;
+    }
+    @media (min-width: @screen-md-min) {
+        .account-section-header {
+            margin-left: 100px;
+        }
+        .account-section-content {
+            margin-left: 100px;
+        }
+    }
+}
+
+#my-account-table, #my-account-table-hotel {
+    color: #fff;
+    background-color: #fff;
+    border-top: 0;
+    margin: -1px -1px;
+    th, td {
+        padding: 15px;
+        text-align: center;
+        &.text-right {
+            text-align: right;
+        }
+        &:first-child {
+            background-color: @brand-blue;
+            color: #fff;
+            font-weight: bold;
+        }
+    }
+    thead {
+        color: @brand-blue;
+    }
+    tbody,
+    tfoot {
+        color: #6d6e71;
+    }
+    tbody {
+        font-weight: bold;
+        tr {
+            border-bottom: 1px solid #83b2c0;
+        }
+    }
+    tfoot {
+        td {
+            font-weight: bold;
+            &:nth-child(2) {}
+        }
+        tr.price-summary-finaltotal {
+            border-top: 1px solid #83b2c0;
+            .price-summary-totals {
+                font-size: 16px;
+            }
+        }
+    }
+    .card-number {
+        color: @secondary-blue;
+        font-weight: bold;
+    }
+    @media (max-width: @screen-xs-max) {
+
+        /* Force table to not be like tables anymore */
+        table,
+        thead,
+        tbody,
+        tfoot,
+        th,
+        td,
+        tr {
+            display: block;
+        }
+        /* Hide table headers (but not display: none;, for accessibility) */
+        thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+        tr { border: none; }
+        td {
+            /* Behave  like a "row" */
+            border: none;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            white-space: normal;
+            text-align:left;
+            &:before {
+                /* Now like a table header */
+                padding-right: 10px;
+                content: attr(data-title);
+            }
+        }
+        tbody, tfoot {
+            width: calc(~'100% + 2px');
+        }
+    } // @media (max-width: @screen-xs-max)
+
+    @media (max-width: @screen-sm-max) {
+        th, td {
+            padding: 10px;
+        }
+    }
+}
+
+#my-bookings,
+#saved-payment,
+#saved-passengers,
+#saved-search {
+    .fieldset {
+        p {
+            padding-bottom: 10px;
+        }
+    }
+}
+
+#my-bookings {
+    &.panel-body {
+        padding: 15px;
+    }
+    .accommodation-items {
+        li:last-child {
+            margin-bottom: 0;
+        }
+    }
+    @media (max-width: @screen-xs) {
+        &.panel-body {
+            padding: 15px;
+        }
+        .accommodation-items {
+            padding-top: 0;
+        }
+        .booking-list {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .accommodation-details {
+            padding-top: 15px;
+            width: 100%;
+            margin-left: 0;
+        }
+        .accommodation-image {
+            position: static;
+            z-index: 0;
+            overflow: visible;
+            width: 100%;
+            img {
+                position: static;
+                max-width: 0;
+                transform: initial;
+            }
+        }
+    }
+    #transport-items {
+        padding-top: 0;
+        .booking-list {
+            background: transparent;
+            border: 0;
+            margin-bottom: 0;
+        }
+    }
+
+    .view-details-link { text-decoration: underline; }
+
+    dd {
+        display: inline;
+        @media (max-width: @screen-sm-max) {
+            display: block;
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+        margin-right: 30px;
+    }
+
+    p { margin-bottom: 20px; }
+
+    a.disabled {
+        pointer-events: none;
+        color: #ccc;
+    }
+}
+
+// My Account Hybris OOTB
+
+.accountPageBodyContent {
+    margin-bottom: 20px;
+    div.consent-section-header,
+    div.account-close-section-header {
+        color: #154259;
+        padding: 15px 15px 0px 15px;
+        background: none;
+        border: none;
+        font-size: 18px;
+    }
+    #close-account {
+        button {
+            margin-bottom: 20px;
+        }
+    }
+    .consent-section-form {
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        .toggle-button {
+            position: unset;
+        }
+    }
+    .account-section-header {
+        background-color: @secondary-blue;
+        padding: 10px 15px;
+        border-bottom: 1px solid @brand-blue;
+        font-size: 20px;
+        color: #fff;
+        font-weight: 500;
+    }
+    .account-section-content {
+        background: #f1f2f2;
+        padding: 20px;
+        float: none;
+    }
+
+    #updateProfileForm {
+        .form-group {
+            width: 50%;
+        }
+        @media screen and (max-width: 768px) {
+            .form-group {
+                width: 100%;
+            }
+        }
+    }
+
+    #updateEmailForm {
+        .form-group {
+            width: 50%;
+        }
+        @media screen and (max-width: 768px) {
+            .form-group {
+                width: 100%;
+            }
+        }
+    }
+
+    #updatePasswordForm {
+        .form-group {
+            width: 50%;
+        }
+        @media screen and (max-width: 768px) {
+            .form-group {
+                width: 100%;
+            }
+        }
+    }
+
+    .panel-border-none {
+        border: none;
+        margin: 0;
+    }
+
+    .accountActions {
+        width: 100%
+    }
+    .container {
+        &.accountActions {
+            padding: 0;
+
+        }
+    }
+
+    .backToHome { padding-right: 0; }
+
+    @media screen and (max-width: 768px) {
+        .container.accountActions .accountButtons:last-child {
+            padding-top: 20px;
+        }
+        .accountButtons {
+            &:first-child {
+                padding: 0px;
+                margin-bottom: 20px;
+            }
+            &:last-child {
+                padding: 0px;
+            }
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        .accountButtons {
+            &:first-child {
+                padding-right: 0;
+            }
+            &:last-child {
+                padding-left: 0;
+            }
+        }
+    }
+
+} // #personal-details
+
+.accommodation-items.my-bookings {
+    .booking-list {
+        background-color: #fff;
+        border-color: @secondary-blue;
+        min-height: 183px;
+        .btn {
+            margin-bottom: 15px;
+        }
+        p {
+            a {
+                text-decoration: underline;
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+        .accommodation-image img {
+            @media (max-width: @screen-xs) {
+                min-height: 0;
+            }
+        }
+    }
+}

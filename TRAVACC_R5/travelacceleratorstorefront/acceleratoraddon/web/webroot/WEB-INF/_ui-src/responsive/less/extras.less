@@ -1,0 +1,76 @@
+.passenger-descriptor,
+.passenger-extras,
+.extra-item,
+.extra-item-selection {
+    padding: 15px;
+    .extras-alignment-right {
+        text-align: right;
+    }
+    .extras-alignment-left {
+        text-align: left;
+    }
+}
+
+.passenger-descriptor,
+.extra-item {
+    background-color: @brand-blue;
+}
+
+.passenger-descriptor + .passenger-extras {
+    input {
+        margin-left: 5px;
+    }
+}
+
+.passenger-extras,
+.extra-item-selection {
+    background-color: #fff;
+    color: @brand-blue;
+    text-align: center;
+    label {
+        text-align: center;
+    }
+    &.half-width {
+        width: 37.5%;
+    }
+}
+
+.icon-big {
+    padding: 0 0 10px 10px;
+    .icon-holditem,
+    .icon-meal,
+    .icon-seats,
+    .icon-loungeaccess,
+    .icon-prioritycheckin,
+    .icon-priorityboarding,
+    .icon-upgrade,
+    .icon-voucher {
+        min-height: 60px;
+        background: url("@{theme-images-url}/icon-luggage.png") no-repeat scroll center 0;
+        background-size: contain;
+    }
+    .icon-holditem {
+        background-image: url("@{theme-images-url}/icon-luggage.svg");
+    }
+    .icon-meal {
+        background-image: url("@{theme-images-url}/icon-meal.svg");
+    }
+    .icon-seats {
+        background-image: url("@{theme-images-url}/icon-seats.svg");
+    }
+    .icon-loungeaccess {
+        background-image: url("@{theme-images-url}/icon-lounge.svg");
+    }
+    .icon-prioritycheckin {
+        background-image: url("@{theme-images-url}/icon-priority-extras.svg");
+    }
+    .icon-priorityboarding {
+        background-image: url("@{theme-images-url}/icon-priority-extras.svg");
+    }
+    .icon-upgrade {
+        background-image: url("@{theme-images-url}/icon-upgrade.svg");
+    }
+    .icon-voucher {
+        background-image: url("@{theme-images-url}/icon-voucher.svg");
+    }
+}

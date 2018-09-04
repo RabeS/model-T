@@ -1,0 +1,46 @@
+$productCatalog = naturebayhotelsProductCatalog
+$catalogVersion = catalogVersion(catalog(id[default = $productCatalog]), version[default = 'Staged'])[unique = true, default = $productCatalog:Staged]
+$siteResource = jar:de.hybris.platform.travelstore.constants.TravelstoreConstants&/travelstore/import/coredata/datasets/naturebayhotels
+$medias = medias(code, $catalogVersion)
+$gallery = gallery(qualifier, $catalogVersion)
+$picture = listImage(code, $catalogVersion)
+
+INSERT_UPDATE Media; code[unique = true]; realfilename; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/jpeg']; $catalogVersion; mediaFormat(qualifier)
+; images/defaultAccommodationOfferingDetail1.jpg ; hotel_car01.jpg       ; $siteResource/images/accommodation-offerings/hotel_car01.jpg       ; ; ; 860Wx465H
+; images/defaultAccommodationOfferingThumb1.jpg  ; hotel_car_thumb01.jpg ; $siteResource/images/accommodation-offerings/hotel_car_thumb01.jpg ; ; ; 100Wx100H
+; images/defaultAccommodationOfferingDetail2.jpg ; hotel_car02.jpg       ; $siteResource/images/accommodation-offerings/hotel_car02.jpg       ; ; ; 860Wx465H
+; images/defaultAccommodationOfferingThumb2.jpg  ; hotel_car_thumb02.jpg ; $siteResource/images/accommodation-offerings/hotel_car_thumb02.jpg ; ; ; 100Wx100H
+; images/defaultAccommodationOfferingList.svg    ; hotel_result01.svg    ; $siteResource/images/accommodation-offerings/hotel_result01.svg    ; ; ; 300Wx300H
+
+
+INSERT_UPDATE MediaContainer; qualifier[unique = true]; $medias; $catalogVersion[unique = true]
+; defaultAccommodationOfferingContainer1 ; images/defaultAccommodationOfferingDetail1.jpg, images/defaultAccommodationOfferingThumb1.jpg ;
+; defaultAccommodationOfferingContainer2 ; images/defaultAccommodationOfferingDetail2.jpg, images/defaultAccommodationOfferingThumb2.jpg ;
+
+INSERT_UPDATE AccommodationOfferingGallery; code[unique = true]; $catalogVersion; $gallery; $picture
+; defaultAccommodationOfferingGallery ; ; defaultAccommodationOfferingContainer1, defaultAccommodationOfferingContainer2 ; images/defaultAccommodationOfferingList.svg
+
+UPDATE AccommodationOffering; code[unique = true]; galleryCode
+; BONDI            ; defaultAccommodationOfferingGallery
+; PALM_COVE        ; defaultAccommodationOfferingGallery
+; MANTA_LAGOON     ; defaultAccommodationOfferingGallery
+; VILLA_MAKATI     ; defaultAccommodationOfferingGallery
+; LANTERN          ; defaultAccommodationOfferingGallery
+; WAIKIKI          ; defaultAccommodationOfferingGallery
+; COCO_PALM        ; defaultAccommodationOfferingGallery
+
+; BIRD_PARADISE    ; defaultAccommodationOfferingGallery
+; JUNGLE_TREEHOUSE ; defaultAccommodationOfferingGallery
+; REDWOOD          ; defaultAccommodationOfferingGallery
+; PEBBLE_BEACH     ; defaultAccommodationOfferingGallery
+; DAINTREE         ; defaultAccommodationOfferingGallery
+; CONTIKI          ; defaultAccommodationOfferingGallery
+; KURRAJONG        ; defaultAccommodationOfferingGallery
+
+; THE_LEAF         ; defaultAccommodationOfferingGallery
+; VILLA_COCONUT    ; defaultAccommodationOfferingGallery
+; SHIMBA           ; defaultAccommodationOfferingGallery
+; SAMBURU          ; defaultAccommodationOfferingGallery
+; HAKUNA_MATATA    ; defaultAccommodationOfferingGallery
+; JUNGLE_LODGE     ; defaultAccommodationOfferingGallery
+; ELLA_PARADISE    ; defaultAccommodationOfferingGallery

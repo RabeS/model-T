@@ -1,0 +1,509 @@
+$lang = en
+
+############################# CONDITIONS CATEGORIES ##########################
+INSERT_UPDATE RuleConditionDefinitionCategory; id[unique = true]; name[lang = $lang]; priority
+; accommodation ; Accommodation ; 2800
+
+
+###################################################################################### CART ##############################################################################
+
+############################# CONDITION DEFINITION ##########################
+INSERT_UPDATE RuleConditionDefinition; id[unique = true]; name[lang = $lang]; priority; breadcrumb[lang = $lang]; allowsChildren; translatorId; translatorParameters; categories(id)
+; y_accommodation_cart_search_date                 ; Accommodation Search date    ; 900 ; When the add to cart is performed on a date {operator} {date}                                                                              ; false ; ruleAccommodationSearchDateCartConditionTranslator          ; ; accommodation
+
+; y_accommodation_cart_customers                   ; Target customers             ; 900 ; Target {customer_groups_operator} customer groups {customer_groups} or customers {customers}                                               ; false ; ruleAccommodationCustomersCartConditionTranslator           ; ; accommodation
+
+; y_accommodation_cart_sales_application           ; Channel                      ; 900 ; When the Channel is {channel}                                                                                                              ; false ; ruleAccommodationSalesApplicationCartConditionTranslator    ; ; accommodation
+
+; y_accommodation_cart_destination_location        ; Destination Location         ; 900 ; When the Accommodation Offering Destination Location list includes any of {incLocations}, and is not in any of {excAccommodationLocations} ; false ; ruleAccommodationDestinationLocationCartConditionTranslator ; ; accommodation
+
+; y_accommodation_cart_days_of_week                ; Days of week                 ; 900 ; When the stay days list includes any of: {days}                                                                                            ; false ; ruleDayOfWeekCartConditionTranslator                        ; ; accommodation
+
+; y_accommodation_cart_accommodation_offering      ; Accommodation Offerings      ; 900 ; When the Accommodation Offering list includes any of {accommodationOfferings}                                                              ; false ; ruleAccommodationOfferingCartConditionTranslator            ; ; accommodation
+
+; y_accommodation_cart_stay_duration               ; Stay Duration                ; 900 ; When the stay duration is {operator} than {days} days                                                                                      ; false ; ruleStayDurationCartConditionTranslator                     ; ; accommodation
+
+; y_accommodation_cart_accommodation_offering_type ; Accommodation Offering Types ; 900 ; When the Accommodation Offering type list includes any of {accommodationOfferingType}                                                      ; false ; ruleAccommodationOfferingTypeCartConditionTranslator        ; ; accommodation
+
+; y_accommodation_cart_accommodation_provider      ; Accommodation Provider       ; 900 ; When the Accommodation Provider list includes any of {accommodationProviders}                                                              ; false ; ruleAccommodationProviderCartConditionTranslator            ; ; accommodation
+
+; y_accommodation_cart_stay_dates                  ; Stay Dates                   ; 900 ; When the stay date is {operator} than {date}                                                                                               ; false ; ruleStayDatesCartConditionTranslator                        ; ; accommodation
+
+; y_accommodation_cart_accommodation               ; Accommodation                ; 900 ; When the accommodation list includes any of {accommodations}                                                                               ; false ; ruleAccommodationCartConditionTranslator                    ; ; accommodation
+
+; y_accommodation_cart_rate_plan                   ; Rate Plan                    ; 900 ; When the Rate Plan type list includes any of {ratePlans}                                                                                   ; false ; ruleAccommodationRatePlanCartConditionTranslator            ; ; accommodation
+
+; y_accommodation_cart_market_location             ; Market Location              ; 900 ; When the market location list includes any of {inclMarketLocations}, and is not in any of {excMarketLocations}                             ; false ; ruleAccommodationMarketLocationCartConditionTranslator      ; ; accommodation
+
+; y_accommodation_cart_accommodation_category      ; Accommodation Categories     ; 900 ; When the Accommodation Category list includes any of {accommodationCategory}                                                               ; false ; ruleAccommodationCategoryCartConditionTranslator            ; ; accommodation
+
+INSERT_UPDATE RuleConditionDefinitionParameter; definition(id)[unique = true]; id[unique = true]; priority; name[lang = $lang]; description[lang = $lang]; type; value; required[default = true]; validators
+; y_accommodation_cart_search_date                 ; date                      ; 1000 ; Date                          ; Date from or to which the condition is set ; java.util.Date                                          ;                 ;       ;
+; y_accommodation_cart_search_date                 ; operator                  ; 1000 ; Operator                      ; Operator to compare the dates              ; Enum(de.hybris.platform.ruledefinitions.AmountOperator) ; """LESS_THAN""" ;       ;
+
+; y_accommodation_cart_customers                   ; customer_groups_operator  ; 1400 ; Customer group selection operator ; Customer should be part of ANY or ALL customer groups                      ; Enum(de.hybris.platform.ruledefinitions.CollectionOperator) ; """CONTAINS_ANY""" ;       ;
+; y_accommodation_cart_customers                   ; customer_groups           ; 1300 ; Customer groups                   ; List of qualifying customer groups                                         ; List(ItemType(UserGroup))                                   ;                    ; false ;
+; y_accommodation_cart_customers                   ; customers                 ; 1200 ; Customers                         ; List of qualifying customers                                               ; List(ItemType(Customer))                                    ;                    ; false ;
+; y_accommodation_cart_customers                   ; excluded_customer_groups  ; 1100 ; Excluded customer groups          ; List of sub-groups that should be excluded from qualifying customer groups ; List(ItemType(UserGroup))                                   ;                    ; false ;
+; y_accommodation_cart_customers                   ; excluded_customers        ; 1000 ; Excluded customers                ; List of customers that should be excluded from qualifying customer groups  ; List(ItemType(Customer))                                    ;                    ; false ;
+
+; y_accommodation_cart_sales_application           ;channel                    ; 1000 ; Channel                       ; Channel                                    ; ItemType(SalesApplication)                              ;                 ;       ;
+
+; y_accommodation_cart_destination_location        ; excLocations              ; 1000 ; Excluded Destination Location ; Excluded Destination Location              ; List(ItemType(Location))                                ;                 ; false ;
+; y_accommodation_cart_destination_location        ; incLocations              ; 1100 ; Included Destination Location ; Included Destination Location              ; List(ItemType(Location))                                ;                 ; false ;
+
+; y_accommodation_cart_days_of_week                ; days                      ; 1100 ; Days of week                  ; Days of week                               ; List(ItemType(DayOfWeek))                               ;                 ; false ;
+
+; y_accommodation_cart_accommodation_offering      ; accommodationOfferings    ; 1100 ; Accommodation offerings       ; Accommodation offerings                    ; List(ItemType(AccommodationOffering))                   ;                 ; false ;
+
+; y_accommodation_cart_accommodation_provider      ; accommodationProviders    ; 1100 ; Accommodation Providers       ; Accommodation Providers                    ; List(ItemType(AccommodationProvider))                   ;                 ; false ;
+
+; y_accommodation_cart_stay_duration               ; operator                  ; 1000 ; Operator                      ; Operator to compare the quantity           ; Enum(de.hybris.platform.ruledefinitions.AmountOperator) ;                 ;       ;
+; y_accommodation_cart_stay_duration               ; days                      ; 900  ; Days                          ; Number of days                             ; java.lang.Integer                                       ;                 ;       ; rulePositiveNumberParameterValidator
+
+; y_accommodation_cart_stay_dates                  ; date                      ; 1100 ; Stay Dates                    ; Stay Dates                                 ; java.util.Date                                          ;                 ; false ;
+; y_accommodation_cart_stay_dates                  ; operator                  ; 1000 ; Operator                      ; Operator to compare the dates              ; Enum(de.hybris.platform.ruledefinitions.AmountOperator) ; """LESS_THAN""" ;       ;
+
+; y_accommodation_cart_accommodation               ; accommodations            ; 1100 ; Accommodations                ; Accommodations                             ; List(ItemType(Accommodation))                           ;                 ; false ;
+
+; y_accommodation_cart_accommodation_offering_type ; accommodationOfferingType ; 1000 ; Accommodation Offering Types  ; Accommodation Offering Types               ; List(ItemType(AccommodationOfferingType))               ;                 ;       ;
+
+; y_accommodation_cart_rate_plan                   ; ratePlans                 ; 1100 ; RatePlan                      ; RatePlan                                   ; List(ItemType(RatePlan))                                ;                 ; false ;
+
+; y_accommodation_cart_market_location             ; inclMarketLocations       ; 1100 ; Included Market Location      ; Included Market Location                   ; List(ItemType(Location))                                ;                 ; false ;
+; y_accommodation_cart_market_location             ; excMarketLocations        ; 1000 ; Excluded Market Location      ; Excluded Market Location                   ; List(ItemType(Location))                                ;                 ; false ;
+
+; y_accommodation_cart_accommodation_category      ; accommodationCategory     ; 1100 ; Accommodation Categories      ; Accommodation Categories                   ; List(ItemType(AccommodationCategory))                   ;                 ; false ;
+
+############################# CONDITON DEFINITION RULE TYPE MAPPINGS ##########################
+INSERT_UPDATE RuleConditionDefinitionRuleTypeMapping; definition(id)[unique = true]; ruleType(code)[default = AccommodationPromotionSourceRule][unique = true]
+; y_accommodation_cart_destination_location        ;
+; y_accommodation_cart_days_of_week                ;
+; y_accommodation_cart_accommodation_offering      ;
+; y_accommodation_cart_accommodation_provider      ;
+; y_accommodation_cart_stay_duration               ;
+; y_accommodation_cart_stay_dates                  ;
+; y_accommodation_cart_accommodation               ;
+; y_accommodation_cart_accommodation_offering_type ;
+; y_accommodation_cart_rate_plan                   ;
+; y_accommodation_cart_market_location             ;
+; y_accommodation_cart_accommodation_category      ;
+; y_accommodation_cart_search_date                 ;
+; y_accommodation_cart_sales_application           ;
+; y_accommodation_cart_customers                   ;
+
+###################################################################################### SHOW EXTRA PRODUCT ##############################################################################
+
+############################# CONDITION ##########################
+INSERT_UPDATE RuleConditionDefinition; id[unique = true]; name[lang = $lang]; priority; breadcrumb[lang = $lang]; allowsChildren; translatorId; translatorParameters; categories(id)
+; y_extra_product_customers                   ; Customers                    ; 900 ; Target {customer_groups_operator} customer groups {customer_groups} or customers {customers}                                  ; false ; ruleAccommodationCustomersConditionTranslator                      ; ; accommodation
+
+; y_extra_product_sales_application           ; Channel                      ; 900 ; When the Channel is {channel}                                                                                                 ; false ; ruleSalesAppAccommodationReservationConditionTranslator            ; ; accommodation
+
+; y_extra_product_accommodation_offering      ; Accommodation Offerings      ; 900 ; When the Accommodation Offering list includes any of {accommodationOfferings}                                                 ; false ; ruleAccommodationOfferingReservationConditionTranslator            ; ; accommodation
+
+; y_extra_product_accommodation_offering_type ; Accommodation Offering Types ; 900 ; When the Accommodation Offering type list includes any of {accommodationOfferingType}                                         ; false ; ruleAccommodationOfferingTypeConditionTranslator                   ; ; accommodation
+
+; y_extra_product_stay_dates                  ; Stay Dates                   ; 900 ; When the stay date is {operator} than {date}                                                                                  ; false ; ruleAccommodationStayDatesConditionTranslator                      ; ; accommodation
+
+; y_extra_product_search_date                 ; Search date                  ; 900 ; When the add to cart is performed on a date {operator} {date}                                                                 ; false ; ruleSearchDateAccommodationReservationConditionTranslator          ; ; accommodation
+
+; y_extra_product_stay_duration               ; Stay Duration                ; 900 ; When the stay duration is {operator} than {days} days                                                                         ; false ; ruleStayDurationAccommodationReservationConditionTranslator        ; ; accommodation
+
+; y_extra_product_days_of_week                ; Days of week                 ; 900 ; When the stay days includes any of: {days}                                                                                    ; false ; ruleDayOfWeekAccommodationReservationConditionTranslator           ; ; accommodation
+
+; y_extra_product_destination_location        ; Destination Location         ; 900 ; When the Accommodation Offering Destination Location list includes any of {incLocations}, and is not in any of {excLocations} ; false ; ruleLocationDestinationAccommodationReservationConditionTranslator ; ; accommodation
+
+; y_extra_product_accommodation_provider      ; Accommodation Provider       ; 900 ; When the Accommodation Provider list includes any of {accommodationProviders}                                                 ; false ; ruleAccommodationProviderReservationConditionTranslator            ; ; accommodation
+
+; y_extra_product_accommodation_category      ; Accommodation Categories     ; 900 ; When the Accommodation Category list includes any of {accommodationCategory}                                                  ; false ; ruleAccommodationCategoryReservationConditionTranslator            ; ; accommodation
+
+; y_extra_product_rate_plan                   ; Rate Plan for Extra Products ; 900 ; When the Rate Plan type list includes any of {ratePlans}                                                                      ; false ; ruleAccommodationRatePlanReservationConditionTranslator            ; ; accommodation
+
+; y_extra_product_market_location             ; Market Location              ; 900 ; When the market location list includes any of {inclMarketLocations}, and is not in any of {excMarketLocations}                ; false ; ruleMarketLocationAccommodationReservationConditionTranslator      ; ; accommodation
+
+; y_extra_product_accommodation               ; Accommodation                ; 900 ; When the accommodation list includes any of {accommodations}                                                                  ; false ; ruleAccommodationReservationConditionTranslator                    ; ; accommodation
+
+INSERT_UPDATE RuleConditionDefinitionParameter; definition(id)[unique = true]; id[unique = true]; priority; name[lang = $lang]; description[lang = $lang]; type; value; required[default = true]; validators
+; y_extra_product_customers                   ; customer_groups_operator  ; 1400 ; Customer group selection operator ; Customer should be part of ANY or ALL customer groups                      ; Enum(de.hybris.platform.ruledefinitions.CollectionOperator) ; """CONTAINS_ANY""" ;       ;
+; y_extra_product_customers                   ; customer_groups           ; 1300 ; Customer groups                   ; List of qualifying customer groups                                         ; List(ItemType(UserGroup))                                   ;                    ; false ;
+; y_extra_product_customers                   ; customers                 ; 1200 ; Customers                         ; List of qualifying customers                                               ; List(ItemType(Customer))                                    ;                    ; false ;
+; y_extra_product_customers                   ; excluded_customer_groups  ; 1100 ; Excluded customer groups          ; List of sub-groups that should be excluded from qualifying customer groups ; List(ItemType(UserGroup))                                   ;                    ; false ;
+; y_extra_product_customers                   ; excluded_customers        ; 1000 ; Excluded customers                ; List of customers that should be excluded from qualifying customer groups  ; List(ItemType(Customer))                                    ;                    ; false ;
+
+; y_extra_product_sales_application           ; channel                   ; 1000 ; Channel                           ; Channel                                                                    ; ItemType(SalesApplication)                                  ;                    ;       ;
+
+; y_extra_product_stay_dates                  ; date                      ; 1100 ; Stay Dates                        ; Stay Dates                                                                 ; java.util.Date                                              ;                    ; false ;
+; y_extra_product_stay_dates                  ; operator                  ; 1000 ; Operator                          ; Operator to compare the dates                                              ; Enum(de.hybris.platform.ruledefinitions.AmountOperator)     ; """LESS_THAN"""    ;       ;
+
+; y_extra_product_stay_duration               ; operator                  ; 1000 ; Operator                          ; Operator to compare the quantity                                           ; Enum(de.hybris.platform.ruledefinitions.AmountOperator)     ;                    ;       ;
+; y_extra_product_stay_duration               ; days                      ; 900  ; Days                              ; Number of days                                                             ; java.lang.Integer                                           ;                    ;       ; rulePositiveNumberParameterValidator
+
+; y_extra_product_search_date                 ; date                      ; 1000 ; Date                              ; Date from or to which the condition is set                                 ; java.util.Date                                              ;                    ;       ;
+; y_extra_product_search_date                 ; operator                  ; 1000 ; Operator                          ; Operator to compare the dates                                              ; Enum(de.hybris.platform.ruledefinitions.AmountOperator)     ; """LESS_THAN"""    ;       ;
+
+; y_extra_product_accommodation_offering_type ; accommodationOfferingType ; 1000 ; Accommodation Offering Types      ; Accommodation Offering Types                                               ; List(ItemType(AccommodationOfferingType))                   ;                    ;       ;
+
+; y_extra_product_accommodation_offering      ; accommodationOfferings    ; 1100 ; Accommodation Offerings           ; Accommodation Offerings                                                    ; List(ItemType(AccommodationOffering))                       ;                    ; false ;
+
+; y_extra_product_destination_location        ; incLocations              ; 1100 ; Included Destination Location     ; Included Destination Location                                              ; List(ItemType(Location))                                    ;                    ; false ;
+; y_extra_product_destination_location        ; excLocations              ; 1000 ; Excluded Destination Location     ; Excluded Destination Location                                              ; List(ItemType(Location))                                    ;                    ; false ;
+
+; y_extra_product_days_of_week                ; days                      ; 1100 ; Days of week                      ; Days of week                                                               ; List(ItemType(DayOfWeek))                                   ;                    ; false ;
+
+; y_extra_product_accommodation_provider      ; accommodationProviders    ; 1100 ; Accommodation Providers           ; Accommodation Providers                                                    ; List(ItemType(AccommodationProvider))                       ;                    ; false ;
+
+; y_extra_product_accommodation_category      ; accommodationCategory     ; 1100 ; Accommodation Categories          ; Accommodation Categories                                                   ; List(ItemType(AccommodationCategory))                       ;                    ; false ;
+
+; y_extra_product_rate_plan                   ; ratePlans                 ; 1100 ; Rate Plans                        ; Rate Plans                                                                 ; List(ItemType(RatePlan))                                    ;                    ; false ;
+
+; y_extra_product_market_location             ; inclMarketLocations       ; 1100 ; Included Market Locations         ; Included Market Locations                                                  ; List(ItemType(Location))                                    ;                    ; false ;
+; y_extra_product_market_location             ; excMarketLocations        ; 1000 ; Excluded Market Locations         ; Excluded Market Locations                                                  ; List(ItemType(Location))                                    ;                    ; false ;
+
+; y_extra_product_accommodation               ; accommodations            ; 1100 ; Accommodations                    ; Accommodations                                                             ; List(ItemType(Accommodation))                               ;                    ; false ;
+
+############################# CONDITON DEFINITION RULE TYPE MAPPINGS ##########################
+INSERT_UPDATE RuleConditionDefinitionRuleTypeMapping; definition(id)[unique = true]; ruleType(code)[default = ShowExtraProductSourceRule][unique = true]
+; y_extra_product_customers                   ;
+; y_extra_product_sales_application           ;
+; y_extra_product_stay_dates                  ;
+; y_extra_product_search_date                 ;
+; y_extra_product_stay_duration               ;
+; y_extra_product_accommodation_offering_type ;
+; y_extra_product_accommodation_offering      ;
+; y_extra_product_destination_location        ;
+; y_extra_product_days_of_week                ;
+; y_extra_product_accommodation_provider      ;
+; y_extra_product_accommodation_category      ;
+; y_extra_product_rate_plan                   ;
+; y_extra_product_market_location             ;
+; y_extra_product_accommodation               ;
+
+
+############################# ACTIONS ##########################
+INSERT_UPDATE RuleActionDefinitionCategory; id[unique = true]; name[lang = $lang]; priority
+; show_extra_products ; Show Extra Product ; 1800
+
+INSERT_UPDATE RuleActionDefinition; id[unique = true]; name[lang = $lang]; priority; breadcrumb[lang = $lang]; translatorId; translatorParameters; categories(id)
+; y_show_extra_product ; Show Extra Product ; 1000 ; Show  {extras} for the current search ; ruleExecutableActionTranslator ; actionId->ruleShowExtraProductAction ; show_extra_products
+
+INSERT_UPDATE RuleActionDefinitionParameter; definition(id)[unique = true]; id[unique = true]; priority; name[lang = $lang]; description[lang = $lang]; type; value; required[default = true]
+; y_show_extra_product ; extras ; 1000 ; Show Products Action ; Products that will be shown ; List(ItemType(Product)) ; ;
+
+############################# ACTION DEFINITION RULE TYPE MAPPINGS ##########################
+INSERT_UPDATE RuleActionDefinitionRuleTypeMapping; definition(id)[unique = true]; ruleType(code)[unique = true]
+; y_show_extra_product ; ShowExtraProductSourceRule
+
+
+
+###################################################################################### SHOW ACCOMMODATION OFFERINGS ##############################################################################
+
+############################# CONDITION ##########################
+INSERT_UPDATE RuleConditionDefinition; id[unique = true]; name[lang = $lang]; priority; breadcrumb[lang = $lang]; allowsChildren; translatorId; translatorParameters; categories(id)
+; y_show_accommodation_offerings_search_date                 ; Search date                  ; 900 ; When the search is performed on a date {operator} {date}                                                       ; false ; ruleSearchDateAccommodationSearchResponseConditionTranslator     ; ; accommodation
+
+; y_show_accommodation_offerings_sales_application           ; Channel                      ; 900 ; When the Channel is {channel}                                                                                  ; false ; ruleSalesAppAccommodationSearchResponseConditionTranslator       ; ; accommodation
+
+; y_show_accommodation_offerings_stay_duration               ; Stay Duration                ; 900 ; When the stay duration is {operator} than {days} days                                                          ; false ; ruleStayDurationAccommodationSearchResponseConditionTranslator   ; ; accommodation
+
+; y_show_accommodation_offerings_stay_dates                  ; Stay Dates                   ; 900 ; When the stay date is {operator} than {date}                                                                   ; false ; ruleStayDatesAccommodationSearchResponseConditionTranslator      ; ; accommodation
+
+; y_show_accommodation_offerings_days_of_week                ; Days of week                 ; 900 ; When the stay day list includes any of: {days}                                                                 ; false ; ruleDayOfWeekAccommodationSearchResponseConditionTranslator      ; ; accommodation
+
+; y_show_accommodation_offerings_market_location             ; Market Location              ; 900 ; When the market location list includes any of {inclMarketLocations}, and is not in any of {excMarketLocations} ; false ; ruleMarketLocationAccommodationSearchResponseConditionTranslator ; ; accommodation
+
+; y_show_accommodation_offerings_accommodation_offering_type ; Accommodation Offering Types ; 900 ; When the Accommodation Offering  type list includes any of {accommodationOfferingType}                         ; false ; ruleAccommodationOfferingTypeSearchResponseConditionTranslator   ; ; accommodation
+
+; y_show_accommodation_offerings_customers                   ; Customers                    ; 900 ; Target {customer_groups_operator} customer groups {customer_groups} or customers {customers}                   ; false ; ruleCustomerAccommodationSearchResponseConditionTranslator       ; ; accommodation
+
+INSERT_UPDATE RuleConditionDefinitionParameter; definition(id)[unique = true]; id[unique = true]; priority; name[lang = $lang]; description[lang = $lang]; type; value; required[default = true]; validators
+; y_show_accommodation_offerings_search_date                 ; date                      ; 1000 ; Date                              ; Date from or to which the condition is set                                 ; java.util.Date                                              ;                    ;       ;
+; y_show_accommodation_offerings_search_date                 ; operator                  ; 1000 ; Operator                          ; Operator to compare the dates                                              ; Enum(de.hybris.platform.ruledefinitions.AmountOperator)     ; """LESS_THAN"""    ;       ;
+
+; y_show_accommodation_offerings_sales_application           ; channel                   ; 1000 ; Channel                           ; Channel                                                                    ; ItemType(SalesApplication)                                  ;                    ;       ;
+
+; y_show_accommodation_offerings_stay_duration               ; operator                  ; 1000 ; Operator                          ; Operator to compare the quantity                                           ; Enum(de.hybris.platform.ruledefinitions.AmountOperator)     ;                    ;       ;
+; y_show_accommodation_offerings_stay_duration               ; days                      ; 900  ; Days                              ; Number of days                                                             ; java.lang.Integer                                           ;                    ;       ; rulePositiveNumberParameterValidator
+
+; y_show_accommodation_offerings_stay_dates                  ; date                      ; 1100 ; Stay Dates                        ; Stay Dates                                                                 ; java.util.Date                                              ;                    ; false ;
+; y_show_accommodation_offerings_stay_dates                  ; operator                  ; 1000 ; Operator                          ; Operator to compare the dates                                              ; Enum(de.hybris.platform.ruledefinitions.AmountOperator)     ; """LESS_THAN"""    ;       ;
+
+; y_show_accommodation_offerings_days_of_week                ; days                      ; 1100 ; Days of week                      ; Days of week                                                               ; List(ItemType(DayOfWeek))                                   ;                    ; false ;
+
+; y_show_accommodation_offerings_market_location             ; inclMarketLocations       ; 1100 ; Included Market Locations         ; Included Market Locations                                                  ; List(ItemType(Location))                                    ;                    ; false ;
+; y_show_accommodation_offerings_market_location             ; excMarketLocations        ; 1000 ; Excluded Market Locations         ; Excluded Market Locations                                                  ; List(ItemType(Location))                                    ;                    ; false ;
+
+; y_show_accommodation_offerings_customers                   ; customer_groups_operator  ; 1900 ; Customer group selection operator ; Customer should be part of ANY or ALL customer groups                      ; Enum(de.hybris.platform.ruledefinitions.CollectionOperator) ; """CONTAINS_ANY""" ;       ;
+; y_show_accommodation_offerings_customers                   ; customer_groups           ; 1800 ; Customer groups                   ; List of qualifying customer groups                                         ; List(ItemType(UserGroup))                                   ;                    ; false ;
+; y_show_accommodation_offerings_customers                   ; customers                 ; 1700 ; Customers                         ; List of qualifying customers                                               ; List(ItemType(Customer))                                    ;                    ; false ;
+; y_show_accommodation_offerings_customers                   ; excluded_customer_groups  ; 1600 ; Excluded customer groups          ; List of sub-groups that should be excluded from qualifying customer groups ; List(ItemType(UserGroup))                                   ;                    ; false ;
+; y_show_accommodation_offerings_customers                   ; excluded_customers        ; 1500 ; Excluded customers                ; List of customers that should be excluded from qualifying customer groups  ; List(ItemType(Customer))                                    ;                    ; false ;
+
+; y_show_accommodation_offerings_accommodation_offering_type ; accommodationOfferingType ; 1000 ; Accommodation Offering Types      ; Accommodation Offering Types                                               ; List(ItemType(AccommodationOfferingType))                   ;                    ;       ;
+
+############################# CONDITON DEFINITION RULE TYPE MAPPINGS ##########################
+INSERT_UPDATE RuleConditionDefinitionRuleTypeMapping; definition(id)[unique = true]; ruleType(code)[default = ShowAccommodationOfferingSourceRule][unique = true]
+; y_show_accommodation_offerings_search_date                 ;
+; y_show_accommodation_offerings_sales_application           ;
+; y_show_accommodation_offerings_stay_duration               ;
+; y_show_accommodation_offerings_stay_dates                  ;
+; y_show_accommodation_offerings_days_of_week                ;
+; y_show_accommodation_offerings_market_location             ;
+; y_show_accommodation_offerings_customers                   ;
+; y_show_accommodation_offerings_accommodation_offering_type ;
+
+############################# ACTIONS ##########################
+INSERT_UPDATE RuleActionDefinitionCategory; id[unique = true]; name[lang = $lang]; priority
+; show_accommodation_offerings ; Show Accommodation Offerings ; 1800
+
+INSERT_UPDATE RuleActionDefinition; id[unique = true]; name[lang = $lang]; priority; breadcrumb[lang = $lang]; translatorId; translatorParameters; categories(id)
+; y_show_accommodation_offerings ; Show Accommodation Offerings ; 1000 ; Show  {accommodationOfferings} for the current search ; ruleExecutableActionTranslator ; actionId->ruleShowAccommodationOfferingAction ; show_accommodation_offerings
+
+INSERT_UPDATE RuleActionDefinitionParameter; definition(id)[unique = true]; id[unique = true]; priority; name[lang = $lang]; description[lang = $lang]; type; value; required[default = true]
+; y_show_accommodation_offerings ; accommodationOfferings ; 1000 ; Show Accommodation Offerings Action ; Accommodation Offerings that will be shown ; List(ItemType(AccommodationOffering)) ; ;
+
+############################# ACTION DEFINITION RULE TYPE MAPPINGS ##########################
+INSERT_UPDATE RuleActionDefinitionRuleTypeMapping; definition(id)[unique = true]; ruleType(code)[unique = true]
+; y_show_accommodation_offerings ; ShowAccommodationOfferingSourceRule
+
+
+###################################################################################### SHOW ACCOMMODATION CATEGORIES ##############################################################################
+
+############################# CONDITION ##########################
+INSERT_UPDATE RuleConditionDefinition; id[unique = true]; name[lang = $lang]; priority; breadcrumb[lang = $lang]; allowsChildren; translatorId; translatorParameters; categories(id)
+; y_show_accommodation_category_search_date                 ; Search date                  ; 900 ; When the search is performed on a date {operator} {date}                                                       ; false ; ruleSearchDateAccommodationAvailabilityRequestConditionTranslator                ; ; accommodation
+
+; y_show_accommodation_category_stay_dates                  ; Stay Dates                   ; 900 ; When the stay date is {operator} than {date}                                                                   ; false ; ruleStayDatesAccommodationAvailabilityRequestConditionTranslator                 ; ; accommodation
+
+; y_show_accommodation_category_stay_duration               ; Stay Duration                ; 900 ; When the stay duration is {operator} than {days} days                                                          ; false ; ruleStayDurationAccommodationAvailabilityRequestConditionTranslator              ; ; accommodation
+
+; y_show_accommodation_category_days_of_week                ; Days of week                 ; 900 ; When the stay day list includes any of: {days}                                                                 ; false ; ruleDayOfWeekAccommodationAvailabilityRequestConditionTranslator                 ; ; accommodation
+
+; y_show_accommodation_category_accommodation_offering_type ; Accommodation Offering Types ; 900 ; When the Accommodation Offering type list includes any of {accommodationOfferingType}                          ; false ; ruleAccommodationOfferingTypeAccommodationAvailabilityRequestConditionTranslator ; ; accommodation
+
+; y_show_accommodation_category_sales_application           ; Channel                      ; 900 ; When the Channel is {channel}                                                                                  ; false ; ruleSalesAppAccommodationAvailabilityRequestConditionTranslator                  ; ; accommodation
+
+; y_show_accommodation_category_customers                   ; Customers                    ; 900 ; Target {customer_groups_operator} customer groups {customer_groups} or customers {customers}                   ; false ; ruleCustomersAccommodationAvailabilityRequestConditionTranslator                 ; ; accommodation
+
+; y_show_accommodation_category_market_location             ; Market Location              ; 900 ; When the market location list includes any of {inclMarketLocations}, and is not in any of {excMarketLocations} ; false ; ruleMarketLocationAccommodationAvailabilityRequestConditionTranslator            ; ; accommodation
+
+
+
+INSERT_UPDATE RuleConditionDefinitionParameter; definition(id)[unique = true]; id[unique = true]; priority; name[lang = $lang]; description[lang = $lang]; type; value; required[default = true]; validators
+; y_show_accommodation_category_search_date                 ; date                      ; 1000 ; Date                              ; Date from or to which the condition is set                                 ; java.util.Date                                              ;                    ;       ;
+; y_show_accommodation_category_search_date                 ; operator                  ; 1000 ; Operator                          ; Operator to compare the dates                                              ; Enum(de.hybris.platform.ruledefinitions.AmountOperator)     ; """LESS_THAN"""    ;       ;
+
+; y_show_accommodation_category_days_of_week                ; days                      ; 1100 ; Days of week                      ; Days of week                                                               ; List(ItemType(DayOfWeek))                                   ;                    ; false ;
+
+; y_show_accommodation_category_stay_dates                  ; date                      ; 1100 ; Stay Dates                        ; Stay Dates                                                                 ; java.util.Date                                              ;                    ; false ;
+; y_show_accommodation_category_stay_dates                  ; operator                  ; 1000 ; Operator                          ; Operator to compare the dates                                              ; Enum(de.hybris.platform.ruledefinitions.AmountOperator)     ; """LESS_THAN"""    ;       ;
+
+; y_show_accommodation_category_stay_duration               ; operator                  ; 1000 ; Operator                          ; Operator to compare the quantity                                           ; Enum(de.hybris.platform.ruledefinitions.AmountOperator)     ;                    ;       ;
+; y_show_accommodation_category_stay_duration               ; days                      ; 900  ; Days                              ; Number of days                                                             ; java.lang.Integer                                           ;                    ;       ; rulePositiveNumberParameterValidator
+
+; y_show_accommodation_category_sales_application           ; channel                   ; 1000 ; Channel                           ; Channel                                                                    ; ItemType(SalesApplication)                                  ;                    ;       ;
+
+; y_show_accommodation_category_customers                   ; customer_groups_operator  ; 1400 ; Customer group selection operator ; Customer should be part of ANY or ALL customer groups                      ; Enum(de.hybris.platform.ruledefinitions.CollectionOperator) ; """CONTAINS_ANY""" ;       ;
+; y_show_accommodation_category_customers                   ; customer_groups           ; 1300 ; Customer groups                   ; List of qualifying customer groups                                         ; List(ItemType(UserGroup))                                   ;                    ; false ;
+; y_show_accommodation_category_customers                   ; customers                 ; 1200 ; Customers                         ; List of qualifying customers                                               ; List(ItemType(Customer))                                    ;                    ; false ;
+; y_show_accommodation_category_customers                   ; excluded_customer_groups  ; 1100 ; Excluded customer groups          ; List of sub-groups that should be excluded from qualifying customer groups ; List(ItemType(UserGroup))                                   ;                    ; false ;
+; y_show_accommodation_category_customers                   ; excluded_customers        ; 1000 ; Excluded customers                ; List of customers that should be excluded from qualifying customer groups  ; List(ItemType(Customer))                                    ;                    ; false ;
+
+; y_show_accommodation_category_accommodation_offering_type ; accommodationOfferingType ; 1000 ; Accommodation Offering Types      ; Accommodation Offering Types                                               ; List(ItemType(AccommodationOfferingType))                   ;                    ;       ;
+
+; y_show_accommodation_category_market_location             ; inclMarketLocations       ; 1100 ; Included Market Location          ; Included Market Location                                                   ; List(ItemType(Location))                                    ;                    ; false ;
+; y_show_accommodation_category_market_location             ; excMarketLocations        ; 1000 ; Excluded Market Location          ; Excluded Market Location                                                   ; List(ItemType(Location))                                    ;                    ; false ;
+
+
+############################# CONDITON DEFINITION RULE TYPE MAPPINGS ##########################
+INSERT_UPDATE RuleConditionDefinitionRuleTypeMapping; definition(id)[unique = true]; ruleType(code)[default = ShowAccommodationCategorySourceRule][unique = true]
+; y_show_accommodation_category_search_date                 ;
+; y_show_accommodation_category_stay_dates                  ;
+; y_show_accommodation_category_stay_duration               ;
+; y_show_accommodation_category_days_of_week                ;
+; y_show_accommodation_category_accommodation_offering_type ;
+; y_show_accommodation_category_sales_application           ;
+; y_show_accommodation_category_customers                   ;
+; y_show_accommodation_category_market_location             ;
+
+############################# ACTIONS ##########################
+INSERT_UPDATE RuleActionDefinitionCategory; id[unique = true]; name[lang = $lang]; priority
+; show_accommodation_category ; Show Accommodation Categories ; 1800
+
+INSERT_UPDATE RuleActionDefinition; id[unique = true]; name[lang = $lang]; priority; breadcrumb[lang = $lang]; translatorId; translatorParameters; categories(id)
+; y_show_accommodation_category ; Show Accommodation Categories ; 1000 ; Show  {accommodationCategories} for the current search ; ruleExecutableActionTranslator ; actionId->ruleShowAccommodationCategoriesAction ; show_accommodation_category
+
+INSERT_UPDATE RuleActionDefinitionParameter; definition(id)[unique = true]; id[unique = true]; priority; name[lang = $lang]; description[lang = $lang]; type; value; required[default = true]
+; y_show_accommodation_category ; accommodationCategories ; 1000 ; Show Accommodation Categories Action ; Accommodation Categories that will be shown ; List(ItemType(AccommodationCategory)) ; ;
+
+############################# ACTION DEFINITION RULE TYPE MAPPINGS ##########################
+INSERT_UPDATE RuleActionDefinitionRuleTypeMapping; definition(id)[unique = true]; ruleType(code)[unique = true]
+; y_show_accommodation_category ; ShowAccommodationCategorySourceRule
+
+
+###################################################################################### SHOW RATE PLAN ##############################################################################
+
+############################# CONDITION ##########################
+INSERT_UPDATE RuleConditionDefinition; id[unique = true]; name[lang = $lang]; priority; breadcrumb[lang = $lang]; allowsChildren; translatorId; translatorParameters; categories(id)
+; y_show_rate_plans_stay_dates                  ; Stay Dates                   ; 900 ; When the stay date is {operator} than {date}                                                                      ; false ; ruleStayDatesAccommodationAvailabilityConditionTranslator                    ; ; accommodation
+; y_show_rate_plans_stay_duration               ; Stay Duration                ; 900 ; When the stay duration is {operator} than {days} days                                                             ; false ; ruleStayDurationAccommodationAvailabilityConditionTranslator                 ; ; accommodation
+; y_show_rate_plans_days_of_week                ; Days of week                 ; 900 ; When the stay day list includes any of: {days}                                                                    ; false ; ruleDayOfWeekAccommodationAvailabilitytConditionTranslator                   ; ; accommodation
+; y_show_rate_plans_search_date                 ; Search date                  ; 900 ; When the search is performed on a date {operator} {date}                                                          ; false ; ruleSearchDateAccommodationAvailabilityConditionTranslator                   ; ; accommodation
+; y_show_rate_plans_accommodation               ; Accommodation                ; 900 ; When the accommodation list includes any of {accommodations}                                                      ; false ; ruleAccommodationRoomStayConditionTranslator                                 ; ; accommodation
+; y_show_rate_plans_accommodation_category      ; Accommodation Categories     ; 900 ; When the Accommodation Category list includes any of {accommodationCategory}                                      ; false ; ruleAccommodationCategoryAccommodationAvailabilitytConditionTranslator       ; ; accommodation
+; y_show_rate_plans_destination_location        ; Destination Location         ; 900 ; When the Accommodation Offering location list includes any of {incLocations}, and is not in any of {excLocations} ; false ; ruleLocationAccommodationAvailabilityConditionTranslator                     ; ; accommodation
+; y_show_rate_plans_sales_application           ; Channel                      ; 900 ; When the Channel is {channel}                                                                                     ; false ; ruleSalesAppAccommodationAvailabilityConditionTranslator                     ; ; accommodation
+; y_show_rate_plans_customers                   ; Customers                    ; 900 ; Target {customer_groups_operator} customer groups {customer_groups} or customers {customers}                      ; false ; ruleCustomersAccommodationAvailabilityConditionTranslator                    ; ; accommodation
+; y_show_rate_plans_accommodation_provider      ; Accommodation Provider       ; 900 ; When the Accommodation Provider list includes any of {accommodationProviders}                                     ; false ; ruleAccommodationProviderAccommodationAvailabilityRequestConditionTranslator ; ; accommodation
+; y_show_rate_plans_accommodation_offering      ; Accommodation Offerings      ; 900 ; When the Accommodation Offering list includes any of {accommodationOfferings}                                     ; false ; ruleAccommodationOfferingAccommodationAvailabilityRequestConditionTranslator ; ; accommodation
+; y_show_rate_plans_accommodation_offering_type ; Accommodation Offering Types ; 900 ; When the Accommodation Offering type list includes any of {accommodationOfferingType}                             ; false ; ruleAccommodationOfferingTypeRoomStayConditionTranslator                     ; ; accommodation
+; y_show_rate_plans_market_location             ; Market Location              ; 900 ; When the market location list includes any of {inclMarketLocations}, and is not in any of {excMarketLocations}    ; false ; ruleMarketLocationAccommodationRoomStayConditionTranslator                   ; ; accommodation
+
+INSERT_UPDATE RuleConditionDefinitionParameter; definition(id)[unique = true]; id[unique = true]; priority; name[lang = $lang]; description[lang = $lang]; type; value; required[default = true]; validators
+; y_show_rate_plans_stay_dates                  ; date                      ; 1100 ; Stay Dates                        ; Stay Dates                                                                 ; java.util.Date                                              ;                    ; false ;
+; y_show_rate_plans_stay_dates                  ; operator                  ; 1000 ; Operator                          ; Operator to compare the dates                                              ; Enum(de.hybris.platform.ruledefinitions.AmountOperator)     ; """LESS_THAN"""    ;       ;
+
+; y_show_rate_plans_stay_duration               ; operator                  ; 1000 ; Operator                          ; Operator to compare the quantity                                           ; Enum(de.hybris.platform.ruledefinitions.AmountOperator)     ;                    ;       ;
+; y_show_rate_plans_stay_duration               ; days                      ; 900  ; Days                              ; Number of days                                                             ; java.lang.Integer                                           ;                    ;       ; rulePositiveNumberParameterValidator
+
+; y_show_rate_plans_days_of_week                ; days                      ; 1100 ; Days of week                      ; Days of week                                                               ; List(ItemType(DayOfWeek))                                   ;                    ; false ;
+
+; y_show_rate_plans_search_date                 ; date                      ; 1000 ; Date                              ; Date from or to which the condition is set                                 ; java.util.Date                                              ;                    ;       ;
+; y_show_rate_plans_search_date                 ; operator                  ; 1000 ; Operator                          ; Operator to compare the dates                                              ; Enum(de.hybris.platform.ruledefinitions.AmountOperator)     ; """LESS_THAN"""    ;       ;
+
+; y_show_rate_plans_accommodation               ; accommodations            ; 1100 ; Accommodations                    ; Accommodations                                                             ; List(ItemType(Accommodation))                               ;                    ; false ;
+
+; y_show_rate_plans_accommodation_category      ; accommodationCategory     ; 1100 ; Accommodation Categories          ; Accommodation Categories                                                   ; List(ItemType(AccommodationCategory))                       ;                    ; false ;
+
+; y_show_rate_plans_destination_location        ; excLocations              ; 1000 ; Excluded Destination Location     ; Excluded Destination Location                                              ; List(ItemType(Location))                                    ;                    ; false ;
+; y_show_rate_plans_destination_location        ; incLocations              ; 1100 ; Included Destination Location     ; Included Destination Location                                              ; List(ItemType(Location))                                    ;                    ; false ;
+
+; y_show_rate_plans_customers                   ; customer_groups_operator  ; 1400 ; Customer group selection operator ; Customer should be part of ANY or ALL customer groups                      ; Enum(de.hybris.platform.ruledefinitions.CollectionOperator) ; """CONTAINS_ANY""" ;       ;
+; y_show_rate_plans_customers                   ; customer_groups           ; 1300 ; Customer groups                   ; List of qualifying customer groups                                         ; List(ItemType(UserGroup))                                   ;                    ; false ;
+; y_show_rate_plans_customers                   ; customers                 ; 1200 ; Customers                         ; List of qualifying customers                                               ; List(ItemType(Customer))                                    ;                    ; false ;
+; y_show_rate_plans_customers                   ; excluded_customer_groups  ; 1100 ; Excluded customer groups          ; List of sub-groups that should be excluded from qualifying customer groups ; List(ItemType(UserGroup))                                   ;                    ; false ;
+; y_show_rate_plans_customers                   ; excluded_customers        ; 1000 ; Excluded customers                ; List of customers that should be excluded from qualifying customer groups  ; List(ItemType(Customer))                                    ;                    ; false ;
+
+; y_show_rate_plans_sales_application           ; channel                   ; 1000 ; Channel                           ; Channel                                                                    ; ItemType(SalesApplication)                                  ;                    ;       ;
+
+; y_show_rate_plans_accommodation_provider      ; accommodationProviders    ; 1100 ; Accommodation Providers           ; Accommodation Providers                                                    ; List(ItemType(AccommodationProvider))                       ;                    ; false ;
+
+; y_show_rate_plans_accommodation_offering      ; accommodationOfferings    ; 1100 ; Accommodation offerings           ; Accommodation offerings                                                    ; List(ItemType(AccommodationOffering))                       ;                    ; false ;
+
+; y_show_rate_plans_accommodation_offering_type ; accommodationOfferingType ; 1000 ; Accommodation Offering Types      ; Accommodation Offering Types                                               ; List(ItemType(AccommodationOfferingType))                   ;                    ;       ;
+
+; y_show_rate_plans_market_location             ; inclMarketLocations       ; 1100 ; Included Market Location          ; Included Market Location                                                   ; List(ItemType(Location))                                    ;                    ; false ;
+; y_show_rate_plans_market_location             ; excMarketLocations        ; 1000 ; Excluded Market Location          ; Excluded Market Location                                                   ; List(ItemType(Location))                                    ;                    ; false ;
+
+############################# CONDITON DEFINITION RULE TYPE MAPPINGS ##########################
+
+INSERT_UPDATE RuleConditionDefinitionRuleTypeMapping; definition(id)[unique = true]; ruleType(code)[default = ShowRatePlanSourceRule][unique = true]
+; y_show_rate_plans_stay_dates                  ;
+; y_show_rate_plans_stay_duration               ;
+; y_show_rate_plans_days_of_week                ;
+; y_show_rate_plans_search_date                 ;
+; y_show_rate_plans_accommodation               ;
+; y_show_rate_plans_accommodation_category      ;
+; y_show_rate_plans_destination_location        ;
+; y_show_rate_plans_sales_application           ;
+; y_show_rate_plans_customers                   ;
+; y_show_rate_plans_accommodation_provider      ;
+; y_show_rate_plans_accommodation_offering      ;
+; y_show_rate_plans_accommodation_offering_type ;
+; y_show_rate_plans_market_location             ;
+
+############################# ACTIONS ##########################
+INSERT_UPDATE RuleActionDefinitionCategory; id[unique = true]; name[lang = $lang]; priority
+; show_rate_plans ; Show Rate Plan ; 1800
+
+INSERT_UPDATE RuleActionDefinition; id[unique = true]; name[lang = $lang]; priority; breadcrumb[lang = $lang]; translatorId; translatorParameters; categories(id)
+; y_show_rate_plans ; Show Rate Plan ; 1000 ; Show  {ratePlans} for the current search ; ruleExecutableActionTranslator ; actionId->ruleShowRatePlanAction ; show_rate_plans
+
+
+INSERT_UPDATE RuleActionDefinitionParameter; definition(id)[unique = true]; id[unique = true]; priority; name[lang = $lang]; description[lang = $lang]; type; value; required[default = true]
+; y_show_rate_plans ; ratePlans ; 1000 ; Show Rate Plan Action ; Rate Plans that will be shown ; List(ItemType(RatePlan)) ; ;
+
+############################# ACTION DEFINITION RULE TYPE MAPPINGS ##########################
+INSERT_UPDATE RuleActionDefinitionRuleTypeMapping; definition(id)[unique = true]; ruleType(code)[unique = true]
+; y_show_rate_plans ; ShowRatePlanSourceRule
+
+
+###################################################################################### SHOW ACCOMMODATIONS ##############################################################################
+
+############################# CONDITION ##########################
+INSERT_UPDATE RuleConditionDefinition; id[unique = true]; name[lang = $lang]; priority; breadcrumb[lang = $lang]; allowsChildren; translatorId; translatorParameters; categories(id)
+; y_show_accommodation_accommodation_offering_type ; Accommodation Offering Types ; 900 ; When the Accommodation Offering type list includes any of {accommodationOfferingType}                          ; false ; ruleAccommodationOfferingTypeRoomStayConditionTranslator                     ; ; accommodation
+
+; y_show_accommodation_accommodation_offering      ; Accommodation Offerings      ; 900 ; When the Accommodation Offering list includes any of {accommodationOfferings}                                  ; false ; ruleAccommodationOfferingAccommodationAvailabilityRequestConditionTranslator ; ; accommodation
+
+; y_show_accommodation_accommodation_provider      ; Accommodation Provider       ; 900 ; When the Accommodation Provider list includes any of {accommodationProviders}                                  ; false ; ruleAccommodationProviderAccommodationAvailabilityRequestConditionTranslator ; ; accommodation
+
+; y_show_accommodation_market_location             ; Market Location              ; 900 ; When the market location list includes any of {inclMarketLocations}, and is not in any of {excMarketLocations} ; false ; ruleMarketLocationAccommodationRoomStayConditionTranslator                   ; ; accommodation
+
+; y_show_accommodation_rate_plan                   ; Rate Plan                    ; 900 ; When the Rate Plan type list includes any of {ratePlans}                                                       ; false ; ruleRatePlanAccommodationRoomStayConditionTranslator                         ; ; accommodation
+
+; y_show_accommodation_days_of_week                ; Days of week                 ; 900 ; When the stay day list includes any of: {days}                                                                 ; false ; ruleDayOfWeekAccommodationAvailabilitytConditionTranslator                   ; ; accommodation
+
+; y_show_accommodation_stay_dates                  ; Stay Dates                   ; 900 ; When the stay date is {operator} than {date}                                                                   ; false ; ruleStayDatesAccommodationAvailabilityConditionTranslator                    ; ; accommodation
+
+; y_show_accommodation_stay_duration               ; Stay Duration                ; 900 ; When the stay duration is {operator} than {days} days                                                          ; false ; ruleStayDurationAccommodationAvailabilityConditionTranslator                 ; ; accommodation
+
+; y_show_accommodation_search_date                 ; Search date                  ; 900 ; When the search is performed on a date {operator} {date}                                                       ; false ; ruleSearchDateAccommodationAvailabilityConditionTranslator                   ; ; accommodation
+
+; y_show_accommodation_sales_application           ; Channel                      ; 900 ; When the Channel is {channel}                                                                                  ; false ; ruleSalesAppAccommodationAvailabilityConditionTranslator                     ; ; accommodation
+
+
+
+INSERT_UPDATE RuleConditionDefinitionParameter; definition(id)[unique = true]; id[unique = true]; priority; name[lang = $lang]; description[lang = $lang]; type; value; required[default = true]; validators
+; y_show_accommodation_accommodation_offering_type ; accommodationOfferingType ; 1000 ; Accommodation Offering Types ; Accommodation Offering Types               ; List(ItemType(AccommodationOfferingType))               ;                 ;       ;
+
+; y_show_accommodation_accommodation_offering      ; accommodationOfferings    ; 1100 ; Accommodation offerings      ; Accommodation offerings                    ; List(ItemType(AccommodationOffering))                   ;                 ; false ;
+
+; y_show_accommodation_accommodation_provider      ; accommodationProviders    ; 1100 ; Accommodation Providers      ; Accommodation Providers                    ; List(ItemType(AccommodationProvider))                   ;                 ; false ;
+
+; y_show_accommodation_market_location             ; inclMarketLocations       ; 1100 ; Included Market Locations    ; Included Market Locations                  ; List(ItemType(Location))                                ;                 ; false ;
+; y_show_accommodation_market_location             ; excMarketLocations        ; 1000 ; Excluded Market Locations    ; Excluded Market Locations                  ; List(ItemType(Location))                                ;                 ; false ;
+
+; y_show_accommodation_rate_plan                   ; ratePlans                 ; 1100 ; Rate Plans                   ; Rate Plans                                 ; List(ItemType(RatePlan))                                ;                 ; false ;
+
+; y_show_accommodation_days_of_week                ; days                      ; 1100 ; Days of week                 ; Days of week                               ; List(ItemType(DayOfWeek))                               ;                 ; false ;
+
+; y_show_accommodation_stay_dates                  ; date                      ; 1100 ; Stay Dates                   ; Stay Dates                                 ; java.util.Date                                          ;                 ; false ;
+; y_show_accommodation_stay_dates                  ; operator                  ; 1000 ; Operator                     ; Operator to compare the dates              ; Enum(de.hybris.platform.ruledefinitions.AmountOperator) ; """LESS_THAN""" ;       ;
+
+; y_show_accommodation_stay_duration               ; operator                  ; 1000 ; Operator                     ; Operator to compare the quantity           ; Enum(de.hybris.platform.ruledefinitions.AmountOperator) ;                 ;       ;
+; y_show_accommodation_stay_duration               ; days                      ; 900  ; Days                         ; Number of days                             ; java.lang.Integer                                       ;                 ;       ; rulePositiveNumberParameterValidator
+
+; y_show_accommodation_search_date                 ; date                      ; 1000 ; Date                         ; Date from or to which the condition is set ; java.util.Date                                          ;                 ;       ;
+; y_show_accommodation_search_date                 ; operator                  ; 1000 ; Operator                     ; Operator to compare the dates              ; Enum(de.hybris.platform.ruledefinitions.AmountOperator) ; """LESS_THAN""" ;       ;
+
+; y_show_accommodation_sales_application           ; channel                   ; 1000 ; Channel                      ; Channel                                    ; ItemType(SalesApplication)                              ;                 ;       ;
+
+
+
+############################# CONDITON DEFINITION RULE TYPE MAPPINGS ##########################
+INSERT_UPDATE RuleConditionDefinitionRuleTypeMapping; definition(id)[unique = true]; ruleType(code)[default = ShowAccommodationSourceRule][unique = true]
+; y_show_accommodation_accommodation_offering_type ;
+; y_show_accommodation_accommodation_offering      ;
+; y_show_accommodation_accommodation_provider      ;
+; y_show_accommodation_market_location             ;
+; y_show_accommodation_rate_plan                   ;
+; y_show_accommodation_days_of_week                ;
+; y_show_accommodation_stay_dates                  ;
+; y_show_accommodation_stay_duration               ;
+; y_show_accommodation_search_date                 ;
+; y_show_accommodation_sales_application           ;
+
+############################# ACTIONS ##########################
+INSERT_UPDATE RuleActionDefinitionCategory; id[unique = true]; name[lang = $lang]; priority
+; show_accommodations ; Show Accommodations ; 1800
+
+INSERT_UPDATE RuleActionDefinition; id[unique = true]; name[lang = $lang]; priority; breadcrumb[lang = $lang]; translatorId; translatorParameters; categories(id)
+; y_show_accommodations ; Show Accommodations ; 1000 ; Show  {accommodations} for the current search ; ruleExecutableActionTranslator ; actionId->ruleShowAccommodationsAction ; show_accommodations
+
+INSERT_UPDATE RuleActionDefinitionParameter; definition(id)[unique = true]; id[unique = true]; priority; name[lang = $lang]; description[lang = $lang]; type; value; required[default = true]
+; y_show_accommodations ; accommodations ; 1000 ; Show Accommodations Action ; Accommodations that will be shown ; List(ItemType(Accommodation)) ; ;
+
+############################# ACTION DEFINITION RULE TYPE MAPPINGS ##########################
+INSERT_UPDATE RuleActionDefinitionRuleTypeMapping; definition(id)[unique = true]; ruleType(code)[unique = true]
+; y_show_accommodations ; ShowAccommodationSourceRule

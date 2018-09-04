@@ -1,0 +1,580 @@
+label { color: #fff; }
+
+input[type=number] { -moz-appearance: textfield; /* Remove controls from Firefox */ }
+
+/* Remove controls from Safari and Chrome */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0; /* Removes leftover margin */
+}
+
+.form-control {
+    font-size: 13px;
+    padding: 6px 12px;
+    height: auto;
+    border-radius: 4px;
+    &::-webkit-input-placeholder       { color: @placeholder-colour; }
+    &::-moz-placeholder                { color: @placeholder-colour; opacity: 1; } /* Firefox 19+ */
+    &:-moz-placeholder                 { color: @placeholder-colour; opacity: 1; } /* Firefox 18 */
+    &:-ms-input-placeholder            { color: @placeholder-colour; }
+    &::placeholder                     { color: @placeholder-colour; }
+    &.placeholder                      { color: @placeholder-colour; }
+    &[disabled],
+    &[readonly] {
+        background-color: #fff;
+        cursor: default;
+        box-shadow: none;
+    }
+}
+
+.no-traveller-label { padding-top: 15px; }
+
+.form-wrapper {
+    padding-left: 0!important;
+    padding-right: 0!important;
+    @media (min-width: @screen-sm-min) {
+        margin-top: 30px;
+    }
+    form {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    legend {
+        padding-left: 20px;
+        padding-top: 7px;
+        margin-top: 0px;
+        margin-bottom: 30px;
+        height: 40px;
+        border: none;
+        font-size: 18px;
+        &.with-icon {
+            padding-left: 50px;
+        }
+    }
+}
+
+.form-inline-wrapper {
+    .form-inline {
+        margin-bottom: 10px;
+        .input-group {
+            width: 100%;
+            .input-group-addon, .input-group-btn {
+                width: 1%;
+            }
+        }
+        .form-control {
+            width: 100%;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.form-background {
+    background: @brand-blue;
+    padding-bottom: 20px;
+}
+
+.modal-body {
+    .form-background {
+        background-color: @brand-blue;
+    }
+}
+
+.input-group {
+
+    &.input-stacked {
+        margin-bottom: 10px;
+        @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+            margin-bottom: 20px;
+        }
+    }
+    .form-control,
+    .input-group-addon.text-number {
+        padding: 0;
+        height: 28px;
+    }
+    .form-control {
+        min-width: 34px;
+        border-right: none;
+        padding-left: 10px;
+        padding-right: 20%;
+        text-align: right;
+        z-index: auto;
+    }
+    .input-group-addon.text-number {
+        background-color: #fff;
+        width: 50%;
+        border-left: none;
+        text-align: left;
+        color: @brand-blue;
+    }
+}
+
+select.form-control {
+    border-radius: 0;
+    border-top-left-radius: 0!important;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    height: 28px;
+    padding-top: 0;
+    padding-bottom: 0;
+    color: @brand-blue;
+    &.fe-error {
+        color: @validation-error-placeholder-colour;
+    }
+}
+
+input[type="search"],
+input[type="date"],
+input[type="text"],
+select {
+    color: @brand-blue-text;
+    font-weight: normal;
+    &:required {
+        &:valid {
+            color: green;
+            border: 2px solid green;
+            .placeholder-color(green);
+            &.fe-error {
+                border: 2px solid green;
+            }
+            &+.fe-error {
+                opacity: 0;
+                display: block;
+                height: 10px;
+            }
+        }
+        &:invalid {
+            .placeholder-color(red);
+        }
+
+    }
+    &:optional {}
+    &.valid {
+        color: green;
+        border: 2px solid green;
+        .placeholder-color(green);
+        &.fe-error {
+            border: 2px solid green;
+        }
+        &+.fe-error {
+            opacity: 0;
+            display: block;
+            height: 10px;
+        }
+    }
+    // jQuery Validation Styling
+    &.fe-error {
+        border: 2px solid red;
+        margin-bottom: 0;
+        &::-webkit-input-placeholder {
+            color: @validation-error-placeholder-colour;
+        }
+        &::-moz-placeholder {  /* Firefox 19+ */
+            color: @validation-error-placeholder-colour;
+        }
+        &:-ms-input-placeholder {
+            color: @validation-error-placeholder-colour;
+        }
+    }
+    &.valid {
+        border: 2px solid green;
+        .placeholder-color(@validation-valid-placeholder-colour);
+    }
+}
+
+.fe-error {
+    color: salmon;
+    opacity: 1;
+    transition: opacity .4s ease-in-out;
+}
+
+#billingAddressForm {
+    padding-bottom: 20px;
+}
+
+.form-group {
+    &.has-error {
+        .control-label {
+            color:inherit;
+        }
+        .form-control {
+            border: 2px solid crimson;
+            margin-bottom: 0;
+            background: #fff;
+            #address.townCity {
+                margin-left: 1px;
+            }
+        }
+        #address.townCity {
+            margin-left: 1px;
+        }
+    }
+    &.valid {
+        .form-control {
+            border: 2px solid green;
+        }
+
+    }
+    span {
+        white-space: normal;
+    }
+
+}
+
+.billingAddressForm {
+    .form-group {
+        @media (min-width: @screen-sm-min) {
+            &:not(.has-error) {
+                height: 75px;
+            }
+        }
+    }
+}
+
+span.fe-error {
+    display: block;
+}
+
+.input-required-wrap {
+    display: table; // prevents row collapse when validation error is removed
+    padding-left: 0;
+    padding-right: 0;
+    @media (min-width: @screen-sm-min) {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    @media screen and (max-width: 766px) {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
+.row .btn-wrapper,
+.btn-wrapper {
+    padding: 0;
+    &.full-width {
+        margin: 15px 15px 15px 15px;
+        @media (min-width: @screen-sm-min) {
+            .btn {
+                position: relative;
+                width: 45%;
+                left: 3%;
+            }
+        }
+    }
+}
+
+.fieldset {
+    padding: 20px;
+    padding-bottom: 0;
+}
+
+fieldset legend,
+.primary-legend {
+    background: #298caa;
+    color: #fff;
+}
+
+.radio-button-row {
+    text-align: center;
+    color: #fff;
+    label {
+        margin: 0 20px 5px 5px;
+    }
+}
+
+.input-group-btn {
+    &:last-child > .btn {
+        z-index: auto;
+    }
+    .btn.increment {
+        background: @button-grey;
+        border-radius: 0;
+        height: 28px;
+        padding: 4px;
+
+        .glyphicon {
+            font-size: 12px;
+            top: -1px;
+            text-shadow: 1px 1px 0 #fff;
+            color: #555;
+        }
+        &:disabled {
+            cursor: not-allowed;
+        }
+    }
+}
+
+.input-row {
+    padding: 0 30px;
+    &.stacked {
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 22px;
+        width: 100%;
+        color: #fff;
+        @media (min-width: @screen-sm-min) {
+            a {
+                padding-right: 0px;
+                padding-left: 0px;
+                position:absolute;
+                bottom:20px;
+            }
+        }
+    }
+    &.less-margin {
+        padding: 0 15px;
+    }
+    @media (min-width: @screen-sm-min) {
+        &.less-margin {
+            padding: 0 28px;
+        }
+    }
+    input {
+        margin: 0 0 10px;
+    }
+}
+
+input {
+    &.input-grid {
+        border-style: solid;
+    }
+    &.val-error {
+        border: 2px solid red;
+        color: red;
+        .placeholder-color(red);
+    }
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin: 0;
+}
+
+// Form validation styling
+.placeholder-color(#076480);
+
+.form-booking-trip {
+    label {
+        margin-bottom: 2px;
+    }
+    &.form-background {
+        padding-bottom: 5px;
+    }
+}
+
+@media (min-width: @screen-sm-min) {
+    #manage-bookings-form .input-row {
+        .col-sm-5 {
+            width: 45%;
+            margin: 0 2.5% 10px;
+        }
+    }
+}
+
+.fare-selection-wrap {
+    fieldset {
+        padding-bottom: 0 !important;
+    }
+    position: relative;
+    .form-background {
+        padding-bottom: 0 !important;
+    }
+    .form-wrapper {
+        margin-top: 0;
+        box-shadow: none;
+        fieldset {
+            .fieldset-inner-wrapper {
+                padding-top: 10px;
+            }
+            legend {
+                background-color: #bcbec0;
+                margin-bottom: 0 !important;
+            }
+            input {
+                &.input-grid {
+                    box-shadow: none;
+                    border: none;
+                    &.fe-error {
+                        border: 2px solid red;
+                    }
+                    &.valid {
+                        border: 2px solid green;
+                    }
+                }
+            }
+            .radio-button-row,
+            .link-trigger {
+                color: #6d6e71;
+            }
+        }
+        .fe-error {
+            color: crimson;
+        }
+    }
+    .form-background {
+        padding-bottom: 0;
+    }
+    .ui-widget-header {
+        background-color: #bcbec0 !important;
+    }
+}
+
+.landing-form {
+    position: absolute;
+    z-index: 99;
+    right: 0;
+    left: 0;
+    @media only screen and (max-width: @screen-xs-max) {
+        margin: 10px -15px 20px;
+        &.container {
+            width: initial;
+        }
+    }
+}
+
+.age-range {
+    font-size: 10px;
+    color: @brand-blue;
+    margin-left: 0;
+    position: static;
+    display: block;
+    text-align: center;
+    line-height: 1;
+    .years {}
+}
+
+.fare-selection .age-range {
+    @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+        color: #888;
+    }
+}
+
+form .alert {
+    margin: 5px 20px;
+}
+
+// Manage booking form
+
+.manage-booking {
+    padding: 15px 15px 20px;
+    background-color: #298caa;
+    margin-top: -5px;
+    text-indent: 0;
+    @media (min-width: @screen-sm-min) {
+        min-width: 240px;
+        background-color: @brand-blue;
+        text-align: center;
+        margin-bottom: -5px;
+    }
+    fieldset {
+        padding-bottom: 0;
+        legend {
+            border-bottom: 0;
+            background: transparent;
+        }
+        input {
+            border-radius: 0;
+            box-shadow: none;
+        }
+        .placeholder-color(@brand-blue);
+    }
+}
+
+// OVERRIDE: Hybris theme style
+
+// OVERRIDE: Hybris 6
+
+label {
+    text-transform: none;
+    font-size: 14px;
+}
+
+select.form-control {
+    text-transform: none;
+}
+
+.form-control:read-only {
+    color: @brand-blue;
+}
+
+label.control-label {
+    color: #153a59;
+}
+
+.form-group {
+    label.radio-inline,
+    label.checkbox-inline {
+        padding-left: 20px;
+    }
+}
+
+.passenger-extras label {
+    color: #153a59;
+}
+
+fieldset > div:last-of-type input,
+fieldset > div:last-of-type label {
+    margin-bottom: 15px;
+}
+
+.bottom-align-parent {
+    .flexbox;
+    flex-flow: column-reverse;
+    height: 54px;
+    .bottom-align {
+        align-self: end;
+    }
+}
+
+// Legend icons
+.heading-booking-trip,
+.heading-booking-trip-blue,
+.heading-accommodation {
+    background-repeat: no-repeat;
+    background-position: 15px 10px;
+}
+
+.heading-booking-trip {
+    background-image: url("@{theme-images-url}/icon-plane.png");
+}
+
+.heading-booking-trip-blue {
+    background-image: url("@{theme-images-url}/icon-plane-blue.png");
+    color: @brand-blue;
+}
+
+.heading-accommodation {
+    background-image: url("@{theme-images-url}/icon-accomodation.png");
+} // Legend icons end
+
+// Landing Page form
+.page-homepage {
+    .form-wrapper {
+        form {
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.6);
+        }
+    }
+    .form-booking-trip {
+        background: @brand-blue;
+        @media (min-width: @screen-sm-min) {
+            margin-bottom: 20px;
+        }
+        .autocomplete-suggestions {
+            background-color: @brand-blue;
+        }
+    }
+    
+} // Landing Page form end
+
+.page-preferences {
+    .input-grid {
+        border-style: inset;
+        font-size: 13px;
+    }
+}

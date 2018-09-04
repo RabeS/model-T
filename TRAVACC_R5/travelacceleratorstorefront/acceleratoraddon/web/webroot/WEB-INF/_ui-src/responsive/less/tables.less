@@ -1,0 +1,21 @@
+@media (max-width: @screen-xs-max) {
+    .accommodation-plan {
+        .responsive-table-item {
+            &:before {
+                content: "";
+                display: table;
+                clear: both;
+            }
+            td {
+                width: 50%;
+                float: left;
+                &.responsive-table-cell {
+                    width: 100%;
+                    &:first-child {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}

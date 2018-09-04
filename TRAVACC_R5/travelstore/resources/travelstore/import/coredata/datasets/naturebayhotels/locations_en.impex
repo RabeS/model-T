@@ -1,0 +1,22 @@
+$lang = en
+
+UPDATE Location; code[unique = true]; name[lang = $lang]; description[lang = $lang]
+#Regions
+; NOA ; North America Region
+; SAS ; South Asia Region
+; OCA ; Oceania Region
+; AFR ; Africa Region
+
+#Countries
+; AU  ; Australia
+; KE  ; Kenya
+; MV  ; Maldives
+; TH  ; Thailand
+; US  ; United States of America
+
+#Cities
+; HKT ; Phuket
+; HNL ; Honolulu
+; MLE ; Male
+; NBO ; Nairobi
+; SYD ; Sydney

@@ -1,0 +1,141 @@
+.yw-modal-configurableFlow, .yw-modal-modifyWizard {
+	width: 1270px !important;
+	max-width: 1350px;
+}
+
+.transportoffering-effected-label {
+	padding-bottom: 10px;
+	font-weight: bold;
+}
+
+.gridWithNoBorder td.z-row-inner {
+	border: none !important;
+}
+
+.searchFieldAlignRight {
+	float:right;
+}
+
+.z-datebox-popup {
+	width: 400px !important;
+	right: 400px !important;
+	left: unset !important;
+}
+
+.schedule-config-day table .modify-inventory-grid table{
+	width: 100% !important;
+	text-align: center;
+}
+
+.manage-inventory-grid table {
+	width: 100% !important;
+	table-layout: auto;
+}
+
+.manage-inventory-grid table td:first-child {
+    width: 40%;
+}
+
+.manage-inventory-grid table td:first-child button {
+    display: none;
+}
+
+.manage-inventory-grid table button {
+	position: relative !important;
+	right: auto !important;
+	margin-top: 0 !important;
+}
+
+.modify-inventory-grid.z-grid {
+	border-right: 0px #CCC;
+	text-align: center;
+	height:600px;
+	overflow-y:scroll; 
+}
+
+.z-row-content .z-div button {
+    width: auto !important;
+}
+
+.z-row-content .z-div button img {
+	width: 100px !important;
+}
+
+.yw-dashboard-slot {
+	margin-bottom: 10px !important;
+	height: auto !important;
+}
+
+.yw-dashboard-empty-fill {
+    height: 0 !important;
+    margin-bottom: -10px !important;
+}
+
+.y_mainPanel {
+    background-color : white;
+    box-shadow: 0 1px 2px rgba(111, 124, 145, 0.58);
+    padding-top: 10px;
+}
+
+.accommodation-configuration-grid table {
+	width: 100% !important;
+	table-layout: auto;
+}
+
+.accommodation-configuration-grid table td:first-child {
+    width: 40%;
+}
+
+.accommodation-configuration-grid table td:first-child button {
+    display: none;
+}
+
+.accommodation-configuration-grid table button {
+	position: relative !important;
+	right: auto !important;
+	margin-top: 0 !important;
+}
+
+.yw-modal-occ-coll-container {
+	width: 1100px !important;
+	height: auto !important;
+}
+
+.outerContainer,
+.z-borderlayout,
+.yw-collapsibleContainer-caption,
+.z-center-body {
+    width: 100%;
+}
+
+.yw-collapsibleContainer-caption > .z-center-header {
+	padding-top: 0;
+	padding-bottom: 0;
+	min-height: auto;
+}
+
+.yw-advancedsearch .z-grid .yw-advancedsearch-last-row-for-condition .z-cell {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.yw-modal-occ-coll-container .z-window-content {
+	height: 600px !important;
+}
+
+h1.airline,
+h1.hospitality {
+    margin-left: 25px;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 50px;
+    margin-top: -5px;
+    padding-left: 55px;
+    color: #333333;
+}
+h1.airline {
+	background: url('/backoffice/widgetJarResource/de.hybris.platform.transportbackoffice.widgets.mainpanel/images/planeIcon.svg') no-repeat;
+}
+h1.hospitality {
+	background: url('/backoffice/widgetJarResource/de.hybris.platform.accommodationbackoffice.widgets.accommodationmainpanel/images/propertyIcon.svg') no-repeat;
+}

@@ -1,0 +1,1037 @@
+// simple banner override styles
+.simple-banner-component {
+    a {
+        display: inline;
+    }
+    img {
+        width: auto;
+    }
+}
+
+@media (max-width: @screen-xs-max) {
+    .page-margin {
+        padding-top: 55px;
+    }
+}
+
+.row.divided {
+    border: 1px solid #ccc;
+    &:first-child {
+        border-bottom: none;
+        margin-top: -15px;
+    }
+    &:last-child {
+        border-top: none;
+        margin-bottom: 5px;
+        &:first-child { // When there is only one item
+            border: 1px solid #ccc;
+        }
+        &:nth-of-type(2) { // When there are two items
+            border: 1px solid #ccc;
+        }
+    }
+    .btn-delete {
+        position: absolute;
+        right: -40px;
+    }
+}
+
+// loading icon block
+.blockElement {
+    position: fixed !important;
+    top: 300px !important;
+    padding: 50px !important;
+}
+
+.row {
+    .help-block-wrapper,
+    .help-block-wrapper + * { // Ensures same styling applied to sibling containers.
+        padding-left: 0;
+        padding-right: 0;
+        .input-grid {}
+    }
+    @media (min-width: @screen-sm-min) {
+        .help-block-wrapper,
+        .help-block-wrapper + * {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+}
+
+.help-block {
+    text-align: justify;
+    &.val-error {
+        color: red;
+    }
+}
+
+.page-profilePage {
+    #personal-details {
+        a.btn.btn-primary.btn-block {
+            margin: 5px 0 5px 0;
+        }
+    }
+}
+
+// margin-bottom only for My Personal Details section
+#updateProfileForm,
+#updateEmailForm,
+#updatePasswordForm {
+    :not(:first-child) {
+        button.btn.btn-primary.btn-block {
+            @media (max-width: @screen-sm-min) {
+                margin-bottom: 15px;
+            }
+        }
+    }
+}
+
+.accountPageTopContent,
+.accountPageBottomContent {
+    .panel {
+        .panel-heading {
+            .title  {
+                cursor: pointer;
+                display: block;
+                width: 100%;
+            }
+        }
+    }
+}
+
+.panel-price-summary {
+    margin-top: 20px;
+    border-top: 1px solid @secondary-blue;
+    border-bottom: 1px solid @secondary-blue;
+}
+
+.checkbox-label-align {
+    @media (min-width: @screen-md-min) {
+        margin-top: 26px;
+    }
+}
+
+.description-list-group {
+    // float: left;
+}
+
+.dl-horizontal {
+    dt {
+        width: auto;
+    }
+    dd {
+        margin-left: 0;
+    }
+} // hybris overrides?
+
+
+// fare selection main body
+.fare-selection-body {
+    @media (min-width: @screen-sm-min) {
+        margin-top: 0px;
+    }
+}
+.fare-selection-wrap,
+.fare-table-wrapper {
+    .minusMargin;
+}
+.fare-table-wrapper {
+    .h4,
+    .h5 {
+        color: @brand-blue;
+    }
+}
+
+.payment-wrap {
+    button {
+        background-color: @button-orange;
+        border: 0;
+        .color-white;
+        border-radius: 0;
+    }
+}
+
+.loadingOrigin {
+    background:
+            no-repeat
+            center;
+}
+
+// Content page
+
+.content-page {
+    h3, h4 {
+        color: @brand-blue-text;
+    }
+    h3 {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    h4 {
+        font-size: 14px;
+        font-style: italic;
+        margin-bottom: 3px
+    }
+    .list-unstyled {
+        li {
+            margin-bottom: 10px;
+            a {
+                color: @brand-blue;
+                font-size: 14px;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .payment-policy-wrap {
+        h3 {
+            counter-increment: heading-counter;
+        }
+
+        h3:before {
+            content: counter(heading-counter) ". ";
+        }
+    }
+}
+
+// Flight Status page
+
+#statusTable {
+    thead, td:nth-child(even) {
+        background-color: #f1f2f2;
+    }
+    th, td {
+        text-align: center;
+    }
+    th {
+        border-bottom: none;
+    }
+}
+.add-items {
+    margin-top: 10px;
+    p, label {
+        color: #153a59;
+        font-weight: 600;
+    }
+    @media (max-width: @screen-xs) {
+        > div > div {
+            width: 100%;
+        }
+        > div:last-child {
+            > div:last-child {
+                > div {
+                    margin-left: 0;
+                    width: 100%;
+                    > div {
+                        width: 100%;
+                        margin: 0;
+                        > div {
+                            margin-left: -30px;
+                            margin-right: -30px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.flight-option {
+    border-top: 1px solid #fff;
+    color: #fff;
+    align-items: center;
+    clear: both;
+    &.selected {
+        border-top: 1px solid #bcbec0;
+        border-bottom: 1px solid #bcbec0;
+    }
+    .select-class-trigger {
+        padding: 5px;
+        display: block;
+        background-color: transparent;
+        border: none;
+        font-size: 24px;
+        width: auto;
+        word-break: break-word;
+        margin: 0 auto;
+        line-height: 100%;
+        color: #fff;
+        text-transform: uppercase;
+        &.change-selection {
+            font-size: 16px;
+            padding: 5px;
+            background-color: @button-light-blue;
+            color: #fff;
+            text-shadow: 1px 1px 1px rgba(0,0,0,.5);
+            &:hover,
+            &:focus {
+                background-color: lighten(@button-light-blue,10%);
+            }
+        }
+        span {
+            display: block;
+            font-size: 18px;
+            line-height: 1;
+        }
+        .from-price {
+            font-size: 24px;
+            display: inline-block;
+        }
+        .fare-decimal {
+            display: inline-block;
+            white-space: nowrap;
+            font-weight: normal;
+        }
+    }
+    @media only screen and (min-width: @screen-sm-min) {
+        .select-class-trigger {
+            display: none;
+        }
+        display: flex;
+        align-items: stretch;
+        flex-direction: row;
+        .travel-details {
+            flex-direction: column;
+            flex-grow: 1;
+        }
+    }
+    .travel-details {
+        text-transform: uppercase;
+        font-size: 12px;
+        padding: 10px 0;
+        background-color: @brand-blue;
+        min-height: 90px;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+        &.invert-theme{
+            background-color: #dcdddf;
+            color: #666;
+            .panel-group .panel .panel-collapse{
+                background-color: #e8e9eb;
+            }
+        }
+        .one-stop-divide {
+            padding: 0;
+            margin: 20px 0;
+            position: relative;
+            border-bottom: 2px dotte: #fff;
+            display: block;
+            @media only screen and (max-width: @screen-xs-max) {
+                &.selected {
+                    border-color: #666;
+                    &.glyphicon-transfer:before {
+                        background-color: #e8e9eb;
+                    }
+                }
+            }
+            &.glyphicon-transfer:before {
+                font-size: 25px;
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%, -35%);
+                padding: 0 10px;
+                background-color: #398399;
+            }
+        }
+        .heading {
+            font-weight: bold;
+            text-transform: uppercase;
+            word-break: break-all;
+            -moz-hyphens: auto;
+        }
+    }
+    .from-price {
+        padding: 0;
+    }
+    .from-details,
+    .to-details,
+    .flight-duration,
+    .flight-details {
+        padding: 0 5px 0 0;
+        margin: 0;
+    }
+    .duration-info,
+    .stop-off {
+        display: inline;
+        padding: 0;
+    }
+    .flight-details {
+        margin-top: 10px;
+        @media only screen and (min-width: @screen-sm-min) {
+            margin: 0 -15px;
+        }
+    }
+    .flight-number {
+        margin-top: 5px;
+        list-style: none;
+        @media only screen and (max-width: @screen-xs-max) {
+            padding: 0;
+        }
+    }
+    @media only screen and (min-width: @screen-sm-min) {
+        .stop-off {
+            text-align: left;
+        }
+    }
+    .flight-class-select {
+        padding: 0;
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        label {
+            display: block;
+            margin: 0;
+            padding: 5px 5px 5px 10px;
+            cursor: pointer;
+            &:nth-of-type(1) {
+                background: @class-select-a;
+                &:hover,
+                &:focus {
+                    background: darken(@class-select-a, 5%);
+                }
+            }
+            &:nth-of-type(2) {
+                background: @class-select-b;
+                &:hover,
+                &:focus {
+                    background: darken(@class-select-b, 5%);
+                }
+            }
+            &:nth-of-type(3) {
+                background: @class-select-c;
+                &:hover,
+                &:focus {
+                    background: darken(@class-select-c, 5%);
+                }
+            }
+            &.promotional-price {
+                background: #CCB25B;
+            }
+            &.selected {
+                background-color: #f9a825;
+                &:hover,
+                &:focus {
+                    background: #f9a825;
+                }
+            }
+        }
+        .class-desc,
+        .price-desc {
+            display: inline-block;
+        }
+        .class-desc {
+            width: 50%;
+        }
+        .price-desc {}
+    }
+    .panel-group {
+        margin-bottom: -10px;
+        padding: 0;
+        .panel {
+            border-radius: 0;
+            background-color: transparent;
+            box-shadow: none;
+            &.panel-default {
+                border: 0;
+            }
+            .panel-heading {
+                background-color: transparent;
+                color: #fff;
+                padding: 10px 0;
+                a {
+                    color: #fff;
+                    font-weight: bold;
+                }
+                & + .panel-collapse {
+                    & > {
+                        .panel-body {
+                            border-top: 0;
+                        }
+                    }
+                }
+            }
+            .panel-collapse {
+                background-color: #398399;
+            }
+        }
+    }
+    &.selected {
+        .panel-group {
+            .panel-heading,
+            .panel-heading a {
+                color: #666;
+            }
+        }
+    }
+    &.deal-flight-option {
+        background: #076480;
+        @media (min-width: @screen-xs) {
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+        }
+        .travel-details {
+            @media (max-width: @screen-xs) {
+                width: 100%;
+            }
+        }
+        .change-selection {
+            margin: 10px 0 0 15px;
+        }
+        .flight-class-select {
+            @media (max-width: @screen-xs) {
+                fieldset {
+                    margin-bottom: 10px;
+                }
+            }
+        }
+        label {
+            padding-right: 10px;
+            input {
+                position: absolute;
+                visibility: hidden;
+            }
+            &:nth-of-type(1) {
+                background: #d9d9d9;
+                color: initial;
+                &:hover {
+                    background: #d9d9d9;
+                }
+            }
+            &.selected {
+                color: #fff;
+                background: #00b7d3;
+                &:hover {
+                    background: #00b7d3;
+                }
+            }
+            & + span {
+                width: 60%;
+                float: left;
+            }
+        }
+        .class-desc{
+            display: none;
+        }
+        .price-desc {
+            width: 40%;
+            text-align: center;
+        }
+        label {
+            min-width: 155px;
+            line-height: 30px;
+        }
+        span.select,
+        span.selected {
+            float: left;
+            width: 60%;
+            text-align: center;
+        }
+        span.selected {
+            display: none;
+        }
+        input:checked {
+            & + span.selected {
+                background: #00b7d3;
+                color: @white;
+            }
+            & + span + span.select {
+                display: none;
+                text-align: center;
+            }
+            & + span.selected {
+                display: inline-block;
+            }
+        }
+    }
+}
+
+#saved-payment .bottom-align-parent > * {
+    margin: initial;
+}
+
+#quotes, #orderApproval, #quote-details, #orderApproval-details {
+    .account-overview-table {
+        margin: 10px;
+        .table {
+            border: solid 1px @brand-blue;
+            margin-bottom:0;
+            .responsive-table-head {
+                background: @secondary-blue;
+                th {
+                    border-top-width: 0px;
+                    border-bottom: 1px solid @brand-blue;
+                    color: #fff;
+                    text-align: center;
+                    vertical-align: middle;
+                }
+                &.inner-table-head {
+                    background: #98C6CF;
+                }
+            }
+            .responsive-table-cell {
+                font-size: 13px;
+                @media (min-width: @screen-sm-min) {
+                    text-align: center;
+                    vertical-align: middle;
+                }
+
+            }
+            .responsive-table-item {
+                padding: 0;
+                .hidden-sm, .hidden-md, .hidden-lg {
+                    font-weight: bold;
+                    background: #98C6CF;
+                    color: #fff;
+                }
+            }
+            a {
+                color: black;
+                text-decoration: none;
+                &:hover,
+                &:focus {
+                    text-decoration: underline;
+                }
+            }
+            .responsive-table-item:nth-child(even) {
+                background-color: #fff;
+            }
+        }
+    }
+    #commentsBtn {
+        margin-bottom: 10px;
+        padding-right: 10px;
+    }
+}
+
+.page-checkInDetailsPage {
+    .panel.panel-list {
+        .panel {
+            &:last-child {
+                &.my-account-secondary-panel {
+                    border-top: 1px solid @secondary-blue;
+                }
+            }
+        }
+    }
+}
+
+
+.passenger-details-list {
+    dt {
+        display: inline-block;
+    }
+    dd {
+        margin-left: 10px;
+        display: inline-block;
+    }
+}
+.passenger-row {
+    margin-bottom: 20px;
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+    .button-block {
+        align-self: flex-end;
+    }
+    .name-row {
+        margin: 0 15px;
+        font-weight: bold;
+        .passenger-reference {
+            span {
+                font-weight: normal;
+            }
+        }
+    }
+}
+.included-product {
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+.divided.title {
+    background-color: #fff;
+    position: relative;
+    z-index: 1;
+    display: inline;
+    font-size: 15px;
+    color: #6d6e71;
+    &:before {
+        content: " ";
+        position: relative;
+        left: 0;
+        top: 12px;
+        width: calc(~'100% + 1px'); // use '~' to escape the LESS compilation, otherwise it converts it to 'width: 101%;'.
+        float: left;
+        z-index: -1;
+        border-bottom: 1px solid @secondary-blue;
+    }
+    &:after {
+        content: "x";
+        color: #fff;
+        width: 20px;
+        height: 20px;
+        z-index: -1;
+        background-color: #fff;
+        &:after {
+            content: "after after";
+            background-color: red;
+            position: absolute;
+        }
+    }
+}
+.journey-details {
+    .title {
+        background-color: #eee;
+        padding: 5px;
+        color: #666;
+    }
+    .flight-details {
+        list-style: none;
+    }
+    .one-stop-divide {
+        display: block;
+        margin: 20px 0;
+        &:before {
+            font-size: 25px;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, -35%);
+            padding: 0 10px;
+        }
+    }
+    .stops-wrapper {
+        margin-top: 10px;
+        padding: 0;
+        > div {
+            background-color: #f2f2f2;
+        }
+        .panel-collapse {
+            div > .row {
+                padding: 15px 0;
+            }
+        }
+    }
+}
+
+.spacer {
+    position: relative;
+    float: left;
+    width: 15px;
+    height: 20px;
+    background-color: #fff;
+}
+
+.inline-key,
+.inline-value {
+    font-weight: normal;
+    display: inline-block;
+    width: auto;
+} // only found in prototype
+
+.side-to-top {
+    margin-top: 25px;
+    @media only screen and (max-width: @screen-xs-max) {
+        display:none;
+    }
+    #sidebar {
+        .inner-wrap {
+            display: block;
+            padding-bottom: 0;
+        }
+        .main-wrap {
+            padding-bottom: 0;
+            padding-top: 0;
+            section {
+                text-transform: capitalize;
+                &:first-child {
+                    border-bottom: none;
+                }
+            }
+            .sidebar-content-section {
+                border-bottom: none;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: @screen-xs-max) {
+    .landing-form {
+        position: static;
+        margin: 0 -15px 20px;
+    }
+    .modal {
+        &.modal-login {
+            .modal-dialog {
+                .modal-content {
+                    .nav-tabs {
+                        float: none;
+                        margin-top: 0;
+                        position: absolute;
+                        top: 39px;
+                        left: 0;
+                        right: 0;
+                        li {
+                            float: left;
+                            width: 33.1%;
+                            a {
+                                height: 80px;
+                                width: auto;
+                                border-bottom: 0;
+
+                            }
+                            &:nth-child(2) {
+                                width: 34%;
+                                a {
+                                    border-left: 1px solid @brand-blue;
+                                    border-right: 1px solid @brand-blue;
+                                }
+                            }
+                            &:last-child {
+                                float: right;
+                                width: 33.2%;
+                            }
+                        }
+                    }
+                    .tab-content {
+                        .tab-pane {
+                            .tab-title {
+                                margin-left: 0;
+                            }
+                            .tab-content {
+                                margin-left: 0;
+                                height: auto;
+                            }
+                            .tab-title {
+                                margin-left: 0;
+                                margin-bottom: 20px;
+                            }
+                            .tab-content {
+                                padding: 15px;
+                                position: absolute;
+                                top: 119px;
+                                width: 100%;
+                                form {
+                                    width: auto;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:480px) {
+    .modal {
+        &.modal-manage-booking {
+            .modal-dialog {
+                .modal-content {
+                    .modal-body {
+                        form {
+                            width: auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+// Styleguide
+.variable-colour {
+    li {
+        &:before {
+            content: " ";
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background-color: red;
+            margin-left: -40px;
+            margin-top:2px;
+            border: 1px solid #000;
+        }
+        &.brand-blue:before {
+            background-color: #076480;
+        }
+        &.secondary-blue:before {
+            background-color: #4c9fb1;
+        }
+        &.body-colour:before {
+            background-color: #414042;
+        }
+        &.button-grey:before {
+            background-color: #bcbec0;
+        }
+        &.button-light-blue:before {
+            background-color: #25bcd7;
+        }
+        &.button-orange:before {
+            background-color: #f9a825;
+        }
+        &.class-select-a:before {
+            background-color: #4c9eb1;
+        }
+        &.class-select-b:before {
+            background-color: #6cb2c2;
+        }
+        &.class-select-c:before {
+            background-color: #98c6d0;
+        }
+        &.purple:before {
+            background-color: #775cbc;
+        }
+        &.panel-header:before {
+            background-color: #2386a5;
+        }
+    }
+}
+
+
+// payment page
+
+.option {
+    border-bottom: 1px solid @secondary-blue;
+}
+
+#paymentType {
+    label {
+        display: inline;
+    }
+}
+
+.payment-details {
+    .textarea-comment {
+        textarea {
+            width: 100%;
+            height: 250px;
+        }
+    }
+    #payment-type {
+        label {
+            display: inline;
+            color: black;
+            font-weight: normal;
+        }
+    }
+}
+
+// OVERRIDE: Hybris theme style
+
+// OVERRIDE: Hybris 6
+
+a.step-head.js-checkout-step {
+    border-color: @brand-blue;
+    color: #fff;
+    padding: 10px 20px;
+    background-color: @secondary-blue;
+    .glyphicon {
+        display:none;
+    }
+    &.active {
+        padding: 10px 20px;
+        background-color: @secondary-blue;
+        margin-bottom: 20px;
+        border-color: @brand-blue;
+    }
+
+}
+
+.checkout-steps .step-head:before {
+    content: " ";
+}
+
+.page-bookingDetailsPage,
+.page-bookingConfirmationPage,
+.page-checkInSuccessPage {
+    a.btn.btn-primary.btn-block {
+        margin-bottom: 10px;
+    }
+    h3.title {
+        a {
+            color:inherit;
+            text-decoration:none;
+        }
+    }
+}
+
+table {
+    width: 100%;
+    th {
+        font-weight: bold;
+        text-transform: none;
+        background: none;
+        color: #000;
+    }
+}
+
+#statusTable th, #statusTable td {
+    text-align: center;
+    font-size: 14px;
+}
+
+#y_transportOfferingStatusForm label{
+    color: #404142;
+}
+
+#y_nexttransportOfferingStatus {
+    p {
+        padding-left: 0px;
+    }
+    .btn-wrapper {
+        padding: 10px 22px 0 22px;
+    }
+}
+
+
+.tab-wrapper .nav.nav-tabs > li.active .tab-price {
+    word-wrap: break-word;
+}
+
+.journey-upgrade-wrapper {
+    margin: 0 -15px;
+    .journey-upgrade {
+        padding: 15px;
+    }
+    .passenger-extras {
+        label {
+            span {
+                display: block;
+            }
+        }
+        input[type="radio"] {
+            margin-top: 15px;
+        }
+    }
+}
+
+// End override 6
+
+.total {
+    margin-top: 15px;
+    dl {
+        font-size: 18px;
+        margin-top: 15px;
+    }
+}
+
+
+.content-fade {
+    opacity: 0.3;
+}
+
+#colorbox {
+    z-index: 99999;
+}

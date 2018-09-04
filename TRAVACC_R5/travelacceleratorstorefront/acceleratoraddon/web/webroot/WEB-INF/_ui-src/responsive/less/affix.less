@@ -1,0 +1,28 @@
+.affix {
+    position: fixed;
+    @media (min-width: @screen-sm-min) {
+        top: 0;
+    }
+    @media (max-width:@screen-xs-max) {
+        bottom: 0;
+    }
+}
+
+.affix-bottom {
+    position: absolute;
+}
+
+.affix,
+.affix-bottom {
+    @media (min-width: @screen-lg-min) {
+        width: 270px;
+    }
+    @media (min-width: @screen-md-min ) and (max-width: @screen-lg-min){
+        width: 218px;
+    }
+    @media (max-width: @screen-sm-max) {
+        width: auto;
+    }
+}
+
+// Bootstrap Affix CSS for #sidebar.

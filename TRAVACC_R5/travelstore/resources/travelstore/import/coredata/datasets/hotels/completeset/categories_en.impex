@@ -1,0 +1,18 @@
+$lang = en
+$catalogVersion = catalogVersion(catalog(id[default = 'travelProductCatalog']), version[default = 'Staged'])[unique = true, default = 'travelProductCatalog:Staged']
+
+# Insert Categories
+INSERT_UPDATE Category; code[unique = true]; name[lang = $lang]; description[lang = $lang]; $catalogVersion
+# Deliberately empty for future purposes
+
+INSERT_UPDATE AccommodationCategory; code[unique = true]; name[lang = $lang]; description[lang = $lang]; $catalogVersion
+; SINGLE_ROOM  ; Single Room  ; ;
+; DOUBLE_ROOM  ; Double Room  ; ;
+; TWIN_ROOM    ; Twin Room    ; ;
+; TRIPLE_ROOM  ; Triple Room  ; ;
+; JUNIOR_SUITE ; Junior Suite ; ;
+; SUITE        ; Suite        ; ;
+; STUDIO       ; Studio       ; ;
+; QUEEN_ROOM   ; Queen Room   ; ;
+; KING_ROOM    ; King Room    ; ;
+; APARTMENT    ; Apartment    ; ;

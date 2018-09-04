@@ -1,0 +1,57 @@
+.header ul.user-options {
+    .languagecurrencycomponent {
+        min-height: 15px;
+        form {
+            display: block;
+            font-family: arial;
+            margin-bottom: auto;
+            .currency-select {
+                top: 16px;
+                float: right;
+                position: relative;
+                z-index: 9999;
+                .dd-select { border: none; }
+                .dd-pointer { display: none; }
+                .dd-selected {
+                    display: block;
+                    position: absolute;
+                    padding: 0px 8px;
+                    background: #2DB3CC;
+                    border-radius: 12px;
+                    line-height: 24px;
+                }
+                .dd-selected-text { font-size: 16px; }
+                .dd-option-text {
+                    padding: 4px 8px;
+                    background: #2DB3CC;
+                    border-radius: 12px;
+                    margin: 0px 10px;
+                    display: inline;
+                }
+                .dd-option
+                .dd-option {
+                    label { font-size: 16px; }
+                    span { display: none; }
+                    &:focus { outline: 1px dotted @brand-blue; }
+                }
+                .dd-option
+                .dd-pointer { display: none; }
+                .dd-options {
+                    margin-left: -11px;
+                    top: -7px;
+                    li {
+                        padding: 0;
+                        line-height: 38px;
+                    }
+                }
+                a {
+                    display: block;
+                    font-size: 1.3em;
+                    font-weight: bold;
+                    text-decoration: none;
+                }
+                &.position { top: 0; }
+            }
+        }
+    }
+}

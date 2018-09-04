@@ -1,0 +1,2 @@
+INSERT_UPDATE AccommodationInventoryCronJob; code[unique = true]; job(code)[default = accommodationInventoryCronJob]; sessionLanguage(isoCode)[default = en];active;
+;accommodationInventoryCronJob ; ; ;true;;

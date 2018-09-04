@@ -1,0 +1,16 @@
+#
+# Import the Product Catalog and Classification Catalog
+#
+
+$productCatalog = naturebayhotelsProductCatalog
+$catalogVersion = catalogversion(catalog(id[default = $productCatalog]), version[default = 'Staged'])[unique = true, default = $productCatalog:Staged]
+$languages = en
+
+# Product catalog
+INSERT_UPDATE Catalog; id[unique = true]
+; $productCatalog
+
+# Product versions for product catalogs
+INSERT_UPDATE CatalogVersion; catalog(id)[unique = true]; version[unique = true]; active; languages(isoCode); readPrincipals(uid)
+; $productCatalog ; Staged ; false ; $languages ; employeegroup
+; $productCatalog ; Online ; true  ; $languages ; employeegroup

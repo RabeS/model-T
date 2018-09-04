@@ -1,0 +1,7 @@
+$productCatalog = naturebayhotelsProductCatalog
+
+INSERT_UPDATE UpdateStockLevelsToAccommodationOfferingCronJob; code[unique = true]; mappingDataFilePath; availabilityDataFilePath; maxAvailability; job(code)[default = updateStockLevelsToAccommodationOfferingJob]; sessionLanguage(isoCode)[default = en]; catalogId[default = $productCatalog]
+; updateStockLevelsToAccommodationOfferingNBCronJob ; "/travelstore/resources/travelstore/import/coredata/datasets/naturebayhotels/csv/Hotel2RoomsMapping.csv" ; ; 50 ; ; ;
+
+INSERT_UPDATE MarketingRatePlanInfoCronjob; code[unique = true]; ratePlanCode; accommodationOfferings(code); job(code)[default = marketingRatePlanInfoJob]; sessionLanguage(isoCode)[default = en]; batchSize; catalogId[default = $productCatalog]
+; marketingRatePlanInfoNBCronjob ; FC_Plan ; ; ; ; 100

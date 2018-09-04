@@ -1,0 +1,2 @@
+INSERT_UPDATE AccommodationChain; code[unique = true]; name
+; NATUREBAY_HOTELS_AND_RESORTS ; "NatureBay Hotels and Resorts"

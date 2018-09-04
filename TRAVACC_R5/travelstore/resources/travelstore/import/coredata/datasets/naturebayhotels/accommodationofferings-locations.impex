@@ -1,0 +1,26 @@
+INSERT_UPDATE Location; code[unique = true]; locationType(code); superlocations(code)
+; BONDI            ; PROPERTY ; SYD
+; PALM_COVE        ; PROPERTY ; SYD
+; MANTA_LAGOON     ; PROPERTY ; MLE
+; VILLA_MAKATI     ; PROPERTY ; MLE
+; LANTERN          ; PROPERTY ; HKT
+; WAIKIKI          ; PROPERTY ; HNL
+; COCO_PALM        ; PROPERTY ; HNL
+
+; BIRD_PARADISE    ; PROPERTY ; MLE
+; JUNGLE_TREEHOUSE ; PROPERTY ; HKT
+; REDWOOD          ; PROPERTY ; HKT
+; PEBBLE_BEACH     ; PROPERTY ; HNL
+; CONTIKI          ; PROPERTY ; HNL
+; DAINTREE         ; PROPERTY ; SYD
+; KURRAJONG        ; PROPERTY ; SYD
+
+; THE_LEAF         ; PROPERTY ; HKT
+; VILLA_COCONUT    ; PROPERTY ; HKT
+; SHIMBA           ; PROPERTY ; NBO
+; SAMBURU          ; PROPERTY ; NBO
+; HAKUNA_MATATA    ; PROPERTY ; NBO
+; JUNGLE_LODGE     ; PROPERTY ; NBO
+; ELLA_PARADISE    ; PROPERTY ; SYD
+
+

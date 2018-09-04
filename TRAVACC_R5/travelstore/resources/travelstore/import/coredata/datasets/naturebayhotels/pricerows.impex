@@ -1,0 +1,479 @@
+#
+# ImpEx for Importing PriceRows into travel accelerator
+#
+$productCatalog = naturebayhotelsProductCatalog
+$catalogVersion = catalogVersion(catalog(id[default = $productCatalog]), version[default = 'Staged'])[unique = true, default = $productCatalog:Staged]
+
+
+INSERT_UPDATE PriceRow; product(code, $catalogVersion)[unique = true]; currency(isocode)[unique = true]; minqtd[default = '1']; net[default = false]; price; unit(code); $catalogVersion; user(uid)
+### Prices in GBP ###
+; 1R_LSWDNR_AU ; GBP ; ; ; 150 ; pieces ; ;
+; 1R_LSWENR_AU ; GBP ; ; ; 160 ; pieces ; ;
+; 1R_HSWDNR_AU ; GBP ; ; ; 170 ; pieces ; ;
+; 1R_HSWENR_AU ; GBP ; ; ; 180 ; pieces ; ;
+; 2R_LSWDNR_AU ; GBP ; ; ; 175 ; pieces ; ;
+; 2R_LSWENR_AU ; GBP ; ; ; 185 ; pieces ; ;
+; 2R_HSWDNR_AU ; GBP ; ; ; 195 ; pieces ; ;
+; 2R_HSWENR_AU ; GBP ; ; ; 205 ; pieces ; ;
+; 3R_LSWDNR_AU ; GBP ; ; ; 250 ; pieces ; ;
+; 3R_LSWENR_AU ; GBP ; ; ; 270 ; pieces ; ;
+; 3R_HSWDNR_AU ; GBP ; ; ; 290 ; pieces ; ;
+; 3R_HSWENR_AU ; GBP ; ; ; 310 ; pieces ; ;
+; 4R_LSWDNR_AU ; GBP ; ; ; 400 ; pieces ; ;
+; 4R_LSWENR_AU ; GBP ; ; ; 420 ; pieces ; ;
+; 4R_HSWDNR_AU ; GBP ; ; ; 440 ; pieces ; ;
+; 4R_HSWENR_AU ; GBP ; ; ; 460 ; pieces ; ;
+; 5R_LSWDNR_AU ; GBP ; ; ; 525 ; pieces ; ;
+; 5R_LSWENR_AU ; GBP ; ; ; 540 ; pieces ; ;
+; 5R_HSWDNR_AU ; GBP ; ; ; 560 ; pieces ; ;
+; 5R_HSWENR_AU ; GBP ; ; ; 580 ; pieces ; ;
+; 5R_2P_LSWDNR_AU ; GBP ; ; ; 525 ; pieces ; ;
+; 5R_2P_LSWENR_AU ; GBP ; ; ; 540 ; pieces ; ;
+; 5R_2P_HSWDNR_AU ; GBP ; ; ; 560 ; pieces ; ;
+; 5R_2P_HSWENR_AU ; GBP ; ; ; 580 ; pieces ; ;
+
+
+; 1R_LSWDNR_TH ; GBP ; ; ; 150 ; pieces ; ;
+; 1R_LSWENR_TH ; GBP ; ; ; 160 ; pieces ; ;
+; 1R_HSWDNR_TH ; GBP ; ; ; 170 ; pieces ; ;
+; 1R_HSWENR_TH ; GBP ; ; ; 180 ; pieces ; ;
+; 2R_LSWDNR_TH ; GBP ; ; ; 175 ; pieces ; ;
+; 2R_LSWENR_TH ; GBP ; ; ; 185 ; pieces ; ;
+; 2R_HSWDNR_TH ; GBP ; ; ; 195 ; pieces ; ;
+; 2R_HSWENR_TH ; GBP ; ; ; 205 ; pieces ; ;
+; 3R_LSWDNR_TH ; GBP ; ; ; 250 ; pieces ; ;
+; 3R_LSWENR_TH ; GBP ; ; ; 270 ; pieces ; ;
+; 3R_HSWDNR_TH ; GBP ; ; ; 290 ; pieces ; ;
+; 3R_HSWENR_TH ; GBP ; ; ; 310 ; pieces ; ;
+; 4R_LSWDNR_TH ; GBP ; ; ; 400 ; pieces ; ;
+; 4R_LSWENR_TH ; GBP ; ; ; 420 ; pieces ; ;
+; 4R_HSWDNR_TH ; GBP ; ; ; 440 ; pieces ; ;
+; 4R_HSWENR_TH ; GBP ; ; ; 460 ; pieces ; ;
+; 5R_LSWDNR_TH ; GBP ; ; ; 525 ; pieces ; ;
+; 5R_LSWENR_TH ; GBP ; ; ; 540 ; pieces ; ;
+; 5R_HSWDNR_TH ; GBP ; ; ; 560 ; pieces ; ;
+; 5R_HSWENR_TH ; GBP ; ; ; 580 ; pieces ; ;
+
+; 1R_LSWDNR_MV ; GBP ; ; ; 150 ; pieces ; ;
+; 1R_LSWENR_MV ; GBP ; ; ; 160 ; pieces ; ;
+; 1R_HSWDNR_MV ; GBP ; ; ; 170 ; pieces ; ;
+; 1R_HSWENR_MV ; GBP ; ; ; 180 ; pieces ; ;
+; 2R_LSWDNR_MV ; GBP ; ; ; 175 ; pieces ; ;
+; 2R_LSWENR_MV ; GBP ; ; ; 185 ; pieces ; ;
+; 2R_HSWDNR_MV ; GBP ; ; ; 195 ; pieces ; ;
+; 2R_HSWENR_MV ; GBP ; ; ; 205 ; pieces ; ;
+; 3R_LSWDNR_MV ; GBP ; ; ; 250 ; pieces ; ;
+; 3R_LSWENR_MV ; GBP ; ; ; 270 ; pieces ; ;
+; 3R_HSWDNR_MV ; GBP ; ; ; 290 ; pieces ; ;
+; 3R_HSWENR_MV ; GBP ; ; ; 310 ; pieces ; ;
+; 4R_LSWDNR_MV ; GBP ; ; ; 400 ; pieces ; ;
+; 4R_LSWENR_MV ; GBP ; ; ; 420 ; pieces ; ;
+; 4R_HSWDNR_MV ; GBP ; ; ; 440 ; pieces ; ;
+; 4R_HSWENR_MV ; GBP ; ; ; 460 ; pieces ; ;
+; 5R_LSWDNR_MV ; GBP ; ; ; 525 ; pieces ; ;
+; 5R_LSWENR_MV ; GBP ; ; ; 540 ; pieces ; ;
+; 5R_HSWDNR_MV ; GBP ; ; ; 560 ; pieces ; ;
+; 5R_HSWENR_MV ; GBP ; ; ; 580 ; pieces ; ;
+
+; 1R_LSWDNR_KE ; GBP ; ; ; 150 ; pieces ; ;
+; 1R_LSWENR_KE ; GBP ; ; ; 160 ; pieces ; ;
+; 1R_HSWDNR_KE ; GBP ; ; ; 170 ; pieces ; ;
+; 1R_HSWENR_KE ; GBP ; ; ; 180 ; pieces ; ;
+; 2R_LSWDNR_KE ; GBP ; ; ; 175 ; pieces ; ;
+; 2R_LSWENR_KE ; GBP ; ; ; 185 ; pieces ; ;
+; 2R_HSWDNR_KE ; GBP ; ; ; 195 ; pieces ; ;
+; 2R_HSWENR_KE ; GBP ; ; ; 205 ; pieces ; ;
+; 3R_LSWDNR_KE ; GBP ; ; ; 250 ; pieces ; ;
+; 3R_LSWENR_KE ; GBP ; ; ; 270 ; pieces ; ;
+; 3R_HSWDNR_KE ; GBP ; ; ; 290 ; pieces ; ;
+; 3R_HSWENR_KE ; GBP ; ; ; 310 ; pieces ; ;
+; 4R_LSWDNR_KE ; GBP ; ; ; 400 ; pieces ; ;
+; 4R_LSWENR_KE ; GBP ; ; ; 420 ; pieces ; ;
+; 4R_HSWDNR_KE ; GBP ; ; ; 440 ; pieces ; ;
+; 4R_HSWENR_KE ; GBP ; ; ; 460 ; pieces ; ;
+; 5R_LSWDNR_KE ; GBP ; ; ; 525 ; pieces ; ;
+; 5R_LSWENR_KE ; GBP ; ; ; 540 ; pieces ; ;
+; 5R_HSWDNR_KE ; GBP ; ; ; 560 ; pieces ; ;
+; 5R_HSWENR_KE ; GBP ; ; ; 580 ; pieces ; ;
+
+; 1R_LSWDNR_US ; GBP ; ; ; 150 ; pieces ; ;
+; 1R_LSWENR_US ; GBP ; ; ; 160 ; pieces ; ;
+; 1R_HSWDNR_US ; GBP ; ; ; 170 ; pieces ; ;
+; 1R_HSWENR_US ; GBP ; ; ; 180 ; pieces ; ;
+; 2R_LSWDNR_US ; GBP ; ; ; 175 ; pieces ; ;
+; 2R_LSWENR_US ; GBP ; ; ; 185 ; pieces ; ;
+; 2R_HSWDNR_US ; GBP ; ; ; 195 ; pieces ; ;
+; 2R_HSWENR_US ; GBP ; ; ; 205 ; pieces ; ;
+; 3R_LSWDNR_US ; GBP ; ; ; 250 ; pieces ; ;
+; 3R_LSWENR_US ; GBP ; ; ; 270 ; pieces ; ;
+; 3R_HSWDNR_US ; GBP ; ; ; 290 ; pieces ; ;
+; 3R_HSWENR_US ; GBP ; ; ; 310 ; pieces ; ;
+; 4R_LSWDNR_US ; GBP ; ; ; 400 ; pieces ; ;
+; 4R_LSWENR_US ; GBP ; ; ; 420 ; pieces ; ;
+; 4R_HSWDNR_US ; GBP ; ; ; 440 ; pieces ; ;
+; 4R_HSWENR_US ; GBP ; ; ; 460 ; pieces ; ;
+; 5R_LSWDNR_US ; GBP ; ; ; 525 ; pieces ; ;
+; 5R_LSWENR_US ; GBP ; ; ; 540 ; pieces ; ;
+; 5R_HSWDNR_US ; GBP ; ; ; 560 ; pieces ; ;
+; 5R_HSWENR_US ; GBP ; ; ; 580 ; pieces ; ;
+
+
+### FC ###
+; 1R_LSWDFC_AU ; GBP ; ; ; 180 ; pieces ; ;
+; 1R_LSWEFC_AU ; GBP ; ; ; 190 ; pieces ; ;
+; 1R_HSWDFC_AU ; GBP ; ; ; 200 ; pieces ; ;
+; 1R_HSWEFC_AU ; GBP ; ; ; 210 ; pieces ; ;
+; 2R_LSWDFC_AU ; GBP ; ; ; 205 ; pieces ; ;
+; 2R_LSWEFC_AU ; GBP ; ; ; 215 ; pieces ; ;
+; 2R_HSWDFC_AU ; GBP ; ; ; 225 ; pieces ; ;
+; 2R_HSWEFC_AU ; GBP ; ; ; 235 ; pieces ; ;
+; 3R_LSWDFC_AU ; GBP ; ; ; 280 ; pieces ; ;
+; 3R_LSWEFC_AU ; GBP ; ; ; 300 ; pieces ; ;
+; 3R_HSWDFC_AU ; GBP ; ; ; 320 ; pieces ; ;
+; 3R_HSWEFC_AU ; GBP ; ; ; 340 ; pieces ; ;
+; 4R_LSWDFC_AU ; GBP ; ; ; 430 ; pieces ; ;
+; 4R_LSWEFC_AU ; GBP ; ; ; 450 ; pieces ; ;
+; 4R_HSWDFC_AU ; GBP ; ; ; 470 ; pieces ; ;
+; 4R_HSWEFC_AU ; GBP ; ; ; 490 ; pieces ; ;
+; 5R_LSWDFC_AU ; GBP ; ; ; 550 ; pieces ; ;
+; 5R_LSWEFC_AU ; GBP ; ; ; 570 ; pieces ; ;
+; 5R_HSWDFC_AU ; GBP ; ; ; 600 ; pieces ; ;
+; 5R_HSWEFC_AU ; GBP ; ; ; 630 ; pieces ; ;
+; 5R_2P_LSWDFC_AU ; GBP ; ; ; 550 ; pieces ; ;
+; 5R_2P_LSWEFC_AU ; GBP ; ; ; 570 ; pieces ; ;
+; 5R_2P_HSWDFC_AU ; GBP ; ; ; 600 ; pieces ; ;
+; 5R_2P_HSWEFC_AU ; GBP ; ; ; 630 ; pieces ; ;
+
+
+; 1R_LSWDFC_TH ; GBP ; ; ; 180 ; pieces ; ;
+; 1R_LSWEFC_TH ; GBP ; ; ; 190 ; pieces ; ;
+; 1R_HSWDFC_TH ; GBP ; ; ; 200 ; pieces ; ;
+; 1R_HSWEFC_TH ; GBP ; ; ; 210 ; pieces ; ;
+; 2R_LSWDFC_TH ; GBP ; ; ; 205 ; pieces ; ;
+; 2R_LSWEFC_TH ; GBP ; ; ; 215 ; pieces ; ;
+; 2R_HSWDFC_TH ; GBP ; ; ; 225 ; pieces ; ;
+; 2R_HSWEFC_TH ; GBP ; ; ; 235 ; pieces ; ;
+; 3R_LSWDFC_TH ; GBP ; ; ; 280 ; pieces ; ;
+; 3R_LSWEFC_TH ; GBP ; ; ; 300 ; pieces ; ;
+; 3R_HSWDFC_TH ; GBP ; ; ; 320 ; pieces ; ;
+; 3R_HSWEFC_TH ; GBP ; ; ; 340 ; pieces ; ;
+; 4R_LSWDFC_TH ; GBP ; ; ; 430 ; pieces ; ;
+; 4R_LSWEFC_TH ; GBP ; ; ; 450 ; pieces ; ;
+; 4R_HSWDFC_TH ; GBP ; ; ; 470 ; pieces ; ;
+; 4R_HSWEFC_TH ; GBP ; ; ; 490 ; pieces ; ;
+; 5R_LSWDFC_TH ; GBP ; ; ; 550 ; pieces ; ;
+; 5R_LSWEFC_TH ; GBP ; ; ; 570 ; pieces ; ;
+; 5R_HSWDFC_TH ; GBP ; ; ; 600 ; pieces ; ;
+; 5R_HSWEFC_TH ; GBP ; ; ; 630 ; pieces ; ;
+
+; 1R_LSWDFC_MV ; GBP ; ; ; 180 ; pieces ; ;
+; 1R_LSWEFC_MV ; GBP ; ; ; 190 ; pieces ; ;
+; 1R_HSWDFC_MV ; GBP ; ; ; 200 ; pieces ; ;
+; 1R_HSWEFC_MV ; GBP ; ; ; 210 ; pieces ; ;
+; 2R_LSWDFC_MV ; GBP ; ; ; 205 ; pieces ; ;
+; 2R_LSWEFC_MV ; GBP ; ; ; 215 ; pieces ; ;
+; 2R_HSWDFC_MV ; GBP ; ; ; 225 ; pieces ; ;
+; 2R_HSWEFC_MV ; GBP ; ; ; 235 ; pieces ; ;
+; 3R_LSWDFC_MV ; GBP ; ; ; 280 ; pieces ; ;
+; 3R_LSWEFC_MV ; GBP ; ; ; 300 ; pieces ; ;
+; 3R_HSWDFC_MV ; GBP ; ; ; 320 ; pieces ; ;
+; 3R_HSWEFC_MV ; GBP ; ; ; 340 ; pieces ; ;
+; 4R_LSWDFC_MV ; GBP ; ; ; 430 ; pieces ; ;
+; 4R_LSWEFC_MV ; GBP ; ; ; 450 ; pieces ; ;
+; 4R_HSWDFC_MV ; GBP ; ; ; 470 ; pieces ; ;
+; 4R_HSWEFC_MV ; GBP ; ; ; 490 ; pieces ; ;
+; 5R_LSWDFC_MV ; GBP ; ; ; 550 ; pieces ; ;
+; 5R_LSWEFC_MV ; GBP ; ; ; 570 ; pieces ; ;
+; 5R_HSWDFC_MV ; GBP ; ; ; 600 ; pieces ; ;
+; 5R_HSWEFC_MV ; GBP ; ; ; 630 ; pieces ; ;
+
+; 1R_LSWDFC_KE ; GBP ; ; ; 180 ; pieces ; ;
+; 1R_LSWEFC_KE ; GBP ; ; ; 190 ; pieces ; ;
+; 1R_HSWDFC_KE ; GBP ; ; ; 200 ; pieces ; ;
+; 1R_HSWEFC_KE ; GBP ; ; ; 210 ; pieces ; ;
+; 2R_LSWDFC_KE ; GBP ; ; ; 205 ; pieces ; ;
+; 2R_LSWEFC_KE ; GBP ; ; ; 215 ; pieces ; ;
+; 2R_HSWDFC_KE ; GBP ; ; ; 225 ; pieces ; ;
+; 2R_HSWEFC_KE ; GBP ; ; ; 235 ; pieces ; ;
+; 3R_LSWDFC_KE ; GBP ; ; ; 280 ; pieces ; ;
+; 3R_LSWEFC_KE ; GBP ; ; ; 300 ; pieces ; ;
+; 3R_HSWDFC_KE ; GBP ; ; ; 320 ; pieces ; ;
+; 3R_HSWEFC_KE ; GBP ; ; ; 340 ; pieces ; ;
+; 4R_LSWDFC_KE ; GBP ; ; ; 430 ; pieces ; ;
+; 4R_LSWEFC_KE ; GBP ; ; ; 450 ; pieces ; ;
+; 4R_HSWDFC_KE ; GBP ; ; ; 470 ; pieces ; ;
+; 4R_HSWEFC_KE ; GBP ; ; ; 490 ; pieces ; ;
+; 5R_LSWDFC_KE ; GBP ; ; ; 550 ; pieces ; ;
+; 5R_LSWEFC_KE ; GBP ; ; ; 570 ; pieces ; ;
+; 5R_HSWDFC_KE ; GBP ; ; ; 600 ; pieces ; ;
+; 5R_HSWEFC_KE ; GBP ; ; ; 630 ; pieces ; ;
+
+; 1R_LSWDFC_US ; GBP ; ; ; 180 ; pieces ; ;
+; 1R_LSWEFC_US ; GBP ; ; ; 190 ; pieces ; ;
+; 1R_HSWDFC_US ; GBP ; ; ; 200 ; pieces ; ;
+; 1R_HSWEFC_US ; GBP ; ; ; 210 ; pieces ; ;
+; 2R_LSWDFC_US ; GBP ; ; ; 205 ; pieces ; ;
+; 2R_LSWEFC_US ; GBP ; ; ; 215 ; pieces ; ;
+; 2R_HSWDFC_US ; GBP ; ; ; 225 ; pieces ; ;
+; 2R_HSWEFC_US ; GBP ; ; ; 235 ; pieces ; ;
+; 3R_LSWDFC_US ; GBP ; ; ; 280 ; pieces ; ;
+; 3R_LSWEFC_US ; GBP ; ; ; 300 ; pieces ; ;
+; 3R_HSWDFC_US ; GBP ; ; ; 320 ; pieces ; ;
+; 3R_HSWEFC_US ; GBP ; ; ; 340 ; pieces ; ;
+; 4R_LSWDFC_US ; GBP ; ; ; 430 ; pieces ; ;
+; 4R_LSWEFC_US ; GBP ; ; ; 450 ; pieces ; ;
+; 4R_HSWDFC_US ; GBP ; ; ; 470 ; pieces ; ;
+; 4R_HSWEFC_US ; GBP ; ; ; 490 ; pieces ; ;
+; 5R_LSWDFC_US ; GBP ; ; ; 550 ; pieces ; ;
+; 5R_LSWEFC_US ; GBP ; ; ; 570 ; pieces ; ;
+; 5R_HSWDFC_US ; GBP ; ; ; 600 ; pieces ; ;
+; 5R_HSWEFC_US ; GBP ; ; ; 630 ; pieces ; ;
+
+
+
+### Prices in EUR ###
+; 1R_LSWDNR_AU ; EUR ; ; ; 150 ; pieces ; ;
+; 1R_LSWENR_AU ; EUR ; ; ; 160 ; pieces ; ;
+; 1R_HSWDNR_AU ; EUR ; ; ; 170 ; pieces ; ;
+; 1R_HSWENR_AU ; EUR ; ; ; 180 ; pieces ; ;
+; 2R_LSWDNR_AU ; EUR ; ; ; 175 ; pieces ; ;
+; 2R_LSWENR_AU ; EUR ; ; ; 185 ; pieces ; ;
+; 2R_HSWDNR_AU ; EUR ; ; ; 195 ; pieces ; ;
+; 2R_HSWENR_AU ; EUR ; ; ; 205 ; pieces ; ;
+; 3R_LSWDNR_AU ; EUR ; ; ; 250 ; pieces ; ;
+; 3R_LSWENR_AU ; EUR ; ; ; 270 ; pieces ; ;
+; 3R_HSWDNR_AU ; EUR ; ; ; 290 ; pieces ; ;
+; 3R_HSWENR_AU ; EUR ; ; ; 310 ; pieces ; ;
+; 4R_LSWDNR_AU ; EUR ; ; ; 400 ; pieces ; ;
+; 4R_LSWENR_AU ; EUR ; ; ; 420 ; pieces ; ;
+; 4R_HSWDNR_AU ; EUR ; ; ; 440 ; pieces ; ;
+; 4R_HSWENR_AU ; EUR ; ; ; 460 ; pieces ; ;
+; 5R_LSWDNR_AU ; EUR ; ; ; 525 ; pieces ; ;
+; 5R_LSWENR_AU ; EUR ; ; ; 540 ; pieces ; ;
+; 5R_HSWDNR_AU ; EUR ; ; ; 560 ; pieces ; ;
+; 5R_HSWENR_AU ; EUR ; ; ; 580 ; pieces ; ;
+; 5R_2P_LSWDNR_AU ; EUR ; ; ; 525 ; pieces ; ;
+; 5R_2P_LSWENR_AU ; EUR ; ; ; 540 ; pieces ; ;
+; 5R_2P_HSWDNR_AU ; EUR ; ; ; 560 ; pieces ; ;
+; 5R_2P_HSWENR_AU ; EUR ; ; ; 580 ; pieces ; ;
+
+
+; 1R_LSWDNR_TH ; EUR ; ; ; 150 ; pieces ; ;
+; 1R_LSWENR_TH ; EUR ; ; ; 160 ; pieces ; ;
+; 1R_HSWDNR_TH ; EUR ; ; ; 170 ; pieces ; ;
+; 1R_HSWENR_TH ; EUR ; ; ; 180 ; pieces ; ;
+; 2R_LSWDNR_TH ; EUR ; ; ; 175 ; pieces ; ;
+; 2R_LSWENR_TH ; EUR ; ; ; 185 ; pieces ; ;
+; 2R_HSWDNR_TH ; EUR ; ; ; 195 ; pieces ; ;
+; 2R_HSWENR_TH ; EUR ; ; ; 205 ; pieces ; ;
+; 3R_LSWDNR_TH ; EUR ; ; ; 250 ; pieces ; ;
+; 3R_LSWENR_TH ; EUR ; ; ; 270 ; pieces ; ;
+; 3R_HSWDNR_TH ; EUR ; ; ; 290 ; pieces ; ;
+; 3R_HSWENR_TH ; EUR ; ; ; 310 ; pieces ; ;
+; 4R_LSWDNR_TH ; EUR ; ; ; 400 ; pieces ; ;
+; 4R_LSWENR_TH ; EUR ; ; ; 420 ; pieces ; ;
+; 4R_HSWDNR_TH ; EUR ; ; ; 440 ; pieces ; ;
+; 4R_HSWENR_TH ; EUR ; ; ; 460 ; pieces ; ;
+; 5R_LSWDNR_TH ; EUR ; ; ; 525 ; pieces ; ;
+; 5R_LSWENR_TH ; EUR ; ; ; 540 ; pieces ; ;
+; 5R_HSWDNR_TH ; EUR ; ; ; 560 ; pieces ; ;
+; 5R_HSWENR_TH ; EUR ; ; ; 580 ; pieces ; ;
+
+; 1R_LSWDNR_MV ; EUR ; ; ; 150 ; pieces ; ;
+; 1R_LSWENR_MV ; EUR ; ; ; 160 ; pieces ; ;
+; 1R_HSWDNR_MV ; EUR ; ; ; 170 ; pieces ; ;
+; 1R_HSWENR_MV ; EUR ; ; ; 180 ; pieces ; ;
+; 2R_LSWDNR_MV ; EUR ; ; ; 175 ; pieces ; ;
+; 2R_LSWENR_MV ; EUR ; ; ; 185 ; pieces ; ;
+; 2R_HSWDNR_MV ; EUR ; ; ; 195 ; pieces ; ;
+; 2R_HSWENR_MV ; EUR ; ; ; 205 ; pieces ; ;
+; 3R_LSWDNR_MV ; EUR ; ; ; 250 ; pieces ; ;
+; 3R_LSWENR_MV ; EUR ; ; ; 270 ; pieces ; ;
+; 3R_HSWDNR_MV ; EUR ; ; ; 290 ; pieces ; ;
+; 3R_HSWENR_MV ; EUR ; ; ; 310 ; pieces ; ;
+; 4R_LSWDNR_MV ; EUR ; ; ; 400 ; pieces ; ;
+; 4R_LSWENR_MV ; EUR ; ; ; 420 ; pieces ; ;
+; 4R_HSWDNR_MV ; EUR ; ; ; 440 ; pieces ; ;
+; 4R_HSWENR_MV ; EUR ; ; ; 460 ; pieces ; ;
+; 5R_LSWDNR_MV ; EUR ; ; ; 525 ; pieces ; ;
+; 5R_LSWENR_MV ; EUR ; ; ; 540 ; pieces ; ;
+; 5R_HSWDNR_MV ; EUR ; ; ; 560 ; pieces ; ;
+; 5R_HSWENR_MV ; EUR ; ; ; 580 ; pieces ; ;
+
+; 1R_LSWDNR_KE ; EUR ; ; ; 150 ; pieces ; ;
+; 1R_LSWENR_KE ; EUR ; ; ; 160 ; pieces ; ;
+; 1R_HSWDNR_KE ; EUR ; ; ; 170 ; pieces ; ;
+; 1R_HSWENR_KE ; EUR ; ; ; 180 ; pieces ; ;
+; 2R_LSWDNR_KE ; EUR ; ; ; 175 ; pieces ; ;
+; 2R_LSWENR_KE ; EUR ; ; ; 185 ; pieces ; ;
+; 2R_HSWDNR_KE ; EUR ; ; ; 195 ; pieces ; ;
+; 2R_HSWENR_KE ; EUR ; ; ; 205 ; pieces ; ;
+; 3R_LSWDNR_KE ; EUR ; ; ; 250 ; pieces ; ;
+; 3R_LSWENR_KE ; EUR ; ; ; 270 ; pieces ; ;
+; 3R_HSWDNR_KE ; EUR ; ; ; 290 ; pieces ; ;
+; 3R_HSWENR_KE ; EUR ; ; ; 310 ; pieces ; ;
+; 4R_LSWDNR_KE ; EUR ; ; ; 400 ; pieces ; ;
+; 4R_LSWENR_KE ; EUR ; ; ; 420 ; pieces ; ;
+; 4R_HSWDNR_KE ; EUR ; ; ; 440 ; pieces ; ;
+; 4R_HSWENR_KE ; EUR ; ; ; 460 ; pieces ; ;
+; 5R_LSWDNR_KE ; EUR ; ; ; 525 ; pieces ; ;
+; 5R_LSWENR_KE ; EUR ; ; ; 540 ; pieces ; ;
+; 5R_HSWDNR_KE ; EUR ; ; ; 560 ; pieces ; ;
+; 5R_HSWENR_KE ; EUR ; ; ; 580 ; pieces ; ;
+
+; 1R_LSWDNR_US ; EUR ; ; ; 150 ; pieces ; ;
+; 1R_LSWENR_US ; EUR ; ; ; 160 ; pieces ; ;
+; 1R_HSWDNR_US ; EUR ; ; ; 170 ; pieces ; ;
+; 1R_HSWENR_US ; EUR ; ; ; 180 ; pieces ; ;
+; 2R_LSWDNR_US ; EUR ; ; ; 175 ; pieces ; ;
+; 2R_LSWENR_US ; EUR ; ; ; 185 ; pieces ; ;
+; 2R_HSWDNR_US ; EUR ; ; ; 195 ; pieces ; ;
+; 2R_HSWENR_US ; EUR ; ; ; 205 ; pieces ; ;
+; 3R_LSWDNR_US ; EUR ; ; ; 250 ; pieces ; ;
+; 3R_LSWENR_US ; EUR ; ; ; 270 ; pieces ; ;
+; 3R_HSWDNR_US ; EUR ; ; ; 290 ; pieces ; ;
+; 3R_HSWENR_US ; EUR ; ; ; 310 ; pieces ; ;
+; 4R_LSWDNR_US ; EUR ; ; ; 400 ; pieces ; ;
+; 4R_LSWENR_US ; EUR ; ; ; 420 ; pieces ; ;
+; 4R_HSWDNR_US ; EUR ; ; ; 440 ; pieces ; ;
+; 4R_HSWENR_US ; EUR ; ; ; 460 ; pieces ; ;
+; 5R_LSWDNR_US ; EUR ; ; ; 525 ; pieces ; ;
+; 5R_LSWENR_US ; EUR ; ; ; 540 ; pieces ; ;
+; 5R_HSWDNR_US ; EUR ; ; ; 560 ; pieces ; ;
+; 5R_HSWENR_US ; EUR ; ; ; 580 ; pieces ; ;
+
+
+### FC ###
+; 1R_LSWDFC_AU ; EUR ; ; ; 180 ; pieces ; ;
+; 1R_LSWEFC_AU ; EUR ; ; ; 190 ; pieces ; ;
+; 1R_HSWDFC_AU ; EUR ; ; ; 200 ; pieces ; ;
+; 1R_HSWEFC_AU ; EUR ; ; ; 210 ; pieces ; ;
+; 2R_LSWDFC_AU ; EUR ; ; ; 205 ; pieces ; ;
+; 2R_LSWEFC_AU ; EUR ; ; ; 215 ; pieces ; ;
+; 2R_HSWDFC_AU ; EUR ; ; ; 225 ; pieces ; ;
+; 2R_HSWEFC_AU ; EUR ; ; ; 235 ; pieces ; ;
+; 3R_LSWDFC_AU ; EUR ; ; ; 280 ; pieces ; ;
+; 3R_LSWEFC_AU ; EUR ; ; ; 300 ; pieces ; ;
+; 3R_HSWDFC_AU ; EUR ; ; ; 320 ; pieces ; ;
+; 3R_HSWEFC_AU ; EUR ; ; ; 340 ; pieces ; ;
+; 4R_LSWDFC_AU ; EUR ; ; ; 430 ; pieces ; ;
+; 4R_LSWEFC_AU ; EUR ; ; ; 450 ; pieces ; ;
+; 4R_HSWDFC_AU ; EUR ; ; ; 470 ; pieces ; ;
+; 4R_HSWEFC_AU ; EUR ; ; ; 490 ; pieces ; ;
+; 5R_LSWDFC_AU ; EUR ; ; ; 550 ; pieces ; ;
+; 5R_LSWEFC_AU ; EUR ; ; ; 570 ; pieces ; ;
+; 5R_HSWDFC_AU ; EUR ; ; ; 600 ; pieces ; ;
+; 5R_HSWEFC_AU ; EUR ; ; ; 630 ; pieces ; ;
+; 5R_2P_LSWDFC_AU ; EUR ; ; ; 550 ; pieces ; ;
+; 5R_2P_LSWEFC_AU ; EUR ; ; ; 570 ; pieces ; ;
+; 5R_2P_HSWDFC_AU ; EUR ; ; ; 600 ; pieces ; ;
+; 5R_2P_HSWEFC_AU ; EUR ; ; ; 630 ; pieces ; ;
+
+
+; 1R_LSWDFC_TH ; EUR ; ; ; 180 ; pieces ; ;
+; 1R_LSWEFC_TH ; EUR ; ; ; 190 ; pieces ; ;
+; 1R_HSWDFC_TH ; EUR ; ; ; 200 ; pieces ; ;
+; 1R_HSWEFC_TH ; EUR ; ; ; 210 ; pieces ; ;
+; 2R_LSWDFC_TH ; EUR ; ; ; 205 ; pieces ; ;
+; 2R_LSWEFC_TH ; EUR ; ; ; 215 ; pieces ; ;
+; 2R_HSWDFC_TH ; EUR ; ; ; 225 ; pieces ; ;
+; 2R_HSWEFC_TH ; EUR ; ; ; 235 ; pieces ; ;
+; 3R_LSWDFC_TH ; EUR ; ; ; 280 ; pieces ; ;
+; 3R_LSWEFC_TH ; EUR ; ; ; 300 ; pieces ; ;
+; 3R_HSWDFC_TH ; EUR ; ; ; 320 ; pieces ; ;
+; 3R_HSWEFC_TH ; EUR ; ; ; 340 ; pieces ; ;
+; 4R_LSWDFC_TH ; EUR ; ; ; 430 ; pieces ; ;
+; 4R_LSWEFC_TH ; EUR ; ; ; 450 ; pieces ; ;
+; 4R_HSWDFC_TH ; EUR ; ; ; 470 ; pieces ; ;
+; 4R_HSWEFC_TH ; EUR ; ; ; 490 ; pieces ; ;
+; 5R_LSWDFC_TH ; EUR ; ; ; 550 ; pieces ; ;
+; 5R_LSWEFC_TH ; EUR ; ; ; 570 ; pieces ; ;
+; 5R_HSWDFC_TH ; EUR ; ; ; 600 ; pieces ; ;
+; 5R_HSWEFC_TH ; EUR ; ; ; 630 ; pieces ; ;
+
+; 1R_LSWDFC_MV ; EUR ; ; ; 180 ; pieces ; ;
+; 1R_LSWEFC_MV ; EUR ; ; ; 190 ; pieces ; ;
+; 1R_HSWDFC_MV ; EUR ; ; ; 200 ; pieces ; ;
+; 1R_HSWEFC_MV ; EUR ; ; ; 210 ; pieces ; ;
+; 2R_LSWDFC_MV ; EUR ; ; ; 205 ; pieces ; ;
+; 2R_LSWEFC_MV ; EUR ; ; ; 215 ; pieces ; ;
+; 2R_HSWDFC_MV ; EUR ; ; ; 225 ; pieces ; ;
+; 2R_HSWEFC_MV ; EUR ; ; ; 235 ; pieces ; ;
+; 3R_LSWDFC_MV ; EUR ; ; ; 280 ; pieces ; ;
+; 3R_LSWEFC_MV ; EUR ; ; ; 300 ; pieces ; ;
+; 3R_HSWDFC_MV ; EUR ; ; ; 320 ; pieces ; ;
+; 3R_HSWEFC_MV ; EUR ; ; ; 340 ; pieces ; ;
+; 4R_LSWDFC_MV ; EUR ; ; ; 430 ; pieces ; ;
+; 4R_LSWEFC_MV ; EUR ; ; ; 450 ; pieces ; ;
+; 4R_HSWDFC_MV ; EUR ; ; ; 470 ; pieces ; ;
+; 4R_HSWEFC_MV ; EUR ; ; ; 490 ; pieces ; ;
+; 5R_LSWDFC_MV ; EUR ; ; ; 550 ; pieces ; ;
+; 5R_LSWEFC_MV ; EUR ; ; ; 570 ; pieces ; ;
+; 5R_HSWDFC_MV ; EUR ; ; ; 600 ; pieces ; ;
+; 5R_HSWEFC_MV ; EUR ; ; ; 630 ; pieces ; ;
+
+; 1R_LSWDFC_KE ; EUR ; ; ; 180 ; pieces ; ;
+; 1R_LSWEFC_KE ; EUR ; ; ; 190 ; pieces ; ;
+; 1R_HSWDFC_KE ; EUR ; ; ; 200 ; pieces ; ;
+; 1R_HSWEFC_KE ; EUR ; ; ; 210 ; pieces ; ;
+; 2R_LSWDFC_KE ; EUR ; ; ; 205 ; pieces ; ;
+; 2R_LSWEFC_KE ; EUR ; ; ; 215 ; pieces ; ;
+; 2R_HSWDFC_KE ; EUR ; ; ; 225 ; pieces ; ;
+; 2R_HSWEFC_KE ; EUR ; ; ; 235 ; pieces ; ;
+; 3R_LSWDFC_KE ; EUR ; ; ; 280 ; pieces ; ;
+; 3R_LSWEFC_KE ; EUR ; ; ; 300 ; pieces ; ;
+; 3R_HSWDFC_KE ; EUR ; ; ; 320 ; pieces ; ;
+; 3R_HSWEFC_KE ; EUR ; ; ; 340 ; pieces ; ;
+; 4R_LSWDFC_KE ; EUR ; ; ; 430 ; pieces ; ;
+; 4R_LSWEFC_KE ; EUR ; ; ; 450 ; pieces ; ;
+; 4R_HSWDFC_KE ; EUR ; ; ; 470 ; pieces ; ;
+; 4R_HSWEFC_KE ; EUR ; ; ; 490 ; pieces ; ;
+; 5R_LSWDFC_KE ; EUR ; ; ; 550 ; pieces ; ;
+; 5R_LSWEFC_KE ; EUR ; ; ; 570 ; pieces ; ;
+; 5R_HSWDFC_KE ; EUR ; ; ; 600 ; pieces ; ;
+; 5R_HSWEFC_KE ; EUR ; ; ; 630 ; pieces ; ;
+
+; 1R_LSWDFC_US ; EUR ; ; ; 180 ; pieces ; ;
+; 1R_LSWEFC_US ; EUR ; ; ; 190 ; pieces ; ;
+; 1R_HSWDFC_US ; EUR ; ; ; 200 ; pieces ; ;
+; 1R_HSWEFC_US ; EUR ; ; ; 210 ; pieces ; ;
+; 2R_LSWDFC_US ; EUR ; ; ; 205 ; pieces ; ;
+; 2R_LSWEFC_US ; EUR ; ; ; 215 ; pieces ; ;
+; 2R_HSWDFC_US ; EUR ; ; ; 225 ; pieces ; ;
+; 2R_HSWEFC_US ; EUR ; ; ; 235 ; pieces ; ;
+; 3R_LSWDFC_US ; EUR ; ; ; 280 ; pieces ; ;
+; 3R_LSWEFC_US ; EUR ; ; ; 300 ; pieces ; ;
+; 3R_HSWDFC_US ; EUR ; ; ; 320 ; pieces ; ;
+; 3R_HSWEFC_US ; EUR ; ; ; 340 ; pieces ; ;
+; 4R_LSWDFC_US ; EUR ; ; ; 430 ; pieces ; ;
+; 4R_LSWEFC_US ; EUR ; ; ; 450 ; pieces ; ;
+; 4R_HSWDFC_US ; EUR ; ; ; 470 ; pieces ; ;
+; 4R_HSWEFC_US ; EUR ; ; ; 490 ; pieces ; ;
+; 5R_LSWDFC_US ; EUR ; ; ; 550 ; pieces ; ;
+; 5R_LSWEFC_US ; EUR ; ; ; 570 ; pieces ; ;
+; 5R_HSWDFC_US ; EUR ; ; ; 600 ; pieces ; ;
+; 5R_HSWEFC_US ; EUR ; ; ; 630 ; pieces ; ;
+
+
+
+
+# ************************************************
+# *************** SERVICE PRODUCTS ***************
+# ************************************************
+
+INSERT_UPDATE PriceRow; product(code, $catalogVersion)[unique = true]; currency(isocode)[unique = true]; minqtd[default = '1']; net[default = false]; price; unit(code); $catalogVersion
+# Prices in GBP
+; WIFI              ; GBP ; ; ; 10 ; pieces ;
+; GYM_ACCESS        ; GBP ; ; ; 15 ; pieces ;
+; ENGLISH_BREAKFAST ; GBP ; ; ; 12 ; pieces ;
+; PARKING           ; GBP ; ; ; 35 ; pieces ;
+; PILLOWS           ; GBP ; ; ; 5  ; pieces ;
+; LINEN             ; GBP ; ; ; 15 ; pieces ;
+
+# Prices in EUR
+; WIFI              ; EUR ; ; ; 12 ; pieces ;
+; GYM_ACCESS        ; EUR ; ; ; 18 ; pieces ;
+; ENGLISH_BREAKFAST ; EUR ; ; ; 14 ; pieces ;
+; PARKING           ; EUR ; ; ; 40 ; pieces ;
+; PILLOWS           ; EUR ; ; ; 6  ; pieces ;
+; LINEN             ; EUR ; ; ; 18 ; pieces ;

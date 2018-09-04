@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<editor-definition id="de.hybris.platform.accommodationbackoffice.editor.producttypedropdown"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/editor-definition.xsd">
+
+	<name>Product Type drop down editor</name>
+	<description>Custom drop down editor for product Type</description>
+	<type>java.lang.String</type>
+	<editorClassName>de.hybris.platform.accommodationbackoffice.editor.DefaultProductTypeDropDownEditor</editorClassName>
+</editor-definition>

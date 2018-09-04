@@ -1,0 +1,20 @@
+$lang = en
+$catalogVersion = catalogVersion(catalog(id[default = 'travelProductCatalog']), version[default = 'Staged'])[unique = true, default = 'travelProductCatalog:Staged']
+$categories = supercategories(code, $catalogVersion)
+
+# Insert Categories
+INSERT_UPDATE Category; code[unique = true]; allowedPrincipals(uid)[default = 'customergroup']; $catalogVersion
+# Deliberately empty for future purposes
+
+# Insert Categories
+INSERT_UPDATE AccommodationCategory; code[unique = true]; $categories; allowedPrincipals(uid)[default = 'customergroup']; $catalogVersion
+; SINGLE_ROOM  ; ; ;
+; DOUBLE_ROOM  ; ; ;
+; TWIN_ROOM    ; ; ;
+; TRIPLE_ROOM  ; ; ;
+; JUNIOR_SUITE ; ; ;
+; SUITE        ; ; ;
+; STUDIO       ; ; ;
+; QUEEN_ROOM   ; ; ;
+; KING_ROOM    ; ; ;
+; APARTMENT    ; ; ;

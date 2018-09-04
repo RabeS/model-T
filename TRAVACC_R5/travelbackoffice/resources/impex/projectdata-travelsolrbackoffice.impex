@@ -1,0 +1,13 @@
+# This impex is to return to the Flexible search logic while accessing Products in backoffice
+
+$updateBackofficeIndexCronJob=update-backofficeIndex-CronJob;
+$backofficeSFCName=Solr Config for Backoffice;
+
+REMOVE Trigger [batchmode=true]; itemtype(code) ; cronjob(code)[unique=true]
+;Trigger;$updateBackofficeIndexCronJob
+
+INSERT_UPDATE SolrIndexerCronJob; code[unique = true]   ;job    ;facetSearchConfig(name)    ;active
+;$updateBackofficeIndexCronJob ;   solrIndexerJob  ;   $backofficeSFCName  ;   false
+
+REMOVE BackofficeIndexedTypeToSolrFacetSearchConfig; indexedType(code)[unique=true]; solrFacetSearchConfig(name);
+; Product                       ; $backofficeSFCName         ;

@@ -1,0 +1,26 @@
+# ImpEx for Importing Locations
+
+# ImpEx for Importing Locations into travel accelerator
+
+# Macros / Replacement Parameter definitions
+$catalogVersion = catalogVersion(catalog(id[default = 'airlineProductCatalog']), version[default = 'Staged'])[unique = true, default = 'airlineProductCatalog:Staged']
+$picture = picture(code, $catalogVersion)
+$siteResource = jar:de.hybris.platform.airlinestore.constants.AirlinestoreConstants&/airlinestore/import/coredata/stores/airline/completeset
+$lang = en
+
+# Import Category Media
+INSERT_UPDATE Media; code[unique = true]; realfilename; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/jpeg']; $catalogVersion
+; /images/paris.jpg     ; paris.jpg     ; $siteResource/images/paris.jpg     ;
+; /images/london.jpg    ; london.jpg    ; $siteResource/images/london.jpg    ;
+; /images/edinburgh.jpg ; edinburgh.jpg ; $siteResource/images/edinburgh.jpg ;
+; /images/default.jpg   ; default.jpg   ; $siteResource/images/default.jpg   ;
+
+# Create Categories
+INSERT_UPDATE Location; code[unique = true]; locationType(code); superlocations(code); $picture[default = '/images/default.jpg']
+"#% impex.includeExternalData(ImpExManager.class.getResourceAsStream(""/airlinestore/import/coredata/stores/airline/completeset/csv/countrylocations.csv""), ""utf-8"", new char[] {','}, 0, 0);"
+"#% impex.includeExternalData(ImpExManager.class.getResourceAsStream(""/airlinestore/import/coredata/stores/airline/completeset/csv/citylocations.csv""), ""utf-8"", new char[] {','}, 0, 0);"
+
+UPDATE Location; code[unique = true]; $picture[default = '/images/default.jpg']
+; LON ; /images/london.jpg
+; EDI ; /images/edinburgh.jpg
+; PAR ; /images/paris.jpg

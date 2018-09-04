@@ -1,0 +1,2124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  [y] hybris Platform
+
+  Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+  This software is the confidential and proprietary information of SAP
+  ("Confidential Information"). You shall not disclose such Confidential
+  Information and shall use it only in accordance with the terms of the
+  license agreement you entered into with SAP.
+-->
+<config xmlns="http://www.hybris.com/cockpit/config" xmlns:y="http://www.hybris.com/cockpit/config/hybris" xmlns:wz="http://www.hybris.com/cockpitng/config/wizard-config"
+	xmlns:ysl="http://www.hybris.com/cockpitng/config/simplelist" xmlns:list="http://www.hybris.com/cockpitng/component/listView"
+	xmlns:editorArea="http://www.hybris.com/cockpitng/component/editorArea" xmlns:n="http://www.hybris.com/cockpitng/config/explorertree"
+	xmlns:yss="http://www.hybris.com/cockpitng/config/simplesearch" xmlns:as="http://www.hybris.com/cockpitng/config/advancedsearch"
+	xmlns:na="http://www.hybris.com/cockpitng/config/notifications" xmlns:dsb="http://www.hybris.com/cockpitng/config/dashboard">
+
+	<context component="explorer-tree" principal="admin" merge-by="principal">
+		<n:explorer-tree>
+			<n:navigation-node id="hmc_typenode_travel">
+					<n:navigation-node id="hmc_navigationnode_accommodation">
+						<n:type-node id="hmc_typenode_accommodationchain" code="AccommodationChain" />
+						<n:type-node id="hmc_typenode_accommodationprovider" code="AccommodationProvider" />
+						<n:type-node id="hmc_typenode_accommodationoffering" code="AccommodationOffering" />
+						<n:type-node id="hmc_typenode_accommodationofferinggallery" code="AccommodationOfferingGallery" />
+						<n:type-node id="hmc_typenode_sleepingroom" code="SleepingRoom" />
+						<n:type-node id="hmc_typenode_nonsleepingroom" code="NonSleepingRoom" >
+							<n:type-node id="hmc_typenode_nonsleepingroomconfiguration" code="NonSleepingRoomConfiguration" />
+						</n:type-node>
+						<n:type-node id="hmc_typenode_extraproduct" code="ExtraProduct" />
+						<n:type-node id="hmc_typenode_rateplan" code="RatePlan" >
+							<n:type-node id="hmc_typenode_rateplaninclusion" code="RatePlanInclusion" />
+						</n:type-node>
+						<n:type-node id="hmc_typenode_marketingrateplaninfo" code="MarketingRatePlanInfo" />
+						<n:type-node id="hmc_typenode_rateplanconfig" code="RatePlanConfig" />
+						<n:type-node id="hmc_typenode_roomrateproduct" code="RoomRateProduct" />
+						<n:type-node id="hmc_typenode_roompreference" code="RoomPreference" />
+                        <n:type-node id="hmc_typenode_accommodationfacility" code="AccommodationFacility" />
+						<n:type-node id="hmc_typenode_accommodationcategory" code="AccommodationCategory" />
+						<n:type-node id="hmc_typenode_accommodationviewtype" code="AccommodationViewType" />
+						<n:type-node id="hmc_typenode_guestoccupancy" code="GuestOccupancy" />
+						<n:type-node id="hmc_typenode_cancelpenalty" code="CancelPenalty" />
+						<n:type-node id="hmc_typenode_guarantee" code="Guarantee" />
+						<n:type-node id="hmc_typenode_accommodationrestriction" code="AccommodationRestriction">
+							<n:type-node id="hmc_typenode_addexactlynrestriction" code="AddExactlyNRestriction" />
+						</n:type-node>
+					</n:navigation-node>
+					<n:navigation-node id="hmc_navigationnode_accommodationrules">
+						<n:navigation-node id="hmc_navigationnode_accommodationsourcerules">
+							<n:type-node id="hmc_typenode_accommodation_all_source_rules" code="SourceRule"/>
+							<n:type-node id="hmc_typenode_accommodationpromotion" code="AccommodationPromotionSourceRule" />
+							<n:type-node id="hmc_typenode_showaccommodationoffering" code="ShowAccommodationOfferingSourceRule" />
+							<n:type-node id="hmc_typenode_showextraproduct" code="ShowExtraProductSourceRule" />
+						</n:navigation-node>
+						<n:navigation-node id="hmc_navigationnode_accommodationsourcerulestemplates">
+							<n:type-node id="hmc_typenode_accommodation_all_source_rule_templates" code="SourceRuleTemplate"/>
+							<n:type-node id="hmc_typenode_accommodationpromotiontemplate" code="AccommodationPromotionSourceRuleTemplate" />
+							<n:type-node id="hmc_typenode_showaccommodationofferingtemplate" code="ShowAccommodationOfferingSourceRuleTemplate" />
+							<n:type-node id="hmc_typenode_showextraproducttemplate" code="ShowExtraProductSourceRuleTemplate" />
+						</n:navigation-node>
+					</n:navigation-node>
+			</n:navigation-node>
+		</n:explorer-tree>
+	</context>
+
+	<!-- *** LIST-VIEW *** -->
+	
+	<context type="AccommodationChain" component="listview">
+		<list:list-view>
+			<list:column qualifier="code" />
+			<list:column qualifier="name" />
+		</list:list-view>
+	</context>
+
+	<context type="AccommodationProvider" component="listview">
+		<list:list-view>
+			<list:column qualifier="code" />
+			<list:column qualifier="name" />
+			<list:column qualifier="accommodationChain" />
+		</list:list-view>
+	</context>
+
+	<context type="AccommodationOffering" component="listview">
+		<list:list-view>
+			<list:column qualifier="code" />
+			<list:column qualifier="name" />
+			<list:column qualifier="provider" />
+			<list:column qualifier="starRating" />
+			<list:column qualifier="boosted" />
+			<list:column qualifier="location" />
+			<list:column qualifier="types" />
+		</list:list-view>
+	</context>
+
+	<context type="AccommodationOfferingGallery" component="listview">
+		<list:list-view>
+			<list:column qualifier="code" />
+			<list:column qualifier="catalogVersion" />
+		</list:list-view>
+	</context>
+
+	<context type="MarketingRatePlanInfo" component="listview">
+		<list:list-view>
+			<list:column qualifier="code" />
+			<list:column qualifier="accommodationOffering" />
+			<list:column qualifier="numberOfAdults" />
+			<list:column qualifier="ratePlanConfig" />
+			<list:column qualifier="extraGuests" />
+			<list:column qualifier="catalogVersion" />
+		</list:list-view>
+	</context>
+
+	<context type="RatePlan" component="listview">
+		<list:list-view>
+			<list:column qualifier="code" />
+			<list:column qualifier="cancelPenalty" />
+			<list:column qualifier="guarantee" />
+			<list:column qualifier="guestOccupancies" />
+			<list:column qualifier="mealType" />
+			<list:column qualifier="ratePlanInclusion" />
+			<list:column qualifier="catalogVersion" />
+		</list:list-view>
+	</context>
+
+	<context type="Accommodation" component="listview">
+		<list:list-view>
+			<list:column qualifier="code" />
+			<list:column qualifier="name" />
+			<list:column qualifier="guestOccupancies" />
+			<list:column qualifier="catalogVersion" />
+		</list:list-view>
+	</context>
+
+	<context type="RoomPreference" component="listview">
+		<list:list-view>
+			<list:column qualifier="value" />
+			<list:column qualifier="preferenceType" />
+		</list:list-view>
+	</context>
+
+	<context type="CustomerReview" component="listview">
+		<list:list-view>
+			<list:column qualifier="product" />
+			<list:column qualifier="accommodationOffering" />
+			<list:column qualifier="user" />
+			<list:column qualifier="bookingReference" />
+			<list:column qualifier="rating" />
+			<list:column qualifier="headline" />
+			<list:column qualifier="approvalStatus" />
+		</list:list-view>
+	</context>
+
+	<context merge-by="module" type="AccommodationFacility" component="listview">
+		<list:list-view>
+			<list:column qualifier="code" />
+			<list:column qualifier="shortDescription" />
+			<list:column qualifier="type" />
+		</list:list-view>
+	</context>
+
+	<context merge-by="module" type="RatePlanConfig" component="listview">
+		<list:list-view>
+			<list:column qualifier="code" />
+			<list:column qualifier="ratePlan" />
+			<list:column qualifier="accommodation" />
+			<list:column qualifier="quantity" />
+		</list:list-view>
+	</context>
+	
+	<context type="GuestOccupancy" component="listview">
+		<list:list-view>
+			<list:column qualifier="code" />
+			<list:column qualifier="PassengerType" />
+			<list:column qualifier="quantityMin" />
+			<list:column qualifier="quantityMax" />
+		</list:list-view>
+	</context>
+	
+	<context type="CancelPenalty" component="listview">
+		<list:list-view>
+			<list:column qualifier="code" />
+			<list:column qualifier="description" />
+			<list:column qualifier="fixedAmount" />
+			<list:column qualifier="percentageAmount" />
+		</list:list-view>
+	</context>
+	
+	<context type="Guarantee" component="listview">
+		<list:list-view>
+			<list:column qualifier="code" />
+			<list:column qualifier="type" />
+			<list:column qualifier="shortDescription" />
+			<list:column qualifier="fixedAmount" />
+			<list:column qualifier="percentageAmount" />
+		</list:list-view>
+	</context>
+	
+	<context type="RatePlanInclusion" component="listview">
+		<list:list-view>
+			<list:column qualifier="shortDescription" />
+			<list:column qualifier="longDescription" />
+			<list:column qualifier="ratePlan" />
+		</list:list-view>
+	</context>
+	
+	<context type="SleepingRoom" component="listview">
+		<list:list-view>
+			<list:column qualifier="code" />
+			<list:column qualifier="name" />
+			<list:column qualifier="guestOccupancies" />
+			<list:column qualifier="viewType" />
+			<list:column qualifier="catalogVersion" />
+		</list:list-view>
+	</context>
+	
+	<context type="NonSleepingRoom" component="listview">
+		<list:list-view>
+			<list:column qualifier="code" />
+			<list:column qualifier="name" />
+			<list:column qualifier="guestOccupancies" />
+			<list:column qualifier="nonSleepingRoomType" />
+			<list:column qualifier="catalogVersion" />
+		</list:list-view>
+	</context>
+	
+	<context type="RoomRateProduct" component="listview">
+		<list:list-view>
+			<list:column qualifier="code" />
+			<list:column qualifier="daysOfWeek" />
+			<list:column qualifier="dateRanges" />
+			<list:column qualifier="catalogVersion" />
+		</list:list-view>
+	</context>
+
+	<context type="AccommodationCategory" component="listview">
+		<list:list-view>
+			<list:column qualifier="code" />
+			<list:column qualifier="name" />
+			<list:column qualifier="catalogVersion" />
+		</list:list-view>
+	</context>
+
+	<context type="AccommodationViewType" component="listview">
+		<list:list-view>
+			<list:column qualifier="code" />
+			<list:column qualifier="name" />
+		</list:list-view>
+	</context>
+
+	<context type="NonSleepingRoomConfiguration" component="listview">
+		<list:list-view>
+			<list:column qualifier="code" />
+			<list:column qualifier="name" />
+		</list:list-view>
+	</context>
+
+	<context type="AccommodationRestriction" component="listview">
+		<list:list-view>
+			<list:column qualifier="code" />
+			<list:column qualifier="tripMinOfferQty" />
+			<list:column qualifier="tripMaxOfferQty" />
+		</list:list-view>
+	</context>
+
+	<!-- *** SIMPLE-SEARCH *** -->
+
+	<context type="AccommodationChain" component="simple-search">
+		<yss:simple-search>
+			<yss:field name="code"/>
+			<yss:field name="name"/>
+		</yss:simple-search>
+	</context>
+
+	<context type="AccommodationProvider" component="simple-search">
+		<yss:simple-search>
+			<yss:field name="code"/>
+			<yss:field name="name"/>
+		</yss:simple-search>
+	</context>
+
+	<context type="AccommodationOffering" component="simple-search">
+		<yss:simple-search>
+			<yss:field name="code" />
+			<yss:field name="name" />
+		</yss:simple-search>
+	</context>
+
+	<context type="RoomPreference" component="simple-search">
+		<yss:simple-search>
+			<yss:field name="value" />
+		</yss:simple-search>
+	</context>
+
+	<context type="MarketingRatePlanInfo" component="simple-search">
+		<yss:simple-search>
+			<yss:field name="code" />
+		</yss:simple-search>
+	</context>
+
+	<context type="RatePlan" component="simple-search">
+		<yss:simple-search>
+			<yss:field name="code" />
+		</yss:simple-search>
+	</context>
+
+	<context type="Accommodation" component="simple-search">
+		<yss:simple-search>
+			<yss:field name="code" />
+		</yss:simple-search>
+	</context>
+
+	<context type="PropertyFacility" component="simple-search">
+		<yss:simple-search>
+			<yss:field name="code" />
+			<yss:field name="shortDescription" />
+		</yss:simple-search>
+	</context>
+
+	<context type="RatePlanConfig" component="simple-search">
+		<yss:simple-search>
+			<yss:field name="code" />
+		</yss:simple-search>
+	</context>
+
+    <context type="AccommodationFacility" component="simple-search">
+        <yss:simple-search>
+            <yss:field name="code"/>
+            <yss:field name="shortDescription"/>
+        </yss:simple-search>
+    </context>
+
+	<context type="GuestOccupancy" component="simple-search">
+		<yss:simple-search>
+			<yss:field name="code"/>
+		</yss:simple-search>
+	</context>
+	
+	<context type="SleepingRoom" component="simple-search">
+		<yss:simple-search>
+			<yss:field name="code" />
+		</yss:simple-search>
+	</context>
+	
+	<context type="NonSleepingRoom" component="simple-search">
+		<yss:simple-search>
+			<yss:field name="code" />
+		</yss:simple-search>
+	</context>
+	
+	<context type="RatePlanInclusion" component="simple-search">
+		<yss:simple-search>
+			<yss:field name="shortDescription" />
+		</yss:simple-search>
+	</context>
+
+	<context type="CancelPenalty" component="simple-search">
+		<yss:simple-search>
+			<yss:field name="code"/>
+		</yss:simple-search>
+	</context>
+
+	<context type="Guarantee" component="simple-search">
+		<yss:simple-search>
+			<yss:field name="code"/>
+		</yss:simple-search>
+	</context>
+	
+	<context type="RoomRateProduct" component="simple-search">
+		<yss:simple-search>
+			<yss:field name="code" />
+		</yss:simple-search>
+	</context>
+
+	<context type="NonSleepingRoomConfiguration" component="simple-search">
+		<yss:simple-search>
+			<yss:field name="code" />
+		</yss:simple-search>
+	</context>
+
+	<context type="AccommodationRestriction" component="simple-search">
+		<yss:simple-search>
+			<yss:field name="code" />
+		</yss:simple-search>
+	</context>
+
+	<!-- *** ADVANCED-SEARCH *** -->
+
+	<context type="AccommodationChain" component="advanced-search">
+		<as:advanced-search connection-operator="AND">
+			<as:field-list>
+				<as:field name="code" operator="contains" selected="true"/>
+				<as:field name="name" operator="contains"/>
+			</as:field-list>
+		</as:advanced-search>
+	</context>
+
+	<context type="AccommodationProvider" component="advanced-search">
+		<as:advanced-search connection-operator="AND">
+			<as:field-list>
+				<as:field name="code" operator="contains" selected="true"/>
+				<as:field name="name" operator="contains"/>
+				<as:field name="accommodationChain" />
+			</as:field-list>
+		</as:advanced-search>
+	</context>
+
+	<context type="AccommodationOffering" component="advanced-search">
+		<as:advanced-search connection-operator="AND">
+			<as:field-list>
+				<as:field name="code" operator="contains" selected="true" />
+				<as:field name="name" operator="contains" selected="true" />
+				<as:field name="provider" operator="contains" />
+				<as:field name="starRating" />
+				<as:field name="numberOfFloors" />
+				<as:field name="accommodations" />
+				
+			</as:field-list>
+		</as:advanced-search>
+	</context>
+
+	<context type="MarketingRatePlanInfo" component="advanced-search">
+		<as:advanced-search connection-operator="AND">
+			<as:field-list>
+				<as:field name="code" selected="true" />
+				<as:field name="accommodationOffering" />
+				<as:field name="numberOfAdults" />
+			</as:field-list>
+		</as:advanced-search>
+	</context>
+
+	<context type="RatePlan" component="advanced-search">
+		<as:advanced-search connection-operator="AND">
+			<as:field-list>
+				<as:field name="code" selected="true"/>
+				<as:field name="minStay"/>
+				<as:field name="maxStay"/>
+				<as:field name="cancelPenalty"/>
+				<as:field name="guarantee"/>
+				<as:field name="guestOccupancies"/>
+				<as:field name="accommodation"/>
+			</as:field-list>
+		</as:advanced-search>
+	</context>
+
+	<context type="Accommodation" component="advanced-search">
+		<as:advanced-search connection-operator="AND">
+			<as:field-list>
+				<as:field name="name" operator="contains" selected="true" />
+				<as:field name="code" />
+				<as:field name="supercategories" />
+			</as:field-list>
+		</as:advanced-search>
+	</context>
+
+	<context type="RoomPreference" component="advanced-search">
+		<as:advanced-search connection-operator="AND">
+			<as:field-list>
+				<as:field name="value" operator="contains" selected="true" />
+				<as:field name="preferenceType" />
+			</as:field-list>
+		</as:advanced-search>
+	</context>
+
+    <context type="AccommodationFacility" component="advanced-search">
+        <as:advanced-search connection-operator="AND">
+            <as:field-list>
+                <as:field name="code" operator="contains" selected="true"/>
+                <as:field name="shortDescription" />
+				<as:field name="type" />
+                <as:field name="active" />
+            </as:field-list>
+        </as:advanced-search>
+    </context>
+
+	<context type="GuestOccupancy" component="advanced-search">
+		<as:advanced-search connection-operator="AND">
+			<as:field-list>
+				<as:field name="code" operator="contains" selected="true"/>
+				<as:field name="PassengerType" />
+				<as:field name="quantityMin" />
+				<as:field name="quantityMax" />
+			</as:field-list>
+		</as:advanced-search>
+	</context>
+	
+	<context type="SleepingRoom" component="advanced-search">
+		<as:advanced-search connection-operator="AND">
+			<as:field-list>
+				<as:field name="name" operator="contains" selected="true" />
+				<as:field name="code" />
+				<as:field name="viewType" />
+				<as:field name="supercategories" />
+				<as:field name="catalogVersion" />
+			</as:field-list>
+		</as:advanced-search>
+	</context>
+	
+	<context type="NonSleepingRoom" component="advanced-search">
+		<as:advanced-search connection-operator="AND">
+			<as:field-list>
+				<as:field name="name" operator="contains" selected="true" />
+				<as:field name="code" />
+				<as:field name="nonSleepingRoomType" />
+				<as:field name="supercategories" />
+			</as:field-list>
+		</as:advanced-search>
+	</context>
+	
+	<context type="RoomRateProduct" component="advanced-search">
+		<as:advanced-search connection-operator="AND">
+			<as:field-list>
+				<as:field name="code" operator="contains" selected="true" />
+				<as:field name="name" />
+				<as:field name="Europe1PriceFactory_PTG" />
+				<as:field name="supercategories" />
+			</as:field-list>
+		</as:advanced-search>
+	</context>
+	
+	<context type="CancelPenalty" component="advanced-search">
+		<as:advanced-search connection-operator="AND">
+			<as:field-list>
+				<as:field name="code" operator="contains" selected="true"/>
+				<as:field name="ratePlan" />
+				<as:field name="percentageAmount" />
+				<as:field name="fixedAmount" />
+				<as:field name="absoluteDeadline" />
+				<as:field name="relativeDeadline" />
+			</as:field-list>
+		</as:advanced-search>
+	</context>
+
+	<context type="Guarantee" component="advanced-search">
+		<as:advanced-search connection-operator="AND">
+			<as:field-list>
+				<as:field name="code" operator="contains" selected="true"/>
+				<as:field name="type" />
+				<as:field name="ratePlan" />
+				<as:field name="percentageAmount" />
+				<as:field name="fixedAmount" />
+				<as:field name="absoluteDeadline" />
+				<as:field name="relativeDeadline" />
+			</as:field-list>
+		</as:advanced-search>
+	</context>
+	
+	<context type="RatePlanInclusion" component="advanced-search">
+		<as:advanced-search connection-operator="AND">
+			<as:field-list>
+				<as:field name="shortDescription" operator="contains" selected="true"/>
+				<as:field name="ratePlan" />
+			</as:field-list>
+		</as:advanced-search>
+	</context>
+
+	<context type="AccommodationCategory" component="advanced-search">
+		<as:advanced-search connection-operator="AND">
+			<as:field-list>
+				<as:field name="code" operator="contains" selected="true"/>
+				<as:field name="name" />
+				<as:field name="catalogVersion" />
+			</as:field-list>
+		</as:advanced-search>
+	</context>
+
+	<context type="AccommodationViewType" component="advanced-search">
+		<as:advanced-search connection-operator="AND">
+			<as:field-list>
+				<as:field name="name" operator="contains" selected="true" />
+				<as:field name="code" />
+			</as:field-list>
+		</as:advanced-search>
+	</context>
+
+	<context type="NonSleepingRoomConfiguration" component="advanced-search">
+		<as:advanced-search connection-operator="AND">
+			<as:field-list>
+				<as:field name="code" operator="contains" selected="true"/>
+				<as:field name="name" />
+			</as:field-list>
+		</as:advanced-search>
+	</context>
+
+	<context type="AccommodationRestriction" component="advanced-search">
+		<as:advanced-search connection-operator="AND">
+			<as:field-list>
+				<as:field name="code" operator="contains" selected="true" />
+				<as:field name="tripMinOfferQty" />
+				<as:field name="tripMaxOfferQty" />
+			</as:field-list>
+		</as:advanced-search>
+	</context>
+
+	<context type="CustomerReview" component="advanced-search">
+		<as:advanced-search connection-operator="AND">
+			<as:field-list>
+				<as:field name="accommodationOffering" operator="equals" selected="true" />
+				<as:field name="bookingReference" operator="equals" selected="true" />
+			</as:field-list>
+		</as:advanced-search>
+	</context>
+	
+	<!-- *** EDITOR-AREA *** -->
+	
+	<context component="editor-area" type="AccommodationOffering">
+		<editorArea:editorArea>
+			<editorArea:tab name="essentials">
+				<editorArea:section name="essentials">
+					<editorArea:attribute qualifier="code" />
+					<editorArea:attribute qualifier="name" />
+					<editorArea:attribute qualifier="description"
+						editor="com.hybris.cockpitng.editor.localized(com.hybris.cockpitng.editor.wysiwyg)" />
+					<editorArea:attribute qualifier="location" />
+					<editorArea:attribute qualifier="provider" />
+					<editorArea:attribute qualifier="starRating" />
+					<editorArea:attribute qualifier="averageUserRating" readonly="true" />
+					<editorArea:attribute qualifier="numberOfReviews" />
+					<editorArea:attribute qualifier="customerReviews" />
+					<editorArea:attribute qualifier="boosted" />
+					<editorArea:attribute qualifier="popularity" />
+					<editorArea:attribute qualifier="galleryCode" />
+					<editorArea:attribute qualifier="propertyFacility" />
+					<editorArea:attribute qualifier="propertyInformation"
+						editor="com.hybris.cockpitng.editor.localized(com.hybris.cockpitng.editor.wysiwyg)" />
+					<editorArea:attribute qualifier="types" />
+					<editorArea:attribute qualifier="numberOfSleepingRooms" />
+					<editorArea:attribute qualifier="numberOfNonSleepingRooms" />
+					<editorArea:attribute qualifier="numberOfFloors" />
+					<editorArea:attribute qualifier="extras" />
+				</editorArea:section>
+			</editorArea:tab>
+			<editorArea:tab name="administration">
+				<editorArea:section name="others">
+					<editorArea:attribute qualifier="stockLevels" />
+					<editorArea:attribute qualifier="marketingRatePlanInfos" />
+					<editorArea:attribute qualifier="accommodations" />
+					<editorArea:attribute qualifier="accommodationServiceWarehouses" />
+					<editorArea:attribute qualifier="ignoreRules" />
+				</editorArea:section>
+			</editorArea:tab>
+		</editorArea:editorArea>
+	</context>
+
+	<context component="editor-area" type="MarketingRatePlanInfo">
+		<editorArea:editorArea>
+			<editorArea:tab name="essentials">
+				<editorArea:section name="essentials">
+					<editorArea:attribute qualifier="code" />
+					<editorArea:attribute qualifier="accommodationOffering" />
+					<editorArea:attribute qualifier="numberOfAdults" />
+					<editorArea:attribute qualifier="ratePlanConfig" />
+					<editorArea:attribute qualifier="extraGuests" />
+					<editorArea:attribute qualifier="catalogVersion" />
+				</editorArea:section>
+			</editorArea:tab>
+		</editorArea:editorArea>
+	</context>
+
+	<context component="editor-area" type="RoomPreference">
+		<editorArea:editorArea>
+			<editorArea:tab name="essentials">
+				<editorArea:section name="essentials">
+					<editorArea:attribute qualifier="value" />
+					<editorArea:attribute qualifier="preferenceType" />
+				</editorArea:section>
+			</editorArea:tab>
+		</editorArea:editorArea>
+	</context>
+
+	<context merge-by="type" parent="Category" component="editor-area" type="RatePlan">
+		<editorArea:editorArea>
+			<editorArea:tab name="essentials">
+				<editorArea:section name="essentials">
+					<editorArea:attribute qualifier="code" />
+					<editorArea:attribute qualifier="cancelPenalty" />
+					<editorArea:attribute qualifier="guarantee" />
+					<editorArea:attribute qualifier="guestOccupancies" />
+					<editorArea:attribute qualifier="ratePlanInclusion" />
+					<editorArea:attribute qualifier="mealType" />
+					<editorArea:attribute qualifier="timeUnit" />
+					<editorArea:attribute qualifier="minStay" />
+					<editorArea:attribute qualifier="maxStay" />
+					<editorArea:attribute qualifier="accommodation" />
+				</editorArea:section>
+			</editorArea:tab>
+		</editorArea:editorArea>
+	</context>
+
+	<context component="editor-area" type="Accommodation" merge-by="type" parent="Product">
+		<editorArea:editorArea>
+			<editorArea:tab name="essentials">
+				<editorArea:section name="essentials">
+					<editorArea:attribute qualifier="code" />
+					<editorArea:attribute qualifier="name" />
+					<editorArea:attribute qualifier="type" />
+					<editorArea:attribute qualifier="description" />
+					<editorArea:attribute qualifier="size" />
+					<editorArea:attribute qualifier="roomType" />
+					<editorArea:attribute qualifier="guestOccupancies" />
+					<editorArea:attribute qualifier="roomPreferences" />
+					<editorArea:attribute qualifier="accommodationFacility" />
+					<editorArea:attribute qualifier="ratePlan" />
+					<editorArea:attribute qualifier="ratePlanConfigs" />
+					<editorArea:attribute qualifier="roomFloorConfigurations" />
+				</editorArea:section>
+			</editorArea:tab>
+		</editorArea:editorArea>
+	</context>
+	
+	<context component="editor-area" type="RoomRateProduct" merge-by="type" parent="Product">
+		<editorArea:editorArea>
+			<editorArea:tab name="essentials">
+				<editorArea:section name="essentials">
+					<editorArea:attribute qualifier="code" />
+					<editorArea:attribute qualifier="daysOfWeek" />
+					<editorArea:attribute qualifier="dateRanges" />
+				</editorArea:section>
+			</editorArea:tab>
+		</editorArea:editorArea>
+	</context>
+
+	<context component="editor-area" type="AccommodationRestriction">
+		<editorArea:editorArea>
+			<editorArea:tab name="essentials">
+				<editorArea:section name="essentials">
+					<editorArea:attribute qualifier="code" />
+					<editorArea:attribute qualifier="tripMinOfferQty" />
+					<editorArea:attribute qualifier="tripMaxOfferQty" />
+				</editorArea:section>
+			</editorArea:tab>
+		</editorArea:editorArea>
+	</context>
+
+	<!-- *** CREATE-WIZARD *** -->
+
+	<context component="create-wizard" type="AccommodationProvider">
+		<wz:flow id="AccOfferingWizard" title="create.accommodationprovider.title">
+			<wz:prepare id="accProviderPrepare">
+				<wz:initialize property="newAccProvider" type="ctx.TYPE_CODE" />
+			</wz:prepare>
+			<wz:step id="step1" label="create.accommodationprovider.general.label" sublabel="create.accommodationprovider.general.sublabel">
+				<wz:content id="step1.content">
+					<wz:property-list root="newAccProvider">
+						<wz:property qualifier="code" />
+						<wz:property qualifier="name" />
+						<wz:property qualifier="description" />
+						<wz:property qualifier="accommodationChain" type="Reference(AccommodationChain)">
+						<wz:editor-parameter>
+								<wz:name>isNestedObjectCreationDisabled</wz:name>
+								<wz:value>false</wz:value>
+							</wz:editor-parameter>
+						</wz:property>	
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel />
+					<wz:custom label="Done" visible="!#empty(newAccProvider.code) and !#empty(newAccProvider.name)" handler="accommodationProviderValidationHandler"/>
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+	
+	<context component="create-wizard" type="AccommodationOffering">
+		<wz:flow id="AccOfferingWizard" title="create.accommodationoffering.title">
+			<wz:prepare id="accOfferingPrepare">
+				<wz:initialize property="newAccommodationOffering" type="ctx.TYPE_CODE" />
+			</wz:prepare>
+			<wz:step id="step1" label="create.accommodationoffering.general.label" sublabel="create.accommodationoffering.general.sublabel">
+				<wz:content id="step1.content">
+					<wz:property-list root="newAccommodationOffering">
+						<wz:property qualifier="code" />
+						<wz:property qualifier="name" />
+						<wz:property qualifier="location">
+							<wz:editor-parameter>
+								<wz:name>isNestedObjectCreationDisabled</wz:name>
+								<wz:value>false</wz:value>
+							</wz:editor-parameter>
+						</wz:property>
+						<wz:property qualifier="provider">
+							<wz:editor-parameter>
+								<wz:name>isNestedObjectCreationDisabled</wz:name>
+								<wz:value>false</wz:value>
+							</wz:editor-parameter>
+						</wz:property>
+						<wz:property qualifier="types" type="java.lang.Enum(AccommodationOfferingType)" />
+						<wz:property qualifier="numberOfFloors" />
+						<wz:property qualifier="numberOfSleepingRooms" />
+						<wz:property qualifier="numberOfNonSleepingRooms" />
+						<wz:property qualifier="marketingRatePlanInfos" type="MultiReference-LIST(MarketingRatePlanInfo)" />
+						<wz:property qualifier="starRating" />
+						<wz:property qualifier="boosted" />
+						<wz:property qualifier="galleryCode" />
+						<wz:property type="java.lang.Boolean" qualifier="ignoreRules" >
+							<wz:editor-parameter>
+								<wz:name>showOptionalField</wz:name>
+								<wz:value>false</wz:value>
+							</wz:editor-parameter>
+							<wz:editor-parameter>
+								<wz:name>trueLabel</wz:name>
+								<wz:value>Yes</wz:value>
+							</wz:editor-parameter>
+							<wz:editor-parameter>
+								<wz:name>falseLabel</wz:name>
+								<wz:value>No</wz:value>
+							</wz:editor-parameter>
+						</wz:property>
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel />
+					<wz:custom label="Done"
+						visible="!#empty(newAccommodationOffering.code) and newAccommodationOffering.location != null and newAccommodationOffering.name?.values().^[!#empty(#this)] != null"
+						handler="createAccommodationOfferingValidationHandler" />
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+
+	<context component="create-wizard" type="MarketingRatePlanInfo">
+		<wz:flow id="MRPInfoWizard" title="create.marketingrateplaninfo.title">
+			<wz:prepare id="mRPInfoPrepare">
+				<wz:initialize property="newMRPInfo" type="ctx.TYPE_CODE" />
+			</wz:prepare>
+			<wz:step id="step1" label="create.marketingrateplaninfo.general.label" sublabel="create.marketingrateplaninfo.general.sublabel">
+				<wz:content id="step1.content">
+					<wz:property-list root="newMRPInfo">
+						<wz:property qualifier="code" />
+						<wz:property qualifier="accommodationOffering" />
+						<wz:property qualifier="numberOfAdults" />
+						<wz:property qualifier="ratePlanConfig">
+							<wz:editor-parameter>
+								<wz:name>isNestedObjectCreationDisabled</wz:name>
+								<wz:value>false</wz:value>
+							</wz:editor-parameter>
+						</wz:property>
+						<wz:property qualifier="extraGuests" />
+						<wz:property qualifier="catalogVersion" />
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel />
+					<wz:done visible="!#empty(newMRPInfo.code)">
+						<wz:save property="newMRPInfo" />
+					</wz:done>
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+
+	<context component="create-wizard" type="RatePlan">
+		<wz:flow id="RatePlanWizard" title="create.rateplan.title">
+			<wz:prepare id="ratePlanPrepare">
+				<wz:initialize property="newRatePlan" type="ctx.TYPE_CODE" />
+			</wz:prepare>
+			<wz:step id="step1" label="create.rateplan.general.label" sublabel="create.rateplan.general.sublabel">
+				<wz:content id="step1.content">
+					<wz:property-list root="newRatePlan">
+						<wz:property qualifier="code" />
+						<wz:property qualifier="description" />
+						<wz:property qualifier="cancelPenalty">
+							<wz:editor-parameter>
+								<wz:name>isNestedObjectCreationDisabled</wz:name>
+								<wz:value>false</wz:value>
+							</wz:editor-parameter>
+						</wz:property>
+						<wz:property qualifier="guarantee" />
+						<wz:property qualifier="ratePlanInclusion">
+							<wz:editor-parameter>
+								<wz:name>isNestedObjectCreationDisabled</wz:name>
+								<wz:value>false</wz:value>
+							</wz:editor-parameter>
+						</wz:property>
+						<wz:property qualifier="mealType" />
+						<wz:property qualifier="minStay" />
+						<wz:property qualifier="maxStay" />
+						<wz:property qualifier="catalogVersion" />
+						<wz:property qualifier="products" type="MultiReference-LIST(RoomRateProduct)" >
+							<wz:editor-parameter>
+								<wz:name>restrictToType</wz:name>
+								<wz:value>RoomRateProduct</wz:value>
+							</wz:editor-parameter>
+							<wz:editor-parameter>
+								<wz:name>isNestedObjectCreationDisabled</wz:name>
+								<wz:value>false</wz:value>
+							</wz:editor-parameter>
+						</wz:property>
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel />
+					<wz:custom label="Done" visible="!#empty(newRatePlan.code) and newRatePlan.catalogVersion != null" handler="ratePlanValidationHandler" />
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+
+	<context component="create-wizard" type="RoomPreference">
+		<wz:flow id="RoomPreferenceWizard" title="create.roompreference.title">
+			<wz:prepare id="roomPreferencePrepare">
+				<wz:initialize property="newRoomPreference" type="ctx.TYPE_CODE" />
+			</wz:prepare>
+			<wz:step id="step1" label="create.roompreference.general.label" sublabel="create.roompreference.general.sublabel">
+				<wz:content id="step1.content">
+					<wz:property-list root="newRoomPreference">
+						<wz:property qualifier="preferenceType" />
+						<wz:property qualifier="value" />
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel />
+					<wz:done visible="newRoomPreference.preferenceType !=null">
+						<wz:save property="newRoomPreference" />
+					</wz:done>
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+
+	<context merge-by="type" parent="Product" component="create-wizard" type="Accommodation">
+		<wz:flow id="AccommodationWizard" title="create.accommodation.title">
+			<wz:step id="step1" label="create.product.essential.label" sublabel="create.product.essential.sublabel">
+				<wz:content id="step1.content">
+					<wz:property-list root="newProduct">
+						<wz:property qualifier="code" type="java.lang.String"/>
+						<wz:property qualifier="approvalStatus"/>
+						<wz:property qualifier="catalogVersion"/>
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel/>
+					<wz:done visible="false" />
+					<wz:custom label="Done" visible="!#empty(newProduct.code) and newProduct.catalogVersion != null" handler="accommodationValidationHandler" />
+				</wz:navigation>
+			</wz:step>
+			<wz:step id="step2" >
+				<wz:navigation id="step2.navigation">
+					<wz:cancel />
+					<wz:back />
+					<wz:next />
+					<wz:done visible="false" />
+					<wz:custom label="Done" handler="accommodationValidationHandler" />
+				</wz:navigation>
+			</wz:step>
+			<wz:step id="step3" label="create.product.categories.label" sublabel="create.product.categories.sublabel">
+				<wz:info label="create.product.categories.info.label" position="top" />
+				<wz:content id="step3.content">
+					<wz:property qualifier="newProduct.supercategories" />
+				</wz:content>
+				<wz:navigation id="step3.navigation">
+					<wz:cancel />
+					<wz:back />
+					<wz:next />
+					<wz:done visible="false" />
+					<wz:custom label="Done" handler="accommodationValidationHandler" />
+				</wz:navigation>
+			</wz:step>
+			<wz:step id="step4" merge-mode="replace" label="create.accommodation.general.label" sublabel="create.accommodation.general.sublabel">
+				<wz:content id="step4.content">
+					<wz:property-list root="newProduct">
+						<wz:property qualifier="type" />
+						<wz:property qualifier="productType" />
+						<wz:property qualifier="roomType" />
+						<wz:property qualifier="accommodationFacility">
+							<wz:editor-parameter>
+								<wz:name>isNestedObjectCreationDisabled</wz:name>
+								<wz:value>false</wz:value>
+							</wz:editor-parameter>
+						</wz:property>
+						<wz:property qualifier="guestOccupancies">
+							<wz:editor-parameter>
+								<wz:name>isNestedObjectCreationDisabled</wz:name>
+								<wz:value>false</wz:value>
+							</wz:editor-parameter>
+						</wz:property>
+						<wz:property qualifier="roomPreferences">
+							<wz:editor-parameter>
+								<wz:name>isNestedObjectCreationDisabled</wz:name>
+								<wz:value>false</wz:value>
+							</wz:editor-parameter>
+						</wz:property>
+						<wz:property qualifier="Europe1PriceFactory_PTG" />
+						<wz:property qualifier="picture" validate="false"/>
+					</wz:property-list>
+					<wz:property editor="com.hybris.cockpitng.editor.dndfileupload" qualifier="createProductPicture" type="com.hybris.cockpitng.editor.defaultfileupload.FileUploadResult" validate="false">
+						<wz:editor-parameter>
+							<wz:name>accept</wz:name>
+							<wz:value>image/*</wz:value>
+						</wz:editor-parameter>
+						<wz:editor-parameter>
+							<wz:name>singleLineMode</wz:name>
+							<wz:value>true</wz:value>
+						</wz:editor-parameter>
+					</wz:property>
+				</wz:content>
+				<wz:navigation id="step4.navigation">
+					<wz:cancel />
+					<wz:back />
+					<wz:custom handler="composedFlowActionHandler" label="com.hybris.cockpitng.widgets.configurableflow.flow.done">
+						<wz:parameter>
+							<wz:name>handler:validateItem</wz:name>
+							<wz:value>accommodationValidationHandler</wz:value>
+						</wz:parameter>
+						<wz:parameter>
+							<wz:name>handler:savePicture</wz:name>
+							<wz:value>mediaReferenceCreateHandler</wz:value>
+						</wz:parameter>
+						<wz:parameter>
+							<wz:name>savePicture:mediaProperty</wz:name>
+							<wz:value>newProduct.picture</wz:value>
+						</wz:parameter>
+						<wz:parameter>
+							<wz:name>savePicture:saveParentObject</wz:name>
+							<wz:value>true</wz:value>
+						</wz:parameter>
+						<wz:parameter>
+							<wz:name>savePicture:mediaContentProperty</wz:name>
+							<wz:value>createProductPicture</wz:value>
+						</wz:parameter>
+						<wz:parameter>
+							<wz:name>savePicture:mediaCodeExpression</wz:name>
+							<wz:value>newProduct.code+'_picture'</wz:value>
+						</wz:parameter>
+						<wz:parameter>
+							<wz:name>savePicture:catalogVersionProperty</wz:name>
+							<wz:value>newProduct.catalogVersion</wz:value>
+						</wz:parameter>
+					</wz:custom>
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+
+	<context merge-by="type" parent="Product" component="create-wizard" type="RoomRateProduct">
+		<wz:flow id="RoomRateProductWizard" title="create.roomrateproduct.title">
+			<wz:step id="step1" label="create.product.essential.label" sublabel="create.product.essential.sublabel">
+				<wz:content id="step1.content">
+					<wz:property-list root="newProduct">
+						<wz:property qualifier="code" type="java.lang.String"/>
+						<wz:property qualifier="approvalStatus"/>
+						<wz:property qualifier="catalogVersion"/>
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel/>
+					<wz:done visible="false" />
+					<wz:custom label="Done" visible="!#empty(newProduct.code) and newProduct.catalogVersion != null" handler="roomRateProductValidationHandler" />
+				</wz:navigation>
+			</wz:step>
+			<wz:step id="step2" >
+				<wz:navigation id="step2.navigation">
+					<wz:cancel />
+					<wz:back />
+					<wz:next />
+					<wz:done visible="false" />
+					<wz:custom label="Done" handler="roomRateProductValidationHandler" />
+				</wz:navigation>
+			</wz:step>
+			<wz:step id="step3" label="create.product.categories.label" sublabel="create.product.categories.sublabel">
+				<wz:info label="create.product.categories.info.label" position="top" />
+				<wz:content id="step3.content">
+					<wz:property qualifier="newProduct.supercategories" />
+				</wz:content>
+				<wz:navigation id="step3.navigation">
+					<wz:cancel />
+					<wz:back />
+					<wz:next />
+					<wz:done visible="false" />
+					<wz:custom label="Done" handler="roomRateProductValidationHandler" />
+				</wz:navigation>
+			</wz:step>
+			<wz:step id="step4" merge-mode="replace" label="create.roomrateproduct.general.label" sublabel="create.roomrateproduct.general.sublabel">
+				<wz:content id="step4.content">
+					<wz:property-list root="newProduct">
+						<wz:property qualifier="daysOfWeek" />
+						<wz:property qualifier="dateRanges">
+							<wz:editor-parameter>
+								<wz:name>isNestedObjectCreationDisabled</wz:name>
+								<wz:value>false</wz:value>
+							</wz:editor-parameter>
+						</wz:property>
+						<wz:property qualifier="Europe1PriceFactory_PTG" />
+						<wz:property qualifier="europe1Prices" type="MultiReference-LIST(PriceRow)">
+    						<wz:editor-parameter>
+    							<wz:name>listConfigContext</wz:name>
+    							<wz:value>europe1PricesListView</wz:value>
+    						</wz:editor-parameter>
+    						<wz:editor-parameter>
+                                <wz:name>isNestedObjectCreationDisabled</wz:name>
+                                <wz:value>false</wz:value>
+                            </wz:editor-parameter>
+    					</wz:property>
+						
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step4.navigation">
+					<wz:cancel />
+					<wz:back />
+					<wz:done visible="false" />
+					<wz:custom label="Done" handler="roomRateProductValidationHandler" />
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+	
+	<context type="PriceRow" component="create-wizard">
+		<wz:flow id="PriceRowWizard" title="create.title.pricerow">
+			<wz:prepare id="pricePrepare">
+				<wz:initialize property="newPrice" type="ctx.TYPE_CODE"/>
+				<wz:assign property="newPrice.product" value="ctx.parentObject"/>
+			</wz:prepare>
+			<wz:step id="step1" label="create.pricetrow.essential.label" merge-mode="append">
+				<wz:content id="step1.content">
+					<wz:property-list root="newPrice">
+						<wz:property qualifier="user"/>
+						<wz:property qualifier="ug"/>
+						<wz:property qualifier="price"/>
+						<wz:property qualifier="currency"/>
+						<wz:property qualifier="unit"/>
+						<wz:property qualifier="net">
+							<wz:editor-parameter>
+								<wz:name>trueLabel</wz:name>
+								<wz:value>netTrue</wz:value>
+							</wz:editor-parameter>
+							<wz:editor-parameter>
+								<wz:name>falseLabel</wz:name>
+								<wz:value>netFalse</wz:value>
+							</wz:editor-parameter>
+						</wz:property>
+						<wz:property qualifier="dateRange"/>
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel/>
+					<wz:done>
+						<wz:save property="newPrice"/>
+					</wz:done>
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+
+	<context component="create-wizard" type="RatePlanConfig">
+		<wz:flow id="RatePlanConfigWizard" title="create.rateplanconfig.title">
+			<wz:prepare id="ratePlanConfigWizardPrepare">
+				<wz:initialize property="newRatePlanConfig" type="ctx.TYPE_CODE" />
+			</wz:prepare>
+			<wz:step id="step1" label="create.rateplanconfig.general.label" sublabel="create.rateplanconfig.general.sublabel">
+				<wz:content id="step1.content">
+					<wz:property-list root="newRatePlanConfig">
+						<wz:property qualifier="code" />
+						<wz:property qualifier="ratePlan" />
+						<wz:property qualifier="quantity" />
+						<wz:property qualifier="accommodation" />
+						<wz:property qualifier="catalogVersion" />
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel />
+					<wz:done visible="!#empty(newRatePlanConfig.code)">
+						<wz:save property="newRatePlanConfig" />
+					</wz:done>
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+	
+	<context component="create-wizard" type="AccommodationOfferingGallery">
+		<wz:flow id="AccommodationOfferingGalleryWizard" title="create.accommodationofferinggallery.title">
+			<wz:prepare id="accommodationOfferingGalleryPrepare">
+				<wz:initialize property="newAccommodationOfferingGallery" type="ctx.TYPE_CODE" />
+			</wz:prepare>
+			<wz:step id="step1" label="create.accommodationofferinggallery.general.label" sublabel="create.accommodationofferinggallery.general.sublabel">
+				<wz:content id="step1.content">
+					<wz:property-list root="newAccommodationOfferingGallery">
+						<wz:property qualifier="code" />
+						<wz:property qualifier="catalogVersion" />
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel />
+					<wz:done visible="!#empty(newAccommodationOfferingGallery.code) and newAccommodationOfferingGallery.catalogVersion != null">
+						<wz:save property="newAccommodationOfferingGallery" />
+					</wz:done>
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+
+	<context component="create-wizard" type="AccommodationChain">
+		<wz:flow id="AccommodationChainWizard" title="create.accommodationchain.title">
+			<wz:prepare id="accommodationChainPrepare">
+				<wz:initialize property="newAccommodationChain" type="ctx.TYPE_CODE" />
+			</wz:prepare>
+			<wz:step id="step1" label="create.accommodationchain.general.label" sublabel="create.accommodationchain.general.sublabel">
+				<wz:content id="step1.content">
+					<wz:property-list root="newAccommodationChain">
+						<wz:property qualifier="code" />
+						<wz:property qualifier="name" />
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel />
+					<wz:custom label="Done" visible="!#empty(newAccommodationChain.code)" handler="accommodationChainValidationHandler"/>
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>	
+	
+	<context merge-by="type" parent="Product" component="create-wizard" type="SleepingRoom">
+		<wz:flow id="SleepingRoomWizard" title="create.sleepingroom.title">
+		<wz:step id="step1" label="create.product.essential.label" sublabel="create.product.essential.sublabel">
+				<wz:content id="step1.content">
+					<wz:property-list root="newProduct">
+						<wz:property qualifier="code" type="java.lang.String"/>
+						<wz:property qualifier="approvalStatus"/>
+						<wz:property qualifier="catalogVersion"/>
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel/>
+					<wz:done visible="false" />
+					<wz:custom label="Done" visible="!#empty(newProduct.code) and newProduct.catalogVersion != null" handler="sleepingRoomValidationHandler" />
+				</wz:navigation>
+			</wz:step>
+			<wz:step id="step2" >
+				<wz:navigation id="step2.navigation">
+					<wz:cancel/>
+					<wz:back />
+					<wz:done visible="false" />
+					<wz:custom label="Done"  handler="sleepingRoomValidationHandler" />
+				</wz:navigation>
+			</wz:step>
+			<wz:step id="step3" label="create.product.categories.label" sublabel="create.product.categories.sublabel">
+				<wz:info label="create.product.categories.info.label" position="top" />
+				<wz:content id="step3.content">
+					<wz:property qualifier="newProduct.supercategories" />
+				</wz:content>
+				<wz:navigation id="step3.navigation">
+					<wz:cancel />
+					<wz:back />
+					<wz:next />
+					<wz:done visible="false" />
+					<wz:custom label="Done" handler="sleepingRoomValidationHandler" />
+				</wz:navigation>
+			</wz:step>
+			<wz:step id="step4" merge-mode="replace" label="create.sleepingroom.general.label" sublabel="create.sleepingroom.general.sublabel">
+				<wz:content id="step4.content">
+					<wz:property-list root="newProduct">
+						<wz:property qualifier="accommodationFacility">
+							<wz:editor-parameter>
+								<wz:name>isNestedObjectCreationDisabled</wz:name>
+								<wz:value>false</wz:value>
+							</wz:editor-parameter>
+						</wz:property>
+						<wz:property qualifier="guestOccupancies">
+							<wz:editor-parameter>
+								<wz:name>isNestedObjectCreationDisabled</wz:name>
+								<wz:value>false</wz:value>
+							</wz:editor-parameter>
+						</wz:property>
+						<wz:property qualifier="roomPreferences">
+							<wz:editor-parameter>
+								<wz:name>isNestedObjectCreationDisabled</wz:name>
+								<wz:value>false</wz:value>
+							</wz:editor-parameter>
+						</wz:property>
+						<wz:property qualifier="Europe1PriceFactory_PTG" />
+						<wz:property qualifier="viewType" >
+							<wz:editor-parameter>
+								<wz:name>isNestedObjectCreationDisabled</wz:name>
+								<wz:value>false</wz:value>
+							</wz:editor-parameter>
+						</wz:property>
+						<wz:property qualifier="europe1Prices" type="MultiReference-LIST(PriceRow)">
+    						<wz:editor-parameter>
+    							<wz:name>listConfigContext</wz:name>
+    							<wz:value>europe1PricesListView</wz:value>
+    						</wz:editor-parameter>
+    						<wz:editor-parameter>
+                                <wz:name>isNestedObjectCreationDisabled</wz:name>
+                                <wz:value>false</wz:value>
+                            </wz:editor-parameter>
+    					</wz:property>
+						 <wz:property qualifier="ratePlan" type="MultiReference-LIST(RatePlan)">
+							<wz:editor-parameter>
+                                <wz:name>isNestedObjectCreationDisabled</wz:name>
+                                <wz:value>false</wz:value>
+                            </wz:editor-parameter>
+						</wz:property>
+						<wz:property qualifier="ignoreRules" >
+							<wz:editor-parameter>
+								<wz:name>showOptionalField</wz:name>
+								<wz:value>false</wz:value>
+							</wz:editor-parameter>
+							<wz:editor-parameter>
+								<wz:name>trueLabel</wz:name>
+								<wz:value>Yes</wz:value>
+							</wz:editor-parameter>
+							<wz:editor-parameter>
+								<wz:name>falseLabel</wz:name>
+								<wz:value>No</wz:value>
+							</wz:editor-parameter>
+						</wz:property>
+						<wz:property qualifier="picture" validate="false"/>
+					</wz:property-list>
+					<wz:property editor="com.hybris.cockpitng.editor.dndfileupload" qualifier="createProductPicture" type="com.hybris.cockpitng.editor.defaultfileupload.FileUploadResult" validate="false">
+						<wz:editor-parameter>
+							<wz:name>accept</wz:name>
+							<wz:value>image/*</wz:value>
+						</wz:editor-parameter>
+						<wz:editor-parameter>
+							<wz:name>singleLineMode</wz:name>
+							<wz:value>true</wz:value>
+						</wz:editor-parameter>
+					</wz:property>
+				</wz:content>
+				<wz:navigation id="step4.navigation">
+					<wz:back />
+					<wz:cancel />
+					<wz:done visible="false" />
+					<wz:custom handler="composedFlowActionHandler" label="com.hybris.cockpitng.widgets.configurableflow.flow.done">
+						<wz:parameter>
+							<wz:name>handler:validateItem</wz:name>
+							<wz:value>sleepingRoomValidationHandler</wz:value>
+						</wz:parameter>
+						<wz:parameter>
+							<wz:name>handler:savePicture</wz:name>
+							<wz:value>mediaReferenceCreateHandler</wz:value>
+						</wz:parameter>
+						<wz:parameter>
+							<wz:name>savePicture:mediaProperty</wz:name>
+							<wz:value>newProduct.picture</wz:value>
+						</wz:parameter>
+						<wz:parameter>
+							<wz:name>savePicture:saveParentObject</wz:name>
+							<wz:value>true</wz:value>
+						</wz:parameter>
+						<wz:parameter>
+							<wz:name>savePicture:mediaContentProperty</wz:name>
+							<wz:value>createProductPicture</wz:value>
+						</wz:parameter>
+						<wz:parameter>
+							<wz:name>savePicture:mediaCodeExpression</wz:name>
+							<wz:value>newProduct.code+'_picture'</wz:value>
+						</wz:parameter>
+						<wz:parameter>
+							<wz:name>savePicture:catalogVersionProperty</wz:name>
+							<wz:value>newProduct.catalogVersion</wz:value>
+						</wz:parameter>
+					</wz:custom>
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+	
+	<context merge-by="type" parent="Product" component="create-wizard" type="NonSleepingRoom">
+		<wz:flow id="NonSleepingRoomWizard" title="create.nonsleepingroom.title">
+		<wz:step id="step1" label="create.product.essential.label" sublabel="create.product.essential.sublabel">
+				<wz:navigation id="step1.navigation">
+					<wz:cancel/>
+					<wz:done visible="false" />
+					<wz:custom label="Done" visible="!#empty(newProduct.code) and newProduct.catalogVersion != null" handler="nonSleepingRoomValidationHandler" />
+				</wz:navigation>
+			</wz:step>
+			<wz:step id="step2" >
+				<wz:navigation id="step2.navigation">
+					<wz:cancel/>
+					<wz:back />
+					<wz:next />
+					<wz:done visible="false" />
+					<wz:custom label="Done"  handler="nonSleepingRoomValidationHandler" />
+				</wz:navigation>
+			</wz:step>
+			<wz:step id="step3" label="create.product.categories.label" sublabel="create.product.categories.sublabel">
+				<wz:info label="create.product.categories.info.label" position="top" />
+				<wz:content id="step3.content">
+					<wz:property qualifier="newProduct.supercategories" />
+				</wz:content>
+				<wz:navigation id="step3.navigation">
+					<wz:cancel />
+					<wz:back />
+					<wz:next />
+					<wz:done visible="false" />
+					<wz:custom label="Done"  handler="nonSleepingRoomValidationHandler" />
+				</wz:navigation>
+			</wz:step>
+			<wz:step id="step4" merge-mode="replace" label="create.nonsleepingroom.general.label" sublabel="create.nonsleepingroom.general.sublabel">
+				<wz:content id="step4.content">
+					<wz:property-list root="newProduct">
+						<wz:property qualifier="nonSleepingRoomType" type="NonSleepingRoomType" />
+						<wz:property qualifier="nonSleepingRoomConfigurations"  type="MultiReference-LIST(NonSleepingRoomConfiguration)">
+						<wz:editor-parameter>
+                                <wz:name>isNestedObjectCreationDisabled</wz:name>
+                                <wz:value>false</wz:value>
+                            </wz:editor-parameter>
+                           </wz:property> 
+                           <wz:property qualifier="accommodationFacility" type="Reference(AccommodationFacility)">
+							<wz:editor-parameter>
+								<wz:name>isNestedObjectCreationDisabled</wz:name>
+								<wz:value>false</wz:value>
+							</wz:editor-parameter>
+						</wz:property>
+                         <wz:property qualifier="size" />
+                         <wz:property qualifier="guestOccupancies">
+							<wz:editor-parameter>
+								<wz:name>isNestedObjectCreationDisabled</wz:name>
+								<wz:value>false</wz:value>
+							</wz:editor-parameter>
+						</wz:property>
+                         <wz:property qualifier="Europe1PriceFactory_PTG" />
+                         <wz:property qualifier="europe1Prices" type="MultiReference-LIST(PriceRow)">
+    						<wz:editor-parameter>
+    							<wz:name>listConfigContext</wz:name>
+    							<wz:value>europe1PricesListView</wz:value>
+    						</wz:editor-parameter>
+    						<wz:editor-parameter>
+                                <wz:name>isNestedObjectCreationDisabled</wz:name>
+                                <wz:value>false</wz:value>
+                            </wz:editor-parameter>
+    					</wz:property>
+    					<wz:property qualifier="ratePlan" type="MultiReference-LIST(RatePlan)">
+							<wz:editor-parameter>
+                                <wz:name>isNestedObjectCreationDisabled</wz:name>
+                                <wz:value>false</wz:value>
+                            </wz:editor-parameter>
+						</wz:property>
+						<wz:property qualifier="ignoreRules" >
+							<wz:editor-parameter>
+								<wz:name>showOptionalField</wz:name>
+								<wz:value>false</wz:value>
+							</wz:editor-parameter>
+							<wz:editor-parameter>
+								<wz:name>trueLabel</wz:name>
+								<wz:value>Yes</wz:value>
+							</wz:editor-parameter>
+							<wz:editor-parameter>
+								<wz:name>falseLabel</wz:name>
+								<wz:value>No</wz:value>
+							</wz:editor-parameter>
+						</wz:property>
+						<wz:property qualifier="picture" validate="false"/>
+					</wz:property-list>
+					<wz:property editor="com.hybris.cockpitng.editor.dndfileupload" qualifier="createProductPicture" type="com.hybris.cockpitng.editor.defaultfileupload.FileUploadResult" validate="false">
+						<wz:editor-parameter>
+							<wz:name>accept</wz:name>
+							<wz:value>image/*</wz:value>
+						</wz:editor-parameter>
+						<wz:editor-parameter>
+							<wz:name>singleLineMode</wz:name>
+							<wz:value>true</wz:value>
+						</wz:editor-parameter>
+					</wz:property>
+				</wz:content>
+				<wz:navigation id="step4.navigation">
+					<wz:back />
+					<wz:cancel />
+					<wz:done visible="false" />
+					<wz:custom handler="composedFlowActionHandler" label="com.hybris.cockpitng.widgets.configurableflow.flow.done">
+						<wz:parameter>
+							<wz:name>handler:validateItem</wz:name>
+							<wz:value>nonSleepingRoomValidationHandler</wz:value>
+						</wz:parameter>
+						<wz:parameter>
+							<wz:name>handler:savePicture</wz:name>
+							<wz:value>mediaReferenceCreateHandler</wz:value>
+						</wz:parameter>
+						<wz:parameter>
+							<wz:name>savePicture:mediaProperty</wz:name>
+							<wz:value>newProduct.picture</wz:value>
+						</wz:parameter>
+						<wz:parameter>
+							<wz:name>savePicture:saveParentObject</wz:name>
+							<wz:value>true</wz:value>
+						</wz:parameter>
+						<wz:parameter>
+							<wz:name>savePicture:mediaContentProperty</wz:name>
+							<wz:value>createProductPicture</wz:value>
+						</wz:parameter>
+						<wz:parameter>
+							<wz:name>savePicture:mediaCodeExpression</wz:name>
+							<wz:value>newProduct.code+'_picture'</wz:value>
+						</wz:parameter>
+						<wz:parameter>
+							<wz:name>savePicture:catalogVersionProperty</wz:name>
+							<wz:value>newProduct.catalogVersion</wz:value>
+						</wz:parameter>
+					</wz:custom>
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+	
+	<context merge-by="type" parent="Product" component="create-wizard" type="ExtraProduct">
+		<wz:flow id="ExtraProductWizard" title="create.nonroom.title">
+			<wz:step id="step1" label="create.product.essential.label" sublabel="create.product.essential.sublabel">
+				<wz:content id="step1.content">
+				<wz:property-list root="newProduct">
+					<wz:property qualifier="ignoreRules" >
+							<wz:editor-parameter>
+								<wz:name>showOptionalField</wz:name>
+								<wz:value>false</wz:value>
+							</wz:editor-parameter>
+							<wz:editor-parameter>
+								<wz:name>trueLabel</wz:name>
+								<wz:value>Yes</wz:value>
+							</wz:editor-parameter>
+							<wz:editor-parameter>
+								<wz:name>falseLabel</wz:name>
+								<wz:value>No</wz:value>
+							</wz:editor-parameter>
+						</wz:property>
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel/>
+					<wz:next />
+					<wz:done visible="false" />
+					<wz:custom label="Done" visible="!#empty(newProduct.code) and newProduct.catalogVersion != null" handler="extraProductValidationHandler" />
+				</wz:navigation>
+			</wz:step>
+			<wz:step id="step2" >
+				<wz:navigation id="step2.navigation">
+					<wz:cancel/>
+					<wz:back />
+					<wz:next />
+					<wz:done visible="false" />
+					<wz:custom label="Done"  handler="extraProductValidationHandler" />
+				</wz:navigation>
+			</wz:step>
+			<wz:step id="step3" >
+				<wz:navigation id="step3.navigation">
+					<wz:cancel/>
+					<wz:back />
+					<wz:done visible="false" />
+					<wz:custom label="Done"  handler="extraProductValidationHandler" />
+				</wz:navigation>
+			</wz:step>
+			<wz:step id="step4" merge-mode="replace" label="create.nonroom.product.accommodation.restriction.label" sublabel="create.nonroom.product.accommodation.restriction.sublabel">
+				<wz:content id="step4.content">
+					<wz:property-list root="newProduct">
+						<wz:property qualifier="travelRestriction">
+							<wz:editor-parameter>
+								<wz:name>isNestedObjectCreationDisabled</wz:name>
+								<wz:value>false</wz:value>
+							</wz:editor-parameter>
+							<wz:editor-parameter>
+								<wz:name>restrictToType</wz:name>
+								<wz:value>AccommodationRestriction</wz:value>
+							</wz:editor-parameter>
+						</wz:property>
+						<wz:property qualifier="picture" validate="false"/>
+					</wz:property-list>
+					<wz:property editor="com.hybris.cockpitng.editor.dndfileupload" qualifier="createProductPicture" type="com.hybris.cockpitng.editor.defaultfileupload.FileUploadResult" validate="false">
+						<wz:editor-parameter>
+							<wz:name>accept</wz:name>
+							<wz:value>image/*</wz:value>
+						</wz:editor-parameter>
+						<wz:editor-parameter>
+							<wz:name>singleLineMode</wz:name>
+							<wz:value>true</wz:value>
+						</wz:editor-parameter>
+					</wz:property>
+				</wz:content>
+				<wz:navigation id="step4.navigation">
+					<wz:cancel/>
+					<wz:back />
+					<wz:done visible="false" />
+					<wz:custom handler="composedFlowActionHandler" label="com.hybris.cockpitng.widgets.configurableflow.flow.done">
+						<wz:parameter>
+							<wz:name>handler:validateItem</wz:name>
+							<wz:value>extraProductValidationHandler</wz:value>
+						</wz:parameter>
+						<wz:parameter>
+							<wz:name>handler:savePicture</wz:name>
+							<wz:value>mediaReferenceCreateHandler</wz:value>
+						</wz:parameter>
+						<wz:parameter>
+							<wz:name>savePicture:mediaProperty</wz:name>
+							<wz:value>newProduct.picture</wz:value>
+						</wz:parameter>
+						<wz:parameter>
+							<wz:name>savePicture:saveParentObject</wz:name>
+							<wz:value>true</wz:value>
+						</wz:parameter>
+						<wz:parameter>
+							<wz:name>savePicture:mediaContentProperty</wz:name>
+							<wz:value>createProductPicture</wz:value>
+						</wz:parameter>
+						<wz:parameter>
+							<wz:name>savePicture:mediaCodeExpression</wz:name>
+							<wz:value>newProduct.code+'_picture'</wz:value>
+						</wz:parameter>
+						<wz:parameter>
+							<wz:name>savePicture:catalogVersionProperty</wz:name>
+							<wz:value>newProduct.catalogVersion</wz:value>
+						</wz:parameter>
+					</wz:custom>
+				</wz:navigation>
+			</wz:step>
+			</wz:flow>
+	</context>
+	
+	<context component="create-wizard" type="RoomTypeConfiguration">
+ 	<wz:flow id="RoomTypeConfiguration" title="assign.room.and.floor.title">
+ 		<wz:prepare id="createRoomTypeConfigurationPrepare">
+				<wz:initialize property="newRoomTypeConfiguration" type="ctx.TYPE_CODE" />
+			</wz:prepare>
+ 		<wz:step id="step1" label="assign.room.and.floor.label" >
+ 				<wz:content id="step1.content">
+ 					<wz:custom-view lang="zul">
+ 						<wz:renderer spring-bean="createRoomTypeConfigurationRenderer" />
+ 					</wz:custom-view>
+ 				</wz:content>
+ 				<wz:navigation>
+ 					<wz:cancel />
+ 					<wz:custom label="Done" handler="saveRoomTypeConfigurationHandler"/>
+ 				</wz:navigation>
+ 		</wz:step>
+ 	</wz:flow>
+ 	</context>
+
+	<context component="create-wizard" type="AccommodationInventory">
+		<wz:flow id="ManageAccommodationInventory" title="manage.accommodation.inventory.title">
+			<wz:prepare id="accommodationInventoryPrepare">
+				<wz:initialize property="manageStockLevelInfo" type="de.hybris.platform.accommodationbackofficeservices.stocklevel.ManageAccommodationStockLevelInfo" />
+			</wz:prepare>
+			<wz:step id="step1" label="manage.accommodation.inventory.step1.title" sublabel="manage.accommodation.inventory.step1.sublabel">
+				<wz:content id="step1.content">
+					<wz:custom-view lang="zul">
+						<wz:renderer spring-bean="accommodationInventoryRenderer" />
+					</wz:custom-view>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel />
+					<wz:custom label="Next" handler="accommodationInventoryHandler" />
+				</wz:navigation>
+			</wz:step>
+			<wz:step id="step2" label="manage.accommodation.inventory.step1.title" sublabel="manage.accommodation.inventory.step2.sublabel">
+				<wz:content id="step2.content">
+					<wz:custom-view lang="zul">
+						<wz:renderer spring-bean="assignAccommodationInventoryRenderer" />
+					</wz:custom-view>
+				</wz:content>
+				<wz:navigation id="step2.navigation">
+					<wz:back />
+					<wz:cancel />
+					<wz:custom label="Next" handler="assignAccommodationInventoryHandler" />
+				</wz:navigation>
+			</wz:step>
+			<wz:step id="step3" label="manage.accommodation.inventory.step1.title" sublabel="manage.accommodation.inventory.step3.sublabel">
+				<wz:content id="step3.content">
+					<wz:custom-view lang="zul">
+						<wz:renderer spring-bean="accommodationInventoryPreviewRenderer" />
+					</wz:custom-view>
+				</wz:content>
+				<wz:navigation id="step3.navigation">
+					<wz:back />
+					<wz:cancel />
+					<wz:custom label="Done" handler="accommodationInventoryPreviewHandler" />
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+
+    <context component="create-wizard" type="AccommodationFacility">
+        <wz:flow id="AccommodationFacilityWizard" title="create.accommodation.facility.title">
+            <wz:prepare id="accommodationFacilityPrepare">
+                <wz:initialize property="newAccommodationFacility" type="ctx.TYPE_CODE" />
+            </wz:prepare>
+            <wz:step id="step1" label="create.accommodation.facility.general.label" sublabel="create.accommodation.facility.general.sublabel">
+                <wz:content id="step1.content">
+                    <wz:property-list root="newAccommodationFacility">
+                        <wz:property qualifier="code" />
+                        <wz:property qualifier="shortDescription" />
+						<wz:property qualifier="type" />
+                        <wz:property qualifier="active" />
+                    </wz:property-list>
+                </wz:content>
+                <wz:navigation id="step1.navigation">
+                    <wz:cancel />
+                    <wz:custom label="Done" visible="!#empty(newAccommodationFacility.code)" handler="createAccommodationFacilityValidationHandler" />
+                </wz:navigation>
+            </wz:step>
+        </wz:flow>
+    </context>
+
+	<context component="create-wizard" type="GuestOccupancy">
+		<wz:flow id="GuestOccupancyWizard" title="create.guestoccupancy.title">
+			<wz:prepare id="guestOccupancyPrepare">
+				<wz:initialize property="newGuestOccupancy" type="ctx.TYPE_CODE" />
+			</wz:prepare>
+			<wz:step id="step1" label="create.guestoccupancy.general.label" sublabel="create.guestoccupancy.general.sublabel">
+				<wz:content id="step1.content">
+					<wz:property-list root="newGuestOccupancy">
+						<wz:property qualifier="code" />
+						<wz:property qualifier="PassengerType" />
+						<wz:property qualifier="quantityMin" />
+						<wz:property qualifier="quantityMax" />
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel />
+					<wz:custom label="Done" visible="!#empty(newGuestOccupancy.code)" handler="createGuestOccupancyValidationHandler" />
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+
+	<context component="create-wizard" type="CancelPenalty">
+		<wz:flow id="CancelPenaltyWizard" title="create.cancel.penalty.title">
+			<wz:prepare id="cancelPenaltyPrepare">
+				<wz:initialize property="newAbstractFinancialInfo" type="ctx.TYPE_CODE" />
+			</wz:prepare>
+			<wz:step id="step1" label="create.cancel.penalty.general.label" sublabel="create.cancel.penalty.general.sublabel">
+				<wz:content id="step1.content">
+					<wz:property-list root="newAbstractFinancialInfo">
+						<wz:property qualifier="code" />
+						<wz:property qualifier="description" />
+						<wz:property qualifier="fixedAmount" />
+						<wz:property qualifier="percentageAmount" />
+						<wz:property qualifier="relativeDeadline" />
+						<wz:property qualifier="absoluteDeadline" />
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel />
+					<wz:custom label="Done" visible="!#empty(newAbstractFinancialInfo.code)" handler="createCancelPenaltyValidationHandler" />
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+
+	<context component="create-wizard" type="Guarantee">
+		<wz:flow id="GuaranteeWizard" title="create.guarantee.title">
+			<wz:prepare id="guaranteePrepare">
+				<wz:initialize property="newAbstractFinancialInfo" type="ctx.TYPE_CODE" />
+			</wz:prepare>
+			<wz:step id="step1" label="create.guarantee.general.label" sublabel="create.guarantee.general.sublabel">
+				<wz:content id="step1.content">
+					<wz:property-list root="newAbstractFinancialInfo">
+						<wz:property qualifier="code" />
+						<wz:property qualifier="shortDescription" />
+						<wz:property qualifier="longDescription" />
+						<wz:property qualifier="type" />
+						<wz:property qualifier="fixedAmount" />
+						<wz:property qualifier="percentageAmount" />
+						<wz:property qualifier="relativeDeadline" />
+						<wz:property qualifier="absoluteDeadline" />
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel />
+					<wz:custom label="Done" visible="!#empty(newAbstractFinancialInfo.code)" handler="createGuaranteeValidationHandler" />
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+
+	<context component="create-wizard" type="AccommodationCategory">
+		<wz:flow id="CategoryWizard" title="create.accommodationcategory.title">
+			<wz:prepare id="accommodationCategoryPrepare">
+				<wz:initialize property="newAccommodationCategory" type="ctx.TYPE_CODE" />
+			</wz:prepare>
+			<wz:step id="step1" label="create.accommodationcategory.general.label" sublabel="create.accommodationcategory.general.sublabel">
+				<wz:content id="step1.content">
+					<wz:property-list root="newAccommodationCategory">
+						<wz:property qualifier="code" />
+						<wz:property qualifier="name" />
+						<wz:property qualifier="description" />
+						<wz:property qualifier="catalogVersion" />
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel />
+					<wz:custom label="Done" visible="!#empty(newAccommodationCategory.code) and newAccommodationCategory.catalogVersion != null" handler="createAccommodationCategoryValidationHandler" />
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+
+	<context component="create-wizard" type="AccommodationViewType">
+		<wz:flow id="AccommodationViewTypeWizard" title="create.accommodationviewtype.title">
+			<wz:prepare id="accommodationViewTypePrepare">
+				<wz:initialize property="newAccommodationViewType" type="ctx.TYPE_CODE" />
+			</wz:prepare>
+			<wz:step id="step1" label="create.accommodationviewtype.general.label" sublabel="create.accommodationviewtype.general.sublabel">
+				<wz:content id="step1.content">
+					<wz:property-list root="newAccommodationViewType">
+						<wz:property qualifier="code" />
+						<wz:property qualifier="name" />
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel />
+					<wz:done visible="!#empty(newAccommodationViewType.code) and newAccommodationViewType.name?.values().^[!#empty(#this)] != null">
+						<wz:save property="newAccommodationViewType" />
+					</wz:done>
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+
+	<context component="create-wizard" type="NonSleepingRoomConfiguration">
+		<wz:flow id="NonSleepingRoomConfigurationWizard" title="create.nonsleepingroomconfiguration.title">
+			<wz:prepare id="nonSleepingRoomConfiguration">
+				<wz:initialize property="newNonSleepingRoomConfiguration" type="ctx.TYPE_CODE" />
+			</wz:prepare>
+			<wz:step id="step1" label="create.nonsleepingroomconfiguration.general.label" sublabel="create.nonsleepingroomconfiguration.general.sublabel">
+				<wz:content id="step1.content">
+					<wz:property-list root="newNonSleepingRoomConfiguration">
+						<wz:property qualifier="code" />
+						<wz:property qualifier="name" />
+						<wz:property qualifier="description" />
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel />
+					<wz:custom label="Done" visible="!#empty(newNonSleepingRoomConfiguration.code)" handler="createNonSleepingRoomConfigurationValidationHandler" />
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+
+	<context component="create-wizard" type="RatePlanInclusion">
+		<wz:flow id="RatePlanInclusionWizard" title="create.rateplaninclusion.title">
+			<wz:prepare id="ratePlanInclusionPrepare">
+				<wz:initialize property="newRatePlanInclusion" type="ctx.TYPE_CODE" />
+			</wz:prepare>
+			<wz:step id="step1" label="create.rateplaninclusion.general.label" sublabel="create.roomprerateplaninclusionference.general.sublabel">
+				<wz:content id="step1.content">
+					<wz:property-list root="newRatePlanInclusion">
+						<wz:property qualifier="shortDescription" />
+						<wz:property qualifier="longDescription" />
+						<wz:property qualifier="ratePlan" />
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel />
+					<wz:done visible="newRatePlanInclusion.shortDescription?.values().^[!#empty(#this)] != null and newRatePlanInclusion.ratePlan !=null">
+						<wz:save property="newRatePlanInclusion" />
+					</wz:done>
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+
+	<context component="modify-wizard" type="AccommodationInventory">
+		<wz:flow id="ManageAccommodationInventory" title="modify.accommodation.inventory.step1.title">
+			<wz:step id="step1" label="modify.accommodation.inventory.step1.sublabel">
+				<wz:content id="step1.content">
+					<wz:custom-view lang="zul">
+						<wz:renderer spring-bean="manageAccommodationInventoryRenderer" />
+					</wz:custom-view>
+				</wz:content>
+				<wz:navigation>
+					<wz:cancel />
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+
+	<context component="create-wizard" type="AccommodationRestriction">
+		<wz:flow id="AccommodationRestrictionWizard" title="create.title.accommodation.restriction">
+			<wz:prepare id="AccommodationRestrictionPrepare">
+				<wz:initialize property="newAccommodationRestriction" type="ctx.TYPE_CODE" />
+			</wz:prepare>
+			<wz:step id="step1" label="create.accommodation.restriction.general.label" sublabel="create.accommodation.restriction.general.sublabel">
+				<wz:content id="step1.content">
+					<wz:property-list root="newAccommodationRestriction">
+						<wz:property qualifier="code" />
+						<wz:property qualifier="tripMinOfferQty" />
+						<wz:property qualifier="tripMaxOfferQty" />
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel />
+					<wz:done visible="!#empty(newAccommodationRestriction.code)">
+						<wz:save property="newAccommodationRestriction" />
+					</wz:done>
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+
+	<context component="create-wizard" type="DateRange">
+		<wz:flow id="DateRangeWizard" title="create.daterange.title">
+			<wz:prepare id="dateRangePrepare">
+				<wz:initialize property="newDateRange" type="ctx.TYPE_CODE" />
+			</wz:prepare>
+			<wz:step id="step1" label="create.daterange.general.label" sublabel="create.daterange.general.sublabel">
+				<wz:content id="step1.content">
+					<wz:property-list root="newDateRange">
+						<wz:property qualifier="startingDate" />
+						<wz:property qualifier="endingDate" />
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel />
+					<wz:done visible="newDateRange.startingDate != null and newDateRange.endingDate != null">
+						<wz:save property="newDateRange" />
+					</wz:done>
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+
+	<!-- *** BASE *** -->
+
+	<context type="AccommodationChain" component="base">
+		<y:base xmlns:y="http://www.hybris.com/cockpit/config/hybris">
+			<y:labels>
+				<y:label>name</y:label>
+			</y:labels>
+		</y:base>
+	</context>
+	
+	<context type="AccommodationProvider" component="base">
+		<y:base xmlns:y="http://www.hybris.com/cockpit/config/hybris">
+			<y:labels>
+				<y:label>name</y:label>
+			</y:labels>
+		</y:base>
+	</context>
+	
+	<context type="MarketingRatePlanInfo" component="base">
+		<y:base xmlns:y="http://www.hybris.com/cockpit/config/hybris">
+			<y:labels>
+				<y:label>code</y:label>
+			</y:labels>
+		</y:base>
+	</context>
+
+	<context type="AccommodationOffering" component="base">
+		<y:base xmlns:y="http://www.hybris.com/cockpit/config/hybris">
+			<y:labels>
+				<y:label>code</y:label>
+			</y:labels>
+		</y:base>
+	</context>
+
+	<context type="RatePlan" component="base">
+		<y:base xmlns:y="http://www.hybris.com/cockpit/config/hybris">
+			<y:labels>
+				<y:label>code + ' - ' + @labelService.getObjectLabel(catalogVersion.catalog) + ' : ' + catalogVersion.version</y:label>
+				<y:shortLabel>code + ' - ' + T(org.apache.commons.lang3.StringUtils).lowerCase(@labelService.getShortObjectLabel(catalogVersion.catalog) + '-' + T(org.apache.commons.lang3.StringUtils).substring(catalogVersion.version,0,1))</y:shortLabel>
+			</y:labels>
+		</y:base>
+	</context>
+
+	<context type="RatePlanConfig" component="base">
+		<y:base xmlns:y="http://www.hybris.com/cockpit/config/hybris">
+			<y:labels>
+				<y:label>ratePlan.code + ' - ' + accommodation.code + ' - ' + quantity</y:label>
+			</y:labels>
+		</y:base>
+	</context>
+
+	<context type="RoomPreference" component="base">
+		<y:base xmlns:y="http://www.hybris.com/cockpit/config/hybris">
+			<y:labels>
+				<y:label>value + ' - ' + preferenceType.code</y:label>
+			</y:labels>
+		</y:base>
+	</context>
+
+	<context type="GuestOccupancy" component="base">
+		<y:base xmlns:y="http://www.hybris.com/cockpit/config/hybris">
+			<y:labels>
+				<y:label>PassengerType.code + ' / ' + quantityMin + '-' + quantityMax</y:label>
+			</y:labels>
+		</y:base>
+	</context>
+	
+	<context type="RatePlanInclusion" component="base">
+		<y:base xmlns:y="http://www.hybris.com/cockpit/config/hybris">
+			<y:labels>
+				<y:label>shortDescription</y:label>
+			</y:labels>
+		</y:base>
+	</context>
+	
+	<context type="AccommodationOrderEntryGroup" component="base">
+		<y:base xmlns:y="http://www.hybris.com/cockpit/config/hybris">
+			<y:labels>
+				<y:label>accommodation.name + ' - ' + roomStayRefNumber</y:label>
+			</y:labels>
+		</y:base>
+	</context>
+
+	<context type="AccommodationFacility" component="base">
+		<y:base xmlns:y="http://www.hybris.com/cockpit/config/hybris">
+			<y:labels>
+				<y:label>code + ' - ' + shortDescription</y:label>
+			</y:labels>
+		</y:base>
+	</context>
+
+	<context type="CancelPenalty" component="base">
+		<y:base xmlns:y="http://www.hybris.com/cockpit/config/hybris">
+			<y:labels>
+				<y:label>code</y:label>
+			</y:labels>
+		</y:base>
+	</context>
+
+	<context type="Guarantee" component="base">
+		<y:base xmlns:y="http://www.hybris.com/cockpit/config/hybris">
+			<y:labels>
+				<y:label>code</y:label>
+			</y:labels>
+		</y:base>
+	</context>
+	
+	<context type="SleepingRoom" component="base">
+		<y:base xmlns:y="http://www.hybris.com/cockpit/config/hybris">
+			<y:labels>
+				<y:label>code</y:label>
+			</y:labels>
+		</y:base>
+	</context>
+
+	<context type="NonSleepingRoom" component="base">
+		<y:base xmlns:y="http://www.hybris.com/cockpit/config/hybris">
+			<y:labels>
+				<y:label>code</y:label>
+			</y:labels>
+		</y:base>
+	</context>
+
+	<context type="ExtraProduct" component="base">
+		<y:base xmlns:y="http://www.hybris.com/cockpit/config/hybris">
+			<y:labels>
+				<y:label>code</y:label>
+			</y:labels>
+		</y:base>
+	</context>
+
+	<context type="RoomRateProduct" component="base">
+		<y:base xmlns:y="http://www.hybris.com/cockpit/config/hybris">
+			<y:labels>
+				<y:label>code</y:label>
+			</y:labels>
+		</y:base>
+	</context>
+
+	<context type="AccommodationCategory" component="base">
+		<y:base xmlns:y="http://www.hybris.com/cockpit/config/hybris">
+			<y:labels>
+				<y:label>code + ' - ' + @labelService.getObjectLabel(catalogVersion.catalog) + ' : ' + catalogVersion.version</y:label>
+				<y:shortLabel>code + ' - ' + T(org.apache.commons.lang3.StringUtils).lowerCase(@labelService.getShortObjectLabel(catalogVersion.catalog) + '-' + T(org.apache.commons.lang3.StringUtils).substring(catalogVersion.version,0,1))</y:shortLabel>
+			</y:labels>
+		</y:base>
+	</context>
+
+	<context type="AccommodationViewType" component="base">
+		<y:base xmlns:y="http://www.hybris.com/cockpit/config/hybris">
+			<y:labels>
+				<y:label>code</y:label>
+			</y:labels>
+		</y:base>
+	</context>
+
+	<context type="NonSleepingRoomConfiguration" component="base">
+		<y:base xmlns:y="http://www.hybris.com/cockpit/config/hybris">
+			<y:labels>
+				<y:label>code + ' - ' + name</y:label>
+			</y:labels>
+		</y:base>
+	</context>
+
+	<context type="AccommodationRestriction" component="base">
+		<y:base xmlns:y="http://www.hybris.com/cockpit/config/hybris">
+			<y:labels>
+				<y:label>code</y:label>
+			</y:labels>
+		</y:base>
+	</context>
+
+	<context type="DateRange" component="base">
+		<y:base xmlns:y="http://www.hybris.com/cockpit/config/hybris">
+			<y:labels>
+				<y:label>startingDate + ' - ' + endingDate</y:label>
+			</y:labels>
+		</y:base>
+	</context>
+
+	<context type="Award" component="base">
+		<y:base xmlns:y="http://www.hybris.com/cockpit/config/hybris">
+			<y:labels>
+				<y:label>provider + ' - ' + rating</y:label>
+			</y:labels>
+		</y:base>
+	</context>
+
+	<context type="Remark" component="base">
+		<y:base xmlns:y="http://www.hybris.com/cockpit/config/hybris">
+			<y:labels>
+				<y:label>code</y:label>
+			</y:labels>
+		</y:base>
+	</context>
+
+	<!-- *** EDITOR AREA ACTIONS *** -->
+
+	<context type="RatePlanConfig" component="editorareaactions" module="travelbackoffice">
+		<y:actions>
+			<y:group qualifier="common">
+				<y:label>actiongroup.common</y:label>
+				<y:action action-id="com.hybris.cockpitng.action.delete" property="currentObject" />
+				<y:action action-id="com.hybris.backoffice.widgets.actions.sync" property="currentObject" />
+			</y:group>
+		</y:actions>
+	</context>
+
+	<context type="MarketingRatePlanInfo" component="editorareaactions" module="travelbackoffice">
+		<y:actions>
+			<y:group qualifier="common">
+				<y:label>actiongroup.common</y:label>
+				<y:action action-id="com.hybris.cockpitng.action.delete" property="currentObject" />
+				<y:action action-id="com.hybris.backoffice.widgets.actions.sync" property="currentObject" />
+			</y:group>
+		</y:actions>
+	</context>
+</config>

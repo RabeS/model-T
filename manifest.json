@@ -1,0 +1,270 @@
+{
+    "commerceSuiteVersion": "6.7.0.1",
+    "extensions": [
+        "admincockpit",
+        "cockpit",
+        "mcc",
+        "b2badmincockpit",
+        "commercesearch",
+        "commerceservices",
+        "basecommerce",
+        "payment",
+        "promotions",
+        "voucher",
+        "solrfacetsearch",
+        "solrserver",
+        "subscriptionservices",
+        "subscriptionfacades",
+        "commercefacades",
+        "ondemandcommon",
+        "b2bcommercefacades",
+        "b2bcommerce",
+        "backoffice",
+        "b2bcommercebackoffice",
+        "customersupportbackoffice",
+        "platformbackoffice",
+        "promotionenginebackoffice",
+        "rulebuilderbackoffice",
+        "solrfacetsearchbackoffice",
+        "xyformsbackoffice",
+        "droolsruleengineservices",
+        "promotionengineservices",
+        "couponservices",
+        "cms2",
+        "cms2lib",
+        "travelacceleratorstorefront",
+        "travelcheckout",
+        "traveladdon",
+        "travelcommons",
+        "accommodationaddon",
+        "accommodationchainaddon",
+        "travelcommerceorgaddon",
+        "travelstore",
+        "travelfacades",
+        "travelservices",
+        "travelrulesengine",
+        "travelfulfilmentprocess",
+        "travelb2bservices",
+        "travelb2bfacades",
+        "travelseatmapservices",
+        "travelcommercewebservices",
+        "travelcommercewebservicescommons",
+        "travelbackoffice",
+        "travelbackofficeservices",
+        "transportbackoffice",
+        "airlinebackoffice",
+        "accommodationbackoffice",
+        "hotelbackoffice",
+        "yaddon",
+        "yacceleratorcockpits",
+        "yacceleratorstorefront",
+        "yacceleratorcore",
+        "yacceleratorinitialdata",
+        "acceleratorservices",
+        "acceleratorfacades",
+        "acceleratorcms",
+        "acceleratorstorefrontcommons",
+        "b2bacceleratorservices",
+        "b2bacceleratorfacades",
+        "b2bapprovalprocessfacades",
+        "b2bapprovalprocess",
+        "addonsupport",
+        "assistedservicefacades",
+        "assistedservicestorefront",
+        "smartedit",
+        "cmswebservices",
+        "smarteditwebservices",
+        "permissionswebservices",
+        "smarteditaddon",
+        "cmssmartedit",
+        "previewwebservices",
+        "cmssmarteditwebservices",
+        "ndc171webservices",
+        "ndc171facades",
+        "ndcservices",
+        "ndcfulfilmentprocess",
+        "oauth2"
+    ],
+    "properties": [
+        {
+            "key": "commerceservices.default.desktop.ui.experience",
+            "value": "responsive"
+        },
+        {
+            "key": "uiexperience.level.supported",
+            "value": "DESKTOP"
+        },
+        {
+            "key": "hac.webroot",
+            "value": "/hac"
+        },
+        {
+            "key": "cronjob.trigger.interval",
+            "value": "30"
+        },
+        {
+            "key": "cronjob.timertask.loadonstartup",
+            "value": "true"
+        },
+        {
+            "key": "regioncache.stocklevelcacheregion.size",
+            "value": "20000"
+        },
+        {
+            "key": "regioncache.stocklevelcacheregion.evictionpolicy",
+            "value": "FIFO"
+        },
+        {
+            "key": "installed.tenants",
+            "value": ""
+        },
+        {
+            "key": "travelacc.sites",
+            "value": "all"
+        },
+        {
+            "key": "solrserver.instances.default.ssl.enabled",
+            "value": "false"
+        },
+        {
+            "key": "solrserver.instances.default.ssl.keyStorePassword",
+            "value": ""
+        },
+        {
+            "key": "solrserver.instances.default.zk.prop.urlScheme",
+            "value": "http"
+        },
+        {
+            "key": "solrserver.instances.default.ssl.trustStorePassword",
+            "value": ""
+        },
+        {
+            "key": "task.polling.interval",
+            "value": "1"
+        },
+        {
+            "key": "task.polling.interval.min",
+            "value": "1"
+        }
+    ],
+    "storefrontAddons": [
+        {
+            "addon": "travelacceleratorstorefront",
+            "storefront": "yacceleratorstorefront",
+            "template": "yacceleratorstorefront"
+        },
+        {
+            "addon": "travelcheckout",
+            "storefront": "yacceleratorstorefront",
+            "template": "yacceleratorstorefront"
+        },
+        {
+            "addon": "traveladdon",
+            "storefront": "yacceleratorstorefront",
+            "template": "yacceleratorstorefront"
+        },
+        {
+            "addon": "accommodationaddon",
+            "storefront": "yacceleratorstorefront",
+            "template": "yacceleratorstorefront"
+        },
+        {
+            "addon": "travelcommons",
+            "storefront": "yacceleratorstorefront",
+            "template": "yacceleratorstorefront"
+        },
+        {
+            "addon": "travelcommerceorgaddon",
+            "storefront": "yacceleratorstorefront",
+            "template": "yacceleratorstorefront"
+        },
+        {
+            "addon": "accommodationchainaddon",
+            "storefront": "yacceleratorstorefront",
+            "template": "yacceleratorstorefront"
+        },
+        {
+            "addon": "assistedservicestorefront",
+            "storefront": "yacceleratorstorefront",
+            "template": "yacceleratorstorefront"
+        },
+        {
+            "addon": "smarteditaddon",
+            "storefront": "yacceleratorstorefront",
+            "template": "yacceleratorstorefront"
+        }
+    ],
+    "aspects": [
+        {
+            "name": "backoffice",
+            "properties": [],
+            "webapps": [
+                {
+                    "name": "hac",
+                    "contextPath": "/hac"
+                },
+                {
+                    "name": "mediaweb",
+                    "contextPath": "/medias"
+                },
+                {
+                    "name": "backoffice",
+                    "contextPath": "/backoffice"
+                }
+            ]
+        },
+        {
+            "name": "accstorefront",
+            "properties": [
+                {
+                    "key": "spring.session.enabled",
+                    "value": "false"
+                },
+                {
+                    "key": "spring.session.yacceleratorstorefront.save",
+                    "value": "async"
+                },
+                {
+                    "key": "spring.session.yacceleratorstorefront.cookie.name",
+                    "value": "JSESSIONID"
+                },
+                {
+                    "key": "spring.session.yacceleratorstorefront.cookie.path",
+                    "value": "/"
+                },
+                {
+                    "key": "storefrontContextRoot",
+                    "value": ""
+                }
+            ],
+            "webapps": [
+                {
+                    "name": "mediaweb",
+                    "contextPath": "/medias"
+                },
+                {
+                    "name": "yacceleratorstorefront",
+                    "contextPath": "/yacceleratorstorefront"
+                },
+                {
+                    "name": "acceleratorservices",
+                    "contextPath": "/acceleratorservices"
+                }
+            ]
+        },
+        {
+            "name": "backgroundProcessing",
+            "properties": [],
+            "webapps": [
+                {
+                    "name": "hac",
+                    "contextPath": ""
+                },
+                {
+                    "name": "mediaweb",
+                    "contextPath": "/medias"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<widget-definition id="de.hybris.platform.accommodationbackoffice.widgets.accommodationmainpanel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd">
+
+	<name>Accommodation Main Panel</name>
+	<description>Main panel widget for accommodation backoffice homepage</description>
+	<defaultTitle>Accommodation Main Panel</defaultTitle>
+	<version>1.0</version>
+	<controller class="de.hybris.platform.accommodationbackoffice.controllers.AccommodationMainPanelController" />
+
+	<outputType>java.lang.Object</outputType>
+	<sockets>
+		<output id="contextMap" type="java.util.Map" />
+		<output id="treeNode" type="com.hybris.backoffice.navigation.TreeNodeSelector" />
+		<output id="contextMapForModifyWizard" type="java.util.Map" />
+	</sockets>
+</widget-definition>

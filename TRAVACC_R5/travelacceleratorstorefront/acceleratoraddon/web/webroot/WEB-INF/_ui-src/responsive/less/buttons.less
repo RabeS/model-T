@@ -1,0 +1,113 @@
+.btn {
+    font-size: 14px;
+    font-weight: normal;
+    text-transform: none;
+    padding: 6px 12px;
+    white-space: normal;
+    &.btn-primary,
+    &.btn-secondary {
+        background-color: @button-light-blue;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+        color: #fff;
+        &:hover,
+        &:focus {
+            background-color: lighten(@button-light-blue, 10%);
+        }
+    }
+    &.btn-primary {
+        text-shadow: 0 0 1px @button-light-blue,
+        0 0 1px @button-light-blue,
+        0 0 1px @button-light-blue,
+        0 0 1px @button-light-blue;
+    }
+    &.btn-secondary {
+        background-color: @button-orange;
+        text-shadow: 0 0 1px @button-orange,
+        0 0 1px @button-orange,
+        0 0 1px @button-orange,
+        0 0 1px @button-orange;
+        &:hover,
+        &:focus {
+            background-color: lighten(@button-orange, 10%);
+        }
+    }
+    &.btn-default {
+        background-color: @button-grey;
+        color: #fff;
+        &:hover,
+        &:focus {
+            background-color: lighten(@button-grey, 10%);
+        }
+        &[disabled] {
+            background-color: #999;
+            color: #fff;
+            box-shadow: none;
+        }
+    }
+}
+
+.btn-default {
+    text-shadow: none;
+    box-shadow: none;
+    border: none;
+}
+
+.button-inline  { padding-top: 20px; }
+
+.btn-trigger {
+    border-radius: 5px;
+    background-color: #efefef;
+    border: 1px solid #bbb;
+    padding: 1px 5px 2px;
+    font-size: 14px;
+    line-height: 100%;
+    transition: all .2s ease-in-out;
+    box-shadow: 3px 3px 5px rgba(0,0,0,.2);
+    position: relative;
+    left: 0;
+    top: 0;
+    &:hover,
+    &:focus {
+        background-color: #ddd;
+        box-shadow: 1px 1px 1px rgba(0,0,0,.8);
+        border: 1px solid #aaa;
+        font-size: 12px;
+        left: 2px;
+        top: -1px;
+    }
+}
+
+.btn-delete {
+    padding: 12px;
+    margin-left: 0;
+    background: url("@{theme-images-url}/icon-remove.svg") no-repeat scroll 0 0;
+    line-height: 100% !important;   // override ybase-0.1.0 buttons.less styling (because it has !important on it already)
+    .glyphicon { display: none; }
+    &:hover,
+    &:focus {
+        background-position: 0 bottom;
+    }
+    @media screen and (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+        margin-left: -10px;
+    }
+}
+
+.button-row {
+    margin-bottom: 20px;
+}
+
+.show-hide-button {
+    position: absolute;
+    right: 11px;
+    top: 10px;
+    color: red;
+    background: url("@{theme-images-url}/icon-arrow-down.png") no-repeat scroll 4px 4px;
+    width: 30px;
+    height: 30px;
+    text-indent: -999999999px;
+    overflow: hidden;
+    border: none;
+    &.collapsed { background-image: url("@{theme-images-url}/icon-arrow-right.png"); }
+}

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+  [y] hybris Platform
+
+  Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+  This software is the confidential and proprietary information of SAP
+  ("Confidential Information"). You shall not disclose such Confidential
+  Information and shall use it only in accordance with the terms of the
+  license agreement you entered into with SAP.
+-->
+
+<items 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:noNamespaceSchemaLocation="items.xsd">
+
+ 	<collectiontypes>
+ 		 <collectiontype elementtype="RoomFloorConfiguration" code="RoomFloorConfigurationList" type="list"/>
+ 	</collectiontypes>	
+	<itemtypes>
+		<itemtype code="AccommodationInventory" jaloclass="de.hybris.platform.accommodationbackoffice.jalo.AccommodationInventory">
+            <description>This type represents is created to create a nav-node in backoffice.</description>
+            <deployment table="AccommodationInventory" typecode="6922"/>
+            <attributes>
+                <attribute type="java.lang.String" qualifier="code">
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+        
+		<itemtype code="RoomTypeConfiguration" jaloclass="de.hybris.platform.accommodationbackoffice.jalo.RoomTypeConfiguration">
+      		<description>This type represents the assignment of Room and Floor number</description>
+      		<deployment table="RoomTypeConfiguration" typecode="6921"/>
+      		<attributes>
+	      		<attribute type="RoomType" qualifier="roomType">
+			    	<persistence type="property"/>
+			    </attribute>
+      			<attribute type="RoomFloorConfigurationList" qualifier="roomFloorConfigurations">
+	             	<persistence type="property"/>
+	            </attribute>
+      		</attributes>
+      </itemtype>
+      
+    	<itemtype code="ManageAccommodationStockLevelInfo">
+			<deployment table="AccStockLevelInfo" typecode="6924" />
+			<attributes>
+				<attribute qualifier="accommodationOffering" type="AccommodationOffering">
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="productType" type="java.lang.String">
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="startDate" type="java.util.Date">
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="endDate" type="java.util.Date">
+					<persistence type="property" />
+				</attribute>
+				<attribute type="StockLevelAttributesList" qualifier="stockLevelAttributes">
+					<persistence type="property" />
+				</attribute>
+				<attribute type="java.lang.Boolean" qualifier="modified">
+					<defaultvalue>Boolean.FALSE</defaultvalue>
+					<persistence type="property" />
+				</attribute>
+			</attributes>
+		</itemtype>
+	
+      <itemtype code="AccommodationInventoryCronJob" extends="CronJob">
+			<description>This type represents a cron job that Manages Inventory.</description>
+			<deployment table="AccInventoryJob" typecode="6925"/>
+			<attributes>
+				<attribute type="ManageAccommodationStockLevelInfo" qualifier="manageStockLevel">
+					<persistence type="property" />
+				</attribute>
+				<attribute type="StockLevelList" qualifier="stockLevels">
+					<persistence type="property" />
+				</attribute>
+			</attributes>
+		  </itemtype>
+	</itemtypes>
+</items>

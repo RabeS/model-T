@@ -1,0 +1,9 @@
+#
+# Update the Product Catalog Sync Job
+#
+
+$productCatalog = naturebayhotelsProductCatalog
+
+# adding itemtypes to the root types of the naturebayhotelsProductCatalog Sync Job
+UPDATE CatalogVersionSyncJob; code[unique = true]; roottypes(code)[mode = append];
+; sync $productCatalog:Staged->Online ; AccommodationOfferingGallery, MarketingRatePlanInfo, RatePlanConfig ;

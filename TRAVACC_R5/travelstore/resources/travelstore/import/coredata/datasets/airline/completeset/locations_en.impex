@@ -1,0 +1,10 @@
+# ImpEx for Importing Locations
+
+# ImpEx for Importing Locations into travel accelerator
+
+$lang = en
+
+# Create Categories
+INSERT_UPDATE Location; code[unique = true]; name[lang = $lang]
+"#% impex.includeExternalData(ImpExManager.class.getResourceAsStream(""/airlinestore/import/coredata/stores/airline/completeset/csv/countrylocations_en.csv""), ""utf-8"", new char[] {','}, 0, 0);"
+"#% impex.includeExternalData(ImpExManager.class.getResourceAsStream(""/airlinestore/import/coredata/stores/airline/completeset/csv/citylocations_en.csv""), ""utf-8"", new char[] {','}, 0, 0);"

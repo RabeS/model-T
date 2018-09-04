@@ -1,0 +1,149 @@
+$productCatalog = naturebayhotelsProductCatalog
+$catalogVersion = catalogVersion(catalog(id[default = $productCatalog]), version[default = 'Staged'])[unique = true, default = $productCatalog:Staged]
+$picture = picture(code, $catalogVersion)
+$galleryImages = galleryImages(qualifier, $catalogVersion)
+$medias = medias(code, $catalogVersion)
+$siteResource = jar:de.hybris.platform.travelstore.constants.TravelstoreConstants&/travelstore/import/coredata/datasets/naturebayhotels
+
+INSERT_UPDATE Media; code[unique = true]; realfilename; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/jpeg']; $catalogVersion; mediaFormat(qualifier)
+; images/accommodation01.jpg       ; room_car01.jpg       ; $siteResource/images/accommodations/room_car01.jpg       ; ; ; 860Wx465H
+; images/accommodation02.jpg       ; room_car02.jpg       ; $siteResource/images/accommodations/room_car02.jpg       ; ; ; 860Wx465H
+; images/accommodation_thumb01.jpg ; room_car_thumb01.jpg ; $siteResource/images/accommodations/room_car_thumb01.jpg ; ; ; 100Wx100H
+; images/accommodation_thumb02.jpg ; room_car_thumb02.jpg ; $siteResource/images/accommodations/room_car_thumb02.jpg ; ; ; 100Wx100H
+; images/accommodation_list01.svg  ; room_details01.svg   ; $siteResource/images/accommodations/room_details01.svg   ; ; ; 300Wx300H
+
+
+INSERT_UPDATE MediaContainer; qualifier[unique = true]; $medias; $catalogVersion[unique = true]
+; accommodationMediaContainer01   ; images/accommodation01.jpg, images/accommodation_thumb01.jpg ; ;
+; accommodationMediaContainer02   ; images/accommodation02.jpg, images/accommodation_thumb02.jpg ; ;
+; accommodationMediaContainerList ; images/accommodation_list01.svg                              ; ;
+
+
+UPDATE Accommodation; code[unique = true]; $picture; $galleryImages; $catalogVersion
+; AQUA_REEFS_BONDI_SEAHORSE_ROOM                  ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; AQUA_REEFS_BONDI_CORAL_ROOM                     ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; AQUA_REEFS_BONDI_LAGUNA_VILLA                   ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; AQUA_REEFS_BONDI_SEAHORSE_SUITE                 ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; AQUA_REEFS_BONDI_CABANA_VILLA                   ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+
+; AQUA_REEFS_PALM_COVE_SEAHORSE_ROOM              ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; AQUA_REEFS_PALM_COVE_CORAL_ROOM                 ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; AQUA_REEFS_PALM_COVE_LAGUNA_VILLA               ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; AQUA_REEFS_PALM_COVE_SEAHORSE_SUITE             ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; AQUA_REEFS_PALM_COVE_CABANA_VILLA               ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+
+; AQUA_REEFS_MANTA_LAGOON_SEAHORSE_ROOM           ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; AQUA_REEFS_MANTA_LAGOON_CORAL_ROOM              ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; AQUA_REEFS_MANTA_LAGOON_LAGUNA_VILLA            ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; AQUA_REEFS_MANTA_LAGOON_SEAHORSE_SUITE          ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; AQUA_REEFS_MANTA_LAGOON_CABANA_VILLA            ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+
+; AQUA_REEFS_VILLA_MAKATI_SEAHORSE_ROOM           ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; AQUA_REEFS_VILLA_MAKATI_CORAL_ROOM              ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; AQUA_REEFS_VILLA_MAKATI_LAGUNA_VILLA            ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; AQUA_REEFS_VILLA_MAKATI_SEAHORSE_SUITE          ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; AQUA_REEFS_VILLA_MAKATI_CABANA_VILLA            ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+
+; AQUA_REEFS_LANTERN_SEAHORSE_ROOM                ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; AQUA_REEFS_LANTERN_CORAL_ROOM                   ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; AQUA_REEFS_LANTERN_LAGUNA_VILLA                 ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; AQUA_REEFS_LANTERN_SEAHORSE_SUITE               ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; AQUA_REEFS_LANTERN_CABANA_VILLA                 ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+
+; AQUA_REEFS_WAIKIKI_SEAHORSE_ROOM                ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; AQUA_REEFS_WAIKIKI_CORAL_ROOM                   ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; AQUA_REEFS_WAIKIKI_LAGUNA_VILLA                 ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; AQUA_REEFS_WAIKIKI_SEAHORSE_SUITE               ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; AQUA_REEFS_WAIKIKI_CABANA_VILLA                 ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+
+; AQUA_REEFS_COCO_PALM_SEAHORSE_ROOM              ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; AQUA_REEFS_COCO_PALM_CORAL_ROOM                 ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; AQUA_REEFS_COCO_PALM_LAGUNA_VILLA               ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; AQUA_REEFS_COCO_PALM_SEAHORSE_SUITE             ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; AQUA_REEFS_COCO_PALM_CABANA_VILLA               ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+
+
+; ROYAL_FORESTS_BIRD_PARADISE_SANDALWOOD_ROOM     ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; ROYAL_FORESTS_BIRD_PARADISE_MAPLE_ROOM          ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; ROYAL_FORESTS_BIRD_PARADISE_ORCHARD_ROOM        ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; ROYAL_FORESTS_BIRD_PARADISE_SANDALWOOD_SUITE    ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; ROYAL_FORESTS_BIRD_PARADISE_TREEHOUSE_VILLA     ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+
+; ROYAL_FORESTS_JUNGLE_TREEHOUSE_SANDALWOOD_ROOM  ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; ROYAL_FORESTS_JUNGLE_TREEHOUSE_MAPLE_ROOM       ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; ROYAL_FORESTS_JUNGLE_TREEHOUSE_ORCHARD_ROOM     ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; ROYAL_FORESTS_JUNGLE_TREEHOUSE_SANDALWOOD_SUITE ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; ROYAL_FORESTS_JUNGLE_TREEHOUSE_TREEHOUSE_VILLA  ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+
+; ROYAL_FORESTS_REDWOOD_SANDALWOOD_ROOM           ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; ROYAL_FORESTS_REDWOOD_MAPLE_ROOM                ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; ROYAL_FORESTS_REDWOOD_ORCHARD_ROOM              ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; ROYAL_FORESTS_REDWOOD_SANDALWOOD_SUITE          ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; ROYAL_FORESTS_REDWOOD_TREEHOUSE_VILLA           ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+
+; ROYAL_FORESTS_PEBBLE_BEACH_SANDALWOOD_ROOM      ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; ROYAL_FORESTS_PEBBLE_BEACH_MAPLE_ROOM           ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; ROYAL_FORESTS_PEBBLE_BEACH_ORCHARD_ROOM         ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; ROYAL_FORESTS_PEBBLE_BEACH_SANDALWOOD_SUITE     ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; ROYAL_FORESTS_PEBBLE_BEACH_TREEHOUSE_VILLA      ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+
+; ROYAL_FORESTS_DAINTREE_SANDALWOOD_ROOM          ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; ROYAL_FORESTS_DAINTREE_MAPLE_ROOM               ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; ROYAL_FORESTS_DAINTREE_ORCHARD_ROOM             ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; ROYAL_FORESTS_DAINTREE_SANDALWOOD_SUITE         ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; ROYAL_FORESTS_DAINTREE_TREEHOUSE_VILLA          ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+
+; ROYAL_FORESTS_CONTIKI_SANDALWOOD_ROOM           ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; ROYAL_FORESTS_CONTIKI_MAPLE_ROOM                ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; ROYAL_FORESTS_CONTIKI_ORCHARD_ROOM              ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; ROYAL_FORESTS_CONTIKI_SANDALWOOD_SUITE          ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; ROYAL_FORESTS_CONTIKI_TREEHOUSE_VILLA           ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+
+; ROYAL_FORESTS_KURRAJONG_SANDALWOOD_ROOM         ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; ROYAL_FORESTS_KURRAJONG_MAPLE_ROOM              ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; ROYAL_FORESTS_KURRAJONG_ORCHARD_ROOM            ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; ROYAL_FORESTS_KURRAJONG_SANDALWOOD_SUITE        ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; ROYAL_FORESTS_KURRAJONG_TREEHOUSE_VILLA         ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+
+
+; GARDEN_SAFARIS_THE_LEAF_EXPLORER_ROOM           ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; GARDEN_SAFARIS_THE_LEAF_WILDERNESS_ROOM         ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; GARDEN_SAFARIS_THE_LEAF_VOYAGERS_ROOM           ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; GARDEN_SAFARIS_THE_LEAF_EXPLORER_SUITE          ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; GARDEN_SAFARIS_THE_LEAF_SAVANNAH_VILLA          ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+
+; GARDEN_SAFARIS_VILLA_COCONUT_EXPLORER_ROOM      ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; GARDEN_SAFARIS_VILLA_COCONUT_WILDERNESS_ROOM    ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; GARDEN_SAFARIS_VILLA_COCONUT_VOYAGERS_ROOM      ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; GARDEN_SAFARIS_VILLA_COCONUT_EXPLORER_SUITE     ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; GARDEN_SAFARIS_VILLA_COCONUT_SAVANNAH_VILLA     ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+
+; GARDEN_SAFARIS_SHIMBA_EXPLORER_ROOM             ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; GARDEN_SAFARIS_SHIMBA_WILDERNESS_ROOM           ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; GARDEN_SAFARIS_SHIMBA_VOYAGERS_ROOM             ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; GARDEN_SAFARIS_SHIMBA_EXPLORER_SUITE            ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; GARDEN_SAFARIS_SHIMBA_SAVANNAH_VILLA            ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+
+; GARDEN_SAFARIS_SAMBURU_EXPLORER_ROOM            ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; GARDEN_SAFARIS_SAMBURU_WILDERNESS_ROOM          ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; GARDEN_SAFARIS_SAMBURU_VOYAGERS_ROOM            ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; GARDEN_SAFARIS_SAMBURU_EXPLORER_SUITE           ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; GARDEN_SAFARIS_SAMBURU_SAVANNAH_VILLA           ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+
+; GARDEN_SAFARIS_HAKUNA_MATATA_EXPLORER_ROOM      ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; GARDEN_SAFARIS_HAKUNA_MATATA_WILDERNESS_ROOM    ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; GARDEN_SAFARIS_HAKUNA_MATATA_VOYAGERS_ROOM      ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; GARDEN_SAFARIS_HAKUNA_MATATA_EXPLORER_SUITE     ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; GARDEN_SAFARIS_HAKUNA_MATATA_SAVANNAH_VILLA     ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+
+; GARDEN_SAFARIS_JUNGLE_LODGE_EXPLORER_ROOM       ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; GARDEN_SAFARIS_JUNGLE_LODGE_WILDERNESS_ROOM     ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; GARDEN_SAFARIS_JUNGLE_LODGE_VOYAGERS_ROOM       ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; GARDEN_SAFARIS_JUNGLE_LODGE_EXPLORER_SUITE      ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; GARDEN_SAFARIS_JUNGLE_LODGE_SAVANNAH_VILLA      ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+
+; GARDEN_SAFARIS_ELLA_PARADISE_EXPLORER_ROOM      ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; GARDEN_SAFARIS_ELLA_PARADISE_WILDERNESS_ROOM    ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; GARDEN_SAFARIS_ELLA_PARADISE_VOYAGERS_ROOM      ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; GARDEN_SAFARIS_ELLA_PARADISE_EXPLORER_SUITE     ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02
+; GARDEN_SAFARIS_ELLA_PARADISE_SAVANNAH_VILLA     ; images/accommodation_list01.svg ; accommodationMediaContainer01, accommodationMediaContainer02

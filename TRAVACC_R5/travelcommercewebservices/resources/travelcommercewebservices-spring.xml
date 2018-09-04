@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xmlns:int="http://www.springframework.org/schema/integration"
+		xmlns:util="http://www.springframework.org/schema/util"
+		 xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/integration
+           http://www.springframework.org/schema/integration/spring-integration.xsd
+           http://www.springframework.org/schema/util
+       	   http://www.springframework.org/schema/util/spring-util.xsd
+		   http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security.xsd">
+
+	<!--- OOB starts -->
+
+	<bean id="cwsProductFacade" parent="defaultProductFacade">
+		<property name="productConfiguredPopulator" ref="cwsProductConfiguredPopulator"/>
+		<property name="productConverter" ref="cwsProductConverter"/>
+	</bean>
+
+	<bean id="cwsProductConfiguredPopulator" parent="defaultProductConfiguredPopulator">
+		<property name="populators">
+			<map key-type="de.hybris.platform.commercefacades.product.ProductOption" merge="true">
+				<entry key="GALLERY" value-ref="cwsProductGalleryPopulatorList"/>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="cwsProductGalleryPopulatorList" parent="abstractPopulatorList">
+		<property name="populators">
+			<list>
+				<ref bean="cwsProductGalleryImagesPopulator"/>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="cwsImageFormatMapping" parent="defaultImageFormatMapping">
+		<property name="mapping">
+			<map>
+				<entry key="superZoom" value="1200Wx1200H"/>
+				<entry key="zoom" value="515Wx515H"/>
+				<entry key="store" value="365Wx246H"/>
+				<entry key="product" value="300Wx300H"/>
+				<entry key="thumbnail" value="96Wx96H"/>
+				<entry key="cartIcon" value="65Wx65H"/>
+				<entry key="styleSwatch" value="30Wx30H"/>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="cwsProductPrimaryImagePopulator" parent="defaultProductPrimaryImagePopulator">
+		<property name="imageFormatMapping" ref="cwsImageFormatMapping"/>
+		<property name="imageFormats">
+			<list>
+				<value>zoom</value>
+				<value>product</value>
+				<value>thumbnail</value>
+				<value>cartIcon</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="cwsProductGalleryImagesPopulator" parent="defaultProductGalleryImagesPopulator">
+		<property name="imageFormatMapping" ref="cwsImageFormatMapping"/>
+		<property name="imageFormats">
+			<list>
+				<value>zoom</value>
+				<value>product</value>
+				<value>thumbnail</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="cwsProductPopulator"
+			parent="defaultProductPopulator">
+		<property name="productPrimaryImagePopulator" ref="cwsProductPrimaryImagePopulator"/>
+		<property name="productModelUrlResolver" ref="travelcommercewebservicesProductModelUrlResolver"/>
+	</bean>
+
+	<bean id="cwsProductConverter" parent="defaultProductConverter">
+		<property name="populators">
+			<list>
+				<ref bean="cwsProductPopulator"/>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="cwsCatalogFacade" parent="defaultCatalogFacade">
+		<property name="catalogVersionPopulator" ref="cwsCatalogVersionPopulator"/>
+		<property name="categoryHierarchyPopulator" ref="cwsCategoryHierarchyPopulator"/>
+	</bean>
+
+	<bean id="cwsCatalogVersionPopulator" parent="defaultCatalogVersionPopulator">
+		<property name="categoryHierarchyPopulator" ref="cwsCategoryHierarchyPopulator"/>
+		<property name="categoriesUrl" value="/categories"/>
+	</bean>
+
+	<bean id="cwsCategoryHierarchyPopulator" parent="defaultCategoryHierarchyPopulator">
+		<property name="productConverter" ref="cwsProductConverter"/>
+		<property name="categoryUrlResolver" ref="travelcommercewebservicesCategoryModelUrlResolver"/>
+	</bean>
+
+	<bean id="cwsProductExportFacade" parent="defaultProductExportFacade">
+		<property name="productConverter" ref="cwsProductConverter"/>
+		<property name="productCategoriesPopulator" ref="cwsProductCategoriesPopulator"/>
+	</bean>
+
+	<bean id="cwsProductCategoriesPopulator" parent="defaultProductCategoriesPopulator">
+		<property name="categoryConverter" ref="cwsCategoryConverter"/>
+	</bean>
+
+	<bean id="cwsCategoryConverter" parent="defaultCategoryConverter">
+		<lookup-method name="createTarget" bean="categoryData"/>
+		<property name="populators">
+			<list>
+				<ref bean="cwsCategoryPopulator"/>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="cwsCategoryPopulator" parent="defaultCategoryPopulator">
+		<property name="categoryModelUrlResolver" ref="travelcommercewebservicesCategoryModelUrlResolver"/>
+	</bean>
+
+	<bean id="travelcommercewebservicesProductModelUrlResolver" parent="defaultProductModelUrlResolver">
+		<property name="defaultPattern" value="/{baseSite-uid}/products/{product-code}"/>
+	</bean>
+
+	<bean id="travelcommercewebservicesCategoryModelUrlResolver" parent="defaultCategoryModelUrlResolver">
+		<property name="pattern" value="/{baseSite-uid}/catalogs/{catalog-id}/{catalogVersion}/categories/{category-code}"/>
+	</bean>
+
+	<alias name="defaultCommerceStockFacade" alias="commerceStockFacade"/>
+	<bean id="defaultCommerceStockFacade" class="de.hybris.platform.travelcommercewebservices.stock.impl.DefaultCommerceStockFacade">
+		<property name="baseSiteService" ref="baseSiteService"/>
+		<property name="commerceStockService" ref="commerceStockService"/>
+		<property name="pointOfServiceService" ref="pointOfServiceService"/>
+		<property name="productService" ref="productService"/>
+		<property name="baseStoreForSiteSelectorStrategy" ref="baseStoreForSiteSelectorStrategy"/>
+	</bean>
+
+	<alias name="defaultBaseStoreForSiteSelectorStrategy" alias="baseStoreForSiteSelectorStrategy"/>
+	<bean id="defaultBaseStoreForSiteSelectorStrategy"
+			class="de.hybris.platform.travelcommercewebservices.strategies.impl.DefaultBaseStoreForSiteSelectorStrategy"/>
+
+	<bean id="commerceWebServicesCartFacade2" class="de.hybris.platform.travelcommercewebservices.cart.impl.CommerceWebServicesCartFacade"
+	      parent="defaultCartFacade">
+		<property name="cartConverter" ref="extendedCartConverter"/>
+		<property name="commerceCartService" ref="commerceWebServicesCartService"/>
+	</bean>
+
+	<!-- Populator for title name -->
+	<alias name="defaultExtendedCustomerPopulator" alias="extendedCustomerPopulator"/>
+	<bean id="defaultExtendedCustomerPopulator"
+			class="de.hybris.platform.travelcommercewebservices.customer.populator.ExtendedCustomerPopulator">
+		<property name="addressConverter" ref="addressConverter"/>
+	</bean>
+
+	<bean parent="modifyPopulatorList">
+		<property name="list" ref="customerConverter"/>
+		<property name="add" ref="extendedCustomerPopulator"/>
+	</bean>
+
+	<!-- Update Queues -->
+
+	<bean id="abstractUpdateQueue"
+			class="de.hybris.platform.travelcommercewebservices.queues.impl.AbstractUpdateQueue" abstract="true">
+		<property name="maxCapacity" value="100000"/>
+	</bean>
+
+	<!--Express Update Queue functionality-->
+
+	<bean id="productExpressUpdateQueue"
+			class="de.hybris.platform.travelcommercewebservices.queues.impl.ProductExpressUpdateQueue"
+			parent="abstractUpdateQueue"/>
+
+	<bean id="productExpressUpdateChannelListener"
+			class="de.hybris.platform.travelcommercewebservices.queues.channel.ProductExpressUpdateChannelListener">
+		<property name="productExpressUpdateElementConverter" ref="productExpressUpdateElementConverter"/>
+		<property name="productExpressUpdateQueue" ref="productExpressUpdateQueue"/>
+	</bean>
+
+	<int:service-activator input-channel="productExpressUpdateChannel"
+								  ref="productExpressUpdateChannelListener"
+								  method="onMessage"/>
+
+	<bean id="productExpressUpdateElementData"
+			class="de.hybris.platform.travelcommercewebservices.queues.data.ProductExpressUpdateElementData" scope="prototype"/>
+
+	<alias name="defaultProductExpressUpdateElementPopulator" alias="productExpressUpdateElementPopulator"/>
+	<bean id="defaultProductExpressUpdateElementPopulator"
+			class="de.hybris.platform.travelcommercewebservices.queues.populators.ProductExpressUpdateElementPopulator"/>
+
+	<alias name="defaultProductExpressUpdateElementConverter" alias="productExpressUpdateElementConverter"/>
+	<bean id="defaultProductExpressUpdateElementConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="productExpressUpdateElementData"/>
+		<property name="populators">
+			<list>
+				<ref bean="productExpressUpdateElementPopulator"/>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="productExpressUpdateCleanerJob"
+			class="de.hybris.platform.travelcommercewebservices.queues.cronjob.ProductExpressUpdateCleanerJob"
+			parent="abstractJobPerformable">
+		<property name="productExpressUpdateQueue" ref="productExpressUpdateQueue"/>
+	</bean>
+
+	<!-- Order Status Update Queue -->
+
+	<bean id="orderStatusUpdateQueue"
+			class="de.hybris.platform.travelcommercewebservices.queues.impl.OrderStatusUpdateQueue"
+			parent="abstractUpdateQueue"/>
+
+	<bean id="orderStatusUpdateChannelListener"
+			class="de.hybris.platform.travelcommercewebservices.queues.channel.OrderStatusUpdateChannelListener">
+		<property name="orderStatusUpdateElementConverter" ref="orderStatusUpdateElementConverter"/>
+		<property name="orderStatusUpdateQueue" ref="orderStatusUpdateQueue"/>
+	</bean>
+
+	<int:service-activator input-channel="orderStatusUpdateChannel"
+								  ref="orderStatusUpdateChannelListener"
+								  method="onMessage"/>
+
+	<bean id="orderStatusUpdateElementData"
+			class="de.hybris.platform.travelcommercewebservices.queues.data.OrderStatusUpdateElementData" scope="prototype"/>
+
+	<alias name="defaultOrderStatusUpdateElementPopulator" alias="orderStatusUpdateElementPopulator"/>
+	<bean id="defaultOrderStatusUpdateElementPopulator"
+			class="de.hybris.platform.travelcommercewebservices.queues.populators.OrderStatusUpdateElementPopulator"/>
+
+	<alias name="defaultProductExpressUpdateElementConverter" alias="orderStatusUpdateElementConverter"/>
+	<bean id="defaultOrderStatusUpdateElementConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="orderStatusUpdateElementData"/>
+		<property name="populators">
+			<list>
+				<ref bean="orderStatusUpdateElementPopulator"/>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="orderStatusUpdateCleanerJob"
+			class="de.hybris.platform.travelcommercewebservices.queues.cronjob.OrderStatusUpdateCleanerJob"
+			parent="abstractJobPerformable">
+		<property name="orderStatusUpdateQueue" ref="orderStatusUpdateQueue"/>
+	</bean>
+
+	<!-- Old cart cleaner -->
+	<bean id="oldCartRemovalJob" class="de.hybris.platform.travelcommercewebservices.cronjob.OldCartRemovalJob"
+			parent="abstractJobPerformable">
+		<property name="commerceCartDao" ref="commerceCartDao"/>
+		<property name="timeService" ref="timeService"/>
+		<property name="userService" ref="userService"/>
+	</bean>
+
+    <alias alias="orderCodeIdentificationStrategy" name="defaultOrderCodeIdentificationStrategy"/>
+    <bean id="defaultOrderCodeIdentificationStrategy" class="de.hybris.platform.travelcommercewebservices.strategies.impl.DefaultOrderCodeIdentificationStrategy">
+        <property name="idPattern" value="[0-9a-f]{40}|[0-9a-f-]{36}"/>
+    </bean>
+
+	<!--- OOB ends -->
+
+	<alias name="defaultTravelCartWsFacade" alias="travelCartWsFacade"/>
+	<bean id="defaultTravelCartWsFacade" class="de.hybris.platform.travelcommercewebservices.cart.impl.DefaultTravelCartWsFacade" parent="cartFacade">
+		<property name="addBundleToCartValidationStrategyList" ref="addBundleToCartValidationStrategyList"/>
+		<property name="addToCartValidationStrategyList" ref="addToCartValidationStrategyList"/>
+		<property name="travelRestrictionFacade" ref="travelRestrictionFacade"/>
+		<property name="configurationService" ref="configurationService"/>
+		<property name="accommodationCartFacade" ref="accommodationCartFacade"/>
+		<property name="enumerationService" ref="enumerationService"/>
+	</bean>
+	
+	<alias name="defaultTransportOfferingWsFacade" alias="transportOfferingWsFacade"/>
+	<bean id="defaultTransportOfferingWsFacade" class="de.hybris.platform.travelcommercewebservices.transportoffering.impl.DefaultTransportOfferingWsFacade" parent="transportOfferingFacade" />
+
+	<alias  name="defaultTravelBookingWsFacade" alias="travelBookingWsFacade"/>
+	<bean id="defaultTravelBookingWsFacade" class="de.hybris.platform.travelcommercewebservices.facades.booking.impl.DefaultTravelBookingWsFacade" parent="bookingFacade">
+		<property name="travelBookingWsService" ref="travelBookingWsService"/>
+	</bean>
+
+	<alias name="defaultTravelBookingWsService" alias="travelBookingWsService" />
+	<bean id="defaultTravelBookingWsService" class="de.hybris.platform.travelcommercewebservices.services.impl.DefaultTravelBookingWsService" parent="bookingService">
+		<property name="baseSiteService" ref="baseSiteService"/>
+	</bean>
+
+	<alias name="defaultObjectMapper" alias="objectMapper" />
+	<bean id="defaultObjectMapper" class="com.fasterxml.jackson.databind.ObjectMapper">
+	</bean>
+
+	<authentication-manager alias="authenticationManager" xmlns="http://www.springframework.org/schema/security">
+		<authentication-provider ref="wsAuthenticationProvider"/>
+	</authentication-manager>
+
+	<alias name="defaultTravelOauthWsFacade" alias="travelOauthWsFacade" />
+	<bean id="defaultTravelOauthWsFacade" class="de.hybris.platform.travelcommercewebservices.facades.oauth.impl.DefaultTravelOauthWsFacade">
+		<property name="userService" ref="userService"/>
+		<property name="baseSiteService" ref="baseSiteService"/>
+		<property name="authenticationManager" ref="authenticationManager"/>
+		<property name="objectMapper" ref="objectMapper"/>
+		<property name="travelOauthConfig" ref="travelOauthConfig"/>
+		<property name="travelOauthUrlResolver" ref="travelOauthUrlResolver" />
+		<property name="travelOauthConverter" ref="travelOauthConverter"/>
+	</bean>
+	
+	<alias name="defaultTravelOauthConverter" alias="travelOauthConverter"/>
+	<bean id="defaultTravelOauthConverter" parent="abstractPopulatingConverter">
+		<property name="targetClass" value="de.hybris.platform.travelcommercewebservices.oauth.data.AuthenticationResponseData"/>
+		<property name="populators">
+			<list>
+				<ref bean="travelOauthPopulator"/>
+			</list>
+		</property>
+	</bean>
+
+	<alias name="defaultTravelStockWsFacade" alias="travelStockWsFacade"/>
+	<bean name="defaultTravelStockWsFacade" class="de.hybris.platform.travelcommercewebservices.stock.impl.DefaultTravelStockWsFacade">
+		<property name="warehouseService" ref="warehouseService" />
+		<property name="travelStockService" ref="travelStockService" />
+		<property name="productService"	ref="productService" />
+		<property name="stockDataConverter" ref="stockDataConverter" />
+	</bean>
+
+	<alias name="defaultStockDataPopulator" alias="stockDataPopulator"/>
+	<bean name="defaultStockDataPopulator" class="de.hybris.platform.travelcommercewebservices.stock.populator.StockDataPopulator"/>
+
+	<alias name="defaultStockDataConverter" alias="stockDataConverter"/>
+	<bean name="defaultStockDataConverter" parent="abstractPopulatingConverter">
+		<property name="targetClass" value="de.hybris.platform.commercefacades.product.data.StockData"/>
+		<property name="populators">
+			<list>
+				<ref bean="stockDataPopulator"/>
+			</list>
+		</property>
+	</bean>
+
+	<alias name="defaultTravelOauthPopulator" alias="travelOauthPopulator"/>
+	<bean id="defaultTravelOauthPopulator" class="de.hybris.platform.travelcommercewebservices.facades.oauth.populators.TravelOauthPopulator"/>
+
+	<alias name="defaultTravelOauthConfig" alias="travelOauthConfig"/>
+	<bean id="defaultTravelOauthConfig" class="de.hybris.platform.travelcommercewebservices.oauth.config.TravelOauthConfig">
+		<property name="keyClientId" value="#{configurationService.configuration.getProperty('authentication.oauth.clientid')}"/>
+		<property name="keyClientSecret" value="#{configurationService.configuration.getProperty('authentication.oauth.clientsecret')}"/>
+		<property name="keyTokenPath" value="#{configurationService.configuration.getProperty('authentication.oauth.tokenpath')}"/>
+		<property name="oauthClientId" value="#{configurationService.configuration.getProperty('oauth.client.id')}"/>
+		<property name="oauthClientSecret" value="#{configurationService.configuration.getProperty('oauth.client.secret')}"/>
+		<property name="oauthContentType" value="#{configurationService.configuration.getProperty('oauth.content.type')}"/>
+		<property name="oauthAccept" value="#{configurationService.configuration.getProperty('oauth.accept')}"/>
+		<property name="oauthGrandType" value="#{configurationService.configuration.getProperty('oauth.grant.type')}"/>
+		<property name="oauthUserName" value="#{configurationService.configuration.getProperty('oauth.user.name')}"/>
+		<property name="oauthPassword" value="#{configurationService.configuration.getProperty('oauth.user.password')}"/>
+		<property name="oauthRefresh" value="#{configurationService.configuration.getProperty('oauth.refresh.token')}"/>
+		<property name="oauthEncoding" value="#{configurationService.configuration.getProperty('oauth.encoding')}"/>
+		<property name="oauthGrandTypeClientCredentials" value="#{configurationService.configuration.getProperty('oauth.grand.type.client.credentials')}"/>
+		<property name="oauthGrandTypePassword" value="#{configurationService.configuration.getProperty('oauth.grand.type.password')}"/>
+		<property name="oauthGrandTypeRefreshToken" value="#{configurationService.configuration.getProperty('oauth.grand.type.refresh.token')}"/>
+	</bean>
+
+	<alias name="defaultTravelOauthUrlResolver" alias="travelOauthUrlResolver"/>
+	<bean id="defaultTravelOauthUrlResolver" class="de.hybris.platform.travelcommercewebservices.facades.oauth.resolver.TravelOauthUrlResolver" >
+		<property name="configurationService" ref="configurationService"/>
+	</bean>
+
+	<alias  name="defaultTravelOrderWsFacade" alias="travelOrderWsFacade"/>
+	<bean id="defaultTravelOrderWsFacade" class="de.hybris.platform.travelcommercewebservices.facades.order.impl.DefaultTravelOrderWsFacade">
+		<property name="travelCustomerFacade" ref="travelCustomerFacade"/>
+		<property name="b2bCheckoutFacade" ref="b2bCheckoutFacade"/>
+		<property name="acceleratorCheckoutFacade" ref="acceleratorCheckoutFacade"/>
+		<property name="bookingFacade" ref="bookingFacade"/>
+	</bean>
+
+</beans>

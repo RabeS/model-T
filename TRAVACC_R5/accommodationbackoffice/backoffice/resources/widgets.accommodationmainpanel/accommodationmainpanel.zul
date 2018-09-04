@@ -1,0 +1,83 @@
+<widget xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://www.zkoss.org/2005/zul"
+        xmlns:w="client">
+
+    <zk xmlns:h="native">
+        <html>
+        <![CDATA[
+            <script type="text/javascript">
+                jq('button[class^="y_manage"]').on('click', function(){
+                    jq(this).siblings().slideDown();
+                    jq('button[class^="y_manage"]').not(this).siblings().slideUp();
+                });
+            </script>
+            ]]>
+        </html>
+        <div sclass="y_mainPanel">
+            <h:h1 sclass="hospitality">Hospitality</h:h1>
+            <grid  style="margin-top:45px;border:none;">
+                <columns sizable="false">
+                    <column width="33%"/>
+                    <column width="33%"/>
+                    <column width="34%"/>
+                </columns>
+                <rows>
+                    <row height="150px"  style="border:none">
+                    	<div height="150px">
+                            <button id="createAccommodationProvider" label="${c:l('labels.mainpanel.create.accommodation.provider')}" image="${wr}/images/brandIcon.svg"
+                                    height="120px" />
+                        </div>
+                        <div height="150px">
+                            <button id="createAccommodationOffering" label="${c:l('labels.mainpanel.create.accommodation.offering')}" image="${wr}/images/propertyIcon.svg"
+                                    height="120px" />
+                        </div>
+                        <div height="150px">
+                            <button id="createSleepingRoom" label="${c:l('labels.mainpanel.create.sleepingroom')}" image="${wr}/images/bedIcon.svg"
+                                   height="120px"  />
+                        </div>
+                    </row>
+                    
+                    <row height="150px"  style="border:none">
+                    	<div height="150px">
+                            <button id="createNonSleepingRoom" label="${c:l('labels.mainpanel.create.nonsleepingroom')}" image="${wr}/images/nonSleepIcon.svg"
+                                 height="120px"   />
+                        </div>
+                        <div height="150px">
+                            <button id="createRatePlan" label="${c:l('labels.mainpanel.create.rateplan')}" image="${wr}/images/ratePlanIcon.svg"
+                                    height="120px" />
+                        </div>
+                        <div height="150px">
+                            <button id="createNonRoomProduct" label="${c:l('labels.mainpanel.create.nonroomproduct')}" image="${wr}/images/nonRoomProductIcon.svg"
+                                   height="120px" />
+                        </div>
+                    </row>
+                    <row height="150px"  style="border:none">
+                    	<div height="150px">
+                            <button id="manageAccommodationInventoryBtn" sclass="y_manageInventoryBtn" label="${c:l('labels.mainpanel.manage.accommodation.inventory')}" image="${wr}/images/graphIcon.svg"
+                                  height="120px"  />
+                            <div sclass="y_manageInventoryLinks y_commandLinks" style="display:none;position: relative; left: 120px;top: -50px">
+                               <div>
+                                    <a id="addAccommodationInventory" label="${c:l('labels.mainpanel.add.accommodation.inventory')}" autodisable="self"
+                                       style="text-decoration:none;color:black"/>
+                                </div>
+                                <div>
+                                    <a id="modifyAccommodationInventory" label="${c:l('labels.mainpanel.modify.accommodation.inventory')}" autodisable="self"
+                                       style="text-decoration:none;color:black"/>
+                                </div>
+                            </div>
+                        </div>
+                         <div height="150px">
+                            <button id="merchandisingWorkspaceBtn" label="${c:l('labels.mainpanel.accommodation.merchandising.workspace')}"
+                               image="${wr}/images/penIcon.svg" height="120px" />
+                        </div>
+                    	 <div height="150px">
+                            <button id="assignRoomAndFloor" label="${c:l('labels.mainpanel.assign.room.and.floor')}" image="${wr}/images/assigningIcon.svg"
+                                    height="120px" />
+                        </div>
+                    </row>
+                </rows>
+            </grid>
+        </div>
+    </zk>
+</widget>
+                    

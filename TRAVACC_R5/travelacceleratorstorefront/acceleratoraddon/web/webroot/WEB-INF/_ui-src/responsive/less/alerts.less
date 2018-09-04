@@ -1,0 +1,35 @@
+.alert-warning {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+    border-radius: 4px;
+}
+
+.alert-danger {
+    border-radius: 4px;
+    .journey-details {
+        padding-top: 15px;
+    }
+}
+
+.global-alerts {
+    margin-top: 15px;
+}
+.alert-danger {
+    color: darkred;
+}
+
+
+.alert {
+    @media (max-width: @screen-xs-max) {
+        margin-top: 20px;
+        margin-bottom: 0;
+    }
+}
+
+// alert-warning only for #page-update-profile
+.alert-warning {
+    @media (max-width: @screen-xs-max) {
+        margin-bottom: 15px;
+    }
+}

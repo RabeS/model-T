@@ -1,0 +1,56 @@
+<svg id="breakfast" xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500">
+  <metadata><?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?>
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6-c138 79.159824, 2016/09/14-01:09:01        ">
+   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:Description rdf:about=""/>
+   </rdf:RDF>
+</x:xmpmeta>
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                           
+<?xpacket end="w"?></metadata>
+<defs>
+    <style>
+      .cls-1, .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-1, .cls-2 {
+        stroke: #fff;
+        stroke-linejoin: round;
+        stroke-width: 30px;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <path id="cup" class="cls-1" d="M359.252,179.009c0,131.445-17.378,238-38.815,238H120.153c-21.437,0-38.814-106.558-38.814-238H359.252Z"/>
+  <path id="Rounded_Rectangle_1" data-name="Rounded Rectangle 1" class="cls-2" d="M341.914,223.114l78.372-.1c9.223,0,16.7,6.423,16.7,14.345V333.67c0,7.922-7.477,14.345-16.7,14.345l-83.382-.1"/>
+  <path id="steam" class="cls-3" d="M120.445,110.3l64.3-62.467c2.516-2.445,8.151-2.445,12.585,0s5.988,6.409,3.472,8.854l-64.3,62.466c-2.517,2.445-8.152,2.445-12.586,0S117.928,112.745,120.445,110.3Z"/>
+  <path id="steam_copy" data-name="steam copy" class="cls-3" d="M199.549,110.3l64.3-62.467c2.516-2.445,8.151-2.445,12.585,0s5.988,6.409,3.472,8.854l-64.3,62.466c-2.517,2.445-8.152,2.445-12.586,0S197.032,112.745,199.549,110.3Z"/>
+  <path id="steam_copy_2" data-name="steam copy 2" class="cls-3" d="M278.653,110.3l64.3-62.467c2.516-2.445,8.151-2.445,12.585,0s5.988,6.409,3.472,8.854l-64.3,62.466c-2.517,2.445-8.151,2.445-12.585,0S276.136,112.745,278.653,110.3Z"/>
+</svg>

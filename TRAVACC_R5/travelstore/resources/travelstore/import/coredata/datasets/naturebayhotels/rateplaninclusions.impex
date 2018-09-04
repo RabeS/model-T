@@ -1,0 +1,75 @@
+#
+# ImpEx for Importing RatePlan into travel accelerator
+#
+$productCatalog = naturebayhotelsProductCatalog
+$catalogVersion = catalogVersion(catalog(id[default = $productCatalog]), version[default = 'Staged'])[unique = true, default = $productCatalog:Staged]
+$lang = en
+
+INSERT_UPDATE RatePlanInclusion; shortDescription[lang = $lang][unique = true]; longDescription[lang = $lang][unique = true]; &inclusionRef
+; Free cancellation ; Free cancellation ; freeCancellationInclusion
+; Free parking      ; Free parking      ; freeParkingInclusion
+; Luggage storage   ; Luggage storage   ; luggageStorageInclusion
+
+INSERT_UPDATE RatePlan; code[unique = true]; ratePlanInclusion(&inclusionRef); $catalogVersion
+# Non Refundable RatePlan
+; 1R_NR_Plan_AU ; luggageStorageInclusion ;
+; 2R_NR_Plan_AU ; luggageStorageInclusion ;
+; 3R_NR_Plan_AU ; luggageStorageInclusion ;
+; 4R_NR_Plan_AU ; luggageStorageInclusion ;
+; 5R_NR_Plan_AU ; luggageStorageInclusion ;
+; 5R_2P_NR_Plan_AU ; luggageStorageInclusion ;
+
+
+; 1R_NR_Plan_TH ; luggageStorageInclusion ;
+; 2R_NR_Plan_TH ; luggageStorageInclusion ;
+; 3R_NR_Plan_TH ; luggageStorageInclusion ;
+; 4R_NR_Plan_TH ; luggageStorageInclusion ;
+; 5R_NR_Plan_TH ; luggageStorageInclusion ;
+
+; 1R_NR_Plan_MV ; luggageStorageInclusion ;
+; 2R_NR_Plan_MV ; luggageStorageInclusion ;
+; 3R_NR_Plan_MV ; luggageStorageInclusion ;
+; 4R_NR_Plan_MV ; luggageStorageInclusion ;
+; 5R_NR_Plan_MV ; luggageStorageInclusion ;
+
+; 1R_NR_Plan_KE ; luggageStorageInclusion ;
+; 2R_NR_Plan_KE ; luggageStorageInclusion ;
+; 3R_NR_Plan_KE ; luggageStorageInclusion ;
+; 4R_NR_Plan_KE ; luggageStorageInclusion ;
+; 5R_NR_Plan_KE ; luggageStorageInclusion ;
+
+; 1R_NR_Plan_US ; luggageStorageInclusion ;
+; 2R_NR_Plan_US ; luggageStorageInclusion ;
+; 3R_NR_Plan_US ; luggageStorageInclusion ;
+; 4R_NR_Plan_US ; luggageStorageInclusion ;
+; 5R_NR_Plan_US ; luggageStorageInclusion ;
+
+# Free Cancellation RatePlan
+
+; 1R_FC_Plan_AU ; freeCancellationInclusion,freeParkingInclusion,luggageStorageInclusion
+; 2R_FC_Plan_AU ; freeCancellationInclusion,freeParkingInclusion,luggageStorageInclusion
+; 3R_FC_Plan_AU ; freeCancellationInclusion,freeParkingInclusion,luggageStorageInclusion
+; 4R_FC_Plan_AU ; freeCancellationInclusion,freeParkingInclusion,luggageStorageInclusion
+; 5R_FC_Plan_AU ; freeCancellationInclusion,freeParkingInclusion,luggageStorageInclusion
+; 5R_2P_FC_Plan_AU ; freeCancellationInclusion,freeParkingInclusion,luggageStorageInclusion
+
+; 1R_FC_Plan_TH ; freeCancellationInclusion,freeParkingInclusion,luggageStorageInclusion
+; 2R_FC_Plan_TH ; freeCancellationInclusion,freeParkingInclusion,luggageStorageInclusion
+; 3R_FC_Plan_TH ; freeCancellationInclusion,freeParkingInclusion,luggageStorageInclusion
+; 4R_FC_Plan_TH ; freeCancellationInclusion,freeParkingInclusion,luggageStorageInclusion
+; 5R_FC_Plan_TH ; freeCancellationInclusion,freeParkingInclusion,luggageStorageInclusion
+; 1R_FC_Plan_MV ; freeCancellationInclusion,freeParkingInclusion,luggageStorageInclusion
+; 2R_FC_Plan_MV ; freeCancellationInclusion,freeParkingInclusion,luggageStorageInclusion
+; 3R_FC_Plan_MV ; freeCancellationInclusion,freeParkingInclusion,luggageStorageInclusion
+; 4R_FC_Plan_MV ; freeCancellationInclusion,freeParkingInclusion,luggageStorageInclusion
+; 5R_FC_Plan_MV ; freeCancellationInclusion,freeParkingInclusion,luggageStorageInclusion
+; 1R_FC_Plan_KE ; freeCancellationInclusion,freeParkingInclusion,luggageStorageInclusion
+; 2R_FC_Plan_KE ; freeCancellationInclusion,freeParkingInclusion,luggageStorageInclusion
+; 3R_FC_Plan_KE ; freeCancellationInclusion,freeParkingInclusion,luggageStorageInclusion
+; 4R_FC_Plan_KE ; freeCancellationInclusion,freeParkingInclusion,luggageStorageInclusion
+; 5R_FC_Plan_KE ; freeCancellationInclusion,freeParkingInclusion,luggageStorageInclusion
+; 1R_FC_Plan_US ; freeCancellationInclusion,freeParkingInclusion,luggageStorageInclusion
+; 2R_FC_Plan_US ; freeCancellationInclusion,freeParkingInclusion,luggageStorageInclusion
+; 3R_FC_Plan_US ; freeCancellationInclusion,freeParkingInclusion,luggageStorageInclusion
+; 4R_FC_Plan_US ; freeCancellationInclusion,freeParkingInclusion,luggageStorageInclusion
+; 5R_FC_Plan_US ; freeCancellationInclusion,freeParkingInclusion,luggageStorageInclusion

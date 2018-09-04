@@ -1,0 +1,734 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<!--
+	ATTENTION: This is just an example file. You have to edit it according to your needs.
+-->
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="beans.xsd">
+
+    <enum class="de.hybris.travelcommercewebservicescommons.enums.TripTypeWsDTO">
+        <value>SINGLE</value>
+        <value>RETURN</value>
+        <value>MULTICITY</value>
+        <value>OPEN_JAW</value>
+    </enum>
+
+    <enum class="de.hybris.travelcommercewebservicescommons.enums.BookingChannelTypeWsDTO">
+        <value>WEB</value>
+        <value>CSA</value>
+    </enum>
+
+    <enum class="de.hybris.travelcommercewebservicescommons.enums.TransportOfferingTypeWsDTO">
+        <value>DIRECT</value>
+        <value>INDIRECT</value>
+    </enum>
+
+    <enum class="de.hybris.travelcommercewebservicescommons.enums.CartResultTypeWsDTO">
+        <value>COMPLETED</value>
+        <value>ERROR</value>
+        <value>NOT_ENOUGH_STOCK</value>
+    </enum>
+
+    <enum class="de.hybris.travelcommercewebservicescommons.enums.PaymentType">
+        <value>CREDIT_CARD</value>
+        <value>COST_CENTER</value>
+    </enum>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.enums.ClientWsDTO">
+        <property name="clientId" type="String"/>
+        <property name="clientSecret" type="String"/>
+    </bean>
+
+    <bean class="de.hybris.platform.travelcommercewebservices.dto.OfferResponseWsDTO">
+        <property name="seatMap" type="de.hybris.platform.travelcommercewebservices.dto.SeatMapResponseWsDTO" />
+        <property name="offerGroups" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.OfferGroupWsDTO>" />
+        <property name="itineraries" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.ItineraryWsDTO>" />
+        <property name="upgradeOptionDatas" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.UpgradeOptionWsDTO>" />
+    </bean>
+
+    <bean class="de.hybris.platform.travelcommercewebservices.dto.SeatMapResponseWsDTO">
+        <property name="seatMap" type="java.util.List&lt;de.hybris.platform.travelcommercewebservices.dto.SeatMapWsDTO>" />
+        <property name="segmentInfoDatas" type="java.util.List&lt;de.hybris.platform.travelcommercewebservices.dto.SegmentInfoWsDTO>"/>
+    </bean>
+
+    <bean class="de.hybris.platform.travelcommercewebservices.dto.SeatMapWsDTO">
+        <property name="accommodationMapCode" type="String" />
+        <property name="bookingReferenceId" type="String" />
+        <property name="fareBasisCode" type="String" />
+        <property name="transportOffering" type="de.hybris.travelcommercewebservicescommons.dto.TransportOfferingWsDTO" />
+        <property name="seatMapDetail" type="de.hybris.travelcommercewebservicescommons.dto.SeatMapDetailWsDTO" />
+        <property name="selectedSeats" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.SelectedSeatWsDTO>" />
+    </bean>
+
+    <bean class="de.hybris.platform.travelcommercewebservices.dto.SegmentInfoWsDTO">
+        <property name="transportOfferingCode" type="String" />
+        <property name="fareBasisCode" type="String" />
+        <property name="cabinClass" type="String"/>
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.SeatMapDetailWsDTO">
+        <property name="cabin" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.CabinWsDTO>" />
+    </bean>
+
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.CabinClassWsDTO">
+        <property name="code" type="String" />
+        <property name="name" type="String" />
+        <property name="index" type="Integer" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.SelectedSeatWsDTO">
+        <property name="transportOffering" type="de.hybris.travelcommercewebservicescommons.dto.TransportOfferingWsDTO" />
+        <property name="seatNumber" type="String" />
+        <property name="traveller" type="de.hybris.travelcommercewebservicescommons.dto.TravellerWsDTO" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.OfferGroupWsDTO" extends="de.hybris.platform.commercewebservicescommons.dto.product.CategoryWsDTO">
+        <property name="originDestinationOfferInfos" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.OriginDestinationOfferInfoWsDTO>" />
+        <property name="travelRestriction" type="de.hybris.travelcommercewebservicescommons.dto.TravelRestrictionWsDTO" />
+        <property name="offerPricingInfos" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.OfferPricingInfoWsDTO>" />
+        <property name="ignoreRules" type="boolean" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.OriginDestinationOfferInfoWsDTO">
+        <property name="transportOfferings" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.TransportOfferingWsDTO>" />
+        <property name="offerPricingInfos" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.OfferPricingInfoWsDTO>" />
+        <property name="originDestinationRefNumber" type="int" />
+        <property name="travelRouteCode" type="String" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.OfferPricingInfoWsDTO">
+        <property name="product" type="de.hybris.platform.commercewebservicescommons.dto.product.ProductWsDTO" />
+        <property name="travellerBreakdowns" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.TravellerBreakdownWsDTO>" />
+        <property name="travelRestriction" type="de.hybris.travelcommercewebservicescommons.dto.TravelRestrictionWsDTO" />
+        <property name="bundleIndicator" type="Integer" />
+        <property name="bookingBreakdown" type="de.hybris.travelcommercewebservicescommons.dto.BookingBreakdownWsDTO" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.TravelRestrictionWsDTO">
+        <property name="effectiveDate" type="java.util.Date" />
+        <property name="expireDate" type="java.util.Date" />
+        <property name="travellerMaxOfferQty" type="java.lang.Integer" />
+        <property name="travellerMinOfferQty" type="java.lang.Integer" />
+        <property name="tripMaxOfferQty" type="java.lang.Integer" />
+        <property name="tripMinOfferQty" type="java.lang.Integer" />
+        <property name="addToCartCriteria" type="String" />
+        <property name="passengerTypes" type="java.util.List&lt;String>" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.TravellerBreakdownWsDTO">
+        <property name="traveller" type="de.hybris.travelcommercewebservicescommons.dto.TravellerWsDTO" />
+        <property name="fareBasisCodes" type="java.util.List&lt;String>" />
+        <property name="passengerFare" type="de.hybris.travelcommercewebservicescommons.dto.PassengerFareWsDTO" />
+        <property name="quantity" type="Integer" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.BookingBreakdownWsDTO">
+        <property name="passengerFare" type="de.hybris.travelcommercewebservicescommons.dto.PassengerFareWsDTO" />
+        <property name="quantity" type="Integer" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.PassengerFareWsDTO">
+        <property name="baseFare" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+        <property name="totalFare" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+        <property name="taxes" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.TaxWsDTO>" />
+        <property name="fees" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.FeeWsDTO>" />
+        <property name="discounts" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.DiscountWsDTO>" />
+        <property name="perPax" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+        <property name="wasRate" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.FeeWsDTO">
+        <property name="name" type="String" />
+        <property name="price" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.UpgradeOptionWsDTO">
+        <property name="originDestinationReferenceNumber" type="java.lang.Integer" />
+        <property name="itineraryPricingInfos" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.ItineraryPricingInfoWsDTO>" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.TravelBundleTemplateWsDTO">
+        <property name="id" type="String"/>
+        <property name="name" type="String"/>
+        <property name="bundleType" type="String" />
+        <property name="products"
+                type="java.util.List&lt;de.hybris.platform.commercewebservicescommons.dto.product.ProductWsDTO>" />
+        <property name="bundleTemplates" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.TravelBundleTemplateWsDTO>" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.SelectionCriteriaWsDTO">
+        <property name="type" type="String"/>
+        <property name="n" type="String"/>
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.PTCFareBreakdownWsDTO">
+        <property name="fareBasisCodes" type="java.util.List&lt;String>" />
+        <property name="passengerTypeQuantity" type="de.hybris.travelcommercewebservicescommons.dto.PassengerTypeQuantityWsDTO" />
+        <property name="fareInfos" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.FareInfoWsDTO>" />
+        <property name="passengerFare" type="de.hybris.travelcommercewebservicescommons.dto.PassengerFareWsDTO" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.IncludedAncillaryWsDTO">
+        <property name="criteria" type="String" />
+        <property name="products" type="java.util.List&lt;de.hybris.platform.commercewebservicescommons.dto.product.ProductWsDTO>" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.FareInfoWsDTO">
+        <property name="fareDetails" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.FareDetailsWsDTO>" />
+        <property name="origin" type="de.hybris.travelcommercewebservicescommons.dto.TransportFacilityWsDTO" />
+        <property name="destination" type="de.hybris.travelcommercewebservicescommons.dto.TransportFacilityWsDTO" />
+        <property name="ruleInfo" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.RuleInfoWsDTO>" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.FareDetailsWsDTO">
+        <property name="fareProduct" type="de.hybris.travelcommercewebservicescommons.dto.FareProductWsDTO" />
+        <property name="fareBasisCode" type="String" />
+        <property name="tripType" type="de.hybris.travelcommercewebservicescommons.enums.TripTypeWsDTO" />
+        <property name="discount" type="de.hybris.travelcommercewebservicescommons.dto.DiscountPricingWsDTO" />
+        <property name="passengerTypes" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.PassengerTypeWsDTO>" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.RuleInfoWsDTO">
+        <property name="type" type="String" />
+        <property name="description" type="String" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.FareProductWsDTO" extends="de.hybris.platform.commercewebservicescommons.dto.product.ProductWsDTO">
+        <property name="bookingClass" type="String" />
+        <property name="fareBasisCode" type="String" />
+        <property name="selected" type="boolean" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.DiscountPricingWsDTO">
+        <property name="price" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+        <property name="purpose" type="String" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.CabinWsDTO">
+        <property name="startingRow" type="Integer" />
+        <property name="endingRow" type="Integer" />
+        <property name="upperDeckIndicator" type="Boolean" />
+        <property name="columnHeaders" type="java.util.List&lt;String>" />
+        <property name="cabinClass" type="de.hybris.travelcommercewebservicescommons.dto.CabinClassWsDTO" />
+        <property name="seatAvailability" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.SeatAvailabilityWsDTO>" />
+        <property name="rowInfo" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.RowInfoWsDTO>" />
+        <property name="priceData" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+        <property name="cabinName" type="String"/>
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.SeatAvailabilityWsDTO">
+        <property name="seatNumber" type="String" />
+        <property name="availabilityIndicator" type="String" />
+        <property name="transportOfferingCode" type="String" />
+        <property name="traveller" type="de.hybris.travelcommercewebservicescommons.dto.TravellerWsDTO" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.RowInfoWsDTO">
+        <property name="rowNum" type="Integer" />
+        <property name="seatInfo" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.SeatInfoWsDTO>" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.SeatInfoWsDTO">
+        <property name="columnSpan" type="Integer" />
+        <property name="columnNumber" type="Integer" />
+        <property name="seatNumber" type="String" />
+        <property name="seatFeature" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.SeatFeatureWsDTO>" />
+        <property name="totalFare" type="de.hybris.travelcommercewebservicescommons.dto.TotalFareWsDTO" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.SeatFeatureWsDTO">
+        <property name="seatFeatureType" type="String" />
+        <property name="seatFeatureDescription" type="String" />
+        <property name="seatFeaturePosition" type="String" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.ItineraryWsDTO">
+        <property name="tripType" type="de.hybris.travelcommercewebservicescommons.enums.TripTypeWsDTO" />
+        <property name="route" type="de.hybris.travelcommercewebservicescommons.dto.TravelRouteWsDTO" />
+        <property name="duration" type="java.util.Map&lt;String,Integer>" />
+        <property name="travellers" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.TravellerWsDTO>" />
+        <property name="originDestinationOptions" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.OriginDestinationOptionWsDTO>" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.TransportOfferingWsDTO">
+        <property name="code" type="String" />
+        <property name="number" type="String" />
+        <property name="departureTime" type="java.util.Date" />
+        <property name="departureTimeZoneId" type="java.time.ZoneId" />
+        <property name="arrivalTime" type="java.util.Date" />
+        <property name="arrivalTimeZoneId" type="java.time.ZoneId" />
+        <property name="updatedDepartureTime" type="java.util.Date" />
+        <property name="originTerminal" type="de.hybris.travelcommercewebservicescommons.dto.TerminalWsDTO" />
+        <property name="destinationTerminal" type="de.hybris.travelcommercewebservicescommons.dto.TerminalWsDTO" />
+        <property name="sector" type="de.hybris.travelcommercewebservicescommons.dto.TravelSectorWsDTO" />
+        <property name="stopLocations" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.TransportFacilityWsDTO>" />
+        <property name="travelProvider" type="de.hybris.travelcommercewebservicescommons.dto.TravelProviderWsDTO" />
+        <property name="duration" type="java.util.Map&lt;String,Integer>" />
+        <property name="durationValue" type="Long" />
+        <property name="status" type="String" />
+        <property name="type" type="String" />
+        <property name="originLocationCity" type="String" />
+        <property name="destinationLocationCity" type="String" />
+        <property name="originLocationCountry" type="String" />
+        <property name="destinationLocationCountry" type="String" />
+        <property name="transportVehicle" type="de.hybris.travelcommercewebservicescommons.dto.TransportVehicleWsDTO" />
+        <property name="active" type="boolean" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.PassengerTypeWsDTO">
+        <property name="code" type="String"/>
+        <property name="passengerType" type="String"/>
+        <property name="identifier" type="String"/>
+        <property name="name" type="String"/>
+        <property name="minAge" type="Integer"/>
+        <property name="maxAge" type="Integer"/>
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.TransportFacilityWsDTO">
+        <property name="code" type="String" />
+        <property name="name" type="String" />
+        <property name="location" type="de.hybris.travelcommercewebservicescommons.dto.LocationWsDTO" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.LocationWsDTO" extends="de.hybris.platform.commercewebservicescommons.dto.product.CategoryWsDTO" />
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.OriginDestinationOptionWsDTO">
+        <property name="transportOfferings" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.TransportOfferingWsDTO>" />
+        <property name="travelRouteCode" type="String" />
+        <property name="originDestinationRefNumber" type="int" />
+        <property name="active" type="boolean" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.TravelRouteWsDTO">
+        <property name="code" type="String" />
+        <property name="name" type="String" />
+        <property name="origin" type="de.hybris.travelcommercewebservicescommons.dto.TransportFacilityWsDTO" />
+        <property name="destination" type="de.hybris.travelcommercewebservicescommons.dto.TransportFacilityWsDTO" />
+        <property name="sectors" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.TravelSectorWsDTO>" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.TravellerWsDTO">
+        <property name="formId" type="String"/>
+        <property name="uid" type="String"/>
+        <property name="label" type="String"/>
+        <property name="travellerInfo" type="de.hybris.travelcommercewebservicescommons.dto.PassengerInformationWsDTO"/>
+        <property name="travellerType" type="String"/>
+        <property name="booker" type="boolean"/>
+        <property name="specialRequestDetail" type="de.hybris.travelcommercewebservicescommons.dto.SpecialRequestDetailWsDTO"/>
+        <property name="savedTravellerUid" type="String"/>
+        <property name="travellerStatusInfo" type="java.util.Map&lt;String,String>"/>
+        <property name="versionID" type="String"/>
+        <property name="simpleUID" type="String"/>
+        <property name="passengerRelation" type="String"/>
+    </bean>
+    
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.TravellersWsDTO">
+    	<property name="travellers" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.TravellerWsDTO>" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.PassengerTypeQuantityWsDTO">
+        <property name="passengerType" type="de.hybris.travelcommercewebservicescommons.dto.PassengerTypeWsDTO" />
+        <property name="quantity" type="int" />
+        <property name="age" type="int" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.TaxWsDTO">
+        <property name="code" type="String" />
+        <property name="price" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.DiscountWsDTO">
+        <property name="purpose" type="String" />
+        <property name="price" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.ItineraryPricingInfoWsDTO">
+        <property name="totalFare" type="de.hybris.travelcommercewebservicescommons.dto.TotalFareWsDTO"/>
+        <property name="bundleTemplates" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.TravelBundleTemplateWsDTO>"/>
+        <property name="ptcFareBreakdownDatas" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.PTCFareBreakdownWsDTO>"/>
+        <property name="available" type="boolean"/>
+        <property name="bundleType" type="String"/>
+        <property name="bundleTypeName" type="String"/>
+        <property name="travellerBreakdowns" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.TravellerBreakdownWsDTO>"/>
+        <property name="promotional" type="boolean"/>
+        <property name="selected" type="boolean"/>
+        <property name="itineraryIdentifier" type="String"/>
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.TotalFareWsDTO">
+        <property name="basePrice" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+        <property name="taxPrice" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+        <property name="discountPrice" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+        <property name="extrasPrice" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+        <property name="totalBaseExtrasPrice" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+        <property name="totalFees" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+        <property name="totalPrice" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+        <property name="taxes" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.TaxWsDTO>" />
+        <property name="fees" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.TaxWsDTO>" />
+        <property name="discounts" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.DiscountWsDTO>" />
+        <property name="wasRate" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+        <property name="priceDifference" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.SpecialRequestDetailWsDTO">
+        <property name="specialServiceRequests" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.SpecialServiceRequestWsDTO>"/>
+        <property name="remarks" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.RemarkWsDTO>"/>
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.SpecialServiceRequestWsDTO">
+        <property name="code" type="String"/>
+        <property name="name" type="String"/>
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.RemarkWsDTO">
+        <property name="code" type="String"/>
+        <property name="name" type="String"/>
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.PassengerInformationWsDTO">
+        <property name="savedTravellerUId" type="String"/>
+        <property name="firstName" type="String"/>
+        <property name="surname" type="String"/>
+        <property name="dateOfBirth" type="java.util.Date"/>
+        <property name="passengerType" type="de.hybris.travelcommercewebservicescommons.dto.PassengerTypeWsDTO"/>
+        <property name="title" type="de.hybris.travelcommercewebservicescommons.dto.TitleWsDTO"/>
+        <property name="membershipNumber" type="String"/>
+        <property name="gender" type="String"/>
+        <property name="reasonForTravel" type="String"/>
+        <property name="saveDetails" type="boolean"/>
+        <property name="documentNumber" type="String"/>
+        <property name="documentType" type="String"/>
+        <property name="APIType" type="String"/>
+        <property name="countryOfIssue" type="de.hybris.platform.commercewebservicescommons.dto.user.CountryWsDTO"/>
+        <property name="documentExpiryDate" type="java.util.Date"/>
+        <property name="nationality" type="de.hybris.platform.commercewebservicescommons.dto.user.CountryWsDTO"/>
+        <property name="email" type="java.lang.String"/>
+        <property name="picture" type="de.hybris.platform.commercewebservicescommons.dto.product.ImageWsDTO" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.TravelSectorWsDTO">
+        <property name="code" type="String" />
+        <property name="origin" type="de.hybris.travelcommercewebservicescommons.dto.TransportFacilityWsDTO" />
+        <property name="destination" type="de.hybris.travelcommercewebservicescommons.dto.TransportFacilityWsDTO" />
+        <property name="routes" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.TravelRouteWsDTO>" />
+        <property name="transportOfferings" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.TransportOfferingWsDTO>" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.TravelProviderWsDTO">
+        <property name="code" type="String" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.TransportVehicleWsDTO">
+        <property name="vehicleInfo" type="de.hybris.travelcommercewebservicescommons.dto.TransportVehicleInfoWsDTO" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.TerminalWsDTO">
+        <property name="code" type="String" />
+        <property name="name" type="String" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.TransportVehicleInfoWsDTO">
+        <property name="code" type="String" />
+        <property name="name" type="String" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.TitleWsDTO">
+        <property name="code" type="String"/>
+        <property name="name" type="String"/>
+    </bean>
+
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.FareSearchRequestWsDTO">
+        <property name="originDestinationInfo" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.OriginDestinationInfoWsDTO>" />
+        <property name="tripType" type="de.hybris.travelcommercewebservicescommons.enums.TripTypeWsDTO" />
+        <property name="pos" type="de.hybris.travelcommercewebservicescommons.dto.POSWsDTO" />
+        <property name="searchProcessingInfo" type="de.hybris.travelcommercewebservicescommons.dto.SearchProcessingInfoWsDTO" />
+        <property name="transportOfferingInfo" type="de.hybris.travelcommercewebservicescommons.dto.TransportOfferingInfoWsDTO" />
+        <property name="travelPreferences" type="de.hybris.travelcommercewebservicescommons.dto.TravelPreferencesWsDTO" />
+        <property name="passengerTypes" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.PassengerTypeQuantityWsDTO>" />
+        <property name="travellerInfoSummary" type="de.hybris.travelcommercewebservicescommons.dto.TravellerInfoSummaryWsDTO" />
+        <property name="salesApplication" type="de.hybris.travelcommercewebservicescommons.dto.SalesApplicationWsDTO" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.OriginDestinationInfoWsDTO">
+        <property name="referenceNumber" type="int" />
+        <property name="departureLocation" type="String" />
+        <property name="arrivalLocation" type="String" />
+        <property name="departureTime" type="java.util.Date" />
+        <property name="arrivalTime" type="java.util.Date" />
+        <property name="departureLocationType" type="de.hybris.platform.travelservices.enums.LocationType"/>
+        <property name="arrivalLocationType" type="de.hybris.platform.travelservices.enums.LocationType"/>
+        <property name="itinerary" type="de.hybris.travelcommercewebservicescommons.dto.ItineraryWsDTO"/>
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.POSWsDTO">
+        <property name="source" type="de.hybris.travelcommercewebservicescommons.dto.SourceWsDTO" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.SourceWsDTO">
+        <property name="bookingChannel" type="de.hybris.travelcommercewebservicescommons.dto.BookingChannelWsDTO" />
+        <property name="isoCurrencyCode" type="java.lang.String" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.BookingChannelWsDTO">
+        <property name="type" type="de.hybris.travelcommercewebservicescommons.enums.BookingChannelTypeWsDTO" />
+        <property name="name" type="String" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.SalesApplicationWsDTO">
+        <property name="code" type="String" />
+        <property name="type" type="String" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.SearchProcessingInfoWsDTO">
+        <property name="displayOrder" type="String" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.TransportOfferingInfoWsDTO">
+        <property name="travelProvider" type="String" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.TravelPreferencesWsDTO">
+        <property name="cabinPreference" type="String" />
+        <property name="fareRestrictionPreferences" type="String" />
+        <property name="transportOfferingPreferences" type="de.hybris.travelcommercewebservicescommons.dto.TransportOfferingPreferencesWsDTO" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.TransportOfferingPreferencesWsDTO">
+        <property name="transportOfferingType" type="de.hybris.travelcommercewebservicescommons.enums.TransportOfferingTypeWsDTO" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.TravellerInfoSummaryWsDTO">
+        <property name="travellerDetails" type="de.hybris.travelcommercewebservicescommons.dto.TravellerDetailsWsDTO" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.TravellerDetailsWsDTO">
+        <property name="traveller" type="de.hybris.travelcommercewebservicescommons.dto.TravellerWsDTO" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.FareSelectionWsDTO">
+        <property name="pricedItineraries" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.PricedItineraryWsDTO>" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.PricedItineraryWsDTO">
+        <property name="available" type="boolean" />
+        <property name="itinerary" type="de.hybris.travelcommercewebservicescommons.dto.ItineraryWsDTO" />
+        <property name="itineraryPricingInfos" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.ItineraryPricingInfoWsDTO>" />
+        <property name="originDestinationRefNumber" type="int" />
+        <property name="id" type="int" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.cart.AddBundleToCartRequestWsDTO">
+        <property name="addBundleToCart" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.cart.AddBundleToCartWsDTO>" />
+        <property name="passengerTypes" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.PassengerTypeQuantityWsDTO>" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.cart.AddBundleToCartWsDTO">
+        <property name="productCode" type="String" />
+        <property name="bundleTemplateId" type="String" />
+        <property name="transportOfferings" type="java.util.List&lt;String>" />
+        <property name="travelRouteCode" type="String" />
+        <property name="originDestinationRefNumber" type="Integer" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.cart.AncillaryToCartWsDTO">
+        <property name="productCode" type="String" />
+        <property name="bundleTemplateId" type="String" />
+        <property name="transportOfferings" type="java.util.List&lt;String>" />
+        <property name="travelRouteCode" type="String" />
+        <property name="travellerCode" type="String" />
+        <property name="originDestinationRefNumber" type="Integer" />
+        <property name="quantity" type="Integer" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.cart.AddToCartResultWsDTO">
+        <property name="status" type="de.hybris.travelcommercewebservicescommons.enums.CartResultTypeWsDTO"/>
+        <property name="cartId" type="String"/>
+        <property name="errors" type="java.util.List&lt;de.hybris.platform.webservicescommons.dto.error.ErrorWsDTO>"/>
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.cart.AccommodationToCartWsDTO">
+        <property name="accommodationToCart" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.cart.AccommodationWsDTO>"/>
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.cart.AccommodationWsDTO">
+        <property name="accommodationUid" type="String" />
+        <property name="previousSelectedAccommodationUid" type="String" />
+        <property name="transportOfferings" type="String" />
+        <property name="travelRouteCode" type="String" />
+        <property name="travellerCode" type="String" />
+        <property name="originDestinationRefNumber" type="String" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.reservation.ReservationWsDTO">
+        <property name="reservationItems" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.reservation.ReservationItemWsDTO>" />
+        <property name="totalFare" type="de.hybris.travelcommercewebservicescommons.dto.TotalFareWsDTO" />
+        <property name="code" type="String" />
+        <property name="bookingStatusCode" type="String" />
+        <property name="bookingStatusName" type="String" />
+        <property name="totalToPay" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+        <property name="offerPricingInfos" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.OfferPricingInfoWsDTO>" />
+        <property name="offerBreakdowns" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.reservation.OfferBreakdownWsDTO>" />
+        <property name="paymentType" type="de.hybris.travelcommercewebservicescommons.enums.PaymentType" />
+        <property name="paymentTransaction" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.payment.PaymentTransactionWsDTO>" />
+        <property name="salesApplication" type="String" />
+        <property name="additionalSecurity" type="java.lang.Boolean" />
+        <property name="filteredTravellers" type="java.lang.Boolean" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.reservation.ReservationItemWsDTO">
+        <property name="reservationItinerary" type="de.hybris.travelcommercewebservicescommons.dto.ItineraryWsDTO" />
+        <property name="originDestinationRefNumber" type="int" />
+        <property name="reservationPricingInfo" type="de.hybris.travelcommercewebservicescommons.dto.reservation.ReservationPricingInfoWsSTO" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.reservation.ReservationPricingInfoWsSTO">
+        <property name="itineraryPricingInfo" type="de.hybris.travelcommercewebservicescommons.dto.ItineraryPricingInfoWsDTO" />
+        <property name="totalFare" type="de.hybris.travelcommercewebservicescommons.dto.TotalFareWsDTO" />
+        <property name="originDestinationOfferInfos" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.OriginDestinationOfferInfoWsDTO>" />
+        <property name="offerBreakdowns" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.reservation.OfferBreakdownWsDTO>" />
+        <property name="selectedSeats" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.SelectedSeatWsDTO>" />
+        <property name="segmentInfo" type="java.util.List&lt;de.hybris.platform.travelcommercewebservices.dto.SegmentInfoWsDTO>" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.reservation.RemovedTravellerResponseWsDTO">
+        <property name="uid" type="String" />
+        <property name="name" type="String" />
+        <property name="amountToRefund" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.reservation.OfferBreakdownWsDTO">
+        <property name="product" type="de.hybris.platform.commercewebservicescommons.dto.product.ProductWsDTO" />
+        <property name="quantity" type="Integer" />
+        <property name="totalFare" type="de.hybris.travelcommercewebservicescommons.dto.TotalFareWsDTO" />
+        <property name="included" type="Boolean" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.payment.PaymentTransactionWsDTO">
+        <property name="entryNumbers" type="java.util.List&lt;java.lang.Integer>" />
+        <property name="transactionAmount" type="java.lang.Double" />
+        <property name="bookingType" type="java.lang.String" />
+        <property name="paymentTransactionEntry" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.payment.PaymentTransactionEntryWsDTO>" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.payment.PaymentTransactionEntryWsDTO">
+        <property name="type" type="de.hybris.platform.payment.enums.PaymentTransactionType" />
+        <property name="transactionStatus" type="java.lang.String" />
+        <property name="amount" type="java.math.BigDecimal" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.TransportOfferingStatusSearchRequestWsDTO">
+        <property name="transportOfferingNumber" type="String" />
+        <property name="departureDate" type="String" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.TransportOfferingStatusSearchWsDTO">
+        <property name="number" type="String" />
+        <property name="departureTime" type="java.util.Date" />
+        <property name="updatedDepartureTime" type="java.util.Date" />
+        <property name="originTerminal" type="de.hybris.travelcommercewebservicescommons.dto.TerminalWsDTO" />
+        <property name="duration" type="java.util.Map&lt;String,Integer>" />
+        <property name="status" type="String" />
+        <property name="arrivalTime" type="java.util.Date" />
+        <property name="destinationTerminal" type="de.hybris.travelcommercewebservicescommons.dto.TerminalWsDTO" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.oauth.OauthConfirmationWsDTO">
+        <property name="accessToken" type="String"/>
+        <property name="tokenType" type="String"/>
+        <property name="expiresIn" type="int"/>
+        <property name="refreshToken" type="String"/>
+        <property name="scope" type="String"/>
+        <property name="customerId" type="String"/>
+        <property name="error" type="de.hybris.platform.webservicescommons.dto.error.ErrorWsDTO"/>
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.CheckInRequestWsDTO">
+        <property name="baggageInfo" type="de.hybris.travelcommercewebservicescommons.dto.BaggageInfoWsDTO" />
+        <property name="messageFunction" type="java.lang.String" />
+        <property name="travellerTransportOfferingInfos" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.TravellerTransportOfferingInfoWsDTO>" />
+        <property name="paymentInfo" type="de.hybris.travelcommercewebservicescommons.dto.CCPaymentInfoWsDTO" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.CheckInResponseWsDTO">
+        <property name="bookingReference" type="java.lang.String" />
+        <property name="errors" type="java.util.Map&lt;String,java.util.List&lt;java.lang.String>>" />
+        <property name="warnings" type="java.util.List&lt;java.lang.String>" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.BaggageInfoWsDTO">
+        <property name="traveller" type="de.hybris.travelcommercewebservicescommons.dto.TravellerWsDTO" />
+        <property name="checkedBaggageInfos" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.CheckedBaggageInfoDetailWsDTO>" />
+        <property name="checkedBaggageWeightTotal" type="java.lang.Double" />
+        <property name="handBaggageWeightTotal" type="java.lang.Double" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.TravellerTransportOfferingInfoWsDTO">
+        <property name="seatBoardingInfo" type="de.hybris.travelcommercewebservicescommons.dto.SelectedSeatWsDTO" />
+        <property name="specialServiceRequests" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.SpecialServiceRequestWsDTO>"/>
+        <property name="transportOffering" type="de.hybris.travelcommercewebservicescommons.dto.TransportOfferingWsDTO" />
+        <property name="traveller" type="de.hybris.travelcommercewebservicescommons.dto.TravellerWsDTO" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.CCPaymentInfoWsDTO">
+        <property name="id" type="java.lang.String"/>
+        <property name="accountHolderName" type="java.lang.String"/>
+        <property name="cardType" type="java.lang.String"/>
+        <property name="cardTypeData" type="de.hybris.platform.commercewebservicescommons.dto.order.CardTypeWsDTO"/>
+        <property name="cardNumber" type="java.lang.String"/>
+        <property name="startMonth" type="java.lang.String"/>
+        <property name="startYear" type="java.lang.String"/>
+        <property name="expiryMonth" type="java.lang.String"/>
+        <property name="expiryYear" type="java.lang.String"/>
+        <property name="issueNumber" type="java.lang.String"/>
+        <property name="subscriptionId" type="java.lang.String"/>
+        <property name="saved" type="boolean"/>
+        <property name="defaultPaymentInfo" type="boolean"/>
+        <property name="billingAddress" type="de.hybris.platform.commercewebservicescommons.dto.user.AddressWsDTO"/>
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.CheckedBaggageInfoDetailWsDTO">
+        <property name="weight" type="java.lang.Double" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.StockLevelWsDTO">
+        <property name="productCode" type="String" />
+        <property name="available" type="int" />
+        <property name="reserved" type="int" />
+        <property name="overselling" type="int" />
+        <property name="inStockStatus" type="de.hybris.platform.basecommerce.enums.InStockStatus" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.CancelBookingResponseWsDTO">
+        <property name="bookingReference" type="String" />
+        <property name="amountToRefund" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+        <property name="errors" type="java.util.List&lt;de.hybris.platform.webservicescommons.dto.error.ErrorWsDTO>" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.oauth.CustomerWsDTO">
+        <property name="uid" type="String"/>
+        <property name="password" type="String"/>
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.payment.PaymentOptionWsDTO">
+        <property name="associatedTransactions" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.payment.PaymentTransactionWsDTO>" />
+        <property name="bookingTimeAmount" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+        <property name="prepaymentAmount" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+        <property name="prepaymentDeadlineInDays" type="java.lang.Integer" />
+        <property name="checkInPayOff" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+    </bean>
+
+    <bean class="de.hybris.travelcommercewebservicescommons.dto.PlaceOrderRequestWsDTO">
+        <property name="associatedTransactions" type="java.util.List&lt;de.hybris.travelcommercewebservicescommons.dto.payment.PaymentTransactionWsDTO>" />
+    </bean>
+</beans>

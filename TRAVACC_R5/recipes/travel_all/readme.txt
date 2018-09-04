@@ -1,0 +1,1 @@
+Installs Travel Accelerator and initialises all 4 sites: Transport, Accommodation, Transport + Accommodation and Accommodationchain

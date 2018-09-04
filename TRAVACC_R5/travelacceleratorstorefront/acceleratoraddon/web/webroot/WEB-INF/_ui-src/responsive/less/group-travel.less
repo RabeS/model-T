@@ -1,0 +1,160 @@
+.group-travellers { margin-top: 40px; }
+
+.group-traveller {
+    dl,
+    dl div {
+        @media (max-width: @screen-xs) {
+            width: 100%;
+        }
+    }
+    &:not(:first-child) {
+        .group-traveller-details { padding-top: 0; }
+    }
+    &:first-child {
+        .additional-information {
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+    }
+    &:last-child {
+        .group-traveller-details { border-bottom: 0; }
+    }
+    .group-traveller-details {
+        border-bottom: 1px solid #eee;
+        dl { margin: 15px 0; }
+        @media (max-width: @screen-xs-max) {
+            dt {
+                position: static;
+                height: auto;
+                width: auto;
+                background: transparent;
+            }
+        }
+        @media (min-width: @screen-sm) {
+            dt {
+                margin-top: -40px;
+                padding-bottom: 20px;
+            }
+        }
+    }
+    .group-traveller-options {
+        .options { display: none; }
+        @media (min-width: @screen-sm) {
+            &:hover {
+                background: #eee;
+                cursor: pointer;
+                border-color: #ccc;
+                .options { display: block; }
+            }
+        }
+    }
+
+    @media (max-width: @screen-xs-max) {
+        &.selected { background: #eee; }
+    }
+
+    .additional-information {
+        margin-top: 10px;
+        a { font-size: 20px; }
+        @media (max-width: @screen-xs-max) {
+            width: 100%;
+            padding: 0 30px;
+            + div {
+                width: 100%;
+                padding: 0 30px;
+            }
+        }
+        .options-show {
+            margin-top: 1px;
+            a {
+                background: #076480;
+                border-radius: 50%;
+                font-size: 10px;
+                padding: 4px 5px;
+                color: #fff;
+                margin-left: 5px;
+            }
+
+        }
+    }
+}
+
+.group-traveller,
+#travellerGroups {
+    .additional-information {
+        a {
+            &:hover,
+            &:focus {
+                text-decoration: none;
+                outline: none;
+            }
+        }
+    }
+}
+
+#travellerGroups {
+    .form-group {
+        @media only screen and (max-width: @screen-xs) {
+            width: 100%;
+            margin-left: 0;
+        }
+        @media only screen and (min-width: @screen-md) {
+            input {
+                &::-webkit-input-placeholder { color: transparent; }
+            }
+        }
+        &.save-all { width: auto; }
+    }
+    .save-all label { margin-right: 5px; }
+    @media only screen and (min-width: @screen-md-min) {
+        > .panel:first-child fieldset > .row:nth-child(1) {
+            .additional-information div > .row { margin-top: 25px; }
+            label { display: block; }
+        }
+        > .panel {
+            &:first-child {
+                fieldset > .row:nth-child(3) {
+                    .additional-information {
+                        div > .row { margin-top: 0; }
+                    }
+                }
+            }
+            fieldset > .row:nth-child(3) {
+                .additional-information {
+                    div > .row { margin-top: 25px; }
+                }
+            }
+        }
+    }
+    @media only screen and (max-width: @screen-sm-max) {
+        > .panel fieldset > .row {
+            label,
+            .save label {
+                position: static;
+                width: auto;
+                height: auto;
+                background: transparent;
+            }
+            .save label {
+                float: left;
+                margin-right: 5px;
+            }
+        }
+    }
+    .additional-information {
+        font-size: 20px;
+        div {
+            @media only screen and (max-width: @screen-xs) {
+                width: auto;
+                margin-left: 0;
+            }
+        }
+        label {
+            @media only screen and (max-width: @screen-xs) {
+                float: left;
+            }
+        }
+    }
+    .panel fieldset > .row .modal-body .form-group label { display: block; }
+    .autocomplete-suggestions-wrapper { width: 200px; }
+}

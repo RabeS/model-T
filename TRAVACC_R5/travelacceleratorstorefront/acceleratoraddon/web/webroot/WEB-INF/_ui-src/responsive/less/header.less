@@ -1,0 +1,98 @@
+.header {
+    position: relative;
+    margin: 0;
+    .navbar-fixed-top { z-index: 5; }
+    .user-options-wrapper {
+        background-color: @brand-blue;
+        .navbar-brand {
+            padding: 0;
+            height: auto;
+            &:focus { outline: 1px dotted #fff; }
+            @media (max-width: @screen-xs-max) {
+                position: absolute;
+                z-index: 9999;
+                left: 50%;
+                transform: translate(-50%);
+            }
+            img {
+                height: 3.3em;
+                padding: 5px;
+                width: auto;
+                @media (max-width: @screen-xs-max) {
+                    height: 50px;
+                }
+            }
+        }
+    }
+    .user-options {
+        color: #fff;
+        .dropdown{
+            .dropdown-menu {
+                background-color: @brand-blue;
+                border-top: 0;
+                border-radius: 0;
+                margin-top: 0;
+                @media (max-width: @screen-xs-max) {
+                    text-indent: 20px;
+                    background-color: transparent;
+                }
+                a {
+                    border: none;
+                    text-decoration: none;
+                    padding: 10px;
+                    color: #fff;
+                    background-color: transparent;
+                    &:focus,
+                    &:hover {
+                        background-color: #25bcd7;
+                    }
+                }
+                @media (max-width: @screen-xs-max) {
+                    a {
+                        color: #fff;
+                        &:hover,
+                        &:focus {
+                            color: #fff;
+                            background-color: lighten(@brand-blue,5%);
+                        }
+                    }
+                }
+                li {
+                    display: block;
+                    padding: 0px;
+                }
+            }
+        }
+    }
+    ul.user-options {
+        margin-top: 0;
+        margin-bottom: 0;
+        float: left;
+        li {
+            list-style: none;
+            font-size: 11px;
+            padding: 0 10px;
+            line-height: 60px;
+            a {
+                text-decoration: underline;
+                color: #fff;
+                border-right: 1px solid #fff;
+                padding: 0 20px 0 0;
+                &:hover,
+                &:focus {
+                    text-decoration: none;
+                }
+            }
+            &:last-child {
+                a { border-right: 0; }
+            }
+        }
+        @media (max-width: @screen-xs-max) {
+            float: right;
+            > li {
+                display: none;
+                &:last-child { display: block; }
+            }
+        }
+    }
+}

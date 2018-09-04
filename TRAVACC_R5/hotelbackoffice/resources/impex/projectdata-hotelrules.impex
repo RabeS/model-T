@@ -1,0 +1,190 @@
+$lang = en
+################################################################# ACCOMMODATIONS ##############################################################
+
+############################# CONDITION DEFINITION ##########################
+
+INSERT_UPDATE RuleConditionDefinition; id[unique = true]; name[lang = $lang]; breadcrumb[lang = $lang]
+; y_accommodation_cart_destination_location        ; Destination Location ; When the property location list includes any of {inclLocations} and is not in any of {excLocations}
+
+; y_accommodation_cart_accommodation_offering      ; Property             ; When the Property list includes any of {accommodationOfferings}
+
+; y_accommodation_cart_accommodation_offering_type ; Property Type        ; When the Property type list includes any of {accommodationOfferingType}
+
+; y_accommodation_cart_accommodation_provider      ; Brand                ; When the Brand list includes any of {accommodationProviders}
+
+; y_accommodation_cart_accommodation               ; Room                 ; When the Room list includes any of {accommodations}
+
+; y_accommodation_cart_accommodation_category      ; Room Category        ; When the Room Category list includes any of {accommodationCategory}
+
+
+INSERT_UPDATE RuleConditionDefinitionParameter; definition(id)[unique = true]; id[unique = true]; name[lang = $lang]; description[lang = $lang]
+; y_accommodation_cart_accommodation_offering      ; accommodationOfferings    ; Property      ; Property
+
+; y_accommodation_cart_accommodation_provider      ; accommodationProviders    ; Brand         ; Brand
+
+; y_accommodation_cart_accommodation               ; accommodations            ; Room          ; Room
+
+; y_accommodation_cart_accommodation_offering_type ; accommodationOfferingType ; Property Type ; Property Type
+
+; y_accommodation_cart_accommodation_category      ; accommodationCategory     ; Room Category ; Room Category
+
+
+###################################################################################### SHOW NON ROOM PRODUCT ##############################################################################
+
+############################# CONDITION DEFINITION ##########################
+INSERT_UPDATE RuleConditionDefinition; id[unique = true]; name[lang = $lang]; breadcrumb[lang = $lang]
+; y_extra_product_accommodation_offering_type ; Property Type        ; When the Property type list includes any of {accommodationOfferingType}
+
+; y_extra_product_accommodation_offering      ; Property             ; When the Property list includes any of {accommodationOfferings}
+
+; y_extra_product_accommodation_provider      ; Brand                ; When the Brand list includes any of {accommodationProviders}
+
+; y_extra_product_accommodation_category      ; Room Category        ; When the Room Category list includes any of {accommodationCategory}
+
+; y_extra_product_destination_location        ; Destination Location ; When the Property location list includes any of {inclLocations} and is not in any of {excLocations}
+
+; y_extra_product_accommodation               ; Room                 ; When the Room list includes any of {accommodations}
+
+INSERT_UPDATE RuleConditionDefinitionParameter; definition(id)[unique = true]; id[unique = true]; name[lang = $lang]; description[lang = $lang]
+; y_extra_product_accommodation_offering_type ; accommodationOfferingType ; Property Type   ; Property Type
+
+; y_extra_product_accommodation_offering      ; accommodationOfferings    ; Property        ; Property
+
+; y_extra_product_accommodation_provider      ; accommodationProviders    ; Brand           ; Brand
+
+; y_extra_product_accommodation_category      ; accommodationCategory     ; Room Category   ; Room Category
+
+; y_extra_product_accommodation               ; accommodations            ; Room            ; Room
+
+
+############################ ACTIONS ##########################
+INSERT_UPDATE RuleActionDefinitionCategory; id[unique = true]; name[lang = $lang]; priority
+; show_extra_products ; Show Non Room Product ; 1800
+
+INSERT_UPDATE RuleActionDefinition; id[unique = true]; name[lang = $lang]; priority; breadcrumb[lang = $lang];
+; y_show_extra_product ; Show Non Room Product ; 1000 ; Show  {extras} for the current search
+
+INSERT_UPDATE RuleActionDefinitionParameter; definition(id)[unique = true]; id[unique = true]; priority; name[lang = $lang]; description[lang = $lang];
+; y_show_extra_product ; extras ; 1000 ; Show Non Room Product Action ; Non Room Product that will be shown
+
+###################################################################################### SHOW RATE PLAN ##############################################################################
+
+############################# CONDITION DEFINITION ##########################
+INSERT_UPDATE RuleConditionDefinition; id[unique = true]; name[lang = $lang]; breadcrumb[lang = $lang]
+; y_show_rate_plans_accommodation               ; Room                 ; When the Room list includes any of {accommodations}
+; y_show_rate_plans_accommodation_category      ; Room Category        ; When the Room Category list includes any of {accommodationCategory}
+; y_show_rate_plans_destination_location        ; Destination Location ; When the Property location list includes any of {incLocations} and is not in any of {excLocations}
+; y_show_rate_plans_accommodation_offering_type ; Property Type        ; When the Property type list includes any of {accommodationOfferingType}
+; y_show_rate_plans_accommodation_offering      ; Property             ; When the Property list includes any of {accommodationOfferings}
+; y_show_rate_plans_accommodation_provider      ; Brand                ; When the Brand list includes any of {accommodationProviders}
+
+INSERT_UPDATE RuleConditionDefinitionParameter; definition(id)[unique = true]; id[unique = true]; name[lang = $lang]; description[lang = $lang]
+; y_show_rate_plans_accommodation               ; accommodations            ; Room          ; Room
+; y_show_rate_plans_accommodation_category      ; accommodations            ; Room          ; Room
+; y_show_rate_plans_accommodation_offering_type ; accommodationOfferingType ; Property Type ; Property Type
+; y_show_rate_plans_accommodation_offering      ; accommodationOfferings    ; Property      ; Property
+; y_show_rate_plans_accommodation_provider      ; accommodationProviders    ; Brand         ; Brand
+
+###################################################################################### SHOW PROPERTY ##############################################################################
+
+############################ ACTIONS ###########################
+INSERT_UPDATE RuleActionDefinitionCategory; id[unique = true]; name[lang = $lang]; priority
+; show_accommodation_offerings ; Show Property ; 1800
+
+INSERT_UPDATE RuleActionDefinition; id[unique = true]; name[lang = $lang]; priority; breadcrumb[lang = $lang];
+; y_show_accommodation_offerings ; Show Property Action ; 1000 ; Show  {accommodationOfferings} for the current search
+
+INSERT_UPDATE RuleActionDefinitionParameter; definition(id)[unique = true]; id[unique = true]; priority; name[lang = $lang]; description[lang = $lang];
+; y_show_accommodation_offerings ; accommodationOfferings ; 1000 ; Show Property Action ; Property that will be shown
+
+############################# CONDITION ##########################
+INSERT_UPDATE RuleConditionDefinition; id[unique = true]; name[lang = $lang]; breadcrumb[lang = $lang]
+; y_show_accommodation_offerings_accommodation_offering_type ; Property Type ; When the Property Type includes any of {accommodationOfferingType}
+
+INSERT_UPDATE RuleConditionDefinitionParameter; definition(id)[unique = true]; id[unique = true]; name[lang = $lang]; description[lang = $lang]
+; y_show_accommodation_offerings_accommodation_offering_type ; accommodationOfferingType ; Property Type ; Property Type
+
+
+
+
+######################################################################################  SHOW ROOM CATEGORIES ##############################################################################
+############################# CONDITION ##########################
+INSERT_UPDATE RuleConditionDefinition; id[unique = true]; name[lang = $lang]; breadcrumb[lang = $lang]
+; y_show_accommodation_category_accommodation_offering_type ; Property Type ; When the Property type list includes any of {accommodationOfferingType}
+
+INSERT_UPDATE RuleConditionDefinitionParameter; definition(id)[unique = true]; id[unique = true]; name[lang = $lang]; description[lang = $lang]
+; y_show_accommodation_category_accommodation_offering_type ; accommodationOfferingType ; Property Type ; Property Type
+
+
+############################ ACTIONS ###########################
+INSERT_UPDATE RuleActionDefinitionCategory; id[unique = true]; name[lang = $lang]; priority
+; show_accommodation_category ; Show Room Category ; 1800
+
+INSERT_UPDATE RuleActionDefinition; id[unique = true]; name[lang = $lang]; priority; breadcrumb[lang = $lang];
+; y_show_accommodation_category ; Show Room Category ; 1000 ; Show  {accommodationCategories} for the current search
+
+INSERT_UPDATE RuleActionDefinitionParameter; definition(id)[unique = true]; id[unique = true]; priority; name[lang = $lang]; description[lang = $lang];
+; y_show_accommodation_category ; accommodationCategories ; 1000 ; Show Room Category Action ; Room Category that will be shown
+
+
+############################################################################################################################
+###################################################### RULE TEMPLATES ######################################################
+REMOVE ShowAccommodationCategorySourceRuleTemplate; code[unique = true]
+; showAccommodationCategoriesTemplate ;
+
+INSERT_UPDATE ShowAccommodationCategorySourceRuleTemplate; code[unique = true]; name[lang = $lang]; description[lang = $lang]; messageFired[lang = $lang]
+; showRoomCategoriesTemplate ; Show Room Category Template ; Show Room Category template used to create a rule which will be executed during room search ;
+
+INSERT_UPDATE ShowAccommodationCategorySourceRuleTemplate; code[unique = true]; maxAllowedRuns; ruleGroup(code); conditions; actions
+; showRoomCategoriesTemplate ; 1 ; showAccommodationCategoryRuleGroup ;"[{""definitionId"":""y_show_accommodation_category_search_date"",""parameters"":{""date"":{""uuid"":""fe0a3c72-e09f-4adb-8fb0-24e540c4701b"",""type"":""java.util.Date""},""operator"":{""uuid"":""e5a7dd3d-f0e6-43f0-a361-99061b3ad283"",""type"":""Enum(de.hybris.platform.ruledefinitions.AmountOperator)"",""value"":""LESS_THAN""}},""children"":[]}]";"[{""definitionId"":""y_show_accommodation_category"",""parameters"":{""accommodationCategories"":{""uuid"":""eb29bf67-902e-43f7-9433-ebf3a09dc44a"",""type"":""List(ItemType(AccommodationCategory))"",""value"":[]}}}]"
+
+
+###################################################################################### SHOW PROPERTY ##############################################################################
+
+############################# CONDITION ##########################
+INSERT_UPDATE RuleConditionDefinition; id[unique = true]; name[lang = $lang]; breadcrumb[lang = $lang]
+; y_show_accommodation_accommodation_offering_type ; Property Type ; When the Property type list includes any of {accommodationOfferingType}
+
+; y_show_accommodation_accommodation_offering      ; Property      ; When the Property list includes any of {accommodationOfferings}
+
+; y_show_accommodation_accommodation_provider      ; Brand         ; When the Brand list includes any of {accommodationProviders}
+
+
+INSERT_UPDATE RuleConditionDefinitionParameter; definition(id)[unique = true]; id[unique = true]; name[lang = $lang]; description[lang = $lang]
+; y_show_accommodation_accommodation_offering_type ; accommodationOfferingType ; Property Type ; Property Type
+
+; y_show_accommodation_accommodation_offering      ; accommodationOfferings    ; Property      ; Property
+
+; y_show_accommodation_accommodation_provider      ; accommodationProviders    ; Brand         ; Brand
+
+
+############################ ACTIONS ##########################
+INSERT_UPDATE RuleActionDefinitionCategory; id[unique = true]; name[lang = $lang]; priority
+; show_accommodations       ; Show Room ; 1800
+
+INSERT_UPDATE RuleActionDefinition; id[unique = true]; name[lang = $lang]; priority; breadcrumb[lang = $lang];
+; y_show_accommodations     ; Show Room Action ; 1000 ; Show  {accommodations} for the current search
+
+INSERT_UPDATE RuleActionDefinitionParameter; definition(id)[unique = true]; id[unique = true]; priority; name[lang = $lang]; description[lang = $lang];
+; y_show_accommodations     ; accommodations    ; 1000 ; Show Room Action ; Room that will be shown
+
+
+############################################################################################################################
+###################################################### RULE TEMPLATES ######################################################
+REMOVE ShowAccommodationSourceRuleTemplate; code[unique = true]
+; showAccommodationTemplate ;
+
+INSERT_UPDATE ShowAccommodationSourceRuleTemplate; code[unique = true]; name[lang = $lang]; description[lang = $lang]; messageFired[lang = $lang]
+; showRoomTemplate ; Show Room Template ; Show Room template used to create a rule which will be executed during accommodation search ;
+
+INSERT_UPDATE ShowAccommodationSourceRuleTemplate; code[unique = true]; maxAllowedRuns; ruleGroup(code); conditions; actions
+; showRoomTemplate ; 1 ; showAccommodationRuleGroup ;"[{""definitionId"":""y_show_accommodation_accommodation_provider"",""parameters"":{""accommodationProviders"":{""uuid"":""fc69c7eb-0f9e-449f-9eb4-a26f09f3bfa1"",""type"":""List(ItemType(AccommodationProvider))""}},""children"":[]}]";"[{""definitionId"":""y_show_accommodations"",""parameters"":{""accommodations"":{""uuid"":""fd1c6dda-520e-43c3-a6c2-962531ca5fed"",""type"":""List(ItemType(Accommodation))"",""value"":[]}}}]"
+
+REMOVE ShowExtraProductSourceRuleTemplate; code[unique = true]
+; showExtraProductTemplate ;
+
+INSERT_UPDATE ShowExtraProductSourceRuleTemplate; code[unique = true]; name[lang = $lang]; description[lang = $lang]; messageFired[lang = $lang]
+; showNonRoomProductTemplate ; Show Non Room Product Template ; Show Non Room Product template used to create a rule which will be executed during accommodation search ;
+
+INSERT_UPDATE ShowExtraProductSourceRuleTemplate; code[unique = true]; maxAllowedRuns; ruleGroup(code); conditions; actions
+; showNonRoomProductTemplate ; 1 ; showExtraProductRuleGroup ;"[{""definitionId"":""y_extra_product_customers"",""parameters"":{""customer_groups"":{""uuid"":""07cd9988-ea09-4ce3-b0f1-487781dff83b"",""type"":""List(ItemType(UserGroup))""},""customer_groups_operator"":{""uuid"":""03b5f9a9-c716-4e3e-8fa0-aa2bc34710cf"",""type"":""Enum(de.hybris.platform.ruledefinitions.CollectionOperator)"",""value"":""CONTAINS_ANY""},""customers"":{""uuid"":""efdc8700-83bc-4a00-8f14-f69f3649ea66"",""type"":""List(ItemType(Customer))""},""excluded_customers"":{""uuid"":""7d50c216-7ac3-4673-a5b8-f5eaa26283f3"",""type"":""List(ItemType(Customer))""},""excluded_customer_groups"":{""uuid"":""149fde3f-4628-454a-bf1a-a79cdddafe67"",""type"":""List(ItemType(UserGroup))""}},""children"":[]}]"; "[{""definitionId"":""y_show_extra_product"",""parameters"":{""extras"":{""uuid"":""af8b196f-2c23-4e32-a933-c5e3f8713423"",""type"":""List(ItemType(Product))""},""products"":{""uuid"":""a2071d59-7a5d-4cc6-81ea-2dd842d4e570"",""type"":""List(ItemType(Product))""}}}]"

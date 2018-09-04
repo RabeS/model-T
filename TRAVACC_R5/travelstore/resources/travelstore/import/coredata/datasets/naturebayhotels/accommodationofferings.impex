@@ -1,0 +1,71 @@
+$vendor = hotel
+$active = true
+$default = true
+
+$propertyFacilities1 = SLIPPERS, PRIVATE_BATHROOM, FREE_TOILETRIES, BATHROBE, HAIRDRYER, BATH, SHOWER, GARDEN, REFRIGERATOR, SWIMMING_POOL, YOGA_CLASSES
+$propertyFacilities2 = FITNESS, FULL_BODY_MASSAGE, HAND_MASSAGE, HEAD_MASSAGE, COUPLES_MASSAGE, FOOT_MASSAGE, NECK_MASSAGE, BACK_MASSAGE, SPA_WELLNESS_PACKAGES
+$propertyFacilities3 = SPA_FACILITIES, BODY_WRAP, BODY_SCRUB, BODY_TREATMENTS, PEDICURE, MANICURE, FACIAL_TREATMENTS, BEAUTY_SERVICES, SUN_UMBRELLAS
+$propertyFacilities4 = SUN_LOUNGERS_OR_BEACH_CHAIRS, POOL_BEACH_TOWELS, OUTDOOR_POOL, MASSAGE, SPA_AND_WELLNESS_CENTRE, FITNESS_CENTRE, TICKETS, CANOEING
+$propertyFacilities5 = LIBRARY, CABLE_CHANNELS, SATELLITE_CHANNELS, DVD_PLAYER, TELEPHONE, WINE_CHAMPAGNE, KID_MEALS, SPECIAL_DIET_MENUS, BREAKFAST_IN_THE_ROOM
+$propertyFacilities6 = BAR, MINIBAR, RESTAURANT, COFFEE, PARKING, DROP_OFF, PICK_UP, CONCIERGE_SERVICE, LUGGAGE_STORAGE, TOUR_DESK, CURRENCY_EXCHANGE, FRONT_DESK
+$propertyFacilities7 = BABY_SAFETY_GATES, BABYSITTING, MAID_SERVICE, IRONING_SERVICE, DRY_CLEANING, LAUNDRY, FAX_PHOTOCOPYING, BUSINESS_CENTRE
+
+$propertyFacilities = $propertyFacilities1, $propertyFacilities2, $propertyFacilities3, $propertyFacilities4, $propertyFacilities5, $propertyFacilities6, $propertyFacilities7
+
+INSERT_UPDATE AccommodationOffering; code[unique = true]; provider(code); location(code); starRating; vendor(code)[default = $vendor]; default[default = $default]; types(code); propertyFacility(code);
+; BONDI            ; NATUREBAY_AQUA_REEFS_RESORTS    ; BONDI            ; 5 ; ; ; BEACH,CITY ; $propertyFacilities
+; PALM_COVE        ; NATUREBAY_AQUA_REEFS_RESORTS    ; PALM_COVE        ; 5 ; ; ; BEACH      ; $propertyFacilities
+; MANTA_LAGOON     ; NATUREBAY_AQUA_REEFS_RESORTS    ; MANTA_LAGOON     ; 5 ; ; ; BEACH      ; $propertyFacilities
+; VILLA_MAKATI     ; NATUREBAY_AQUA_REEFS_RESORTS    ; VILLA_MAKATI     ; 5 ; ; ; BEACH      ; $propertyFacilities
+; LANTERN          ; NATUREBAY_AQUA_REEFS_RESORTS    ; LANTERN          ; 5 ; ; ; BEACH,CITY ; $propertyFacilities
+; WAIKIKI          ; NATUREBAY_AQUA_REEFS_RESORTS    ; WAIKIKI          ; 5 ; ; ; BEACH      ; $propertyFacilities
+; COCO_PALM        ; NATUREBAY_AQUA_REEFS_RESORTS    ; COCO_PALM        ; 5 ; ; ; BEACH      ; $propertyFacilities
+
+; BIRD_PARADISE    ; NATUREBAY_ROYAL_FORESTS         ; BIRD_PARADISE    ; 5 ; ; ; JUNGLE     ; $propertyFacilities
+; JUNGLE_TREEHOUSE ; NATUREBAY_ROYAL_FORESTS         ; JUNGLE_TREEHOUSE ; 5 ; ; ; JUNGLE     ; $propertyFacilities
+; REDWOOD          ; NATUREBAY_ROYAL_FORESTS         ; REDWOOD          ; 5 ; ; ; BEACH      ; $propertyFacilities
+; PEBBLE_BEACH     ; NATUREBAY_ROYAL_FORESTS         ; PEBBLE_BEACH     ; 5 ; ; ; BEACH      ; $propertyFacilities
+; DAINTREE         ; NATUREBAY_ROYAL_FORESTS         ; DAINTREE         ; 5 ; ; ; CITY       ; $propertyFacilities
+; CONTIKI          ; NATUREBAY_ROYAL_FORESTS         ; CONTIKI          ; 5 ; ; ; CITY       ; $propertyFacilities
+; KURRAJONG        ; NATUREBAY_ROYAL_FORESTS         ; KURRAJONG        ; 5 ; ; ; BEACH      ; $propertyFacilities
+
+; THE_LEAF         ; NATUREBAY_GARDEN_SAFARIS_HOTELS ; THE_LEAF         ; 5 ; ; ; JUNGLE     ; $propertyFacilities
+; VILLA_COCONUT    ; NATUREBAY_GARDEN_SAFARIS_HOTELS ; VILLA_COCONUT    ; 5 ; ; ; BEACH      ; $propertyFacilities
+; SHIMBA           ; NATUREBAY_GARDEN_SAFARIS_HOTELS ; SHIMBA           ; 5 ; ; ;            ; $propertyFacilities
+; SAMBURU          ; NATUREBAY_GARDEN_SAFARIS_HOTELS ; SAMBURU          ; 5 ; ; ;            ; $propertyFacilities
+; HAKUNA_MATATA    ; NATUREBAY_GARDEN_SAFARIS_HOTELS ; HAKUNA_MATATA    ; 5 ; ; ; JUNGLE     ; $propertyFacilities
+; JUNGLE_LODGE     ; NATUREBAY_GARDEN_SAFARIS_HOTELS ; JUNGLE_LODGE     ; 5 ; ; ; JUNGLE     ; $propertyFacilities
+; ELLA_PARADISE    ; NATUREBAY_GARDEN_SAFARIS_HOTELS ; ELLA_PARADISE    ; 5 ; ; ; BEACH,CITY ; $propertyFacilities
+
+
+# Boosted Accommodation Offering
+UPDATE AccommodationOffering; code[unique = true]; boosted
+; PALM_COVE    ; true
+; MANTA_LAGOON ; true
+
+# Popularity Accommodation Offering
+# popularity is a randon number between 1 and 100
+UPDATE AccommodationOffering; code[unique = true]; popularity
+; BONDI            ; 41
+; PALM_COVE        ; 36
+; MANTA_LAGOON     ; 86
+; VILLA_MAKATI     ; 46
+; LANTERN          ; 78
+; WAIKIKI          ; 26
+; COCO_PALM        ; 30
+
+; BIRD_PARADISE    ; 77
+; JUNGLE_TREEHOUSE ; 99
+; REDWOOD          ; 25
+; PEBBLE_BEACH     ; 56
+; DAINTREE         ; 43
+; CONTIKI          ; 71
+; KURRAJONG        ; 29
+
+; THE_LEAF         ; 34
+; VILLA_COCONUT    ; 23
+; SHIMBA           ; 44
+; SAMBURU          ; 75
+; HAKUNA_MATATA    ; 57
+; JUNGLE_LODGE     ; 24
+; ELLA_PARADISE    ; 11

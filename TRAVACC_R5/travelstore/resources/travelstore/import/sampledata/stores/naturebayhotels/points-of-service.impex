@@ -1,0 +1,101 @@
+INSERT_UPDATE PointOfService; &posID; name[unique = true]; longitude; latitude; type(code); timeZoneId
+; bondiPOS           ; bondiPOS           ; 151.205677539111  ; -33.8677171251706 ; STORE ; Australia/Sydney
+; palmcovePOS        ; palmcovePOS        ; 151.203528419137  ; -33.870680568122  ; STORE ; Australia/Sydney
+; mantalagoonPOS     ; mantalagoonPOS     ; 73.2068462669849  ; 4.09535018726688  ; STORE ; Indian/Maldives
+; villamakatiPOS     ; villamakatiPOS     ; 73.4364688396454  ; 4.12053295589843  ; STORE ; Indian/Maldives
+; lanternPOS         ; lanternPOS         ; 98.2545277476311  ; 7.6622976749013   ; STORE ; Asia/Bangkok
+; waikikiPOS         ; waikikiPOS         ; -157.88912281394  ; 21.2718791165821  ; STORE ; Pacific/Honolulu
+; cocopalmPOS        ; cocopalmPOS        ; -157.837475538254 ; 21.272012943294   ; STORE ; Pacific/Honolulu
+
+; birdparadisePOS    ; birdparadisePOS    ; 73.4247958660126  ; 4.12053295589843  ; STORE ; Indian/Maldives
+; jungletreehousePOS ; jungletreehousePOS ; 98.2921430468559  ; 8.15583840217237  ; STORE ; Asia/Bangkok
+; redwoodPOS         ; redwoodPOS         ; 98.2384532690049  ; 7.86613443624068  ; STORE ; Asia/Bangkok
+; pebblebeachPOS     ; pebblebeachPOS     ; -157.837496995926 ; 21.2734489150763  ; STORE ; Pacific/Honolulu
+; daintreePOS        ; daintreePOS        ; 151.206134855747  ; -33.870680568122  ; STORE ; Australia/Sydney
+; contikiPOS         ; contikiPOS         ; -157.839290052652 ; 21.2708346722162  ; STORE ; Pacific/Honolulu
+; kurrajongPOS       ; kurrajongPOS       ; 151.203528419137  ; -33.8701320484524 ; STORE ; Australia/Sydney
+
+; theleafPOS         ; theleafPOS         ; 98.2928624748688  ; 7.831347          ; STORE ; Asia/Bangkok
+; villacoconutPOS    ; villacoconutPOS    ; 98.2689097523689  ; 7.80710298135081  ; STORE ; Asia/Bangkok
+; shimbaPOS          ; shimbaPOS          ; 36.8029031506012  ; -1.33363162095296 ; STORE ; Africa/Nairobi
+; samburuPOS         ; samburuPOS         ; 36.6750171440302  ; -1.34793933733384 ; STORE ; Africa/Nairobi
+; hakunamatataPOS    ; hakunamatataPOS    ; 36.7738029575944  ; -1.30370421071678 ; STORE ; Africa/Nairobi
+; junglelodgePOS     ; junglelodgePOS     ; 36.8007579445839  ; -1.340870616252   ; STORE ; Africa/Nairobi
+; ellaparadisePOS    ; ellaparadisePOS    ; 151.203528419137  ; -33.8884616684442 ; STORE ; Australia/Sydney
+
+INSERT_UPDATE Address; &addrID; streetName[unique = true]; streetNumber[unique = true]; postalCode[unique = true]; town[unique = true]; country(isocode); owner(PointOfService.name)[unique = true]; phone1[default = '02079460097']
+; bondiADDR           ; Hickson Road            ; 7    ; 2000  ; Sydney                      ; AU ; bondiPOS           ;
+; palmcoveADDR        ; George Street           ; 199  ; 2000  ; Sydney                      ; AU ; palmcovePOS        ;
+; mantalagoonADDR     ; Male City               ;      ; 08470 ; Male City                   ; MV ; mantalagoonPOS     ;
+; villamakatiADDR     ; Lankanfinolhu           ;      ; 08420 ; Male City                   ; MV ; villamakatiPOS     ;
+; lanternADDR         ; Wiset Rd                ; 16   ; 83130 ; Rawai Muang Chang Wat Phuke ; TH ; lanternPOS         ;
+; waikikiADDR         ; Kalia Road              ; 2199 ; 96815 ; Honolulu                    ; US ; waikikiPOS         ;
+; cocopalmADDR        ; Kalakaua Avenue         ; 2335 ; 96815 ; Honolulu                    ; US ; cocopalmPOS        ;
+
+; birdparadiseADDR    ; Vihamanafushi           ;      ; 08340 ; Male City                   ; MV ; birdparadisePOS    ;
+; jungletreehouseADDR ; Mai Khao                ;      ; 83110 ; Phuket                      ; TH ; jungletreehousePOS ;
+; redwoodADDR         ; Moo                     ; 168  ; 83110 ; Phuket                      ; TH ; redwoodPOS         ;
+; pebblebeachADDR     ; Kalakaua Avenue         ; 2255 ; 96815 ; Honolulu                    ; US ; pebblebeachPOS     ;
+; daintreeADDR        ; Macquarie Street        ; 93   ; 2000  ; Sydney                      ; AU ; daintreePOS        ;
+; contikiADDR         ; Kalakaua Avenue         ; 2259 ; 96815 ; Honolulu                    ; US ; contikiPOS         ;
+; kurrajongADDR       ; Macquarie Street        ; 61   ; 2000  ; Sydney                      ; AU ; kurrajongPOS       ;
+
+; theleafADDR         ; Karon Beach             ;      ; 83110 ; Phuket                      ; TH ; theleafPOS         ;
+; villacoconutADDR    ; Choeng Thale            ; 33   ; 83110 ; Phuket                      ; TH ; villacoconutPOS    ;
+; shimbaADDR          ; Elgon Road              ;      ; 00100 ; Nairobi                     ; KE ; shimbaPOS          ;
+; samburuADDR         ; Ngong Lane              ;      ; 00100 ; Nairobi                     ; KE ; samburuPOS         ;
+; hakunamatataADDR    ; Kitale Lane             ;      ; 00100 ; Nairobi                     ; KE ; hakunamatataPOS    ;
+; junglelodgeADDR     ; Kasarani off Thika Road ;      ; 00100 ; Nairobi                     ; KE ; junglelodgePOS     ;
+; ellaparadiseADDR    ; Pitt Street             ; 339  ; 2000  ; Sydney                      ; AU ; ellaparadisePOS    ;
+
+
+UPDATE PointOfService; name[unique = true]; address(&addrID)
+; bondiPOS           ; bondiADDR
+; palmcovePOS        ; palmcoveADDR
+; mantalagoonPOS     ; mantalagoonADDR
+; villamakatiPOS     ; villamakatiADDR
+; lanternPOS         ; lanternADDR
+; waikikiPOS         ; waikikiADDR
+; cocopalmPOS        ; cocopalmADDR
+
+; birdparadisePOS    ; birdparadiseADDR
+; jungletreehousePOS ; jungletreehouseADDR
+; redwoodPOS         ; redwoodADDR
+; pebblebeachPOS     ; pebblebeachADDR
+; daintreePOS        ; daintreeADDR
+; contikiPOS         ; contikiADDR
+; kurrajongPOS       ; kurrajongADDR
+
+; theleafPOS         ; theleafADDR
+; villacoconutPOS    ; villacoconutADDR
+; shimbaPOS          ; shimbaADDR
+; samburuPOS         ; samburuADDR
+; hakunamatataPOS    ; hakunamatataADDR
+; junglelodgePOS     ; junglelodgeADDR
+; ellaparadisePOS    ; ellaparadiseADDR
+
+INSERT_UPDATE Location; code[unique = true]; locationType(code); pointOfService(&posID)
+; BONDI            ; PROPERTY ; bondiPOS
+; PALM_COVE        ; PROPERTY ; palmcovePOS
+; MANTA_LAGOON     ; PROPERTY ; mantalagoonPOS
+; VILLA_MAKATI     ; PROPERTY ; villamakatiPOS
+; LANTERN          ; PROPERTY ; lanternPOS
+; WAIKIKI          ; PROPERTY ; waikikiPOS
+; COCO_PALM        ; PROPERTY ; cocopalmPOS
+
+; BIRD_PARADISE    ; PROPERTY ; birdparadisePOS
+; JUNGLE_TREEHOUSE ; PROPERTY ; jungletreehousePOS
+; REDWOOD          ; PROPERTY ; redwoodPOS
+; PEBBLE_BEACH     ; PROPERTY ; pebblebeachPOS
+; DAINTREE         ; PROPERTY ; daintreePOS
+; CONTIKI          ; PROPERTY ; contikiPOS
+; KURRAJONG        ; PROPERTY ; kurrajongPOS
+
+; THE_LEAF         ; PROPERTY ; theleafPOS
+; VILLA_COCONUT    ; PROPERTY ; villacoconutPOS
+; SHIMBA           ; PROPERTY ; shimbaPOS
+; SAMBURU          ; PROPERTY ; samburuPOS
+; HAKUNA_MATATA    ; PROPERTY ; hakunamatataPOS
+; JUNGLE_LODGE     ; PROPERTY ; junglelodgePOS
+; ELLA_PARADISE    ; PROPERTY ; ellaparadisePOS
+

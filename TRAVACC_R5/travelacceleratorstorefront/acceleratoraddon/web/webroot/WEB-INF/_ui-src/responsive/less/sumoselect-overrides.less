@@ -1,0 +1,106 @@
+.SumoSelect {
+    .optWrapper.isFloating.multiple {
+        top: 0;
+        overflow: scroll;
+        padding-bottom: 0px;
+        width: inherit;
+        > .MultiControls {
+            position: sticky;
+        }
+    }
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+    p { color: #076480; }
+    .SelectBox {
+        background: #fff;
+        border: 1px solid #ccc;
+        span { text-align: center; }
+        span.placeholder {
+            text-align: center;
+            font-style: normal;
+            color: #076480;
+            cursor: pointer;
+        }
+    }
+    &.disabled {
+        opacity: 1;
+        span.placeholder {
+            cursor: not-allowed;
+            color: #ccc;
+        }
+        label {
+            cursor: not-allowed;
+            i {
+                &:after { border-top: 7px solid #ccc; }
+            }
+        }
+    }
+    label {
+        color: #153a59;
+        cursor: pointer;
+    }
+    > .optWrapper > .options li label {
+        font-weight: normal;
+        margin-bottom: 0;
+    }
+    > .optWrapper.multiple >.options li.opt.selected span i,
+    .select-all.selected.partial>span i {
+        border: 1px solid #AEAEAE;
+        border-radius: 2px;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15);
+        background-color: #fff;
+    }
+    .optWrapper.multiple > .options li.opt.selected span i,
+    .select-all.selected > span i {
+        background-color: #00b7d3;
+    }
+    .optWrapper.multiple >
+    .select-all.partial > span i {
+        border: 1px solid #AEAEAE;
+        border-radius: 2px;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15);
+        background-color: #fff;
+    }
+    label i {
+        &:after {
+            display: block;
+            content: "";
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            border-top: 7px solid #076480;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+        }
+    }
+    &.open {
+        > .optWrapper { top: 32px; }
+    }
+    &.open label i {
+        &:after {
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid  #076480;
+            top: 0;
+            bottom: 50%;
+            margin-bottom: -5px;
+            margin-top: auto;
+        }
+    }
+    >.optWrapper.isFloating {
+        >.options { box-shadow: none; }
+        >.MultiControls {
+            p { color: #153a59; }
+        }
+    }
+    >.CaptionCont>label>i { background-image: none; }
+    .select-all {
+        height: auto;
+        &:hover { background-color: #e4e4e4; }
+        label { font-weight: normal; }
+    }
+
+}
+.tab-content.group .passenger-extras .SumoSelect > .optWrapper label { float: none; }

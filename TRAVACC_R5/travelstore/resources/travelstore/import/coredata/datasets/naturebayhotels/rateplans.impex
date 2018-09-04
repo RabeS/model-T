@@ -1,0 +1,75 @@
+#
+# ImpEx for Importing RatePlan into travel accelerator
+#
+$productCatalog = naturebayhotelsProductCatalog
+$catalogVersion = catalogVersion(catalog(id[default = $productCatalog]), version[default = 'Staged'])[unique = true, default = $productCatalog:Staged]
+
+
+INSERT_UPDATE RatePlan; code[unique = true]; cancelPenalty(code); guarantee(code); mealType(code); $catalogVersion; description[lang = en]; guestOccupancies(code)
+# Non Refundable RatePlan
+; 1R_NR_Plan_AU    ; nonRefundable ; guarantee20,prePayment80 ; ; ; Non Refundable
+; 2R_NR_Plan_AU    ; nonRefundable ; guarantee20,prePayment80 ; ; ; Non Refundable
+; 3R_NR_Plan_AU    ; nonRefundable ; guarantee20,prePayment80 ; ; ; Non Refundable
+; 4R_NR_Plan_AU    ; nonRefundable ; guarantee20,prePayment80 ; ; ; Non Refundable
+; 5R_NR_Plan_AU    ; nonRefundable ; guarantee20,prePayment80 ; ; ; Non Refundable ; ADULT_1
+; 5R_2P_NR_Plan_AU ; nonRefundable ; guarantee20,prePayment80 ; ; ; Non Refundable ; ADULT_2_2
+
+
+; 1R_NR_Plan_TH ; nonRefundable ; guarantee20,prePayment80 ; ; ; Non Refundable
+; 2R_NR_Plan_TH ; nonRefundable ; guarantee20,prePayment80 ; ; ; Non Refundable
+; 3R_NR_Plan_TH ; nonRefundable ; guarantee20,prePayment80 ; ; ; Non Refundable
+; 4R_NR_Plan_TH ; nonRefundable ; guarantee20,prePayment80 ; ; ; Non Refundable
+; 5R_NR_Plan_TH ; nonRefundable ; guarantee20,prePayment80 ; ; ; Non Refundable
+
+; 1R_NR_Plan_MV ; nonRefundable ; guarantee20,prePayment80 ; ; ; Non Refundable
+; 2R_NR_Plan_MV ; nonRefundable ; guarantee20,prePayment80 ; ; ; Non Refundable
+; 3R_NR_Plan_MV ; nonRefundable ; guarantee20,prePayment80 ; ; ; Non Refundable
+; 4R_NR_Plan_MV ; nonRefundable ; guarantee20,prePayment80 ; ; ; Non Refundable
+; 5R_NR_Plan_MV ; nonRefundable ; guarantee20,prePayment80 ; ; ; Non Refundable
+
+; 1R_NR_Plan_KE ; nonRefundable ; guarantee20,prePayment80 ; ; ; Non Refundable
+; 2R_NR_Plan_KE ; nonRefundable ; guarantee20,prePayment80 ; ; ; Non Refundable
+; 3R_NR_Plan_KE ; nonRefundable ; guarantee20,prePayment80 ; ; ; Non Refundable
+; 4R_NR_Plan_KE ; nonRefundable ; guarantee20,prePayment80 ; ; ; Non Refundable
+; 5R_NR_Plan_KE ; nonRefundable ; guarantee20,prePayment80 ; ; ; Non Refundable
+
+; 1R_NR_Plan_US ; nonRefundable ; guarantee20,prePayment80 ; ; ; Non Refundable
+; 2R_NR_Plan_US ; nonRefundable ; guarantee20,prePayment80 ; ; ; Non Refundable
+; 3R_NR_Plan_US ; nonRefundable ; guarantee20,prePayment80 ; ; ; Non Refundable
+; 4R_NR_Plan_US ; nonRefundable ; guarantee20,prePayment80 ; ; ; Non Refundable
+; 5R_NR_Plan_US ; nonRefundable ; guarantee20,prePayment80 ; ; ; Non Refundable
+
+
+
+INSERT_UPDATE RatePlan; code[unique=true]; cancelPenalty(code); guarantee(code); mealType(code); $catalogVersion; description[lang = en]; guestOccupancies(code)
+# Free Cancellation RatePlan
+; 1R_FC_Plan_AU    ; ; guaranteeNoPay ; ALL_INCLUSIVE ; ; Free Cancellation
+; 2R_FC_Plan_AU    ; ; guaranteeNoPay ; ALL_INCLUSIVE ; ; Free Cancellation
+; 3R_FC_Plan_AU    ; ; guaranteeNoPay ; ALL_INCLUSIVE ; ; Free Cancellation
+; 4R_FC_Plan_AU    ; ; guaranteeNoPay ; ALL_INCLUSIVE ; ; Free Cancellation
+; 5R_FC_Plan_AU    ; ; guaranteeNoPay ; ALL_INCLUSIVE ; ; Free Cancellation; ADULT_1
+; 5R_2P_FC_Plan_AU ; ; guaranteeNoPay ; ALL_INCLUSIVE ; ; Free Cancellation; ADULT_2_2
+
+; 1R_FC_Plan_TH ; ; guaranteeNoPay ; ALL_INCLUSIVE ; ; Free Cancellation
+; 2R_FC_Plan_TH ; ; guaranteeNoPay ; ALL_INCLUSIVE ; ; Free Cancellation
+; 3R_FC_Plan_TH ; ; guaranteeNoPay ; ALL_INCLUSIVE ; ; Free Cancellation
+; 4R_FC_Plan_TH ; ; guaranteeNoPay ; ALL_INCLUSIVE ; ; Free Cancellation
+; 5R_FC_Plan_TH ; ; guaranteeNoPay ; ALL_INCLUSIVE ; ; Free Cancellation
+
+; 1R_FC_Plan_MV ; ; guaranteeNoPay ; ALL_INCLUSIVE ; ; Free Cancellation
+; 2R_FC_Plan_MV ; ; guaranteeNoPay ; ALL_INCLUSIVE ; ; Free Cancellation
+; 3R_FC_Plan_MV ; ; guaranteeNoPay ; ALL_INCLUSIVE ; ; Free Cancellation
+; 4R_FC_Plan_MV ; ; guaranteeNoPay ; ALL_INCLUSIVE ; ; Free Cancellation
+; 5R_FC_Plan_MV ; ; guaranteeNoPay ; ALL_INCLUSIVE ; ; Free Cancellation
+
+; 1R_FC_Plan_KE ; ; guaranteeNoPay ; ALL_INCLUSIVE ; ; Free Cancellation
+; 2R_FC_Plan_KE ; ; guaranteeNoPay ; ALL_INCLUSIVE ; ; Free Cancellation
+; 3R_FC_Plan_KE ; ; guaranteeNoPay ; ALL_INCLUSIVE ; ; Free Cancellation
+; 4R_FC_Plan_KE ; ; guaranteeNoPay ; ALL_INCLUSIVE ; ; Free Cancellation
+; 5R_FC_Plan_KE ; ; guaranteeNoPay ; ALL_INCLUSIVE ; ; Free Cancellation
+
+; 1R_FC_Plan_US ; ; guaranteeNoPay ; ALL_INCLUSIVE ; ; Free Cancellation
+; 2R_FC_Plan_US ; ; guaranteeNoPay ; ALL_INCLUSIVE ; ; Free Cancellation
+; 3R_FC_Plan_US ; ; guaranteeNoPay ; ALL_INCLUSIVE ; ; Free Cancellation
+; 4R_FC_Plan_US ; ; guaranteeNoPay ; ALL_INCLUSIVE ; ; Free Cancellation
+; 5R_FC_Plan_US ; ; guaranteeNoPay ; ALL_INCLUSIVE ; ; Free Cancellation

@@ -1,0 +1,145 @@
+def config = {
+    localProperties {
+			property 'commerceservices.default.desktop.ui.experience', 'responsive'
+			property 'uiexperience.level.supported', 'DESKTOP'
+			property 'hac.webroot', '/hac'
+			property 'cronjob.trigger.interval', '30'
+			property 'cronjob.timertask.loadonstartup', 'true'
+			property 'regioncache.stocklevelcacheregion.size', '20000'
+			property 'regioncache.stocklevelcacheregion.evictionpolicy', 'FIFO'
+			property 'installed.tenants', ''
+			property 'travelacc.sites', 'hotels'
+			property 'solrserver.instances.default.ssl.enabled', 'false'
+			property 'solrserver.instances.default.ssl.keyStorePassword', ''
+			property 'solrserver.instances.default.zk.prop.urlScheme', 'http'
+			property 'solrserver.instances.default.ssl.trustStorePassword', ''
+    }
+
+	extensions {
+		extName 'admincockpit'
+		extName 'backoffice'
+		extName 'cockpit'
+		extName 'mcc'
+		extName 'b2badmincockpit'
+
+		extName 'commercesearch'
+		extName 'commerceservices'
+		extName 'basecommerce'
+		extName 'payment'
+		extName 'promotions'
+		extName 'voucher'
+		extName 'solrfacetsearch'
+		extName 'solrfacetsearchbackoffice'
+		extName 'solrserver'
+		extName 'subscriptionservices'
+		extName 'subscriptionfacades'
+		extName 'commercefacades'
+		extName 'ondemandcommon'
+		extName 'b2bcommercefacades'
+		extName 'b2bcommerce'
+
+		extName 'backoffice'
+		extName 'b2bcommercebackoffice'
+		extName 'customersupportbackoffice'
+		extName 'platformbackoffice'
+		extName 'promotionenginebackoffice'
+		extName 'rulebuilderbackoffice'
+		extName 'solrfacetsearchbackoffice'
+		extName 'xyformsbackoffice'
+
+		extName 'droolsruleengineservices'
+		extName 'promotionengineservices'
+		extName 'couponservices'
+
+		extName 'cms2'
+		extName 'cms2lib'
+
+		extName 'travelacceleratorstorefront'
+		extName 'travelcheckout'
+		extName 'accommodationaddon'
+		extName 'travelcommerceorgaddon'
+        extName 'accommodationchainaddon'
+
+		extName 'travelstore'
+		extName 'travelfacades'
+		extName 'travelservices'
+		extName 'travelrulesengine'
+		extName 'travelfulfilmentprocess'
+		extName 'travelb2bservices'
+		extName 'travelb2bfacades'
+
+		extName 'travelbackoffice'
+		extName 'travelbackofficeservices'
+		extName 'accommodationbackoffice'
+		extName 'hotelbackoffice'
+
+		extName 'yaddon'
+		extName 'yacceleratorcockpits'
+		extName 'yacceleratorstorefront'
+		extName 'yacceleratorcore'
+        extName 'yacceleratorfacades'
+		extName 'yacceleratorinitialdata'
+
+		extName 'acceleratorservices'
+		extName 'acceleratorfacades'
+		extName 'acceleratorcms'
+		extName 'acceleratorstorefrontcommons'
+		extName 'b2bacceleratorservices'
+		extName 'b2bacceleratorfacades'
+		extName 'b2bapprovalprocessfacades'
+		extName 'b2bapprovalprocess'
+
+		extName 'addonsupport'
+		extName 'assistedservicefacades'
+		extName 'assistedservicestorefront'
+
+		extName 'smartedit'
+		extName 'cmswebservices'
+		extName 'smarteditwebservices'
+		extName 'permissionswebservices'
+		extName 'smarteditaddon'
+		extName 'cmssmartedit'
+		extName 'previewwebservices'
+		extName 'cmssmarteditwebservices'
+
+		extName 'travelcommercewebservicescommons'
+		extName 'travelcommercewebservices'
+
+		extName 'oauth2'
+
+	}
+}
+
+task setup << {
+	apply plugin: 'installer-platform-plugin'
+	apply plugin: 'installer-addon-plugin'
+	def pl = platform(config)
+	pl.setup()
+	pl.executeAntTarget 'setup.solr-schema'
+
+	pl.project.addons {
+		names "travelacceleratorstorefront,travelcheckout,accommodationaddon,travelcommerceorgaddon,assistedservicestorefront,smarteditaddon"
+		template "yacceleratorstorefront"
+		storeFronts "yacceleratorstorefront"
+		platform pl
+	}
+}
+
+task initialize << {
+	apply plugin: 'installer-platform-plugin'
+	def pl = platform(config)
+	pl.build()
+	pl.initialize()
+}
+
+task start << {
+	apply plugin: 'installer-platform-plugin'
+	def pl = platform(config)
+	pl.start()
+}
+
+task stop << {
+	apply plugin: 'installer-platform-plugin'
+	def pl = platform(config)
+	pl.stop()
+}

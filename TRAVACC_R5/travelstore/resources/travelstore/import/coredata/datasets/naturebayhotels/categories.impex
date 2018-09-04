@@ -1,0 +1,15 @@
+$lang = en
+$productCatalog = naturebayhotelsProductCatalog
+$catalogVersion = catalogVersion(catalog(id[default = $productCatalog]), version[default = 'Staged'])[unique = true, default = $productCatalog:Staged]
+$categories = supercategories(code, $catalogVersion)
+
+# Insert Categories
+INSERT_UPDATE Category; code[unique = true]; allowedPrincipals(uid)[default = 'customergroup']; $catalogVersion
+# Deliberately empty for future purposes
+
+# Insert Categories
+INSERT_UPDATE AccommodationCategory; code[unique = true]; $categories; allowedPrincipals(uid)[default = 'customergroup']; $catalogVersion
+; DOUBLE_ROOM ; ; ;
+; VILLA       ; ; ;
+; SUITE       ; ; ;
+; VILLA_SUITE ; ; ;

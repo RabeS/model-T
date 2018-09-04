@@ -1,0 +1,141 @@
+// fare side panel (itinerary)
+#sidebar {
+    @media (min-width: @screen-sm-min) {
+        > div { margin-bottom: 20px; }
+    }
+    @media (max-width: @screen-xs-max) {
+        &.pa {
+            position: relative;
+            z-index: 1050;
+            width: 100%;
+        }
+    }
+    .main-wrap {
+        background-color: @brand-blue;
+        .minusMargin;
+        .color-white;
+        .h4, .h5 { color: #fff; }
+        .inner-wrap {
+            @media (max-width: @screen-xs-max) {
+                display: none;
+            }
+        }
+        @media (max-width: @screen-xs-max) {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background-color: @secondary-blue;
+            z-index: 10;
+        }
+        h2 {
+            background-color: @secondary-blue;
+            padding: 15px;
+            margin: 0;
+        }
+        section {
+            h2 {
+                margin: 0 -10px;
+                &.reservation-summary {
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+            padding: 0 10px;
+            @media (max-width: @screen-xs-max) {
+                border-top: 1px solid #83b2c0;
+                &:first-child { border-top: 0; }
+            }
+            dl {
+                margin-bottom: 0;
+                padding: 15px 0;
+            }
+        }
+        section {
+            .sidebar-content-section:last-child {
+                dl:last-child { border-bottom: 0; }
+            }
+        }
+        .sidebar-mobile-content-section { padding: 0 15px; }
+        .sidebar-content-section {
+            border-bottom: 2px dotted #fff;
+            padding: 10px 0;
+            ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                li {
+                    a {
+                        color: #bcbec0;
+                        display: block;
+                        margin-bottom: 15px;
+                        &:hover {
+                            text-decoration: none;
+                        }
+                        &.active {  color: #fff; }
+                    }
+                    &:last-child {
+                        a { margin-bottom: 0; }
+                    }
+                }
+            }
+            dl { padding: 0; }
+        }
+        .journey-total {
+            background-color: @secondary-blue;
+            margin: 0 -10px 20px -10px;
+            @media (max-width: @screen-xs-max) {
+                margin-bottom: 0;
+            }
+            h2 { margin: 0; }
+            fieldset { padding-bottom: 0 !important; }
+        }
+        .journey-info {
+            padding: 15px;
+            > div {
+                text-align: center;
+                @media (max-width: @screen-xs-max) {
+                    button { float: right; }
+                }
+            }
+        }
+        .sidebar-mobile-content-section {
+            .glyphicon {
+                font-size: 18px;
+                margin-bottom: 10px;
+                &.inactive { opacity: 0.5; }
+            }
+            div {
+                &:nth-child(2) { float: left; }
+
+                dl {
+                    padding: 0;
+                    dt, dd {
+                        float: left;
+                        margin-right: 10px;
+                    }
+                }
+            }
+            div:nth-child(2),
+            button { width: 45%; }
+            button { background: transparent; }
+        }
+        .panel-heading {
+            button { background-color: transparent; }
+        }
+        button {
+            border: 0;
+            color: #fff;
+            float: none;
+            border-radius: 0;
+            &.btn-top{
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+        }
+        .info-btn { background-color: transparent; }
+        .glyphicon-info-sign { font-size: 14px; }
+    }
+    .about-fare {
+        position: relative;
+        .show-hide-button { background-color: transparent; }
+    }
+}

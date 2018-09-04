@@ -1,0 +1,50 @@
+.footer-wrapper {
+    margin-top: 0;
+    height: 50px;
+    padding-top: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    bottom: 0;
+    background-color: @brand-blue;
+    color: #fff;
+    @media only screen and (max-width: @screen-xs-max){
+        height: 110px;
+        border-top: 1px solid #fff;
+    }
+    ul {
+        list-style: none;
+        margin-top: 10px;
+        padding-left: 0;
+        li {
+            line-height: 28px;
+            font-size: 12px;
+        }
+    }
+    a {
+        color: #fff;
+        text-decoration: underline;
+        &:hover,
+        &:focus {
+            color: #fff;
+            text-decoration: none;
+        }
+    }
+    .copyright { font-size: 100%; }
+    .flexbox {
+        > * {
+            @media (min-width: @screen-sm-min) {
+                width: auto;
+                margin: 0 auto;
+            }
+            @media (max-width: @screen-xs-max) and (min-width: 0) {
+                margin: 0;
+            }
+        }
+    }
+    ul {
+        @media (max-width: @screen-xs-max) {
+            display: block;
+        }
+    }
+}

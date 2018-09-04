@@ -1,0 +1,25 @@
+#Impex to create tax groups. 
+$productCatalog = naturebayhotelsProductCatalog
+$catalogVersion = catalogVersion(catalog(id[default = $productCatalog]), version[default = 'Staged'])[unique = true, default = $productCatalog:Staged]
+
+INSERT_UPDATE ProductTaxGroup; code[unique = true]
+; FARES
+; au-tax-group
+; th-tax-group
+; mv-tax-group
+; ke-tax-group
+; us-tax-group
+
+INSERT_UPDATE Tax; code[unique = true];
+; au-hotel-accommodation-vat
+; th-hotel-accommodation-vat
+; mv-hotel-accommodation-vat
+; ke-hotel-accommodation-vat
+; us-hotel-accommodation-vat
+
+INSERT_UPDATE TaxRow; tax(code)[unique = true]; pg(code)[unique = true]; value
+; au-hotel-accommodation-vat ; au-tax-group ; 10
+; th-hotel-accommodation-vat ; th-tax-group ; 10
+; mv-hotel-accommodation-vat ; mv-tax-group ; 15
+; ke-hotel-accommodation-vat ; ke-tax-group ; 15
+; us-hotel-accommodation-vat ; us-tax-group ; 20

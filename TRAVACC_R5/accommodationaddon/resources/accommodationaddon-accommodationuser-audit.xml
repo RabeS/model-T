@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  [y] hybris Platform
+
+  Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+  This software is the confidential and proprietary information of SAP
+  ("Confidential Information"). You shall not disclose such Confidential
+  Information and shall use it only in accordance with the terms of the
+  license agreement you entered into with SAP.
+-->
+
+<audit-report-config name="PersonalDataReport">
+	<given-root-type>User</given-root-type>
+	<types>
+
+		<type code="User">
+			<reference-attributes>
+				<reference-attribute qualifier="title" displayName="title" type="Title" />
+			</reference-attributes>
+		</type>
+
+		<type code="OrderEntry" displayName="OrderEntry">
+			<reference-attributes>
+				<reference-attribute qualifier="entryGroup" displayName="entryGroup" type="AccommodationOrderEntryGroup" />
+			</reference-attributes>
+		</type>
+
+		<type code="Title" displayName="Title">
+			<atomic-attributes>
+				<atomic-attribute qualifier="code" displayName="code" />
+				<atomic-attribute qualifier="name" displayName="name" />
+			</atomic-attributes>
+		</type>
+
+		<type code="AccommodationOrderEntryGroup">
+			<atomic-attributes>
+				<atomic-attribute qualifier="startingDate" />
+				<atomic-attribute qualifier="endingDate" />
+				<atomic-attribute qualifier="checkInTime" />
+				<atomic-attribute qualifier="firstName" />
+				<atomic-attribute qualifier="lastName" />
+				<atomic-attribute qualifier="contactNumber" />
+				<atomic-attribute qualifier="contactEmail" />
+			</atomic-attributes>
+			<reference-attributes>
+				<reference-attribute qualifier="accommodationOffering" displayName="accommodationOffering" type="AccommodationOffering" />
+				<reference-attribute qualifier="accommodation" displayName="accommodation" type="Accommodation" />
+				<reference-attribute qualifier="ratePlan" displayName="ratePlan" type="RatePlan"/>
+				<reference-attribute qualifier="roomPreferences" displayName="roomPreferences" type="RoomPreference"/>
+				<reference-attribute qualifier="specialRequestDetail" displayName="specialRequestDetail" type="SpecialRequestDetail" />
+				<reference-attribute qualifier="guestCounts" displayName="guestCounts" type="GuestCount"/>
+			</reference-attributes>
+		</type>
+
+		<type code="AccommodationOffering">
+			<atomic-attributes>
+				<atomic-attribute qualifier="name" />
+			</atomic-attributes>
+		</type>
+
+		<type code="Accommodation">
+			<atomic-attributes>
+				<atomic-attribute qualifier="name" />
+			</atomic-attributes>
+		</type>
+
+		<type code="RatePlan">
+			<atomic-attributes>
+				<atomic-attribute qualifier="description" />
+			</atomic-attributes>
+		</type>
+
+		<type code="RoomPreference">
+			<atomic-attributes>
+				<atomic-attribute qualifier="preferenceType" />
+				<atomic-attribute qualifier="value" />
+			</atomic-attributes>
+		</type>
+
+        <type code="SpecialRequestDetail">
+            <reference-attributes>
+                <reference-attribute qualifier="specialServiceRequest" displayName="specialServiceRequest" type="SpecialServiceRequest" />
+                <reference-attribute qualifier="remarks" displayName="remarks" type="Remark" />
+            </reference-attributes>
+        </type>
+
+        <type code="SpecialServiceRequest">
+            <atomic-attributes>
+                <atomic-attribute qualifier="code" />
+                <atomic-attribute qualifier="name" />
+            </atomic-attributes>
+        </type>
+        <type code="Remark">
+            <atomic-attributes>
+                <atomic-attribute qualifier="code" />
+                <atomic-attribute qualifier="name" />
+            </atomic-attributes>
+        </type>
+
+		<type code="GuestCount">
+			<atomic-attributes>
+				<atomic-attribute qualifier="quantity" />
+			</atomic-attributes>
+			<reference-attributes>
+				<reference-attribute qualifier="passengerType" displayName="passengerType" type="PassengerType"/>
+			</reference-attributes>
+		</type>
+
+		<type code="PassengerType">
+			<atomic-attributes>
+				<atomic-attribute qualifier="name" />
+			</atomic-attributes>
+		</type>
+
+	</types>
+</audit-report-config>

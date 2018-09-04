@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  [y] hybris Platform
+
+  Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+  This software is the confidential and proprietary information of SAP
+  ("Confidential Information"). You shall not disclose such Confidential
+  Information and shall use it only in accordance with the terms of the
+  license agreement you entered into with SAP.
+-->
+
+<audit-report-config name="PersonalDataReport">
+	<given-root-type>User</given-root-type>
+	<types>
+
+		<type code="User">
+			<reference-attributes>
+				<reference-attribute qualifier="title" displayName="title" type="Title" />
+				<reference-attribute qualifier="customerTravellerInstance" type="Traveller" displayName="customerTravellerInstance"/>
+			</reference-attributes>
+			<virtual-attributes>
+				<virtual-attribute expression="customer" type="Traveller" many="true" displayName="savedTraveller" />
+				<virtual-attribute expression="customer" type="SavedSearch" many="true" displayName="savedSearch" />
+			</virtual-attributes>
+		</type>
+		<type code="OrderEntry" displayName="OrderEntry">
+			<reference-attributes>
+				<reference-attribute qualifier="travelOrderEntryInfo" displayName="travelOrderEntryInfo" type="TravelOrderEntryInfo" />
+			</reference-attributes>
+		</type>
+        <type code="Title" displayName="Title">
+            <atomic-attributes>
+                <atomic-attribute qualifier="code" displayName="code"/>
+                <atomic-attribute qualifier="name" displayName="name"/>
+            </atomic-attributes>
+        </type>
+		<type code="TravelOrderEntryInfo">
+			<relation-attributes>
+				<relation-attribute relation="TravelOrderEntryInfoTravellerRelation" type="Traveller" displayName="travellers" />
+			</relation-attributes>
+		</type>
+		<type code="Traveller">
+			<atomic-attributes>
+				<atomic-attribute qualifier="uid" />
+				<atomic-attribute qualifier="label" />
+				<atomic-attribute qualifier="savedTravellerUid" />
+			</atomic-attributes>
+			<reference-attributes>
+				<reference-attribute qualifier="info" displayName="info" type="PassengerInformation" />
+				<reference-attribute qualifier="specialRequestDetail" displayName="specialRequestDetail" type="SpecialRequestDetail" />
+			</reference-attributes>
+			<virtual-attributes>
+				<virtual-attribute expression="traveller" type="TravellerPreference" many="true" displayName="travellerPreference" />
+			</virtual-attributes>
+		</type>
+		<type code="SavedSearch">
+			<atomic-attributes>
+				<atomic-attribute qualifier="encodedSearch" />
+			</atomic-attributes>
+		</type>
+		<type code="PassengerInformation">
+			<atomic-attributes>
+				<atomic-attribute qualifier="firstName" />
+				<atomic-attribute qualifier="surname" />
+				<atomic-attribute qualifier="dateOfBirth" />
+				<atomic-attribute qualifier="membershipNumber" />
+				<atomic-attribute qualifier="gender" />
+				<atomic-attribute qualifier="reasonForTravel" />
+				<atomic-attribute qualifier="documentType" />
+				<atomic-attribute qualifier="documentNumber" />
+				<atomic-attribute qualifier="documentExpiryDate" />
+				<atomic-attribute qualifier="email" />
+				<atomic-attribute qualifier="passengerType" />
+			</atomic-attributes>
+			<reference-attributes>
+				<reference-attribute qualifier="title" displayName="title" type="Title" />
+				<reference-attribute qualifier="countryOfIssue" displayName="countryOfIssue" type="Country" />
+				<reference-attribute qualifier="nationality" displayName="nationality" type="Country" />
+			</reference-attributes>
+		</type>
+		<type code="SpecialRequestDetail">
+			<reference-attributes>
+				<reference-attribute qualifier="specialServiceRequest" displayName="specialServiceRequest" type="SpecialServiceRequest" />
+				<reference-attribute qualifier="remarks" displayName="remarks" type="Remark" />
+			</reference-attributes>
+		</type>
+		<type code="SpecialServiceRequest">
+			<atomic-attributes>
+				<atomic-attribute qualifier="code" />
+				<atomic-attribute qualifier="name" />
+			</atomic-attributes>
+		</type>
+		<type code="Remark">
+			<atomic-attributes>
+				<atomic-attribute qualifier="code" />
+				<atomic-attribute qualifier="name" />
+			</atomic-attributes>
+		</type>
+        <type code="Country" displayName="Country">
+            <atomic-attributes>
+                <atomic-attribute qualifier="isocode" displayName="isocode"/>
+                <atomic-attribute qualifier="name" displayName="name"/>
+            </atomic-attributes>
+        </type>
+		<type code="TravellerPreference">
+			<atomic-attributes>
+				<atomic-attribute qualifier="type" />
+				<atomic-attribute qualifier="value" />
+			</atomic-attributes>
+		</type>
+        <type code="PassengerType">
+            <atomic-attributes>
+                <atomic-attribute qualifier="name" />
+            </atomic-attributes>
+        </type>
+
+	</types>
+</audit-report-config>

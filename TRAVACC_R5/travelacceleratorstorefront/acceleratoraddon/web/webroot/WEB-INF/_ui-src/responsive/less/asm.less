@@ -1,0 +1,45 @@
+/* ASM Styles */
+
+#_asm {
+    background-color: darkgrey;
+    background-image: linear-gradient(135deg, rgba(112,112,112,1) 0%,rgba(125,185,232,0) 100%);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+    border: 6px outset rgba(170,170,170,.8);
+    outline: 1px solid #000;
+    .ASM_header {
+        padding: 0;
+        .ASM_login {
+            padding: 10px;
+        }
+    }
+    .ASM-btn {
+        &.ASM-btn-logout{
+            color: #fff;
+        }
+        &.ASM-btn-reset {
+            background-color: #ccc;
+            color: #000;
+        }
+    }
+    .ASM_input_holder label,
+    .ASM_session .ASM_session_andor_text {
+        color: #fff;
+        text-shadow: 1px 1px 0 rgba(0,0,0,.5);
+    }
+    .ASM_session span.ASM_icon {
+        color: darkslategray;
+        text-shadow: 1px 1px 1px #fff;
+    }
+    .ASM_header .ASM_loggedin .ASM_loggedin_text {
+        color: darkslategray;
+    }
+}
+.asm-remaining-seats {
+    font-weight: normal;
+    display: block;
+    font-style: italic;
+    margin-left: 25px;
+    background-color: rgba(255,255,255,.3);
+    padding: 0 10px;
+}

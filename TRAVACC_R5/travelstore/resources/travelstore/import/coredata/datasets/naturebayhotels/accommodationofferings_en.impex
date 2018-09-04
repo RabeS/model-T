@@ -1,0 +1,28 @@
+$lang = en
+
+$description = "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+INSERT_UPDATE AccommodationOffering; code[unique = true]; name[lang = $lang]; description[lang = en, default = $description]
+; BONDI            ; "Bondi"             ;
+; PALM_COVE        ; "Palm Cove"         ;
+; MANTA_LAGOON     ; "Manta Lagoon"      ;
+; VILLA_MAKATI     ; "Villa Makati"      ;
+; LANTERN          ; "Lantern"
+; WAIKIKI          ; "Waikiki"           ;
+; COCO_PALM        ; "Kauna"             ;
+
+; BIRD_PARADISE    ; "Bird Paradise"     ;
+; JUNGLE_TREEHOUSE ; "Jungle Tree House" ;
+; REDWOOD          ; "Redwood"           ;
+; PEBBLE_BEACH     ; "Pebble Beach"      ;
+; DAINTREE         ; "Danintree"         ;
+; CONTIKI          ; "Contiki"           ;
+; KURRAJONG        ; "Kurrajong"         ;
+
+; THE_LEAF         ; "The Leaf"          ;
+; VILLA_COCONUT    ; "Villa Coconut"     ;
+; SHIMBA           ; "Shimba"            ;
+; SAMBURU          ; "Samburu"           ;
+; HAKUNA_MATATA    ; "Hakuna Matata"     ;
+; JUNGLE_LODGE     ; "Jungle Lodge"      ;
+; ELLA_PARADISE    ; "Ella Paradise"     ;

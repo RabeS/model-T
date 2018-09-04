@@ -1,0 +1,15 @@
+$lang = en
+$catalogVersion = catalogVersion(catalog(id[default = 'travelProductCatalog']), version[default = 'Staged'])[unique = true, default = 'travelProductCatalog:Staged']
+
+# Insert Categories
+INSERT_UPDATE OfferGroup; code[unique = true]; allowedPrincipals(uid)[default = 'customergroup']; $catalogVersion; ignoreRules[default = true]
+; PRIORITYCHECKIN
+; PRIORITYBOARDING
+; LOUNGEACCESS
+; MEAL
+; HOLDITEM
+; SPECIAL;;;false
+
+INSERT_UPDATE Category; code[unique = true]; allowedPrincipals(uid)[default = 'customergroup']; $catalogVersion
+; FAREPRODUCT
+; ACCOMMODATION

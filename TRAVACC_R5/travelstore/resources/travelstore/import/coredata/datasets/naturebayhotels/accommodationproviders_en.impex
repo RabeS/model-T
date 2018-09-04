@@ -1,0 +1,4 @@
+INSERT_UPDATE AccommodationProvider; code[unique = true]; name
+; NATUREBAY_AQUA_REEFS_RESORTS    ; "NatureBay Aqua Reefs Resorts"
+; NATUREBAY_GARDEN_SAFARIS_HOTELS ; "NatureBay Garden Safaris Hotels"
+; NATUREBAY_ROYAL_FORESTS         ; "NatureBay Royal Forests"

@@ -1,0 +1,34 @@
+#
+# ImpEx for Importing Service Products into travel accelerator
+#
+$catalogVersion = catalogVersion(catalog(id[default = 'travelProductCatalog']), version[default = 'Staged'])[unique = true, default = 'travelProductCatalog:Staged']
+$categories = supercategories(code, $catalogVersion)
+$approved = approvalstatus(code)[default = 'approved']
+$picture = picture(code, $catalogVersion)
+$galleryImages = galleryImages(qualifier, $catalogVersion)
+$medias = medias(code, $catalogVersion)
+$siteResource = jar:de.hybris.platform.travelstore.constants.TravelstoreConstants&/travelstore/import/coredata/datasets/hotels/minimalset
+
+INSERT_UPDATE Media; code[unique = true]; realfilename; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/jpeg']; $catalogVersion; mediaFormat(qualifier)
+; icon-gym.svg		  		       ; icon-gym.svg		  ; $siteResource/images/icons/icon-gym.svg     	                    ; image/svg+xml ; ; 300Wx300H
+; icon-breakfast.svg	           ; icon-breakfast.svg	  ; $siteResource/images/icons/icon-breakfast.svg	                    ; image/svg+xml ; ; 300Wx300H
+; icon-wifi.svg			           ; icon-wifi.svg		  ; $siteResource/images/icons/icon-wifi.svg		                    ; image/svg+xml ; ; 300Wx300H
+; icon-linen.svg		  		   ; icon-linen.svg		  ; $siteResource/images/icons/icon-linen.svg    	                    ; image/svg+xml ; ; 300Wx300H
+; icon-parking.svg		  		   ; icon-parking.svg	  ; $siteResource/images/icons/icon-parking.svg     	                ; image/svg+xml ; ; 300Wx300H
+; icon-pillows.svg		  		   ; icon-pillows.svg	  ; $siteResource/images/icons/icon-pillows.svg     	                ; image/svg+xml ; ; 300Wx300H
+
+INSERT_UPDATE MediaContainer; qualifier[unique = true]; $medias; $catalogVersion[unique = true]
+; accommodationMediaContainer03   ; icon-gym.svg                                                 ; ;
+; accommodationMediaContainer04   ; icon-breakfast.svg                                           ; ;
+; accommodationMediaContainer05   ; icon-wifi.svg                                                ; ;
+; accommodationMediaContainer06   ; icon-linen.svg                                               ; ;
+; accommodationMediaContainer07   ; icon-parking.svg                                             ; ;
+; accommodationMediaContainer08   ; icon-pillows.svg                                             ; ;
+
+UPDATE ExtraProduct; code[unique = true]; $picture; $galleryImages; $catalogVersion
+; GYM_ACCESS			; icon-gym.svg			; accommodationMediaContainer03
+; ENGLISH_BREAKFAST		; icon-breakfast.svg	; accommodationMediaContainer04
+; WIFI					; icon-wifi.svg			; accommodationMediaContainer05
+; LINEN                 ; icon-linen.svg        ; accommodationMediaContainer06
+; PARKING               ; icon-parking.svg      ; accommodationMediaContainer07
+; PILLOWS               ; icon-pillows.svg      ; accommodationMediaContainer08

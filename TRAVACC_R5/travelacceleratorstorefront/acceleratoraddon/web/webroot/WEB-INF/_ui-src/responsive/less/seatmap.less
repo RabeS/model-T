@@ -1,0 +1,610 @@
+.seat-map-wrapper {
+    text-align: center;
+    background-color: #fff;
+    .front-indicator {
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+        padding: 3px;
+        margin: 30px 0 10px;
+        @media only screen and (max-width: @screen-xs-max){
+            margin-top: 0;
+        }
+        border-radius: 5px;
+    }
+    .booking-details {
+        float: left;
+        text-align: left;
+        margin: 20px 0 0 20px;
+        padding: 10px;
+        width: 150px;
+        font-size: 12px;
+        position: relative;
+        background-color: #999;
+        @media (min-width: @screen-sm-min) and (max-width: @screen-md-min) {
+            width: 100%;
+            margin: 0 0 20px;
+        }
+        @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+            width: 100%;
+            margin: 0 0 20px;
+        }
+        @media (min-width: @screen-lg-min) {
+            width: 165px;
+        }
+        @media only screen and (max-width: @screen-xs-max) {
+            width: 100%;
+            padding: 20px;
+            margin: 20px 0 0;
+        }
+        .legend-title {
+            font-size: 20px;
+            border-bottom: 1px solid;
+            margin-top: 0;
+        }
+        .seatCharts-seat {
+            cursor: default;
+            transition: none;
+            display: inline-block;
+            width: 15%;
+            &:hover,
+            &:focus {
+                transform: scale(1.02);
+                box-shadow: 0 0 0;
+            }
+        }
+    }
+    .seatCharts-row {
+        height: 35px;
+        display: flex;
+        z-index: 2;
+        padding-top: 2px;
+        &:nth-of-type(odd) { background-color: #f0f0f0; }
+        &:after { clear: both; }
+        &.seatCharts-header {
+            position: relative;
+            top: 0;
+            background-color: rgba(56, 196, 186, 0.3);
+            z-index: 1;
+            text-shadow: 1px 1px 0px rgba(255,255,255,.8);
+            font-weight: bold;
+            color: #666;
+            @media (min-width: @screen-sm-min) {
+                position: absolute;
+                top: 30px;
+            }
+        }
+    }
+    .seatCharts-cell {
+        color: #182C4E;
+        width: 25px;
+        @media (max-width: @screen-xs-max) {
+            min-width: 9vw;
+        }
+        height: 25px;
+        height: 25px;
+        line-height: 25px;
+        margin: 0.5vw;
+        float: left;
+        text-align: center;
+        outline: none;
+        font-size: 13px;
+        &.seatCharts-toilet {
+            color: #000;
+            background-color: #fff;
+            border-radius: 5px;
+            border: 1px solid #000;
+        }
+        @media only screen and (min-width: @screen-sm-min) {
+            height: 25px;
+            width: 25px;
+            margin: 3px;
+        }
+    }
+    .seatCharts-seat {
+        color: #fff;
+        background-color: green;
+        cursor: pointer;
+        transition: all .2s ease-in-out;
+        box-shadow: 0 0 0 rgba(0,0,0,0);
+        border-radius: 5px;
+        text-shadow: 1px 1px 1px rgba(0,0,0,.6);
+        &:hover,
+        &:focus {
+            box-shadow: 5px 5px 5px rgba(0,0,0,.6);
+            transform: scale(1.3);
+            border: none;
+        }
+        &.available {
+            background-color: #B9DEA0;
+            &.economy-lower-deck-class { background-color: midnightblue; }
+            &.economy-upper-deck-class { background-color: skyblue; }
+            &.economy-plus-lower-deck-class { background-color: grey; }
+            &.economy-plus-upper-deck-class { background-color: darkturquoise; }
+            &.business-lower-deckclass { background-color: orange; }
+            &.business-upper-deck-class { background-color: cadetblue; }
+            &.focused {  background-color: #76B474; }
+            &.selected {
+                background-color: #E6CAC4;
+                border: 1px solid green;
+                transform: scale(1.3);
+            }
+        }
+        &.unavailable {
+            background-color: darkred;
+            cursor: not-allowed;
+        }
+        &.not-available {
+            background-color: grey;
+            cursor: not-allowed;
+        }
+        &.selected {
+            background-color: lightgreen;
+            box-shadow: 5px 5px 5px rgba(0,55,55,.6);
+            transform: scale(1.3);
+        }
+    }
+    .seatCharts-space { background-color: transparent; }
+    .seatCharts-scroll-panel {
+        max-width: 100%;
+        overflow: scroll;
+        max-height: 500px;
+        box-shadow: 0 0 8px rgba(0,0,0,.4) inset;
+        border: 1px solid @brand-blue;
+        margin: 20px 0;
+        float: left;
+    }
+    .seatCharts-container {
+        float: left;
+        padding: 20px 3px;
+        @media (min-width: @screen-sm-min) and (max-width: @screen-md-min) {
+            width: 100%;
+            .seatCharts-cell { width: 2.95vw; }
+            .seatCharts-header .seatCharts-cell { width: 2.85vw; }
+        }
+        @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+            width: 100%;
+            .seatCharts-cell { width: 2.95vw; }
+            .seatCharts-header .seatCharts-cell { width: 30px; }
+        }
+    }
+    .seatCharts-legend { padding-left: 0; }
+    .seatCharts-legendList {
+        padding-left: 0px;
+        list-style: none;
+    }
+    .seatCharts-legendItem {
+        margin-top: 10px;
+        line-height: 2;
+    }
+    .seatCharts-legendDescription {
+        margin-left: 5px;
+        margin-right: -15px;
+        line-height: 120%;
+        display: inline-block;
+        width: 80%;
+        @media (max-width: @screen-xs-max) {
+            width: 75%;
+        }
+    }
+    #selected-seats { width: 170px; }
+}
+.current-passenger-select {
+    background-color: @secondary-blue;
+    transform: scale(1.05);
+    transition: all .2s ease-in-out;
+    box-shadow: 0 5px 10px rgba(0,0,0,.5);
+}
+.legend-toilet { display: none; }
+.seatCharts-toilet .legend-toilet {
+    display: inline;
+    text-shadow: none;
+}
+.passenger-name,
+.passenger-seat-info {
+    display: block;
+}
+
+.seatmap-modal {
+    .seatMapSVGWrap {
+        @media (max-width: @screen-xs-max) {
+            padding-bottom: 112px;
+        }
+        height: 450px;
+        width: 100%;
+        overflow: scroll;
+        .seat-map {
+            max-width: 100%;
+            height: 2700px;
+            @media (max-width: @screen-xs-max) {
+                height: 1800px;
+            }
+        }
+        &:first-child { display: block; }
+        @media (max-width: @screen-xs-max) {
+            margin-top: 100px;
+        }
+    }
+    .modal-dialog {
+        @media (min-width: @screen-sm) {
+            padding-left: 15%;
+            padding-right: 15%;
+        }            
+        margin: 0 auto;
+        width: 100%;
+        .modal-content {
+            &.tab-wrapper { margin-bottom: 0; }
+            padding: 0;
+            #carousel-generic {
+                > .item {
+                    opacity: 0;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    display: block;
+                    position: absolute;
+                    z-index:0;
+                    transition: none;
+                    transform: translate3d(0,0,0) !important;
+                    &:first-of-type {
+                        position:relative;
+                    }
+                }
+                > .active {
+                    opacity: 1;
+                    z-index:3;
+                }
+
+                > .next.left,
+                > .prev.right {
+                    transition: opacity 0.6s ease-in-out;
+                    opacity: 1;
+                    left: 0;
+                    z-index:2;
+                }
+                > .active.left,
+                > .active.right {
+                    z-index:1;
+                }
+                .item {
+                    margin: 0;
+                    padding: 0px;
+                    .modal-header {
+                        padding: 10px 0 25px 0;
+                        background-color: rgba(181,227,234,0.8);
+                        color: #076480;
+                        h3 { margin: 0; }
+                        h4 {
+                            font-size: 20px;
+                            margin: 0px;
+                        }
+                        @media (max-width: @screen-xs-max) {
+                            padding: 10px 0px 40px 0px;
+                        }
+                        .title {
+                            @media (max-width: @screen-xs-max) {
+                                width: 80%;
+                                margin: 0 auto;
+                            }
+                        }
+                    }
+                    .seatmapContent {
+                        @media (max-width: @screen-sm-max) {
+                            padding: 0px 0px 10px 0px;
+                        }
+                        .info-column {
+                            padding-left: 5px;
+                            .seatLegend-panel {
+                                padding: 0;
+                                height: 118px;
+                                overflow: scroll;
+                                .legendTitle{
+                                    color: #414042;
+                                    float:left;
+                                    text-shadow: none;
+                                    font-size: 14px;
+                                    font-weight: bold;
+                                    margin-top: 5px;
+                                    margin-bottom: 0px;
+                                }
+                                .legendLabels {
+                                    list-style: none;
+                                    display: inline-grid;
+                                    text-align: left;
+                                    padding: 0;
+                                    .seat-icon-legend {
+                                        float: left;
+                                        width: 20px;
+                                        height: 20px;
+                                        border-radius: 5px;
+                                        display: block;
+                                        margin: 5px 0px;
+                                        span { margin: auto; }
+                                        &.currentSelection { background-color: #488214; }
+                                        &.unavailable { background-color: #9FA2A7; }
+                                        &.selected { background-color: #a7d49b; }
+                                        &.economy { background-color: #e9e2d8; }
+                                        &.economyPlus { background-color: #ffa500; }
+                                        &.business { background-color: #ffdf00; }
+                                    }
+                                    label {
+                                        color: black;
+                                        font-weight: normal;
+                                        margin: 5px;
+                                    }
+                                }
+                            }
+                        }
+                        p { margin-top: 80px; }
+                        .seatIcon-panel {
+                            border: 1px solid #c0c1c3;
+                            background-color: rgba(181,227,234,0.5);
+                            overflow-y: scroll;
+                            padding-left: 0;
+                            max-height: 250px;
+                            margin-bottom: 5px;
+                            .inv-seat {
+                                padding: 7px 0px;
+                                margin: 0;
+                                list-style: none;
+                                .passenger-group {
+                                    color: #414042;
+                                    font-size: 13px;
+                                    font-weight: normal;
+                                    text-shadow: none;
+                                    text-align: left;
+                                    float: left;
+                                    letter-spacing: 0px;
+                                }
+                                @media (max-width: @screen-xs-max) {
+                                    margin: 2px;
+                                    padding: 0px 0 10px 0;
+                                }
+                            }
+                            .btn-delete-seat {
+                                float: right;
+                                margin: 15px;
+                                padding: 12px;
+                                background: url("@{theme-images-url}/icon-remove-seat.svg") no-repeat scroll 0 0;
+                                .glyphicon { display: none; }
+                                &:hover,
+                                &:focus {
+                                    background-position: 0 bottom;
+                                }
+                                @media screen and (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+                                    margin-left: -10px;
+                                }
+                            }
+                            .seat-icon {
+                                background-color: #F5F5F5;
+                                width: 60px;
+                                height: 60px;
+                                border-radius: 5px;
+                                margin: 0 5px 0 10px;
+                                display: block;
+                                color: #076480;
+                                text-shadow: none;
+                                border: 1px #076480 solid;
+                                float: left;
+                                cursor: pointer;
+                                @media (max-width: @screen-xs-max) {
+                                    span {
+                                        padding: 0!important ;
+                                        margin: 5px 0;
+                                    }
+                                }
+                                &.selected {
+                                    background-color: rgba(191, 213, 185, 1);
+                                    border: 1px solid #829D95;
+                                }
+                                &.active {
+                                    border: 3px solid #829D95;
+                                    span { padding: 7px; }
+                                }
+                                &.disabled { cursor: not-allowed; }
+                                span {
+                                    display: block;
+                                    text-align: center;
+                                    padding: 10px;
+                                    &.formatInitials { margin: 10px 0; }
+                                }
+                                .formatInitials { margin: 10px 0px; }
+                            }
+                            @media (max-width: @screen-xs-max) {
+                                border-top: none;
+                                position: fixed;
+                                z-index: 2;
+                                left: 0;
+                                width: 100%;
+                                .seatIcon-group { display: inline-flex; }
+                            }
+                            .scroll-item {
+                                position: fixed;
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+                .owl-wrapper {
+                    width: max-content;
+                    .owl-item { background-color: #fff; }
+                }
+                .owl-controls {
+                    .owl-pagination {
+                        position: absolute;                        
+                        z-index: 1;
+                        left: 0;
+                        right: 0;
+                    }
+                    .owl-page {
+                        display: inline-block;
+                        zoom: 1;
+                        width: 12px;
+                        height: 12px;
+                        margin: 1px;
+                        text-indent: -999px;
+                        border: 1px solid #076480;
+                        border-radius: 10px;
+                        cursor: pointer;
+                        background-color: #000 \9;
+                        background-color: rgba(0, 0, 0, 0);
+                    }
+                    .owl-buttons {
+                        margin-bottom: -10px;
+                        position: absolute;
+                        top: 10px;
+                        z-index: 1;
+                        left: 0;
+                        right: 0;
+                    }
+                    .owl-page,
+                    .owl-buttons div {
+                        cursor: pointer;
+                    }
+                    .owl-page.active span {
+                        background-color: #fff;
+                        display: block;
+                        height: 100%;
+                        -webkit-border-radius: 20px;
+                        -moz-border-radius: 20px;
+                        border-radius: 20px;
+                    }
+                }
+
+                &.owl-carousel {
+                    .owl-wrapper-outer { background-color: white; }
+                    .owl-controls {
+                        width: 100%;
+                        .owl-buttons {
+                            .owl-prev,
+                            .owl-next {
+                                font-size: 30px;
+                                width: 30px;
+                                height: 30px;
+                            }
+                            .owl-prev {
+                                top: 30px !important;
+                                left: 15px;
+                                &:before { content: "\e079"; }
+                            }
+                            .owl-next {
+                                top: 30px !important;
+                                right: 15px;
+                                &:before { content: "\e080"; }
+                            }
+                        }
+                    }
+                }
+            }
+            .modal-body { max-height: 73vh; }
+            @media (max-width: @screen-xs-max) {
+                height: -webkit-fill-available;
+            }
+
+        }
+        .modal-footer { padding: 0; }
+        .seatButton-panel {
+            position: absolute;
+            padding: 15px;
+            background-color: rgba(181,227,234,0.8);
+            bottom: 0;
+            z-index: 3;
+            .modalButton {
+                float: right;
+                margin: 5px 0;
+            }
+        }
+        .seatmapSVG {
+            position: relative;
+            height: fit-content;
+            .changeDeckBtns {
+                position: absolute;
+                text-shadow: none;
+                font-size: 16px;
+                left: 25%;
+                width: 50%;
+                button {
+                    cursor: pointer;
+                    color: white;
+                    font-weight: normal;
+                    border: none;
+                    background-color: #00b7d3;
+                    border-radius: 2px;
+                    padding: 5px 30px;
+                    pointer-events: auto;
+                    box-shadow: 5px 5px 5px #ccc;
+                }
+                button:hover { color: lighten(@brand-blue,5%); }
+            }
+            .seatInfo-Box{
+                border: solid #B5E3EA 2px;
+                box-shadow: 5px 5px 5px #ccc;
+                border-radius: 3px;
+                padding: 0;
+                position: absolute;
+                background-color: white;
+                .seatInfoBoxList {
+                    padding: 0;
+                    color: black;
+                    list-style: none;
+                    text-shadow: none;
+                    margin: 10px;
+                    text-align: left;
+                    .seatInfo { font-weight: bold; }
+                }
+            }
+            @media (max-width: @screen-xs-max) {
+                .changeDeckBtns {
+                    margin-top: 100px;
+                    padding-right: 20px;
+                    padding-left: 20px;
+                }
+            }
+        }
+
+        @media (min-width: @screen-xs-min) {
+            .seatmapContent { max-height: inherit; }
+            .seatmapSVG { max-height: inherit; }
+        }
+        @media (max-width: @screen-xs-max) {
+            .modal-body { padding-top: 0; }
+        }
+
+        .carousel {
+            margin: 0;
+            .carousel-control {
+                background-image: none;
+                z-index: 5;
+                margin: 40px 0;
+                top: 0;
+                height: 0;
+                span {
+                    &.glyphicon-chevron-right { margin-right: -30px; }
+                    &.glyphicon-chevron-left { margin-left: -30px; }
+                }
+                @media (max-width: @screen-xs) {
+                    .glyphicon { margin-top: 0; }
+
+                    span {
+                        &.glyphicon-chevron-right { margin-right: -10px; }
+                        &.glyphicon-chevron-left {  margin-left: -10px; }
+                    }
+                }
+            }
+
+        }
+    }
+
+}
+// only shown on mobile
+.seatInfoModal {
+    .modal-content {
+        height: fit-content!important;
+        .modal-body { padding: 15px 15px 5px 5px; }
+        .seatInfoList { list-style: none; }
+        .selectBtn { background-color: #00b7d3; }
+        .modal-footer {
+            button { padding: 5px 25px; }
+        }
+    }
+}

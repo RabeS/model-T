@@ -1,0 +1,287 @@
+/*------- Accommodation & Deal pages start -------*/
+
+.accommodation-selection-wrap,
+.deal-selection-wrap {
+    .minusMargin;
+    .modify-search {
+    	margin-bottom: 0;
+    }
+    .alert {
+    	margin-top: 20px;
+    }
+    .accommodation-results-wrapper,
+    .deal-results-wrapper {
+        .minusMargin;
+        .accommodation-items {
+        	padding-top: 0;
+        }
+		#map {
+			height: 900px; /* overriding (default) 100% */
+		}
+    }
+    #filter,
+    #results-options {
+        margin-bottom: 10px;
+        padding-left: 0;
+        padding-right: 0;
+        label {
+            color: #000;
+        }
+    }
+    .results-list {
+    	.h4 {
+    		color: #6d6e71;
+            margin-top: 0;
+            margin-bottom: 20px;
+    	}
+    	.accommodation-items.grid,
+    	.deal-grid {
+    		.minusMargin;
+    	}
+    }
+}
+
+.deal-selection-wrap {
+	.primary-custom-content {
+		margin-bottom: 40px;
+	}
+}
+
+.package-details-wrap {
+	.modify-search {
+    	margin-bottom: 20px;
+    }
+} 
+
+/* Amenities list */
+
+.amenities-items {
+	> li ul {
+		display: none; 
+	}
+}
+
+/* /Amenities list */
+
+/*------- Accommodation & Deal pages end -------*/
+
+/*------- Room/Guest details start -------*/
+
+.room-details {
+	&.panel-list {
+		.panel {
+			background: transparent;
+			margin-top: 20px;
+			&:first-child {			
+				border-bottom: 1px solid #47b6b1;
+			}
+		}
+		.panel-body {
+			background: #fff;
+		}
+	}
+	.panel {
+		&.my-account-secondary-panel {
+			border-top: 1px solid #47b6b1;
+			.lead-guest-details {
+				padding: 15px;
+			}
+		}
+	}
+	.room-wrapper {
+		margin: 0 20px;
+		background: #fff;
+	}
+	.room-costs {
+		padding-top: 20px;
+	}
+	.lead-details {
+		padding: 15px;
+	}
+	.accommodation-items {
+		padding-top: 0;
+		li {
+			background-color: transparent;
+			border: none;
+			margin-bottom: 0;
+		}
+		h3 {
+			float: none;
+			margin-right: 0;
+		}
+	}
+	.room {
+		h3 {
+			margin-top: 0;
+		}
+		>.panel-body {
+			border-bottom: 1px solid #47b6b1;
+			padding: 0;
+		}
+	}
+	[id*="booking-extras"],
+	.booking-extras {
+		&.panel-body {
+			padding: 0;
+			margin-bottom: 0;
+		}
+		.list-group {
+			margin-bottom: 0;
+			&.no-padding {
+				.list-group-item {
+					&:last-child {
+						border-bottom: 0;
+					}
+				}
+			}
+			.list-group-item {
+				background-color: #fff;
+				&:first-child {
+					border-top: 0;
+				}
+			}
+		}
+	}
+}
+[id*="booking-extras"],
+.booking-extras { 
+	.extra-item {
+		padding: 15px;
+		color: #fff;
+		background-color: #076480;
+		word-wrap: break-word;
+		@media (max-width: @screen-xs-max) {
+		    display: flex;
+		}
+		@media (max-width: @screen-xs) {
+		    width: 100%;
+		}
+
+		&.preferences {
+			padding-left: 15px;
+            background-image: none;
+		}
+		span {
+			line-height: 30px;
+		}
+		img {
+			margin-right: 10px;
+			width: 35px;
+			height: 35px;
+			@media (max-width: @screen-xs) {
+		    	width: 25px;
+				height: 25px;
+			}
+		}
+	}
+	.extra-item-selection {
+	    color: #076480;
+	    text-align: center;
+	    padding: 15px;
+	    @media (max-width: @screen-xs) {
+		    width: 100%;
+		}
+	}
+	.input-row {
+		padding: 0;
+		@media (max-width: @screen-xs-max) {
+			flex-wrap: wrap;
+		}
+	}
+	.list-group-item {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+	&.hotel-ancillary-extras {
+		li:last-child {
+			border-bottom: 0;
+		}
+		.input-row {
+			background-color: #fff;
+		}	
+	}
+}
+
+.panel-list {
+	.panel-body.booking-extras {
+		padding: 0;
+	}
+}
+
+.panel-hotel {
+	.panel-body {
+		padding-top: 0;
+		padding-bottom: 0;
+		.panel-hotel-extra {
+			.nav-tabs > li {
+				position: relative;
+				a {
+					span:first-child {
+						position: absolute;
+						background: #dcdddf;
+						border-bottom: 1px solid #bbb;
+						padding: 2px 5px;
+						left: 0;
+						color: #6d6e71;
+						font-weight: bold;
+						right: 0;
+						top: 0;
+						text-align: center;
+					}
+					span:last-child {
+						padding-top: 20px;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+.cart-total {
+	font-weight: bold;
+}
+
+.room {
+	.table {
+		margin-top: 10px;
+		margin-bottom: 0;
+	}
+}
+
+/*------- Room/Guest details end -------*/
+
+/*------- Cart page start -------*/
+
+.summary-panels {
+	.panel-price-summary {
+		margin-bottom: 20px;
+	}
+}
+
+.room-panel {
+	.room {
+		border-bottom: 1px solid #47b6b1;
+		padding-bottom: 20px;
+	}
+	.panel.panel-default {
+		.panel-body {
+			padding: 0;
+		}
+	}
+}
+
+.panel-list {
+	.payment-type {
+		&.form-group {
+			label {
+	    		display: inline;
+	    		color: black;
+	    		font-weight: normal;
+	    	}
+		}
+    }
+}
+
+
+/*------- Cart page end -------*/

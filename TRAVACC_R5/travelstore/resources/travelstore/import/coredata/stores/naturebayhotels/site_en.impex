@@ -1,0 +1,10 @@
+#
+# Import the CMS Site configuration for the Hotels store
+#
+
+# Language
+$lang = en
+
+# Create CMS Site
+UPDATE CMSSite; uid[unique = true]; name[lang = $lang]; locale[lang = $lang]
+; naturebayhotels ; "Nature Bay Hotels Site" ; en_GB

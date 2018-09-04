@@ -1,0 +1,105 @@
+// Trip finder Landing page
+.trip-tile {
+    overflow: hidden;
+    padding: 0;
+    img { width: 100%; }
+    a {
+        &:hover,
+        &:focus {
+            .trip-tile-heading {
+                padding: 20px 10px 50px;
+                letter-spacing: 3px;
+                font-size: 28px;
+                text-shadow: 0 30px 5px rgba(0, 93, 111, .3);
+            }
+        }
+        .trip-tile-heading {
+            background: rgba(100, 204, 222, 0.5) none repeat scroll 0 0;
+            bottom: 0;
+            color: #fff;
+            font-size: 24px;
+            left: 0;
+            margin-bottom: 0;
+            padding: 10px;
+            position: absolute;
+            right: 0;
+            text-align: center;
+            transition: all .2s ease-in-out;
+            letter-spacing: 0px;
+            text-shadow: 1px 1px 1px rgba(0, 93, 111, .9);
+        }
+    }
+    &:last-child { margin-bottom: 20px; }
+}
+
+.trip-finder-wrap {
+    margin-top: 30px;
+    h3 {
+        margin: 10px 0;
+        font-size: initial;
+    }
+
+    .trip-finder-banner {
+        margin-bottom: 25px;
+        img { width: 100%; }
+        .trip-finder-banner-heading {
+            position: absolute;
+            top: 0;
+            padding: 30px;
+            color: #fff;
+        }
+    }
+    .error {  margin-top: 10px; }
+    .panel-group {
+        .panel-title {
+            font-size: 20px;
+            color: #fff;
+            padding-left: 20px;
+        }
+        .panel-default {
+            border-bottom: none;
+            border-color: #83b2c0;
+            &:last-child { border-bottom: 1px solid #83b2c0; }
+        }
+        .panel+.panel { margin-top: 0; }
+    }
+    .search-btn {
+        float: right;
+        margin-bottom: 10px;
+    }
+    .trip-finder-table {
+        .panel-group { margin-left: -15px; }
+    }
+    .panel-accordion:nth-of-type(odd) {
+        .panel-heading { background: @brand-blue; }
+    }
+    #location-search { margin-bottom: 20px; }
+    #location { padding-right: 40px; }
+    .glyphicon-map-marker {
+        position: absolute;
+        right: 30px;
+        top: 10px;
+        color: @brand-blue-text;
+    }
+    @media screen and (max-width: @screen-xs-max) {
+        .trip-finder-table {
+            padding: 0;
+            .panel-group { margin-left: 0; }
+        }
+    }
+}
+
+.trip-finder-modal.modal {
+    .modal-body,
+    .container { padding: 0; }
+    .form-wrapper {
+        margin-top: 0;
+        margin-left: 0;
+    }
+    .row.input-row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+.trip-finder-origin-hide { display: none; }

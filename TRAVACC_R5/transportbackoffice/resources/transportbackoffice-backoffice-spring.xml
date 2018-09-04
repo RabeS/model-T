@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  [y] hybris Platform
+
+  Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+  This software is the confidential and proprietary information of SAP
+  ("Confidential Information"). You shall not disclose such Confidential
+  Information and shall use it only in accordance with the terms of the
+  license agreement you entered into with SAP.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- <bean id="transportbackofficeService" class="de.hybris.platform.transportbackoffice.services.TransportbackofficeService" /> -->
+
+	<bean id="transportbackofficeLabelLocator" class="com.hybris.cockpitng.util.labels.ResourcesLabelLocator" scope="singleton" init-method="init" lazy-init="false">
+  		<property name="location" value="/transportbackoffice-backoffice-labels/"/>
+  		<property name="name" value="labels"/>
+  	</bean>
+  	
+	<alias name="createScheduleConfigurationDayRenderer" alias="createScheduleConfigurationDayRenderer" />
+	<bean id="createScheduleConfigurationDayRenderer" class="de.hybris.platform.transportbackoffice.widgets.scheduleconfiguration.CreateScheduleConfigurationDayRenderer"
+		parent="abstractScheduleConfigurationDayRenderer" />
+
+	<alias name="defaultAssignStockInventoryConfigurationRenderer" alias="assignStockInventoryConfigurationRenderer" />
+	<bean id="defaultAssignStockInventoryConfigurationRenderer" class="de.hybris.platform.transportbackoffice.widgets.inventory.renderer.AssignStockInventoryConfigurationRenderer" parent="abstractStockInventoryConfigurationRenderer" />
+
+	<alias name="defaultAssignStockInventoryForProductConfigurationRenderer" alias="assignStockInventoryForProductConfigurationRenderer" />
+	<bean id="defaultAssignStockInventoryForProductConfigurationRenderer" class="de.hybris.platform.transportbackoffice.widgets.inventory.renderer.AssignStockInventoryForProductConfigurationRenderer" parent="abstractStockInventoryConfigurationRenderer" />
+
+	<alias name="defaultAbstractStockInventoryConfigurationRenderer" alias="abstractStockInventoryConfigurationRenderer" />
+	<bean id="defaultAbstractStockInventoryConfigurationRenderer" class="de.hybris.platform.transportbackoffice.widgets.inventory.renderer.AbstractStockInventoryConfigurationRenderer" abstract="true"/>
+
+	<alias name="defaultStockInventoryPreviewRenderer" alias="stockInventoryPreviewRenderer" />
+	<bean id="defaultStockInventoryPreviewRenderer" class="de.hybris.platform.transportbackoffice.widgets.inventory.renderer.StockInventoryPreviewRenderer">
+		<property name="labelService" ref="labelService" />
+	</bean>
+
+	<alias name="defaultModifyScheduleConfigurationDayRenderer" alias="modifyScheduleConfigurationDayRenderer" />
+	<bean id="defaultModifyScheduleConfigurationDayRenderer" class="de.hybris.platform.transportbackoffice.widgets.scheduleconfiguration.ModifyScheduleConfigurationDayRenderer"
+		parent="abstractScheduleConfigurationDayRenderer" />
+
+	<alias name="defaultModifyScheduleConfigurationSearchRenderer" alias="modifyScheduleConfigurationSearchRenderer" />
+	<bean id="defaultModifyScheduleConfigurationSearchRenderer" class="de.hybris.platform.transportbackoffice.widgets.scheduleconfiguration.ModifyScheduleConfigurationSearchRenderer">
+		<property name="backofficeScheduleConfigurationService" ref="backofficeScheduleConfigurationService" />
+		<property name="configurationService" ref="configurationService" />
+	</bean>
+
+	<bean id="abstractScheduleConfigurationDayRenderer" class="de.hybris.platform.transportbackoffice.widgets.scheduleconfiguration.AbstractScheduleConfigurationDayRenderer"
+		abstract="true">
+		<property name="labelService" ref="labelService" />
+	</bean>
+
+	<alias name="defaultModifyInventoryForFlightRenderer" alias="modifyInventoryForFlightRenderer"/>
+	<bean id="defaultModifyInventoryForFlightRenderer" class="de.hybris.platform.transportbackoffice.widgets.inventory.renderer.ModifyInventoryForFlightRenderer">
+		<property name="labelService" ref="labelService" />
+	</bean>
+
+	<alias name="defaultTravelConfigurableFlowRenderer" alias="configurableFlowRenderer"/>
+	<bean id="defaultTravelConfigurableFlowRenderer" class="de.hybris.platform.transportbackoffice.renderer.TravelConfigurableFlowRenderer" scope="prototype" parent="defaultConfigurableFlowRenderer"/>
+	<!-- Renderers -->
+
+	<!-- Handlers -->
+	<alias name="defaultManageScheduleConfirmationHandler" alias="manageScheduleConfirmationHandler" />
+	<bean id="defaultManageScheduleConfirmationHandler" class="de.hybris.platform.transportbackoffice.widgets.scheduleconfiguration.DefaultManageScheduleConfirmationHandler">
+		<property name="cronjobService" ref="defaultCronJobService" />
+		<property name="modelService" ref="modelService" />
+	</bean>
+
+	<alias name="manageScheduleValidationHandler" alias="manageScheduleValidationHandler" />
+	<bean id="manageScheduleValidationHandler" class="de.hybris.platform.transportbackoffice.widgets.scheduleconfiguration.ManageScheduleValidationHandler" />
+
+	<alias name="defaultCreateBundleMappingOptionsHandler" alias="createBundleMappingOptionsHandler" />
+	<bean id="defaultCreateBundleMappingOptionsHandler" class="de.hybris.platform.transportbackoffice.widgets.bundle.CreateBundleMappingOptionsHandler" />
+
+	<alias name="defaultCreateBundleChildTemplatesHandler" alias="createBundleChildTemplatesHandler" />
+	<bean id="defaultCreateBundleChildTemplatesHandler" class="de.hybris.platform.transportbackoffice.widgets.bundle.CreateBundleChildTemplatesHandler">
+		<property name="travelBundleTemplateService" ref="travelBundleTemplateService" />
+		<property name="travelBundleTemplateStatusService" ref="travelBundleTemplateStatusService" />
+		<property name="modelService" ref="modelService" />
+		<property name="enumerationService" ref="enumerationService" />
+	</bean>
+
+	<alias name="defaultCreateBundlePreviewPopupHandler" alias="createBundlePreviewPopupHandler" />
+	<bean id="defaultCreateBundlePreviewPopupHandler" class="de.hybris.platform.transportbackoffice.widgets.bundle.CreateBundlePreviewPopupHandler" >
+		<property name="modelService" ref="modelService" />
+	</bean>
+
+	<alias name="defaultCreateInventoryForBookingClassStepHandler" alias="createInventoryForBookingClassStepHandler" />
+	<bean id="defaultCreateInventoryForBookingClassStepHandler" class="de.hybris.platform.transportbackoffice.widgets.inventory.handler.CreateInventoryForBookingClassStepHandler">
+		<property name="backofficeScheduleConfigurationService" ref="backofficeScheduleConfigurationService" />
+	</bean>
+
+	<alias name="defaultAssignStockInventoryConfigurationHandler" alias="assignStockInventoryConfigurationHandler" />
+	<bean id="defaultAssignStockInventoryConfigurationHandler" class="de.hybris.platform.transportbackoffice.widgets.inventory.handler.AssignStockInventoryConfigurationHandler" parent="abstractStockInventoryConfigurationHandler"/>
+
+	<alias name="defaultAssignStockInventoryForProductConfigurationHandler" alias="assignStockInventoryForProductConfigurationHandler" />
+	<bean id="defaultAssignStockInventoryForProductConfigurationHandler" class="de.hybris.platform.transportbackoffice.widgets.inventory.handler.AssignStockInventoryForProductConfigurationHandler" parent="abstractStockInventoryConfigurationHandler"/>
+
+	<alias name="defaultAbstractStockInventoryConfigurationHandler" alias="abstractStockInventoryConfigurationHandler" />
+	<bean id="defaultAbstractStockInventoryConfigurationHandler" class="de.hybris.platform.transportbackoffice.widgets.inventory.handler.AbstractStockInventoryConfigurationHandler" abstract="true" />
+
+	<alias name="defaultStockInventoryPreviewPopupHandler" alias="stockInventoryPreviewPopupHandler" />
+	<bean id="defaultStockInventoryPreviewPopupHandler" class="de.hybris.platform.transportbackoffice.widgets.inventory.handler.StockInventoryPreviewPopupHandler">
+		<property name="travelbackofficeStockService" ref="travelbackofficeStockService"/>
+		<property name="travelBackofficeNotificationUtils" ref="travelBackofficeNotificationUtils" />
+		<property name="modelService" ref="modelService" />
+		<property name="cronjobService" ref="defaultCronJobService" />
+	</bean>
+
+	<alias name="defaultModifyScheduleFirstStepValidationHandler" alias="modifyScheduleFirstStepValidationHandler" />
+	<bean id="defaultModifyScheduleFirstStepValidationHandler" class="de.hybris.platform.transportbackoffice.widgets.scheduleconfiguration.ModifyScheduleFirstStepValidationHandler" />
+	
+	<alias name="defaultModifyInventoryFinderHandler" alias="modifyInventoryFinderHandler"/>
+	<bean id="defaultModifyInventoryFinderHandler" class="de.hybris.platform.transportbackoffice.widgets.inventory.handler.ModifyInventoryFinderHandler">
+		<property name="travelStockService" ref="travelStockService" />
+		<property name="modelService" ref="modelService" />
+	</bean>
+
+	<alias name="defaultModifyInventoryValidationHandler" alias="modifyInventoryValidationHandler"/>	
+	<bean id="defaultModifyInventoryValidationHandler" class="de.hybris.platform.transportbackoffice.widgets.inventory.handler.ModifyInventoryValidationHandler"/>
+
+	<alias name="defaultTravelProductLabelProvider" alias="travelProductLabelProvider" />
+	<bean id="defaultTravelProductLabelProvider" class="de.hybris.platform.transportbackoffice.display.providers.TravelProductLabelProvider">
+		<property name="commonI18NService" ref="commonI18NService" />
+	</bean>
+
+	<alias name="defaultFareProductLabelProvider" alias="fareProductLabelProvider" />
+	<bean id="defaultFareProductLabelProvider" class="de.hybris.platform.transportbackoffice.display.providers.FareProductLabelProvider">
+		<property name="commonI18NService" ref="commonI18NService" />
+	</bean>
+	<!-- Handlers -->
+</beans>

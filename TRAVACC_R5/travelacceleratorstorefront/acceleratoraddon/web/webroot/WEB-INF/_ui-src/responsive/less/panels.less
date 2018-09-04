@@ -1,0 +1,400 @@
+.panel-header-link {
+    background: url("@{theme-images-url}/icon-arrow-right.png") #2386a5 no-repeat scroll 96% 50%;
+    display: inline-block;
+    width: 100%;
+    cursor: pointer;
+    &.collapsable {
+        background-image: url("@{theme-images-url}/icon-arrow-down.png");
+        &.collapsed {
+            background-image: url("@{theme-images-url}/icon-arrow-right.png");
+        }
+    }
+}
+
+// about-fare defaults
+.panel {
+    border-radius: 0;
+    &.panel-primary {
+        background: #f1f2f2;
+        .panel-heading {
+            border-color: transparent; // Prevents double border when collapsed
+            display: block;
+            .title-collapse { padding-right: 35px; }
+        }
+        h3.title-collapse {
+            a {
+                font-size: 24px;
+                color: #fff;
+                &.panel-header-link { background-position: 98% 50%; }
+            }
+        }
+        .help-block {
+            text-align: left; // overrides OOTB justify styling
+        }
+    }
+} // .panel
+
+// about-fare panel
+.about-fare {
+    .panel-title { color: #fff; }
+    .show-hide-button { top: 5px; }
+    &.deal-fare {
+        margin-top: 20px;
+        .h5 { color: initial; }
+    }
+}
+
+// personal-details panel
+#personal-details {
+    .list-group-item { padding: 15px 15px; }
+
+}
+
+.panel {
+    &.panel-primary {
+        &.flight-status-table {
+            background-color: #fff;
+            .responsive-table-item { background: white; }
+            .responsive-table-cell { white-space: initial; }
+            td.hidden-sm.hidden-md.hidden-lg {
+                font-weight: bold;
+                background: white;
+                white-space: initial;
+            }
+        }
+    }
+}
+
+.panel-primary { border-color: @brand-blue; }
+
+.panel.button-wrap {
+    box-shadow: none;
+    border: none;
+    background-color: transparent;
+    button {
+        margin-bottom: 4px;
+    }
+}
+
+// Modify search panel
+.form-booking-trip {
+    background-color: #dcdddf;
+    .autocomplete-suggestions {
+        background-color: #dcdddf;
+    }
+    .show-hide-button {
+        top: 6px;
+    }
+}
+
+.panel.panel-list {
+    .panel-body {
+        padding: 1px; // Fixes Bootstrap jump bug
+    }
+    .panel-heading {
+        a.title {
+            background: url("@{theme-images-url}/icon-arrow-right.png") no-repeat right 4px;
+            padding-right: 30px;
+        }
+        .title {
+            font-size: 20px;
+            color: #fff;
+        }
+    }
+    .show-hide-button {
+        top: 17%;
+    }
+    .list-group {
+        margin-bottom: -2px;
+        .list-group-item {
+            border-color: @secondary-blue;
+            &.row {
+                margin-left: -1px;
+                margin-right: -1px;
+                display: block;
+                @media only screen and (min-width: @screen-sm-min) {
+                    display: flex;
+                    align-self: center;
+                    > * {
+                        align-self: center;
+                    }
+                }
+            }
+        }
+    }
+    .my-account-secondary-panel {
+        border-top: none;
+        border-bottom: none;
+        .panel-heading {
+            border-bottom: 1px solid @secondary-blue;
+        }
+        dl {
+            margin-bottom: 20px;
+        }
+        .panel-body {
+            overflow-x: auto;
+        }
+        &.ancillary-shared {
+            border-top:none;
+            border-bottom:none;
+        }
+        &.no-passenger-summary {
+            border-bottom: 1px solid @secondary-blue;
+        }
+    }
+    .panel.panel-spaced {
+        margin: 20px!important;
+        .row {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        &:first-child {
+            border-bottom: 1px solid @secondary-blue;
+        }
+        &:last-child {
+            border-top: 1px solid @secondary-blue;
+        }
+    }
+    .journey-wrapper {
+        margin-bottom: 20px;
+        .panel, .panel-default, .my-account-secondary-panel {
+            &:first-child {
+                .panel-heading {
+                    border-top: 1px solid @secondary-blue;
+                }
+            }
+            &:last-child {
+                border-bottom: 1px solid @secondary-blue;
+            }
+        }
+    }
+    .alert-wrap {
+        margin: 20px;
+        .row {
+            padding:0 10px 0 10px;
+        }
+        @media (max-width: @screen-xs-max) {
+            button.btn.btn-default.btn-block {
+                margin-top: 15px;
+            }
+        }
+
+    }
+    .form-group {
+        label, .form-label {
+            display: block;
+        }
+        &.text-right label{
+            float: right;
+        }
+    }
+    label, .form-label {
+        color: #999;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    select {
+        height: 30px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .panel {
+        margin: 0 20px;
+        border-color: @secondary-blue;
+        &:first-child {
+            margin-top: 20px;
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+        &:last-child {
+            margin-bottom: 20px;
+            &.my-account-secondary-panel {
+            }
+        }
+        &.payment-summary-panel {
+            border-top: 1px solid @secondary-blue;
+            border-bottom: 1px solid @secondary-blue;
+        }
+        &.button-wrap:last-child {
+            margin-bottom: 0;
+        }
+        fieldset {
+            padding-bottom: 0;
+        }
+        .panel-heading {
+            background: #98c6d0;
+            color: #fff;
+            &.divided {
+                background-color: transparent;
+                > *:first-child {
+                    width: auto;
+                }
+                .panel-title {
+                    display: inline;
+                    background-color: #fff;
+                    position: absolute;
+                    z-index: 1;
+                    left: 0;
+                    padding: 0 15px;
+                    color: #6d6e71;
+                }
+                &:after {
+                    content: " ";
+                    position: absolute;
+                    width: 100%;
+                    height: 12px;
+                    left: 0;
+                    z-index: 0;
+                    background-color: transparent;
+                    border-style: none;
+                }
+            }
+        }
+        .default {
+            font-style: italic;
+        }
+        .card-type {
+            font-weight: bold;
+        }
+    }
+    dl.status {
+        display: inline-block;
+        dt, dd {
+            display: inline;
+        }
+        dt {
+            font-weight: normal;
+        }
+        dd {
+            text-transform: uppercase;
+            color: #2386a4;
+            font-weight: bold;
+        }
+        &.booking {
+            margin: 10px 0 5px;
+            @media (max-width: @screen-xs-max) {
+                display: block;
+            }
+        }
+        &.flight {
+            margin: 0 0 20px;
+            @media (max-width: @screen-xs-max) {
+                display: block;
+            }
+        }
+        &.check-in {
+            margin: 0;
+            @media (max-width: @screen-xs-max) {
+                display: block;
+            }
+        }
+    }
+} // .panel.panel-list
+
+.panel-stack.panel {
+    .panel-body {
+        label {
+            + input + .autocomplete-suggestions-wrapper {
+                top: 58px;
+            }
+            &.sr-only {
+                @media (min-width: @screen-sm) {
+                    + input + .autocomplete-suggestions-wrapper {
+                        top: 33px;
+                    }
+                }
+            }
+        }
+        .panel {
+            margin-bottom: 10px;
+            &:first-child {
+                border-bottom: 1px solid @secondary-blue;
+                margin-top: 10px;
+            }
+            .panel-heading {
+                border-color: transparent;
+            }
+        }
+    }
+}
+
+#saved-payment, #quotes {
+    .my-account-secondary-panel {
+        &:first-child {
+            .panel-heading {
+                border-top: 1px solid @secondary-blue;
+            }
+        }
+    }
+}
+
+// Traveller details & Saved search page
+
+.panel-details {
+    .panel-body {
+        padding: 20px;
+        .summary {
+            padding: 20px;
+            width: calc(~'100% + 1px'); // use '~' to escape the LESS compilation, otherwise it converts it to 'width: 101%;'.
+            &.traveller-details{
+                border-bottom: 1px solid @secondary-blue;
+            }
+        }
+    }
+    .panel-form {
+        background-color: #f1f2f2;
+    }
+    .membershipNumber {
+        display: none;
+    }
+}
+
+.total {
+    dl {
+        font-size: 18px;
+        margin-top: 15px;
+    }
+    @media (max-width: @screen-xs) {
+        dt,
+        dd,
+        .totalview dt,
+        .totalview dd {
+            width: 100%;
+            margin-left: 0;
+            text-align: left;
+        }
+    }
+    .totalview {
+        > div {
+            padding-top: 8px;
+            padding-bottom: 8px;
+            border-top: 1px solid #e5e5e5;
+            &:first-child {
+                border-top: 0;
+            }
+            &:nth-child(even) {
+                background-color: #f2f2f2; 
+            }
+        }
+
+        &.amended-total {
+            display: grid;
+            > div {
+                background: transparent;
+                &:first-child {
+                    order: 1; 
+                }
+                &:nth-child(2) {
+                    order: 2;
+                }
+                &:last-child {
+                    order: 3; 
+                }
+            }
+            .amended-includes {
+                background-color: #f2f2f2;
+                padding: 8px 0;
+            }
+        }
+    }
+}

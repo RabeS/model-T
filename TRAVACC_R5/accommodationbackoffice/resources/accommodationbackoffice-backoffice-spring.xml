@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  [y] hybris Platform
+
+  Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+  This software is the confidential and proprietary information of SAP
+  ("Confidential Information"). You shall not disclose such Confidential
+  Information and shall use it only in accordance with the terms of the
+  license agreement you entered into with SAP.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/util
+           http://www.springframework.org/schema/util/spring-util.xsd
+		   http://www.hybris.com/cockpitng/spring
+		   http://www.hybris.com/cockpitng/spring/cng-spring.xsd"
+		xmlns:cng="http://www.hybris.com/cockpitng/spring"
+	xmlns:util="http://www.springframework.org/schema/util">
+
+	<util:map id="accommodationTypeMap" key-type="java.lang.String" value-type="java.lang.String">
+		<entry key="SleepingRoom" value="producttype.dropdown.editor.sleepingroom" />
+		<entry key="NonSleepingRoom" value="producttype.dropdown.editor.nonsleepingroom" />
+		<entry key="ExtraProduct" value="producttype.dropdown.editor.nonroomproduct" />
+		<entry key="RoomRateProduct" value="producttype.dropdown.editor.roomrateproduct" />
+		<entry key="Accommodation" value="producttype.dropdown.editor.accommodation" />
+	</util:map>
+
+	<bean id="accommodationbackofficeLabelLocator" class="com.hybris.cockpitng.util.labels.ResourcesLabelLocator" scope="singleton" init-method="init" lazy-init="false">
+  		<property name="location" value="/accommodationbackoffice-backoffice-labels/"/>
+  		<property name="name" value="labels"/>
+  	</bean>
+
+  	<alias name="defaultCreateRoomTypeConfigurationRenderer" alias="createRoomTypeConfigurationRenderer" />
+	<bean id="defaultCreateRoomTypeConfigurationRenderer" class="de.hybris.platform.accommodationbackoffice.widgets.CreateRoomTypeConfigurationRenderer" >
+		<property name="defaultAccommodationService" ref="accommodationService" />
+	</bean>
+
+	<alias name="defaultSaveRoomTypeConfigurationHandler" alias="saveRoomTypeConfigurationHandler" />
+	<bean id="defaultSaveRoomTypeConfigurationHandler" class="de.hybris.platform.accommodationbackoffice.widgets.SaveRoomTypeConfigurationHandler" >
+		<property name="modelService" ref="modelService" />
+	</bean>
+
+	<alias name="defaultAccommodationInventoryRenderer" alias="accommodationInventoryRenderer" />
+	<bean id="defaultAccommodationInventoryRenderer" class="de.hybris.platform.accommodationbackoffice.widgets.AccommodationInventoryRenderer" >
+		<property name="accommodationTypes" ref="accommodationTypeMap" />
+	</bean>
+
+	<alias name="defaultAccommodationInventoryHandler" alias="accommodationInventoryHandler" />
+	<bean id="defaultAccommodationInventoryHandler" class="de.hybris.platform.accommodationbackoffice.widgets.handler.AccommodationInventoryHandler" />
+
+	<alias name="defaultAssignAccommodationInventoryRenderer" alias="assignAccommodationInventoryRenderer" />
+	<bean id="defaultAssignAccommodationInventoryRenderer" class="de.hybris.platform.accommodationbackoffice.widgets.AssignAccommodationInventoryRenderer" />
+
+	<alias name="defaultAssignAccommodationInventoryHandler" alias="assignAccommodationInventoryHandler" />
+	<bean id="defaultAssignAccommodationInventoryHandler" class="de.hybris.platform.accommodationbackoffice.widgets.handler.AssignAccommodationInventoryHandler" />
+
+	<alias name="defaultAccommodationInventoryPreviewRenderer" alias="accommodationInventoryPreviewRenderer" />
+	<bean id="defaultAccommodationInventoryPreviewRenderer" class="de.hybris.platform.accommodationbackoffice.widgets.AccommodationInventoryPreviewRenderer" >
+		<property name="labelService" ref="labelService" />
+	</bean>
+
+	<alias name="defaultAccommodationInventoryPreviewHandler" alias="accommodationInventoryPreviewHandler" />
+	<bean id="defaultAccommodationInventoryPreviewHandler" class="de.hybris.platform.accommodationbackoffice.widgets.handler.AccommodationInventoryPreviewHandler" >
+		<property name="modelService" ref="modelService" />
+		<property name="cronjobService" ref="defaultCronJobService" />
+	</bean>
+
+	<!-- Validation Handlers -->
+	<alias name="defaultAbstractAccommodationBackofficeValidationHandler" alias="abstractAccommodationBackofficeValidationHandler"/>
+	<bean id="defaultAbstractAccommodationBackofficeValidationHandler" class="de.hybris.platform.accommodationbackoffice.widgets.handler.AbstractAccommodationBackofficeValidationHandler" abstract="true">
+		<property name="travelBackofficeCommonValidator" ref="travelBackofficeCommonValidator" />
+	</bean>
+
+	<alias name="defaultAbstractFinancialInfoValidationHandler" alias="abstractFinancialInfoValidationHandler"/>
+	<bean id="defaultAbstractFinancialInfoValidationHandler" class="de.hybris.platform.accommodationbackoffice.widgets.handler.AbstractFinancialInfoValidationHandler" abstract="true"
+			parent="abstractAccommodationBackofficeValidationHandler">
+		<property name="modelService" ref="modelService"/>
+	</bean>
+
+	<alias name="defaultCreateAccommodationFacilityValidationHandler" alias="createAccommodationFacilityValidationHandler"/>
+	<bean id="defaultCreateAccommodationFacilityValidationHandler" class="de.hybris.platform.accommodationbackoffice.widgets.handler.CreateAccommodationFacilityValidationHandler"
+			parent="abstractAccommodationBackofficeValidationHandler">
+		<property name="modelService" ref="modelService"/>
+	</bean>
+
+	<alias name="defaultCreateGuestOccupancyValidationHandler" alias="createGuestOccupancyValidationHandler"/>
+	<bean id="defaultCreateGuestOccupancyValidationHandler" class="de.hybris.platform.accommodationbackoffice.widgets.handler.CreateGuestOccupancyValidationHandler"
+			parent="abstractAccommodationBackofficeValidationHandler">
+		<property name="modelService" ref="modelService"/>
+	</bean>
+
+	<alias name="defaultAccommodationChainValidationHandler" alias="accommodationChainValidationHandler"/>
+	<bean id="defaultAccommodationChainValidationHandler" class="de.hybris.platform.accommodationbackoffice.widgets.handler.AccommodationChainValidationHandler"
+			parent="abstractAccommodationBackofficeValidationHandler">
+		<property name="modelService" ref="modelService"/>
+	</bean>
+
+	<alias name="defaultAccommodationProviderValidationHandler" alias="accommodationProviderValidationHandler"/>
+	<bean id="defaultAccommodationProviderValidationHandler" class="de.hybris.platform.accommodationbackoffice.widgets.handler.AccommodationProviderValidationHandler"
+			parent="abstractAccommodationBackofficeValidationHandler">
+		<property name="modelService" ref="modelService"/>
+	</bean>
+
+	<alias name="defaultRatePlanValidationHandler" alias="ratePlanValidationHandler"/>
+	<bean id="defaultRatePlanValidationHandler" class="de.hybris.platform.accommodationbackoffice.widgets.handler.RatePlanValidationHandler"
+			parent="abstractAccommodationBackofficeValidationHandler">
+		<property name="modelService" ref="modelService"/>
+	</bean>
+
+	<alias name="defaultCreateAccommodationCategoryValidationHandler" alias="createAccommodationCategoryValidationHandler"/>
+	<bean id="defaultCreateAccommodationCategoryValidationHandler" class="de.hybris.platform.accommodationbackoffice.widgets.handler.CreateAccommodationCategoryValidationHandler"
+			parent="abstractAccommodationBackofficeValidationHandler">
+		<property name="modelService" ref="modelService"/>
+	</bean>
+
+	<alias name="defaultAccommodationValidationHandler" alias="accommodationValidationHandler"/>
+	<bean id="defaultAccommodationValidationHandler" class="de.hybris.platform.accommodationbackoffice.widgets.handler.AccommodationValidationHandler"
+			parent="abstractAccommodationBackofficeValidationHandler">
+		<property name="modelService" ref="modelService"/>
+	</bean>
+
+	<alias name="defaultCreateNonSleepingRoomConfigurationValidationHandler" alias="createNonSleepingRoomConfigurationValidationHandler"/>
+	<bean id="defaultCreateNonSleepingRoomConfigurationValidationHandler" class="de.hybris.platform.accommodationbackoffice.widgets.handler.CreateNonSleepingRoomConfigurationValidationHandler"
+			parent="abstractAccommodationBackofficeValidationHandler">
+		<property name="modelService" ref="modelService"/>
+	</bean>
+
+	<alias name="defaultRoomRateProductValidationHandler" alias="roomRateProductValidationHandler"/>
+	<bean id="defaultRoomRateProductValidationHandler" class="de.hybris.platform.accommodationbackoffice.widgets.handler.RoomRateProductValidationHandler"
+			parent="abstractAccommodationBackofficeValidationHandler">
+		<property name="modelService" ref="modelService"/>
+	</bean>
+
+	<alias name="defaultSleepingRoomValidationHandler" alias="sleepingRoomValidationHandler"/>
+	<bean id="defaultSleepingRoomValidationHandler" class="de.hybris.platform.accommodationbackoffice.widgets.handler.SleepingRoomValidationHandler"
+			parent="abstractAccommodationBackofficeValidationHandler">
+		<property name="modelService" ref="modelService"/>
+	</bean>
+
+	<alias name="defaultNonSleepingRoomValidationHandler" alias="nonSleepingRoomValidationHandler"/>
+	<bean id="defaultNonSleepingRoomValidationHandler" class="de.hybris.platform.accommodationbackoffice.widgets.handler.NonSleepingRoomValidationHandler"
+			parent="abstractAccommodationBackofficeValidationHandler">
+		<property name="modelService" ref="modelService"/>
+	</bean>
+
+	<alias name="defaultExtraProductValidationHandler" alias="extraProductValidationHandler"/>
+	<bean id="defaultExtraProductValidationHandler" class="de.hybris.platform.accommodationbackoffice.widgets.handler.ExtraProductValidationHandler"
+			parent="abstractAccommodationBackofficeValidationHandler">
+		<property name="modelService" ref="modelService"/>
+	</bean>
+
+	<alias name="defaultCreateAccommodationOfferingValidationHandler" alias="createAccommodationOfferingValidationHandler"/>
+	<bean id="defaultCreateAccommodationOfferingValidationHandler" class="de.hybris.platform.accommodationbackoffice.widgets.handler.CreateAccommodationOfferingValidationHandler"
+			parent="abstractAccommodationBackofficeValidationHandler">
+		<property name="modelService" ref="modelService"/>
+		<property name="travelVendorService" ref="travelVendorService" />
+		<property name="configurationService" ref="configurationService"/>
+	</bean>
+
+	<alias name="defaultCreateCancelPenaltyValidationHandler" alias="createCancelPenaltyValidationHandler"/>
+	<bean id="defaultCreateCancelPenaltyValidationHandler" class="de.hybris.platform.accommodationbackoffice.widgets.handler.CreateCancelPenaltyValidationHandler"
+			parent="abstractFinancialInfoValidationHandler" />
+
+	<alias name="defaultCreateGuaranteeValidationHandler" alias="createGuaranteeValidationHandler"/>
+	<bean id="defaultCreateGuaranteeValidationHandler" class="de.hybris.platform.accommodationbackoffice.widgets.handler.CreateGuaranteeValidationHandler"
+			parent="abstractFinancialInfoValidationHandler" />
+
+	<alias name="defaultManageAccommodationInventoryRenderer" alias="manageAccommodationInventoryRenderer" />
+	<bean id="defaultManageAccommodationInventoryRenderer" class="de.hybris.platform.accommodationbackoffice.widgets.ManageAccommodationInventoryRenderer" >
+		<property name="travelProductService" ref="travelProductService"/>
+	</bean>
+
+	<cng:map-extender bean="backofficeCronJobHistoryIncludes">
+		<cng:put key-type="java.lang.String" value-type="de.hybris.platform.servicelayer.cronjob.CronJobHistoryInclude">
+			<entry key="accommodationInventoryCronJob">
+				<bean class="de.hybris.platform.servicelayer.cronjob.CronJobHistoryInclude">
+					<property name="jobCodes">
+						<set value-type="java.lang.String">
+							<value type="java.lang.String">accommodationInventoryCronJob</value>
+						</set>
+					</property>
+				</bean>
+			</entry>
+		</cng:put>
+	</cng:map-extender>
+
+</beans>

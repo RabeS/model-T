@@ -1,0 +1,9 @@
+#
+# ImpEx for Importing Customer Review into travel accelerator
+#
+$lang = en
+$productCatalog = naturebayhotelsProductCatalog
+$catalogVersion = catalogVersion(catalog(id[default = $productCatalog]), version[default = 'Staged'])[unique = true, default = $productCatalog:Staged]
+
+INSERT_UPDATE CustomerReview; user(uid)[unique = true]; headline; comment; rating; blocked; approvalstatus(code); language(isocode); accommodationoffering(code); product(code, $catalogVersion)[unique = true]; bookingReference; roomStayRefNumber
+#

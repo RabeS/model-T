@@ -1,0 +1,62 @@
+INSERT_UPDATE Identifier; code[unique = true]; codeContext
+#Regions
+; NOA ; IATA ;
+; SAS ; IATA ;
+; OCA ; IATA ;
+; AFR ; IATA ;
+
+#Countries
+; AU  ; IATA
+; KE  ; IATA
+; MV  ; IATA
+; TH  ; IATA
+; US  ; IATA
+
+#Cities
+; HKT ; IATA
+; HNL ; IATA
+; MLE ; IATA
+; NBO ; IATA
+; SYD ; IATA
+
+INSERT_UPDATE Location; code[unique = true]; locationType(code); superlocations(code)
+#Regions
+; NOA ; REGION  ;
+; SAS ; REGION  ;
+; OCA ; REGION  ;
+; AFR ; REGION  ;
+
+#Countries
+; AU  ; COUNTRY ; OCA
+; KE  ; COUNTRY ; AFR
+; MV  ; COUNTRY ; SAS
+; TH  ; COUNTRY ; SAS
+; US  ; COUNTRY ; NOA
+
+#Cities
+; HKT ; CITY    ; TH
+; HNL ; CITY    ; US
+; MLE ; CITY    ; MV
+; NBO ; CITY    ; KE
+; SYD ; CITY    ; AU
+
+UPDATE Location; code[unique = true]; identifier(code)
+#Regions
+; NOA ; NOA
+; SAS ; SAS
+; OCA ; OCA
+; AFR ; AFR
+
+#Countries
+; AU  ; AU
+; KE  ; KE
+; MV  ; MV
+; TH  ; TH
+; US  ; US
+
+#Cities
+; HKT ; HKT
+; HNL ; HNL
+; MLE ; MLE
+; NBO ; NBO
+; SYD ; SYD
