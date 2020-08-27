@@ -1,6 +1,6 @@
 {
 "commerceSuiteVersion": "1811",
-"useCloudExtensionPack": true,
+"useCloudExtensionPack": false,
 "extensions": [
 "adaptivesearchsolr",
 "adaptivesearchbackoffice",
