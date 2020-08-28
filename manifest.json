@@ -1,5 +1,5 @@
 {
-   "commerceSuiteVersion": "1811.5",
+   "commerceSuiteVersion": "1811",
    "extensions": [
        "modeltacceleratorservices",
        "electronicsstore",
@@ -20,7 +20,9 @@
        "permissionswebservices",
        "previewwebservices",
        "smarteditwebservices",
-       "personalizationsmartedit"
+       "personalizationsmartedit",
+       "accountsummaryaddon"
+
    ],
    "storeFrontExtension": "yacceleratorstorefront",
    "storeFrontWebRoot": "/yacceleratorstorefront",
@@ -35,6 +37,11 @@
         }
     ],
    "storefrontAddons": [
+       {
+         "addon":"accountsummaryaddon",
+         "storefront":"yacceleratorstorefront",
+         "template":"yacceleratorstorefront"
+        },
     {
       "addon": "smarteditaddon",
       "storefront": "yacceleratorstorefront",
