@@ -1,5 +1,5 @@
 {
-   "commerceSuiteVersion": "1811",
+   "commerceSuiteVersion": "2005",
    "extensions": [
        "modeltacceleratorservices",
        "electronicsstore",
@@ -73,10 +73,6 @@
                     "contextPath": "/smartedit"
                 },
                 {
-                    "name": "yacceleratorstorefront",
-                    "contextPath": "/storefront"
-                },
-                {
                     "name": "smarteditwebservices",
                      "contextPath": "/smarteditwebservices"
                 },
@@ -139,10 +135,6 @@
                 {
                     "name": "mediaweb",
                     "contextPath": "/medias"
-                },
-                {
-                    "name": "yacceleratorstorefront",
-                    "contextPath": "/storefront"
                 },
                 {
                     "name": "smartedit",
