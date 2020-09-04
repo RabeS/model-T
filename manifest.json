@@ -73,8 +73,8 @@
                     "contextPath": "/smartedit"
                 },
                 {
-                    "name": "smartedit",
-                    "contextPath": "/smartedit"
+                    "name": "yacceleratorstorefront",
+                    "contextPath": "/storefront"
                 },
                 {
                     "name": "smarteditwebservices",
@@ -145,8 +145,8 @@
                     "contextPath": "/smartedit"
                 },
                 {
-                    "name": "smartedit",
-                    "contextPath": "/smartedit"
+                    "name": "yacceleratorstorefront",
+                    "contextPath": "/storefront"
                 },
                 {
                     "name": "acceleratorservices",
