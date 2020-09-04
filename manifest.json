@@ -73,6 +73,10 @@
                     "contextPath": "/smartedit"
                 },
                 {
+                    "name": "smartedit",
+                    "contextPath": "/smartedit"
+                },
+                {
                     "name": "smarteditwebservices",
                      "contextPath": "/smarteditwebservices"
                 },
@@ -135,6 +139,10 @@
                 {
                     "name": "mediaweb",
                     "contextPath": "/medias"
+                },
+                {
+                    "name": "smartedit",
+                    "contextPath": "/smartedit"
                 },
                 {
                     "name": "smartedit",
