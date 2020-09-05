@@ -69,24 +69,8 @@
                     "contextPath": "/backoffice"
                 },
                 {
-                    "name": "smarteditwebservices",
-                     "contextPath": "/smarteditwebservices"
-                },
-                {
-                     "name": "cmssmartedit",
-                     "contextPath": "/cmssmartedit"
-                },
-                {
-                     "name": "cmssmarteditwebservices",
-                     "contextPath": "/cmssmarteditwebservices"
-                },
-                {
                      "name": "cmswebservices",
                      "contextPath": "/cmswebservices"
-                },
-                {
-                     "name": "personalizationsmartedit",
-                     "contextPath": "/personalizationsmartedit"
                 },
                 {
                      "name": "permissionswebservices",
@@ -99,15 +83,6 @@
                 {
                      "name": "previewwebservices",
                      "contextPath": "/previewwebservices"
-                },
-                {
-                     "name": "personalizationsearchsmartedit",
-                     "contextPath": "/personalizationsearchsmartedit"
-                },
-
-                {
-                     "name": "personalizationpromotionssmartedit",
-                     "contextPath": "/personalizationpromotionssmartedit"
                 }
             ]
         },
