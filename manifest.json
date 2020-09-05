@@ -69,14 +69,6 @@
                     "contextPath": "/backoffice"
                 },
                 {
-                    "name": "smartedit",
-                    "contextPath": "/smartedit"
-                },
-                {
-                    "name": "yacceleratorstorefront",
-                    "contextPath": "/storefront"
-                },
-                {
                     "name": "smarteditwebservices",
                      "contextPath": "/smarteditwebservices"
                 },
@@ -151,6 +143,47 @@
                 {
                     "name": "acceleratorservices",
                     "contextPath": "/acceleratorservices"
+                },
+               {
+                    "name": "smarteditwebservices",
+                     "contextPath": "/smarteditwebservices"
+                },
+                {
+                     "name": "cmssmartedit",
+                     "contextPath": "/cmssmartedit"
+                },
+                {
+                     "name": "cmssmarteditwebservices",
+                     "contextPath": "/cmssmarteditwebservices"
+                },
+                {
+                     "name": "cmswebservices",
+                     "contextPath": "/cmswebservices"
+                },
+                {
+                     "name": "personalizationsmartedit",
+                     "contextPath": "/personalizationsmartedit"
+                },
+                {
+                     "name": "permissionswebservices",
+                     "contextPath": "/permissionswebservices"
+                },
+                {
+                     "name": "oauth2",
+                     "contextPath": "/authorizationserver"
+                },
+                {
+                     "name": "previewwebservices",
+                     "contextPath": "/previewwebservices"
+                },
+                {
+                     "name": "personalizationsearchsmartedit",
+                     "contextPath": "/personalizationsearchsmartedit"
+                },
+
+                {
+                     "name": "personalizationpromotionssmartedit",
+                     "contextPath": "/personalizationpromotionssmartedit"
                 }
             ]
         },
